@@ -1,0 +1,98 @@
+
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica", sans-serif, 'Montserrat', sans-serif;
+}
+
+body {
+    width: 1350px;
+    margin: 0 auto;
+}
+
+.login-main{
+    border-top: 10px solid black;
+    border-bottom: 10px solid black;
+    background: lightblue;
+    color: white;
+    height: 66vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+.welcome {
+    align-items: center;
+    margin: 0 auto;
+    width: 400px;
+    border-bottom: 1px solid black;
+}
+
+.login-welcome {
+    padding: 30px;
+    font-size: 1.3em;
+    text-align: center;
+    background: lightblue;
+    color: white;
+    line-height: 2;
+}
+
+.error-login {
+    text-align: center;
+    color: red;
+    font-size: 20px;
+}
+
+
+.info-container {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.label-style {
+    text-align: center;
+    color: black;
+    padding-bottom: 8px;
+    font-weight: bold;
+}
+
+.input-style {
+    padding-left: 20px;
+    width: 400px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.input-style::placeholder {
+    padding-left: 10px;
+    color: grey;
+}
+
+.p-style {
+    margin-top: 6px;
+    border-radius: 10px;
+    padding: 10px 5px;
+    background: orange;
+    text-align: center;
+}
+
+.button-style {
+    margin-top: 10px;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 20px 40px;
+    color: black;
+    font-weight: bold;
+    background: orange;
+    font-size: 1.1em;
+
+}
+
+.button-style:hover {
+    font-size: 1.3em;
+    color: white;
+}

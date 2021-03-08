@@ -1,0 +1,97 @@
+@import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
+
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica", sans-serif, 'Montserrat', sans-serif;
+}
+
+body {
+    width: 1350px;
+    margin: 0 auto;
+}
+
+
+.div-main {
+    border-top: 10px solid black;
+    height: 40vh;
+    text-align: center;
+    padding: 30px 30px;
+    background: lightblue;
+    color: white;
+    line-height: 2;
+}
+
+.name {
+    font-size: 90px;
+    letter-spacing: 20px;
+}
+
+.info {
+
+    border-top: 10px solid black;
+    background: lightblue;
+    height: 40vh;
+    text-align: center;
+    padding: 50px 40px;
+}
+
+.info-start {
+    padding-top: 20px;
+}
+
+.info ul > li {
+
+    font-weight: bold;
+    font-size: 1.3em;
+    text-decoration: none;
+    list-style: none;
+    line-height: 3;
+}
+
+.info-list > li > i {
+    color: white;
+    padding-right: 10px;
+}
+
+.benefit-kt {
+    border-top: 10px solid black;
+    border-bottom: 10px solid black;
+    background: lightblue;
+    color: white;
+    height: 40vh;
+    padding: 30px 30px;
+    font-size: 1.6em;
+}
+
+.benefit-kt > p {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.benefit-kt-ul > ul {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    list-style: none;
+
+}
+
+.benefit-kt-li > a {
+    padding: 20px 20px;
+    border-radius: 10px;
+    border: 6px solid white;
+    box-shadow: 5px 5px 17px 5px rgba(0, 0, 0, 0.31);
+}
+
+.benefit-kt-li > a {
+    text-decoration: none;
+    color: white;
+}
+
+.benefit-kt-li > a:hover {
+    color: lightblue;
+    font-weight: bold;
+    background: white;
+}
+

@@ -1,0 +1,60 @@
+.navigation {
+    height: 10vh;
+    background: lightblue;
+    color: white;
+    padding: 20px 20px;
+
+}
+
+.navigation ul {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    text-decoration: none;
+}
+
+.navigation ul li {
+    padding: 20px 20px;
+}
+
+
+.navigation ul li button {
+    padding: 20px 20px;
+}
+
+.navigation ul li a {
+    box-shadow: 5px 5px 17px 5px rgba(0, 0, 0, 0.31);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    color: whitesmoke;
+    border: 5px solid whitesmoke;
+    border-radius: 10px;
+}
+
+.navigation ul li button {
+    box-shadow: 5px 5px 17px 5px rgba(0, 0, 0, 0.31);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    background: lightblue;
+    align-items: center;
+    color: whitesmoke;
+    border: 5px solid whitesmoke;
+    border-radius: 10px;
+}
+
+.navigation ul li a:hover {
+    color: lightblue;
+    font-weight: bold;
+    background: white;
+}
+
+.navigation ul li button:hover {
+    color: lightblue;
+    font-weight: bold;
+    background: white;
+}
+

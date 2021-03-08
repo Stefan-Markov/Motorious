@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_login.css}">
+    <title>Motorious</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation">
+
+</header>
+<main>
+    <form th:object="${userLoginBindingModel}" action="/user/login" method="POST">
+
+        <section class="login-main">
+
+            <section class="login-welcome">
+                <h2 class="welcome">Login</h2>
+            </section>
+
+            <h5 th:if="${notFound}" class="error-login">User doesn't
+                exists</h5>
+
+
+            <div class="info-container">
+                <article class="label-style">
+                    <label for="inputUsername">Username</label>
+                </article>
+                <article>
+                    <input th:field="*{username}" th:value="*{username}" class="input-style" name="username" type="text"
+                           id="inputUsername"
+                           placeholder="Enter username">
+                </article>
+                <article>
+                    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="p-style">Username length
+                        must be more than 6
+                        characters</p>
+                </article>
+            </div>
+
+            <div class="info-container">
+                <article class="label-style">
+                    <label for="inputPassword">Password</label>
+                </article>
+                <article>
+                    <input th:field="*{password}" class="input-style" name="password" type="password" id="inputPassword"
+                           placeholder="Enter password">
+                </article>
+                <article>
+                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="p-style">Enter password
+                        with minimum six characters length.</p>
+                </article>
+            </div>
+
+            <section>
+                <button class="button-style" type="submit">Login</button>
+            </section>
+        </section>
+    </form>
+</main>
+
+<div th:include="/fragment/source :: footer"></div>
+
+</body>
+</html>

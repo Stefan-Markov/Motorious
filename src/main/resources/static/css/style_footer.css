@@ -1,0 +1,29 @@
+@import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3vh;
+    background: lightblue;
+
+    padding: 20px 20px;
+    color: black;
+}
+
+.footer > ul {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.footer > ul > li {
+    list-style: none;
+    padding: 10px 10px;
+}
+
+.footer > ul > li > a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.3em;
+}
