@@ -15,7 +15,7 @@
 
 </header>
 <main>
-    <form th:object="${userLoginBindingModel}" action="/user/login" method="POST">
+    <form th:object="${userLoginBindingModel}" th:action="@{/user/login}" method="POST">
 
         <section class="login-main">
 
@@ -37,7 +37,8 @@
                            placeholder="Enter username">
                 </article>
                 <article>
-                    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="p-style">Username length
+                    <p th:if="${#fields.hasErrors('username')}" th:value="${username}"
+                       th:errors="*{username}" class="p-style">Username length
                         must be more than 6
                         characters</p>
                 </article>

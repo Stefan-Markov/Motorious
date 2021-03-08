@@ -42,7 +42,7 @@ public class MotoriousUserDetailsService implements UserDetailsService {
                 collect(Collectors.toList());
 
         return new org.springframework.security.core.userdetails.User(
-                user.getEmail(),
+                user.getUsername(),
                 user.getPassword() != null ? user.getPassword() : "",
                 authorities);
     }

@@ -79,7 +79,6 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         invalidateHttpSession(true).
                 // delete the session cookie
                         deleteCookies("JSESSIONID");
-
     }
 
 

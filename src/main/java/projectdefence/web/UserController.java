@@ -1,7 +1,6 @@
 package projectdefence.web;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,7 +44,6 @@ public class UserController {
 
 
     @PostMapping("/registration")
-    @PreAuthorize("isAnonymous()")
     public String registerConfirm(@Valid @ModelAttribute UserRegisterBindingModel userRegisterBindingModel,
                                   BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
@@ -74,13 +72,11 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    @PreAuthorize("isAnonymous()")
     public String login(Model model) {
         if (!model.containsAttribute("userLoginBindingModel")) {
             model.addAttribute("userLoginBindingModel", new UserLoginBindingModel());
             model.addAttribute("notFound", false);
         }
-
 
         return "login";
     }
