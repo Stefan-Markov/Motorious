@@ -8,8 +8,8 @@
 <div th:fragment="navigation">
     <nav class="navigation">
         <ul>
-            <li>
-                <a href="/">Home</a>
+            <li sec:authorize="isAuthenticated()">
+                <a href="/home">Home</a>
             </li>
 
             <li>
@@ -48,6 +48,24 @@
         </ul>
         <p>All rights reserved 2021</p>
     </footer>
+</div>
+<div th:fragment="benefit">
+    <div class="benefit-kt">
+        <p class="benefit-kt-p">Here you can read about benefits from:</p>
+        <section class="benefit-kt-ul">
+            <ul>
+                <li class="benefit-kt-li">
+                    <a href="/info/exercise" target="_blank">Exercise</a>
+                </li>
+                <li class="benefit-kt-li">
+                    <a href="/info/massage" target="_blank">Massage</a>
+                </li>
+                <li class="benefit-kt-li">
+                    <a href="/info/physiotherapy" target="_blank">Physiotherapy</a>
+                </li>
+            </ul>
+        </section>
+    </div>
 </div>
 
 </body>

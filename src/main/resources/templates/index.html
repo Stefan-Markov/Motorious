@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link rel="stylesheet"th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
     <title>Motorious</title>
@@ -42,23 +42,9 @@
             </li>
         </ul>
     </div>
-    <div class="benefit-kt">
-        <p class="benefit-kt-p">Here you can read about benefits from:</p>
-        <section class="benefit-kt-ul">
-            <ul>
-                <li class="benefit-kt-li">
-                    <a href="/info/exercise" target="_blank">Exercise</a>
-                </li>
-                <li class="benefit-kt-li">
-                    <a href="/info/massage" target="_blank">Massage</a>
-                </li>
-                <li class="benefit-kt-li">
-                    <a href="/info/physiotherapy" target="_blank">Physiotherapy</a>
-                </li>
-            </ul>
-        </section>
-    </div>
-<div th:include="/fragment/source :: footer" ></div>
+    <div th:include="/fragment/source :: benefit"></div>
+
+    <div th:include="/fragment/source :: footer"></div>
 </main>
 
 </body>

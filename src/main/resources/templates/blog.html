@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
     <link rel="stylesheet" th:href="@{/css/style_blog.css}">
     <title>Motorious</title>
@@ -60,6 +61,7 @@
     </section>
 </main>
 
+<div th:include="/fragment/source :: benefit"></div>
 <div th:include="/fragment/source :: footer"></div>
 </body>
 </html>
