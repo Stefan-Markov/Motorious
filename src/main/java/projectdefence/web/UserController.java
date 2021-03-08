@@ -69,6 +69,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("isExists", true);
             return "redirect:registration";
         }
+
         return "redirect:/user/login";
     }
 
