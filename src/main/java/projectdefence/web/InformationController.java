@@ -9,22 +9,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class InformationController {
 
     @GetMapping("exercise")
-    public String exercise(){
+    public String exercise() {
 
         return "exercise_info";
     }
 
     @GetMapping("massage")
-    public String massage(){
+    public String massage() {
 
         return "massage_info";
     }
 
 
     @GetMapping("physiotherapy")
-    public String physiotherapy(){
+    public String physiotherapy() {
 
         return "physiotherapy_info";
+    }
+
+    @GetMapping("/blog")
+    public String blog() {
+        return "blog";
     }
 
 }
