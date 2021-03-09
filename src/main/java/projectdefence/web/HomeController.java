@@ -1,18 +1,17 @@
 package projectdefence.web;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import projectdefence.models.entities.User;
-import projectdefence.models.viewModels.UserViewModel;
+import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 public class HomeController {
 
     private final ModelMapper modelMapper;
-
 
     public HomeController(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
@@ -24,11 +23,9 @@ public class HomeController {
     }
 
     @GetMapping("/home")
-    public String home(@ModelAttribute UserViewModel userViewModel, Model model) {
-        if (!model.containsAttribute("userViewModel")) {
-
-            model.addAttribute("userViewModel", this.modelMapper.map(userViewModel, User.class));
-        }
-        return "home";
+    public ModelAndView home(@AuthenticationPrincipal UserDetails principal) {
+        ModelAndView mav = new ModelAndView("home");
+        mav.addObject("user", principal);
+        return mav;
     }
 }

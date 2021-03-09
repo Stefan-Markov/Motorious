@@ -12,22 +12,29 @@
 </head>
 <body>
 <header th:include="/fragment/source :: navigation"></header>
-    <main>
-        <h2>Add blog content</h2>
-
+<main>
+    <h2>Add blog content</h2>
+    <form th:object="${addBlogBindingModel}" th:action="@{/blog/add-blog}" method="POST">
         <p>Title</p>
         <label>
-            <input class="title-name" type="text">
+            <input th:field="*{title}" class="title-name" type="text">
+            <br>
+            <small class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Enter valid info.</small>
+            <br>
         </label>
 
-
         <label>Content
-            <input class="content-blog" type="text">
+            <input th:field="*{content}" class="content-blog" type="text">
+            <br>
+            <small class="error" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Enter valid
+                info.</small>
+            <br>
         </label>
 
         <button class="button-style" type="submit">Submit content</button>
-    </main>
-    <div th:include="/fragment/source :: benefit"></div>
-    <div th:include="/fragment/source :: footer"></div>
+    </form>
+</main>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
 </body>
 </html>

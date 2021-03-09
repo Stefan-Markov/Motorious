@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,36 +26,48 @@
             practice.
         </p>
     </section>
+
     <section class="blog-content">
-        <section class="single-content">
-            <p>Title:</p>
-            <h5 class="blog-content-head">
-                Good tips for recovery of immobilized leg after injury
-            </h5>
-            <article>Info:</article>
-            <p>For fastest and complete recovery of immobilized leg after injury, we have to use exercise with light
-                weights.
-                Also toning massage about 30min every time before the procedure. After the massage we could use post
-                isometric relaxation.</p>
-            <p class="date-added">Date added: <span>01.03.2021</span></p>
-            <p class="date-added">Author: <span>Someone one</span></p>
-        </section>
+        <th:block th:each="blog, iter : ${blogViewModels}">
+            <section class="single-content">
+                <p>Title:</p>
+                <h5 th:text="*{blog.title}" class="blog-content-head left-padd">
+                    Good tips for recovery of immobilized leg after injury
+                </h5>
+                <article>Info:</article>
+                <p th:text="*{blog.content}" class="left-padd">For fastest and complete recovery of immobilized leg
+                    after injury, we have
+                    to use exercise with light
+                    weights.
+                    Also toning massage about 30min every time before the procedure. After the massage we could use post
+                    isometric relaxation.</p>
+                <p th:text="|Date added: *{blog.date}|" class="date-added">Date added: <span>01.03.2021</span></p>
+                <p th:text="|Author: *{blog.author}|" class="date-added">Author: <span>Someone one</span></p>
+                <p th:text="|Identification code: *{blog.id}|" class="date-added">Identification code:
+                    <span>one</span></p>
+                <ul>
+                    <li class="delete-blog" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/blog/delete/{id}(id = *{blog.id})}" type="button"
+                        >Delete blog</a>
+                    </li>
+                </ul>
 
-        <section class="single-content">
-            <p>Title:</p>
-            <h5 class="blog-content-head">
-                Good tips for recovery of immobilized leg after injury
-            </h5>
-            <article>Info:</article>
-            <p>For fastest and complete recovery of immobilized leg after injury, we have to use exercise with light
-                weights.
-                Also toning massage about 30min every time before the procedure. After the massage we could use post
-                isometric relaxation.</p>
-            <p class="date-added">Date added: <span>01.03.2021</span></p>
-            <p class="date-added">Author: <span>Someone one</span></p>
+            </section>
+        </th:block>
 
-
-        </section>
+        <!--        <section class="single-content">-->
+        <!--            <p>Title:</p>-->
+        <!--            <h5 class="blog-content-head">-->
+        <!--                Good tips for recovery of immobilized leg after injury-->
+        <!--            </h5>-->
+        <!--            <article>Info:</article>-->
+        <!--            <p>For fastest and complete recovery of immobilized leg after injury, we have to use exercise with light-->
+        <!--                weights.-->
+        <!--                Also toning massage about 30min every time before the procedure. After the massage we could use post-->
+        <!--                isometric relaxation.</p>-->
+        <!--            <p class="date-added">Date added: <span>01.03.2021</span></p>-->
+        <!--            <p class="date-added">Author: <span>Someone one</span></p>-->
+        <!--        </section>-->
 
 
     </section>

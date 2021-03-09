@@ -1,12 +1,23 @@
 package projectdefence.web;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import projectdefence.service.BlogService;
 
 @Controller
 @RequestMapping("/info")
 public class InformationController {
+
+    private final ModelMapper modelMapper;
+    private final BlogService blogService;
+
+    public InformationController(ModelMapper modelMapper, BlogService blogService) {
+        this.modelMapper = modelMapper;
+        this.blogService = blogService;
+    }
 
     @GetMapping("exercise")
     public String exercise() {
@@ -28,7 +39,10 @@ public class InformationController {
     }
 
     @GetMapping("/blog")
-    public String blog() {
+    public String blog(Model model) {
+        if(!model.containsAttribute("blogViewModels")){
+            model.addAttribute("blogViewModels",this.blogService.findAllBlogs());
+        }
         return "blog";
     }
 

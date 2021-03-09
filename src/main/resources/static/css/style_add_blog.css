@@ -17,7 +17,7 @@ main {
     display: flex;
     flex-direction: column;
     line-height: 3;
-    height: 60.5vh;
+    /*height: 60.5vh;*/
     align-items: center;
     background: lightblue;
     padding: 50px;
@@ -30,12 +30,13 @@ main {
     padding-left: 10px;
 }
 
-.content-blog{
+.content-blog {
     width: 85vw;
     height: 100px;
     border-radius: 10px;
     padding-left: 10px;
 }
+
 .button-style {
     margin-top: 10px;
     border: 3px solid black;
@@ -51,4 +52,9 @@ main {
 .button-style:hover {
     font-size: 1.3em;
     color: white;
+}
+
+.error {
+    color: red;
+    font-size: 1.2em;
 }

@@ -13,15 +13,15 @@
 <header th:include="/fragment/source :: navigation">
 
 </header>
-<main th:object="${userViewModel}">
+<main>
 
-    <h2 class="name-person" th:text="|Hello, ${userViewModel.username}|">Hello,...</h2>
+    <h2 class="name-person" th:text="|Hello, ${user.username}|">Hello,...</h2>
     <section class="wrap-action">
         <aside>
             <h2>Action panel</h2>
             <ul>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/blog/add}"><i class="fas fa-arrow-circle-right"></i>Add blog</a>
+                    <a th:href="@{/blog/add-blog}"><i class="fas fa-arrow-circle-right"></i>Add blog</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add measurement</a>
@@ -37,6 +37,9 @@
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check measurement</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Delete user</a>
                 </li>
             </ul>
         </aside>
