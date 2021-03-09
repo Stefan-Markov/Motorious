@@ -17,8 +17,6 @@ public class HomeController {
 
     public HomeController(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
-
-
     }
 
     @GetMapping("/")
