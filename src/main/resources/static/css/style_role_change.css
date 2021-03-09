@@ -1,0 +1,89 @@
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica", sans-serif, 'Montserrat', sans-serif;
+}
+
+body {
+    width: 1350px;
+    margin: 0 auto;
+}
+
+.wrap-change {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 2;
+    padding: 50px;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    background: lightblue;
+    height: 60vh;
+}
+
+.wise {
+    border-bottom: 1px solid black;
+}
+
+label {
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+
+.first {
+    margin-left: 20px;
+}
+
+select {
+    border-radius: 30px;
+    padding-left: 30px;
+    width: 300px;
+    height: 70px;
+    font-size: 1.1em;
+    margin: 30px;
+    border: 3px solid black;
+}
+
+.action {
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.username-enter {
+    border: 3px solid black;
+    width: 500px;
+    height: 60px;
+    border-radius: 30px;
+    padding-left: 30px;
+    font-size: 1.1em;
+}
+
+button {
+    padding: 20px 40px;
+    background: orange;
+    color: white;
+    border: 3px solid white;
+    border-radius: 30px;
+    font-size: 1.3em;
+}
+
+select {
+    padding-left: 50px;
+    width: 400px;
+    margin-left: 50px;
+}
+
+button:hover {
+    background: white;
+    color: orange;
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+
+.error {
+    color: red;
+
+}
