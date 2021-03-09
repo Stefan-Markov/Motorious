@@ -27,7 +27,7 @@
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add measurement</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
-                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Change role</a>
+                    <a th:href="@{/user/change-role}"><i class="fas fa-arrow-circle-right"></i>Change role</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add procedure</a>

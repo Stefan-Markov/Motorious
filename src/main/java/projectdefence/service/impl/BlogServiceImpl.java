@@ -26,7 +26,6 @@ public class BlogServiceImpl implements BlogService {
     public BlogServiceImpl(BlogRepository blogRepository, ModelMapper modelMapper, UserRepository userRepository) {
         this.blogRepository = blogRepository;
         this.modelMapper = modelMapper;
-
         this.userRepository = userRepository;
     }
 

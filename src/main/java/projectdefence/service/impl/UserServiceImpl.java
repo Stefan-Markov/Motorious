@@ -3,18 +3,26 @@ package projectdefence.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.Transient;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import projectdefence.models.entities.Role;
 import projectdefence.models.entities.User;
+import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
+import projectdefence.repositories.RoleRepository;
 import projectdefence.repositories.UserRepository;
 import projectdefence.service.RoleService;
 import projectdefence.service.UserService;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+
+import java.util.Optional;
+import java.util.Set;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,18 +32,15 @@ public class UserServiceImpl implements UserService {
 
     private final PasswordEncoder bCryptPasswordEncoder;
     private final RoleService roleService;
-    private final MotoriousUserDetailsService motoriousUserDetailsService;
+    private final RoleRepository roleRepository;
 
     public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository,
-                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService,
-                           MotoriousUserDetailsService motoriousUserDetailsService) {
+                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService, RoleRepository roleRepository) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-
-
         this.roleService = roleService;
-        this.motoriousUserDetailsService = motoriousUserDetailsService;
+        this.roleRepository = roleRepository;
     }
 
 
@@ -87,4 +92,28 @@ public class UserServiceImpl implements UserService {
                         .map(user, UserServiceModel.class))
                 .orElse(null);
     }
+
+    @Override
+    public void changeRole(UserServiceChangeRoleModel userServiceModel, String role) {
+        Optional<User> user = userRepository.findUserByUsername(userServiceModel.getUsername());
+        if (user.isPresent()) {
+            Role newRole = this.roleRepository.findByAuthority(role);
+            Set<Role> tryNewRole = new HashSet<>(user.get().getAuthorities());
+            if (!tryNewRole.contains(newRole)) {
+                user.get().getAuthorities().add(newRole);
+                this.userRepository.save(user.get());
+            }
+
+
+//            for (Role roles : user.get().getAuthorities()) {
+
+//                if (!roles.getAuthority().equals(role)) {
+//                    Role newRole = this.roleRepository.findByAuthority(role);
+//                    user.get().getAuthorities().add(newRole);
+//                    this.userRepository.saveAndFlush(user.get());
+//                }
+        }
+    }
 }
+
+

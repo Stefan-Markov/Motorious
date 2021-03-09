@@ -1,18 +1,18 @@
 package projectdefence.web;
 
+import org.dom4j.rule.Mode;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import projectdefence.models.binding.UserChangeRoleBindingModel;
 import projectdefence.models.binding.UserLoginBindingModel;
 import projectdefence.models.binding.UserRegisterBindingModel;
+import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
 import projectdefence.service.UserService;
 
@@ -90,5 +90,32 @@ public class UserController {
         modelAndView.setViewName("/login");
 
         return modelAndView;
+    }
+
+
+    @GetMapping("/change-role")
+    public String changeRole(Model model) {
+        if (!model.containsAttribute("userChangeRoleBindingModel")) {
+            model.addAttribute("userChangeRoleBindingModel", new UserChangeRoleBindingModel());
+        }
+
+        return "role_change";
+    }
+
+    @PostMapping("/change-role")
+    public String changeRoleConfirm(@RequestParam(name = "role") String role, @Valid @ModelAttribute UserChangeRoleBindingModel userChangeRoleBindingModel,
+                                    BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("userChangeRoleBindingModel", userChangeRoleBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userChangeRoleBindingModel",
+                    bindingResult);
+            return "redirect:change-role";
+        }
+
+        this.userService.changeRole(this.modelMapper
+                .map(userChangeRoleBindingModel, UserServiceChangeRoleModel.class), role);
+        return "redirect:/home";
     }
 }
