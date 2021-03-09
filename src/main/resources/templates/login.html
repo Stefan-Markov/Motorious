@@ -16,7 +16,7 @@
 
 </header>
 <main>
-    <form th:object="${userLoginBindingModel}" th:action="@{/user/login}" method="POST">
+    <form th:action="@{/user/login}" method="POST">
 
         <section class="login-main">
 
@@ -24,8 +24,7 @@
                 <h2 class="welcome">Login</h2>
             </section>
 
-            <h5 th:if="${notFound}" class="error-login">User doesn't
-                exists</h5>
+            <h5 th:if="${notFound}" class="error-login">Please enter valid credentials.</h5>
 
 
             <div class="info-container">
@@ -33,16 +32,15 @@
                     <label for="inputUsername">Username</label>
                 </article>
                 <article>
-                    <input th:field="*{username}" th:value="*{username}" class="input-style" name="username" type="text"
+                    <input  class="input-style" name="username" type="text"
                            id="inputUsername"
                            placeholder="Enter username">
                 </article>
-                <article>
-                    <p th:if="${#fields.hasErrors('username')}" th:value="${username}"
-                       th:errors="*{username}" class="p-style">Username length
-                        must be more than 6
-                        characters</p>
-                </article>
+<!--                <article>-->
+<!--                    <p class="p-style">Username length-->
+<!--                        must be more than 6-->
+<!--                        characters</p>-->
+<!--                </article>-->
             </div>
 
             <div class="info-container">
@@ -50,12 +48,12 @@
                     <label for="inputPassword">Password</label>
                 </article>
                 <article>
-                    <input th:field="*{password}" class="input-style" name="password" type="password" id="inputPassword"
+                    <input class="input-style" name="password" type="password" id="inputPassword"
                            placeholder="Enter password">
                 </article>
                 <article>
-                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="p-style">Enter password
-                        with minimum six characters length.</p>
+<!--                    <p class="p-style">Enter password-->
+<!--                        with minimum six characters length.</p>-->
                 </article>
             </div>
 

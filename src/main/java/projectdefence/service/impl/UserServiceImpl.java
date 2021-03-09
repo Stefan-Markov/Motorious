@@ -27,7 +27,8 @@ public class UserServiceImpl implements UserService {
     private final MotoriousUserDetailsService motoriousUserDetailsService;
 
     public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository,
-                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService, MotoriousUserDetailsService motoriousUserDetailsService) {
+                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService,
+                           MotoriousUserDetailsService motoriousUserDetailsService) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;

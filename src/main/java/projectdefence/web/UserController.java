@@ -37,8 +37,6 @@ public class UserController {
             model.addAttribute("isExists", false);
             model.addAttribute("notSame", false);
         }
-
-
         return "registration";
     }
 
@@ -93,6 +91,4 @@ public class UserController {
 
         return modelAndView;
     }
-
-
 }
