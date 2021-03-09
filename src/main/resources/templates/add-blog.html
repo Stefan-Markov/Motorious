@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_add_blog.css}">
+    <title>Motorious</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation"></header>
+    <main>
+        <h2>Add blog content</h2>
+
+        <p>Title</p>
+        <label>
+            <input class="title-name" type="text">
+        </label>
+
+
+        <label>Content
+            <input class="content-blog" type="text">
+        </label>
+
+        <button class="button-style" type="submit">Submit content</button>
+    </main>
+    <div th:include="/fragment/source :: benefit"></div>
+    <div th:include="/fragment/source :: footer"></div>
+</body>
+</html>

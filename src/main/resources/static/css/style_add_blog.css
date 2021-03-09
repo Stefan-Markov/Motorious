@@ -1,0 +1,54 @@
+@import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
+
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica", sans-serif, 'Montserrat', sans-serif;
+}
+
+body {
+    width: 1350px;
+    margin: 0 auto;
+}
+
+main {
+    border-top: 10px solid black;
+    border-bottom: 10px solid black;
+    display: flex;
+    flex-direction: column;
+    line-height: 3;
+    height: 60.5vh;
+    align-items: center;
+    background: lightblue;
+    padding: 50px;
+}
+
+.title-name {
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.content-blog{
+    width: 85vw;
+    height: 100px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+.button-style {
+    margin-top: 10px;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 20px 40px;
+    color: black;
+    font-weight: bold;
+    background: orange;
+    font-size: 1.1em;
+}
+
+
+.button-style:hover {
+    font-size: 1.3em;
+    color: white;
+}

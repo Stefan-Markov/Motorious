@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_home.css}">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <title>Motorious</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation">
+
+</header>
+<main th:object="${userViewModel}">
+
+    <h2 class="name-person" th:text="|Hello, ${userViewModel.username}|">Hello,...</h2>
+    <section class="wrap-action">
+        <aside>
+            <h2>Action panel</h2>
+            <ul>
+                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
+                    <a th:href="@{/blog/add}"><i class="fas fa-arrow-circle-right"></i>Add blog</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add measurement</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Change role</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add procedure</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check procedure</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check measurement</a>
+                </li>
+            </ul>
+        </aside>
+        <article>
+            <img class="home-pic" th:src="@{img/index.jpeg}" alt="home pic">
+        </article>
+    </section>
+    <div th:include="/fragment/source :: benefit"></div>
+</main>
+<div th:include="/fragment/source :: footer"></div>
+
+</body>
+</html>

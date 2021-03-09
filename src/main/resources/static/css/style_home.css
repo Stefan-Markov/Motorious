@@ -1,0 +1,82 @@
+
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica", sans-serif, 'Montserrat', sans-serif;
+}
+
+body {
+    width: 1350px;
+    margin: 0 auto;
+}
+
+main {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+
+    border-top: 10px solid black;
+    border-bottom: 10px solid black;
+    background: lightblue;
+}
+
+aside {
+    line-height: 2;
+    padding: 15px;
+    border: 5px solid white;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.wrap-action {
+    padding: 30px;
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.home-pic {
+    margin-left: 150px;
+    align-items: center;
+    width: 770px;
+    height: 500px;
+    border: 3px solid white;
+
+    border-radius: 10px;
+}
+
+aside h2 {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+aside ul li a {
+    color: black;
+    line-height: 2;
+    text-decoration: none;
+}
+
+aside ul li {
+    list-style: none;
+}
+
+.fa-arrow-circle-right {
+    padding-right: 10px;
+    color: orange;
+    font-size: 1.2em;
+}
+
+.action-hover a:hover {
+    color: orange;
+    font-size: 1.1em;
+    font-weight: bolder;
+}
+
+.name-person{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 1.5em;
+}
