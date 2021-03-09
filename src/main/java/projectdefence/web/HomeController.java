@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import projectdefence.models.entities.User;
 import projectdefence.models.viewModels.UserViewModel;
-import projectdefence.service.impl.MotoriousUserDetailsService;
 
 @Controller
 public class HomeController {

@@ -6,11 +6,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity  implements UserDetails {
+public class User extends BaseEntity implements UserDetails {
 
     private String firstName;
     private String lastName;
@@ -20,16 +21,25 @@ public class User extends BaseEntity  implements UserDetails {
 
     private String title;
     private String imageUrl;
-
+    private List<Measurement> measurements;
     private LocalDateTime createdDate = LocalDateTime.now();
-
     private Set<Role> authorities;
 
     public User() {
     }
 
+    @OneToMany(mappedBy = "user")
+    public List<Measurement> getMeasurements() {
+        return measurements;
+    }
+
+    public User setMeasurements(List<Measurement> measurements) {
+        this.measurements = measurements;
+        return this;
+    }
+
     @Column(name = "created_info", nullable = false)
-    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     public LocalDateTime getCreatedDate() {
         return createdDate;
     }
