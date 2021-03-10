@@ -19,6 +19,17 @@ public class Measurement extends BaseEntity {
     private User user;
     private Integer age;
     private String disease;
+    private String createdBy;
+
+    @Column(name = "created_by", nullable = false)
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public Measurement setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+        return this;
+    }
 
     public Integer getAge() {
         return age;

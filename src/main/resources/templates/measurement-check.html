@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Measurement check</title>
+</head>
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/css/style_measurement_check.css}">
+<link rel="stylesheet" th:href="@{/css/style_index.css}">
+<link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+<link rel="stylesheet" th:href="@{/css/style_footer.css}">
+<link rel="stylesheet" href="style_measurement_check.css">
+<header th:include="/fragment/source :: navigation"></header>
+
+<main>
+<h2>Here you can take a look at your measurements.</h2>
+    <section th:each="m : ${allMeasurements}" class="wrap-measurement">
+        <section class="main-check">
+            <img alt="measurement" class="measurement-pic" th:src="@{/img/measurement.jpeg}">
+            <p th:text="|Date: *{m.date}|">Date:</p>
+            <p th:text="|Client age: *{m.age}|">Client age:</p>
+            <p th:text="|Stage: *{m.stage}|">Stage:</p>
+            <p th:text="|Disease: *{m.disease}|">Disease:</p>
+            <p th:text="|Content: *{m.content}|">Content:</p>
+            <p >Kinesitherapist:</p>
+        </section>
+    </section>
+</main>
+    <div th:include="/fragment/source :: benefit"></div>
+    <div th:include="/fragment/source :: footer"></div>
+</body>
+</html>

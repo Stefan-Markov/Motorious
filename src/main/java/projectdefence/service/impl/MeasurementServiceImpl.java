@@ -5,11 +5,14 @@ import org.springframework.stereotype.Service;
 import projectdefence.models.entities.Measurement;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.MeasurementAddServiceModel;
+import projectdefence.models.viewModels.MeasurementByUserNameViewModel;
 import projectdefence.repositories.MeasurementRepository;
 import projectdefence.repositories.UserRepository;
 import projectdefence.service.MeasurementService;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MeasurementServiceImpl implements MeasurementService {
@@ -31,5 +34,13 @@ public class MeasurementServiceImpl implements MeasurementService {
         measurement.setDate(LocalDate.now());
 
         this.measurementRepository.save(measurement);
+    }
+
+    @Override
+    public List<MeasurementByUserNameViewModel> findAllMeasurementsByUsername(String username) {
+        User user = this.userRepository.findByUsername(username);
+
+        return user.getMeasurements().stream().map(m -> modelMapper.map(m, MeasurementByUserNameViewModel.class))
+                .collect(Collectors.toList());
     }
 }

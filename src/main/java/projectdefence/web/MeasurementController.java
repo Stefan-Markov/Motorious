@@ -5,10 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.MeasurementAddBindingModel;
 import projectdefence.models.serviceModels.MeasurementAddServiceModel;
@@ -63,5 +60,14 @@ public class MeasurementController {
                 measurementAddBindingModel.getUsername());
 
         return "redirect:/home";
+    }
+
+
+    @GetMapping("/check")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public String checkMeasurement(@RequestParam("username") String username, Model model) {
+
+        model.addAttribute("allMeasurements", this.measurementService.findAllMeasurementsByUsername(username));
+        return "measurement-check";
     }
 }

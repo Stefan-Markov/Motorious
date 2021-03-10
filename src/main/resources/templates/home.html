@@ -20,7 +20,7 @@
         <aside>
             <h2>Action panel</h2>
             <ul>
-                <li  class="action-hover">
+                <li class="action-hover">
                     <a th:href="@{/}"><i class="fas fa-arrow-circle-right"></i>Info page</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
@@ -38,11 +38,12 @@
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add procedure</a>
                 </li>
-                <li  class="action-hover">
+                <li class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check procedure</a>
                 </li>
-                <li  class="action-hover">
-                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check measurement</a>
+                <li class="action-hover">
+                    <a th:href="@{/measurement/check/(username = *{user.username})}"><i
+                            class="fas fa-arrow-circle-right"></i>Check measurement</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
                     <a th:href="@{/user/all-users}"><i class="fas fa-arrow-circle-right"></i>View all users</a>
