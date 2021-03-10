@@ -1,7 +1,7 @@
 package projectdefence.web;
 
-import org.dom4j.rule.Mode;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.UserChangeRoleBindingModel;
 import projectdefence.models.binding.UserLoginBindingModel;
 import projectdefence.models.binding.UserRegisterBindingModel;
-import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
 import projectdefence.service.UserService;
 
@@ -92,4 +91,31 @@ public class UserController {
         return modelAndView;
     }
 
+    @GetMapping("delete-user")
+    @PreAuthorize("hasRole('ROLE_ROOT')")
+    public String deleteUser(Model model) {
+        if (!model.containsAttribute("userChangeRoleBindingModel")) {
+            model.addAttribute("userChangeRoleBindingModel", new UserChangeRoleBindingModel());
+        }
+
+        return "delete-user";
+    }
+
+    @PostMapping("delete-user")
+    @PreAuthorize("hasRole('ROLE_ROOT')")
+    public String deleteUserConfirm(@Valid @ModelAttribute UserChangeRoleBindingModel userChangeRoleBindingModel,
+                                    BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("userChangeRoleBindingModel", userChangeRoleBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userChangeRoleBindingModel",
+                    bindingResult);
+            return "redirect:delete-user";
+        }
+
+        String username = userChangeRoleBindingModel.getUsername();
+        this.userService.deleteUserByUsername(username);
+        return "redirect:/home";
+    }
 }

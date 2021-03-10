@@ -12,4 +12,7 @@ public interface UserService {
     void changeRole(UserServiceChangeRoleModel userServiceModel, String role);
 
     void downgradeRole(UserServiceChangeRoleModel userServiceChangeRoleModel, String role);
+
+
+    void deleteUserByUsername(String username);
 }

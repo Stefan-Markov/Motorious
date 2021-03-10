@@ -45,7 +45,10 @@
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check measurement</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
-                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Delete user</a>
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>View all users</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
+                    <a th:href="@{/user/delete-user}"><i class="fas fa-arrow-circle-right"></i>Delete user</a>
                 </li>
             </ul>
         </aside>

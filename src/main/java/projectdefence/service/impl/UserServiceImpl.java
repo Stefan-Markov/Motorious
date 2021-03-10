@@ -118,6 +118,12 @@ public class UserServiceImpl implements UserService {
             }
         }
     }
+
+    @Override
+    public void deleteUserByUsername(String username) {
+        Optional<User> user = userRepository.findUserByUsername(username);
+        user.ifPresent(this.userRepository::delete);
+    }
 }
 
 
