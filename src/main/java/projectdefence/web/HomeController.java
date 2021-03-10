@@ -11,10 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
-    private final ModelMapper modelMapper;
+    public HomeController() {
 
-    public HomeController(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/")

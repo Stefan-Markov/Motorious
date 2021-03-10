@@ -42,7 +42,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public List<BlogViewModel> findAllBlogs() {
-        return this.blogRepository.findAll().stream()
+        return this.blogRepository.findAllOrderByDate().stream()
                 .map(b -> modelMapper.map(b, BlogViewModel.class))
                 .collect(Collectors.toList());
     }

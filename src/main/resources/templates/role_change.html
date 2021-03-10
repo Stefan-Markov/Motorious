@@ -13,7 +13,7 @@
 <body>
 <header th:include="/fragment/source :: navigation"></header>
 <main class="wrap-change">
-    <form th:object="${userChangeRoleBindingModel}" th:action="@{/user/change-role}" method="POST">
+    <form th:object="${userChangeRoleBindingModel}" th:action="@{/role/role-change}" method="POST">
         <h2>Change the role of user</h2>
         <p class="wise">Here you can change the role of user. Be wise! </p>
         <section class="action">

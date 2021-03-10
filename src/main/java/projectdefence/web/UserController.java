@@ -92,30 +92,4 @@ public class UserController {
         return modelAndView;
     }
 
-
-    @GetMapping("/change-role")
-    public String changeRole(Model model) {
-        if (!model.containsAttribute("userChangeRoleBindingModel")) {
-            model.addAttribute("userChangeRoleBindingModel", new UserChangeRoleBindingModel());
-        }
-
-        return "role_change";
-    }
-
-    @PostMapping("/change-role")
-    public String changeRoleConfirm(@RequestParam(name = "role") String role, @Valid @ModelAttribute UserChangeRoleBindingModel userChangeRoleBindingModel,
-                                    BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
-
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("userChangeRoleBindingModel", userChangeRoleBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userChangeRoleBindingModel",
-                    bindingResult);
-            return "redirect:change-role";
-        }
-
-        this.userService.changeRole(this.modelMapper
-                .map(userChangeRoleBindingModel, UserServiceChangeRoleModel.class), role);
-        return "redirect:/home";
-    }
 }

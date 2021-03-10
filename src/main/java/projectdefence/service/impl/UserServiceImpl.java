@@ -103,15 +103,19 @@ public class UserServiceImpl implements UserService {
                 user.get().getAuthorities().add(newRole);
                 this.userRepository.save(user.get());
             }
+        }
+    }
 
-
-//            for (Role roles : user.get().getAuthorities()) {
-
-//                if (!roles.getAuthority().equals(role)) {
-//                    Role newRole = this.roleRepository.findByAuthority(role);
-//                    user.get().getAuthorities().add(newRole);
-//                    this.userRepository.saveAndFlush(user.get());
-//                }
+    @Override
+    public void downgradeRole(UserServiceChangeRoleModel userServiceModel, String role) {
+        Optional<User> user = userRepository.findUserByUsername(userServiceModel.getUsername());
+        if (user.isPresent()) {
+            Role newRole = this.roleRepository.findByAuthority(role);
+            Set<Role> tryNewRole = new HashSet<>(user.get().getAuthorities());
+            if (tryNewRole.contains(newRole)) {
+                user.get().getAuthorities().remove(newRole);
+                this.userRepository.save(user.get());
+            }
         }
     }
 }

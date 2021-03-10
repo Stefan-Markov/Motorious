@@ -20,6 +20,9 @@
         <aside>
             <h2>Action panel</h2>
             <ul>
+                <li  class="action-hover">
+                    <a th:href="@{/}"><i class="fas fa-arrow-circle-right"></i>Info page</a>
+                </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/blog/add-blog}"><i class="fas fa-arrow-circle-right"></i>Add blog</a>
                 </li>
@@ -27,18 +30,21 @@
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add measurement</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
-                    <a th:href="@{/user/change-role}"><i class="fas fa-arrow-circle-right"></i>Change role</a>
+                    <a th:href="@{/role/role-change}"><i class="fas fa-arrow-circle-right"></i>Change role</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
+                    <a th:href="@{/role/role-downgrade}"><i class="fas fa-arrow-circle-right"></i>Downgrade role</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add procedure</a>
                 </li>
-                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
+                <li  class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check procedure</a>
                 </li>
-                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
+                <li  class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check measurement</a>
                 </li>
-                <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
+                <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Delete user</a>
                 </li>
             </ul>

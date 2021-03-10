@@ -26,6 +26,7 @@ public class RoleServiceImpl implements RoleService {
             this.roleRepository.save(new Role("ROLE_KINESITHERAPIST"));
             this.roleRepository.save(new Role("ROLE_USER"));
             this.roleRepository.save(new Role("ROLE_ADMIN"));
+            this.roleRepository.save(new Role("ROLE_ROOT"));
         }
     }
 

@@ -1,6 +1,7 @@
 package projectdefence.web;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,7 @@ public class BlogController {
     }
 
     @GetMapping("/add-blog")
+    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
     public String addBlog(Model model) {
         if (!model.containsAttribute("addBlogBindingModel")) {
             model.addAttribute("addBlogBindingModel", new AddBlogBindingModel());
@@ -36,6 +38,7 @@ public class BlogController {
 
 
     @PostMapping("/add-blog")
+    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
     public String addBlogPost(@Valid @ModelAttribute AddBlogBindingModel addBlogBindingModel,
                               BindingResult bindingResult, RedirectAttributes redirectAttributes,
                               @AuthenticationPrincipal UserDetails principal) {
@@ -54,6 +57,7 @@ public class BlogController {
     }
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String delete(@PathVariable Long id){
 
         blogService.deleteById(id);
