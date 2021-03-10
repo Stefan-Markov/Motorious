@@ -13,38 +13,45 @@
 </head>
 <body>
 <header th:include="/fragment/source :: navigation"></header>
-<form th:action="@{/measurement/add}" method="post">
+<form th:object="${measurementAddBindingModel}" th:action="@{/measurement/add}" method="post">
     <main class="setting">
-
-
         <h2>Add measurement</h2>
-
         <p>Enter username</p>
         <label>
-            <input class="title-name" type="text">
+            <p class="p-style" th:if="${userFound}">Username don't exist!</p>
+            <input th:field="*{username}" class="title-name" type="text">
+            <p th:if="${#fields.hasErrors('username')}"
+               th:errors="*{username}" class="p-style">Username
+                length must be more than 6
+                characters</p>
         </label>
 
         <p>Age</p>
         <label>
-            <input class="title-name" type="number">
+            <input th:field="*{age}" class="title-name" type="number">
+            <p th:if="${#fields.hasErrors('age')}"
+               th:errors="*{age}" class="p-style">Enter valid age.</p>
         </label>
 
-        <label class="stage">Choose stage
-            <select class="title-name">
-                <option selected>Before first procedure</option>
-                <option>At the middle of the recovery period</option>
-                <option>After last procedure</option>
+        <label for="stage" class="stage">Choose stage
+            <select th:field="*{stage}" name="stage" id="stage" class="title-name">
+                <option value="Before first procedure" selected>Before first procedure</option>
+                <option value="At the middle of the recovery period">At the middle of the recovery period</option>
+                <option value="After last procedure">After last procedure</option>
             </select>
         </label>
 
         <p>Disease</p>
         <label>
-            <input class="title-name disease" type="text">
+            <input th:field="*{disease}" class="title-name disease" type="text">
+            <p th:if="${#fields.hasErrors('disease')}"
+               th:errors="*{disease}" class="p-style">Enter valid age.</p>
         </label>
 
-
         <label>Content
-            <input class="content-blog" type="text">
+            <input th:field="*{content}" class="content-blog" type="text">
+            <p th:if="${#fields.hasErrors('content')}"
+               th:errors="*{content}" class="p-style">Enter valid age.</p>
         </label>
 
         <button class="button-style">Submit measurement</button>

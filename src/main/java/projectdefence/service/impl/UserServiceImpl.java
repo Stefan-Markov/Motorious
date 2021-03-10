@@ -31,8 +31,6 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
-
-
     private final PasswordEncoder bCryptPasswordEncoder;
     private final RoleService roleService;
     private final RoleRepository roleRepository;
@@ -145,6 +143,13 @@ public class UserServiceImpl implements UserService {
     public Integer findByTitleClient() {
         String title = "client";
         return this.userRepository.findAllByTitle(title).size();
+    }
+
+    @Override
+    public boolean findByUsername(String username) {
+        Optional<User> user = userRepository.findByUsernameOptional(username);
+
+        return user.isPresent();
     }
 }
 

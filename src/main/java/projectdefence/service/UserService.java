@@ -24,4 +24,6 @@ public interface UserService {
     Integer findByTitleKT();
 
     Integer findByTitleClient();
+
+    boolean findByUsername(String username);
 }
