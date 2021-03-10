@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_measurement_add.css}">
+    <link rel="stylesheet" href="style_measurement_add.css">
+    <title>Measurement add</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation"></header>
+<form th:action="@{/measurement/add}" method="post">
+    <main class="setting">
+
+
+        <h2>Add measurement</h2>
+
+        <p>Enter username</p>
+        <label>
+            <input class="title-name" type="text">
+        </label>
+
+        <p>Age</p>
+        <label>
+            <input class="title-name" type="number">
+        </label>
+
+        <label class="stage">Choose stage
+            <select class="title-name">
+                <option selected>Before first procedure</option>
+                <option>At the middle of the recovery period</option>
+                <option>After last procedure</option>
+            </select>
+        </label>
+
+        <p>Disease</p>
+        <label>
+            <input class="title-name disease" type="text">
+        </label>
+
+
+        <label>Content
+            <input class="content-blog" type="text">
+        </label>
+
+        <button class="button-style">Submit measurement</button>
+    </main>
+</form>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
+</body>
+</html>

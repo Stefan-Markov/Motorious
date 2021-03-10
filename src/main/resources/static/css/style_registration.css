@@ -39,7 +39,7 @@ main {
 
 .user-details {
 
-    border-bottom: 10px solid black;
+
     display: flex;
     flex-direction: column;
     align-items: center;

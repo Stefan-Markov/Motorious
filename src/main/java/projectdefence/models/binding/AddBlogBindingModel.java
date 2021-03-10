@@ -13,7 +13,7 @@ public class AddBlogBindingModel {
     }
 
     @NotBlank(message = "Please enter the title.")
-    @Length(min = 6, message = "Enter minimum six characters.")
+    @Length(min = 6, max = 200, message = "Enter minimum six characters.")
     public String getTitle() {
         return title;
     }
@@ -24,7 +24,7 @@ public class AddBlogBindingModel {
     }
 
     @NotBlank(message = "Please enter the content.")
-    @Length(min = 6, message = "Enter minimum six characters.")
+    @Length(min = 6, max = 2000, message = "Enter minimum six characters.")
     public String getContent() {
         return content;
     }

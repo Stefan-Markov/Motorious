@@ -27,7 +27,7 @@
                     <a th:href="@{/blog/add-blog}"><i class="fas fa-arrow-circle-right"></i>Add blog</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add measurement</a>
+                    <a th:href="@{/measurement/add}"><i class="fas fa-arrow-circle-right"></i>Add measurement</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
                     <a th:href="@{/role/role-change}"><i class="fas fa-arrow-circle-right"></i>Change role</a>
