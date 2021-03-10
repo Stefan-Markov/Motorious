@@ -8,6 +8,7 @@ public class UserViewModel {
     private String lastName;
     private String username;
 
+
     public UserViewModel() {
     }
 

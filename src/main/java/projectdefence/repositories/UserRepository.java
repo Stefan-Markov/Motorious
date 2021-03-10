@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import projectdefence.models.entities.User;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -21,5 +22,5 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     Optional<User> findUserByUsername(String username);
 
-
+    List<User> findAllByTitle(String title);
 }

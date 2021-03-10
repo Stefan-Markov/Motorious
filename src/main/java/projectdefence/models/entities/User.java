@@ -18,7 +18,6 @@ public class User extends BaseEntity implements UserDetails {
     private String username;
     private String email;
     private String password;
-
     private String title;
     private String imageUrl;
     private List<Measurement> measurements;

@@ -12,6 +12,7 @@ import projectdefence.models.entities.Role;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
+import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.repositories.RoleRepository;
 import projectdefence.repositories.UserRepository;
 import projectdefence.service.RoleService;
@@ -20,8 +21,10 @@ import projectdefence.service.UserService;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -123,6 +126,25 @@ public class UserServiceImpl implements UserService {
     public void deleteUserByUsername(String username) {
         Optional<User> user = userRepository.findUserByUsername(username);
         user.ifPresent(this.userRepository::delete);
+    }
+
+    @Override
+    public List<UserWrapInfoViewModel> findAllUsers() {
+        return this.userRepository.findAll().stream().map(u ->
+                this.modelMapper.map(u, UserWrapInfoViewModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Integer findByTitleKT() {
+        String title = "Kinesitherapist";
+        return this.userRepository.findAllByTitle(title).size();
+    }
+
+    @Override
+    public Integer findByTitleClient() {
+        String title = "client";
+        return this.userRepository.findAllByTitle(title).size();
     }
 }
 

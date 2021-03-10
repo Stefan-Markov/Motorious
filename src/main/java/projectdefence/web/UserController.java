@@ -118,4 +118,15 @@ public class UserController {
         this.userService.deleteUserByUsername(username);
         return "redirect:/home";
     }
+
+    @GetMapping("all-users")
+    @PreAuthorize("hasRole('ROLE_ROOT')")
+    public String allUsers(Model model) {
+
+        model.addAttribute("viewAllKts",this.userService.findByTitleKT());
+        model.addAttribute("viewAllClients",this.userService.findByTitleClient());
+            model.addAttribute("allUsers", this.userService.findAllUsers());
+
+        return "view_all_users";
+    }
 }

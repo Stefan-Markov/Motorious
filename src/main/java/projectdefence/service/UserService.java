@@ -2,6 +2,9 @@ package projectdefence.service;
 
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
+import projectdefence.models.viewModels.UserWrapInfoViewModel;
+
+import java.util.List;
 
 public interface UserService {
     boolean register(UserServiceModel userServiceModel);
@@ -15,4 +18,10 @@ public interface UserService {
 
 
     void deleteUserByUsername(String username);
+
+    List<UserWrapInfoViewModel> findAllUsers();
+
+    Integer findByTitleKT();
+
+    Integer findByTitleClient();
 }
