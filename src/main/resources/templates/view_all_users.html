@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_view_all_users.css}">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" href="style_view_all_users.css">
+    <title>View all users</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation"></header>
+<section class="static-info">
+    <p th:text="|Total count of clients: ${viewAllClients}|">Total count of clients:</p>
+    <br>
+    <p th:text="|Total count of kinesitherapists: ${viewAllKts}|">Total count of kinesitherapists:</p>
+
+</section>
+<main>
+    <section th:each="u : ${allUsers}" class="user-info">
+        <p th:text="|First name: *{u.firstName}|">First name</p>
+        <p th:text="|Last name: *{u.lastName}|">Last name</p>
+        <p th:text="|Username: *{u.username}|">Username</p>
+        <p th:text="|Title: *{u.title}|">Title</p>
+        <p th:text="|Email: *{u.email}|">Email:</p>
+    </section>
+</main>
+
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
+
+</body>
+</html>
