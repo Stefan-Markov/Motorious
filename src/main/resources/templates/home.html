@@ -38,8 +38,11 @@
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add procedure</a>
                 </li>
+                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add treatment</a>
+                </li>
                 <li class="action-hover">
-                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check procedure</a>
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check treatment</a>
                 </li>
                 <li class="action-hover">
                     <a th:href="@{/measurement/check/(username = *{user.username})}"><i
