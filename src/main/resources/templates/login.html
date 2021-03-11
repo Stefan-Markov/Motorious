@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
@@ -16,7 +15,7 @@
 
 </header>
 <main>
-    <form th:action="@{/user/login}" method="POST">
+    <form  th:action="@{/user/login}" method="POST">
 
         <section class="login-main">
 
@@ -32,15 +31,10 @@
                     <label for="inputUsername">Username</label>
                 </article>
                 <article>
-                    <input  class="input-style" name="username" type="text"
+                    <input th:object="${username}" th:value="${username}" class="input-style" name="username" type="text"
                            id="inputUsername"
                            placeholder="Enter username">
                 </article>
-<!--                <article>-->
-<!--                    <p class="p-style">Username length-->
-<!--                        must be more than 6-->
-<!--                        characters</p>-->
-<!--                </article>-->
             </div>
 
             <div class="info-container">
@@ -52,8 +46,7 @@
                            placeholder="Enter password">
                 </article>
                 <article>
-<!--                    <p class="p-style">Enter password-->
-<!--                        with minimum six characters length.</p>-->
+
                 </article>
             </div>
 

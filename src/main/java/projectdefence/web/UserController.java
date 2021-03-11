@@ -77,7 +77,7 @@ public class UserController {
 
         return "login";
     }
-
+    
     @PostMapping("/login-error")
     public ModelAndView failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                                             String username) {
@@ -123,9 +123,9 @@ public class UserController {
     @PreAuthorize("hasRole('ROLE_ROOT')")
     public String allUsers(Model model) {
 
-        model.addAttribute("viewAllKts",this.userService.findByTitleKT());
-        model.addAttribute("viewAllClients",this.userService.findByTitleClient());
-            model.addAttribute("allUsers", this.userService.findAllUsers());
+        model.addAttribute("viewAllKts", this.userService.findByTitleKT());
+        model.addAttribute("viewAllClients", this.userService.findByTitleClient());
+        model.addAttribute("allUsers", this.userService.findAllUsers());
 
         return "view_all_users";
     }

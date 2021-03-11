@@ -1,6 +1,7 @@
 package projectdefence.web;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ public class HomeController {
     }
 
     @GetMapping("/home")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView home(@AuthenticationPrincipal UserDetails principal) {
         ModelAndView mav = new ModelAndView("home");
         mav.addObject("user", principal);
