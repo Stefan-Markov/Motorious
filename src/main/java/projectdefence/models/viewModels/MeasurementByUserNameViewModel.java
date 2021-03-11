@@ -9,6 +9,16 @@ public class MeasurementByUserNameViewModel {
     private String stage;
     private Integer age;
     private String disease;
+    private String createdBy;
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public MeasurementByUserNameViewModel setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+        return this;
+    }
 
     public MeasurementByUserNameViewModel() {
     }

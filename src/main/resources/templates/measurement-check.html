@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" >
+    <meta charset="UTF-8">
     <title>Measurement check</title>
 </head>
 <body>
@@ -14,20 +14,26 @@
 <header th:include="/fragment/source :: navigation"></header>
 
 <main>
-<h2>Here you can take a look at your measurements.</h2>
+    <h2>Here you can take a look at your measurements.</h2>
     <section th:each="m : ${allMeasurements}" class="wrap-measurement">
         <section class="main-check">
             <img alt="measurement" class="measurement-pic" th:src="@{/img/measurement.jpeg}">
-            <p th:text="|Date: *{m.date}|">Date:</p>
+            <i class="fas fa-info-circle"></i>
+            <p  th:text="|Date: *{m.date}|">Date:</p>
+            <i class="fas fa-info-circle"></i>
             <p th:text="|Client age: *{m.age}|">Client age:</p>
+            <i class="fas fa-info-circle"></i>
             <p th:text="|Stage: *{m.stage}|">Stage:</p>
+            <i class="fas fa-info-circle"></i>
             <p th:text="|Disease: *{m.disease}|">Disease:</p>
+            <i class="fas fa-info-circle"></i>
             <p th:text="|Content: *{m.content}|">Content:</p>
-            <p >Kinesitherapist:</p>
+            <i class="fas fa-info-circle"></i>
+            <p th:text="|Kinesitherapist: *{m.createdBy}|">Kinesitherapist:</p>
         </section>
     </section>
 </main>
-    <div th:include="/fragment/source :: benefit"></div>
-    <div th:include="/fragment/source :: footer"></div>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
 </body>
 </html>

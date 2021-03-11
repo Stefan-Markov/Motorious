@@ -1,3 +1,5 @@
+@import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
+
 html, * {
     margin: 0;
     padding: 0;
@@ -8,13 +10,15 @@ body {
     width: 1350px;
     margin: 0 auto;
 }
-h2{
+
+h2 {
     text-align: center;
     margin: 10px;
     padding: 30px;
     border-bottom: 1px solid black;
 }
-main{
+
+main {
 
     border-top: 10px solid black;
     border-bottom: 10px solid black;
@@ -27,7 +31,7 @@ main{
 
 }
 
-.measurement-pic{
+.measurement-pic {
     align-items: center;
     object-fit: cover;
     width: 430px;
@@ -36,7 +40,8 @@ main{
     border-top-right-radius: 30px;
     border-bottom-left-radius: 30px;
 }
-.wrap-measurement{
+
+.wrap-measurement {
     padding: 30px;
     margin: 10px;
     width: 30vw;
@@ -46,6 +51,20 @@ main{
     line-height: 2;
 }
 
-.main-check{
+.main-check {
     color: black;
+}
+
+.main-check > p {
+    border-bottom: 1px solid black;
+    font-weight: bold;
+}
+
+.fa-info-circle {
+    color: orange;
+    font-weight: bold;
+    float: left;
+    align-content: center;
+    margin-right: 10px;
+    margin-top: 5px;
 }

@@ -2,6 +2,8 @@ package projectdefence.web;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,18 +31,21 @@ public class MeasurementController {
 
     @GetMapping("/add")
     @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
-    public String addMeasurement(Model model) {
+    public String addMeasurement(@AuthenticationPrincipal UserDetails principal, Model model) {
+
+        model.addAttribute("name", principal);
 
         if (!model.containsAttribute("measurementAddBindingModel")) {
             model.addAttribute("measurementAddBindingModel", new MeasurementAddBindingModel());
             model.addAttribute("userFound", false);
+
         }
         return "measurement_add";
     }
 
     @PostMapping("/add")
     @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
-    public String addMeasurementConfirm(@Valid @ModelAttribute MeasurementAddBindingModel measurementAddBindingModel,
+    public String addMeasurementConfirm(@RequestParam(name = "nameKt") String nameKt, @Valid @ModelAttribute MeasurementAddBindingModel measurementAddBindingModel,
                                         BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("measurementAddBindingModel", measurementAddBindingModel);
@@ -57,7 +62,7 @@ public class MeasurementController {
         }
 
         this.measurementService.addMeasurement(this.modelMapper.map(measurementAddBindingModel, MeasurementAddServiceModel.class),
-                measurementAddBindingModel.getUsername());
+                measurementAddBindingModel.getUsername(), nameKt);
 
         return "redirect:/home";
     }

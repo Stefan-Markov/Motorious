@@ -11,6 +11,7 @@ import projectdefence.repositories.UserRepository;
 import projectdefence.service.MeasurementService;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,11 +28,14 @@ public class MeasurementServiceImpl implements MeasurementService {
     }
 
     @Override
-    public void addMeasurement(MeasurementAddServiceModel measurementAddServiceModel, String username) {
+    public void addMeasurement(MeasurementAddServiceModel measurementAddServiceModel,
+                               String username, String name) {
+
         User user = this.userRepository.findByUsername(username);
         Measurement measurement = this.modelMapper.map(measurementAddServiceModel, Measurement.class);
         measurement.setUser(user);
         measurement.setDate(LocalDate.now());
+        measurement.setCreatedBy(name);
 
         this.measurementRepository.save(measurement);
     }
@@ -41,6 +45,7 @@ public class MeasurementServiceImpl implements MeasurementService {
         User user = this.userRepository.findByUsername(username);
 
         return user.getMeasurements().stream().map(m -> modelMapper.map(m, MeasurementByUserNameViewModel.class))
+                .sorted(Comparator.comparing(MeasurementByUserNameViewModel::getDate).reversed())
                 .collect(Collectors.toList());
     }
 }
