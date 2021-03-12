@@ -37,10 +37,14 @@
                     <a th:href="@{/role/role-downgrade}"><i class="fas fa-arrow-circle-right"></i>Downgrade role</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add procedure</a>
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>View your clients</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Add treatment</a>
+                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>View client info</a>
+                </li>
+
+                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
+                    <a th:href="@{/treatment/add}"><i class="fas fa-arrow-circle-right"></i>Add treatment</a>
                 </li>
                 <li class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check treatment</a>

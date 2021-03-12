@@ -1,3 +1,5 @@
+@import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
+
 html, * {
     margin: 0;
     padding: 0;
@@ -9,38 +11,49 @@ body {
     margin: 0 auto;
 }
 
-.help-info{
+.main-info {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+.help-info {
     margin: 0 auto;
     text-align: center;
 }
-p > a{
+
+p > a {
 
     text-align: center;
     text-decoration: none;
     color: black;
 
 }
-main{
+
+main {
     padding: 30px;
     border-top: 10px solid black;
     border-bottom: 10px solid black;
     background: lightblue;
 }
-main > h2{
+
+main > h2 {
     margin: 30px auto;
     padding: 10px;
     width: 600px;
     text-align: center;
     border-bottom: 1px solid black;
 }
-.wrap-info{
+
+.wrap-info {
     display: flex;
     justify-content: center;
     align-self: center;
     align-items: center;
     flex-direction: column;
 }
-.wrap-info-inside{
+
+.wrap-info-inside {
     width: 500px;
     height: 50px;
     padding-left: 20px;
@@ -48,12 +61,12 @@ main > h2{
     margin: 10px;
 }
 
-.title{
+.title {
     margin-top: 10px;
     font-weight: bolder;
 }
 
-.content{
+.content {
     border-radius: 20px;
     margin: 10px;
     padding: 20px;
@@ -77,4 +90,40 @@ button:hover {
     color: orange;
     font-weight: bolder;
     font-size: 1.5em;
+}
+
+.p-style {
+    margin-top: 6px;
+    border-radius: 10px;
+    padding: 10px 5px;
+    background: orange;
+    text-align: center;
+}
+
+details {
+    align-items: center;
+
+}
+
+summary {
+    list-style: none;
+}
+
+.plan-example {
+    width: 600px;
+    height: 600px;
+    align-items: center;
+}
+
+.wrap-pic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.fa-info-circle {
+    color: orange;
+    font-size: 1.3em;
+    padding-right: 10px;
 }
