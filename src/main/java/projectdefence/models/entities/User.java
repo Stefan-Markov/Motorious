@@ -21,10 +21,20 @@ public class User extends BaseEntity implements UserDetails {
     private String title;
     private String imageUrl;
     private List<Measurement> measurements;
+    private List<Treatment> treatments;
     private LocalDateTime createdDate = LocalDateTime.now();
     private Set<Role> authorities;
-
     public User() {
+    }
+
+    @OneToMany(mappedBy = "user")
+    public List<Treatment> getTreatments() {
+        return treatments;
+    }
+
+    public User setTreatments(List<Treatment> treatments) {
+        this.treatments = treatments;
+        return this;
     }
 
     @OneToMany(mappedBy = "user")
@@ -62,7 +72,7 @@ public class User extends BaseEntity implements UserDetails {
         return this;
     }
 
-    @Column(name = "title",nullable = false)
+    @Column(name = "title", nullable = false)
     public String getTitle() {
         return title;
     }

@@ -10,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.TreatmentAddBindingModel;
-import projectdefence.models.serviceModels.MeasurementAddServiceModel;
 import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;
 
@@ -68,5 +67,13 @@ public class TreatmentController {
                 treatmentAddBindingModel.getUsername(), nameKt);
 
         return "redirect:/home";
+    }
+
+    @GetMapping("/check")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public String checkTreatment(@RequestParam("username") String username, Model model) {
+
+        model.addAttribute("allTreatments", this.treatmentService.findAllTreatmentsByUsername(username));
+        return "treatment-check";
     }
 }

@@ -16,7 +16,7 @@
 <main>
 
     <h2 class="name-person" th:text="|Hello, ${user.username}|">Hello,...</h2>
-    <img class="image" th:src="${image}" alt="Picture" width="200px" height="200px" >
+    <img class="image" th:src="${image}" alt="Picture" width="200px" height="200px">
     <section class="wrap-action">
         <aside>
             <h2>Action panel</h2>
@@ -46,10 +46,11 @@
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/treatment/add}"><i class="fas fa-arrow-circle-right"></i>Add treatment</a>
                 </li>
-                <li class="action-hover">
-                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>Check treatment</a>
+                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
+                    <a th:href="@{/treatment/check/(username = *{user.username})}"><i
+                            class="fas fa-arrow-circle-right"></i>Check treatment</a>
                 </li>
-                <li class="action-hover">
+                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
                     <a th:href="@{/measurement/check/(username = *{user.username})}"><i
                             class="fas fa-arrow-circle-right"></i>Check measurement</a>
                 </li>

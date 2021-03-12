@@ -21,6 +21,7 @@
 </section>
 <main>
     <section th:each="u : ${allUsers}" class="user-info">
+        <img th:src="*{u.imageUrl}" width="300px" height="300px">
         <p th:text="|First name: *{u.firstName}|">First name</p>
         <p th:text="|Last name: *{u.lastName}|">Last name</p>
         <p th:text="|Username: *{u.username}|">Username</p>

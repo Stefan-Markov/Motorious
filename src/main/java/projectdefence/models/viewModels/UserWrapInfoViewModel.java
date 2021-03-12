@@ -12,6 +12,16 @@ public class UserWrapInfoViewModel {
     private String title;
     private String email;
     private LocalDateTime createdDate;
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public UserWrapInfoViewModel setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
 
     public UserWrapInfoViewModel() {
     }
