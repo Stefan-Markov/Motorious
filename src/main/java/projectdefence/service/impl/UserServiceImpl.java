@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import projectdefence.models.entities.Role;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
@@ -14,6 +15,7 @@ import projectdefence.models.serviceModels.UserServiceModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.repositories.RoleRepository;
 import projectdefence.repositories.UserRepository;
+import projectdefence.service.CloudinaryService;
 import projectdefence.service.RoleService;
 import projectdefence.service.UserService;
 
@@ -33,14 +35,17 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder bCryptPasswordEncoder;
     private final RoleService roleService;
     private final RoleRepository roleRepository;
+    private final CloudinaryService cloudinaryService;
 
     public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository,
-                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService, RoleRepository roleRepository) {
+                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService, RoleRepository roleRepository, CloudinaryService cloudinaryService) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.roleService = roleService;
         this.roleRepository = roleRepository;
+
+        this.cloudinaryService = cloudinaryService;
     }
 
 
@@ -63,9 +68,17 @@ public class UserServiceImpl implements UserService {
 
             User user = this.modelMapper.map(userServiceModel, User.class);
 
+            if (userServiceModel.getImage().isEmpty()) {
+                user.setImageUrl("/img/user.jpeg");
+            } else {
+                MultipartFile image = userServiceModel.getImage();
+                String imageUrl = cloudinaryService.uploadImage(image);
+                user.setImageUrl(imageUrl);
+            }
+
             user.setCreatedDate(LocalDateTime.now());
             user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
-            user.setImageUrl("/img/user.jpeg");
+
             userRepository.save(user);
 
             UserDetails principal = userRepository.findByUsername(user.getUsername());
@@ -146,6 +159,11 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = userRepository.findByUsernameOptional(username);
 
         return user.isPresent();
+    }
+
+    @Override
+    public String findImageByUsername(String username) {
+        return this.userRepository.findImageUrl(username);
     }
 
 

@@ -24,4 +24,6 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     List<User> findAllByTitle(String title);
 
+    @Query("SELECT u.imageUrl from  User u where u.username = :username")
+    String findImageUrl(@Param("username") String username);
 }

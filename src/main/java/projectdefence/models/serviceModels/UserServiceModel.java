@@ -1,5 +1,7 @@
 package projectdefence.models.serviceModels;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Set;
 
 public class UserServiceModel {
@@ -12,7 +14,7 @@ public class UserServiceModel {
     private String password;
 
     private String title;
-    private String imageUrl;
+    private MultipartFile image;
     private Set<RoleServiceModel> authorities;
 
     public UserServiceModel() {
@@ -81,12 +83,12 @@ public class UserServiceModel {
         return this;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public MultipartFile getImage() {
+        return image;
     }
 
-    public UserServiceModel setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public UserServiceModel setImage(MultipartFile image) {
+        this.image = image;
         return this;
     }
 

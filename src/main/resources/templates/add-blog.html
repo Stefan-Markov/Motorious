@@ -24,7 +24,7 @@
         </label>
 
         <label>Content
-            <input th:field="*{content}" class="content-blog" type="text">
+            <textarea th:field="*{content}" class="content-blog"></textarea>
             <br>
             <small class="error" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Enter valid
                 info.</small>

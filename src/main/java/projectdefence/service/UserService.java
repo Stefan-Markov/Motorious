@@ -29,4 +29,5 @@ public interface UserService {
     boolean findByUsername(String username);
 
 
+    String findImageByUsername(String image);
 }

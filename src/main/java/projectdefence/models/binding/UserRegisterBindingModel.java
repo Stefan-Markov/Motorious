@@ -1,6 +1,7 @@
 package projectdefence.models.binding;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -15,8 +16,18 @@ public class UserRegisterBindingModel {
     private String password;
     private String confirmPassword;
     private String title;
+    private MultipartFile image;
 
     public UserRegisterBindingModel() {
+    }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public UserRegisterBindingModel setImage(MultipartFile image) {
+        this.image = image;
+        return this;
     }
 
     @NotBlank(message = "Please fill the information.")

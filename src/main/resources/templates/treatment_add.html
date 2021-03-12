@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_treatment_add.css}">
+
+    <title>Plan of treatment add</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation"></header>
+<main>
+    <h2>Add personal treatment for a client.</h2>
+    <p class="help-info"><a href="#content"> Click here to see a good written plan of treatment.</a> </p>
+    <section class="wrap-info">
+        <article>
+            <p class="title">Username</p>
+            <label for="username">
+                <input class="wrap-info-inside" id="username" type="text" placeholder="Enter a username of the client">
+            </label>
+        </article>
+
+        <article>
+            <p class="title">Disease</p>
+            <label for="disease">
+                <input placeholder="Enter the disease" class="wrap-info-inside" id="disease" type="text">
+            </label>
+        </article>
+
+        <article>
+            <p class="title">Goal</p>
+            <label for="goal">
+                <input placeholder="Enter the search result" class="wrap-info-inside" id="goal" type="text">
+            </label>
+        </article>
+
+        <article>
+            <p class="title">Visits</p>
+            <label for="visits">
+                <input placeholder="Visits for a week" class="wrap-info-inside" id="visits" type="number">
+            </label>
+        </article>
+
+        <article>
+            <p class="title">Duration</p>
+            <label for="duration">
+                <input placeholder="Total duration in weeks" class="wrap-info-inside" id="duration" type="number">
+            </label>
+        </article>
+
+        <article>
+            <p class="title">Content</p>
+            <label for="content">
+                <textarea  class="content" id="content"></textarea>
+            </label>
+        </article>
+
+
+        <button type="submit">Send</button>
+    </section>
+</main>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
+</body>
+</html>

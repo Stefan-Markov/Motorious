@@ -74,9 +74,16 @@ aside ul li {
     font-weight: bolder;
 }
 
-.name-person{
+.name-person {
     text-align: center;
     color: black;
     font-weight: bold;
     font-size: 1.5em;
+}
+
+.image {
+    border-radius: 30px;
+    border: 6px solid white;
+
+    margin-left: 70px;
 }

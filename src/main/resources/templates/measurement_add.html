@@ -50,7 +50,7 @@
         </label>
 
         <label>Content
-            <input th:field="*{content}" class="content-blog" type="text">
+            <textarea th:field="*{content}" class="content-blog"></textarea>
             <p th:if="${#fields.hasErrors('content')}"
                th:errors="*{content}" class="p-style">Enter valid age.</p>
         </label>

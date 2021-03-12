@@ -97,3 +97,8 @@ body {
     flex-direction: row;
     align-items: center;
 }
+
+textarea {
+    padding: 30px;
+    resize: none;
+}

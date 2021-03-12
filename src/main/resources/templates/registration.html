@@ -15,7 +15,7 @@
 
 </header>
 <main>
-    <form th:object="${userRegisterBindingModel}" th:action="@{/user/registration}" method="POST">
+    <form th:object="${userRegisterBindingModel}" th:action="@{/user/registration}" method="POST"  enctype="multipart/form-data">
         <section class="head-welcome">
             <h2 class="welcome">Welcome to the register form for our site.</h2>
         </section>
@@ -80,6 +80,10 @@
                     </select>
                 </div>
 
+                <div class="info-container">
+                    <label class="label-style" for="image">Add Picture</label>
+                    <input th:field="*{image}" class="input-style" type="file" id="image" name="image">
+                </div>
 
                 <div class="info-container">
                     <article class="label-style">
