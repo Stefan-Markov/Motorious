@@ -30,6 +30,9 @@
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/measurement/add}"><i class="fas fa-arrow-circle-right"></i>Add measurement</a>
                 </li>
+                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
+                    <a th:href="@{/treatment/add}"><i class="fas fa-arrow-circle-right"></i>Add treatment</a>
+                </li>
                 <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
                     <a th:href="@{/role/role-change}"><i class="fas fa-arrow-circle-right"></i>Change role</a>
                 </li>
@@ -43,9 +46,6 @@
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>View client info</a>
                 </li>
 
-                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/treatment/add}"><i class="fas fa-arrow-circle-right"></i>Add treatment</a>
-                </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
                     <a th:href="@{/treatment/check/(username = ${user})}"><i
                             class="fas fa-arrow-circle-right"></i>Check treatment</a>

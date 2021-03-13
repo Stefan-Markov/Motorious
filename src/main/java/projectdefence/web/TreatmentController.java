@@ -75,6 +75,6 @@ public class TreatmentController {
     public String checkTreatment(@RequestParam("username") String username, Model model) {
 
         model.addAttribute("allTreatments", this.treatmentService.findAllTreatmentsByUsername(username));
-        return "treatment-check";
+        return "treatment_check";
     }
 }
