@@ -15,7 +15,7 @@
 </header>
 <main>
 
-    <h2 class="name-person" th:text="|Hello, ${user.username}|">Hello,...</h2>
+    <h2 class="name-person" th:text="|Hello, ${user}|">Hello,...</h2>
     <img class="image" th:src="${image}" alt="Picture" width="200px" height="200px">
     <section class="wrap-action">
         <aside>
@@ -47,11 +47,11 @@
                     <a th:href="@{/treatment/add}"><i class="fas fa-arrow-circle-right"></i>Add treatment</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
-                    <a th:href="@{/treatment/check/(username = *{user.username})}"><i
+                    <a th:href="@{/treatment/check/(username = ${user})}"><i
                             class="fas fa-arrow-circle-right"></i>Check treatment</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
-                    <a th:href="@{/measurement/check/(username = *{user.username})}"><i
+                    <a th:href="@{/measurement/check/(username = ${user})}"><i
                             class="fas fa-arrow-circle-right"></i>Check measurement</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">

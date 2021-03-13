@@ -33,7 +33,8 @@ public class TreatmentController {
     @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
     public String addTreatment(@AuthenticationPrincipal UserDetails principal, Model model) {
 
-        model.addAttribute("name", principal);
+        String name = principal.getUsername();
+        model.addAttribute("name", name);
 
         if (!model.containsAttribute("treatmentAddBindingModel")) {
 

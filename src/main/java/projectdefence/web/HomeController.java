@@ -13,6 +13,7 @@ import projectdefence.service.UserService;
 public class HomeController {
 
     private final UserService userService;
+
     public HomeController(UserService userService) {
 
         this.userService = userService;
@@ -27,8 +28,10 @@ public class HomeController {
     @PreAuthorize("isAuthenticated()")
     public ModelAndView home(@AuthenticationPrincipal UserDetails principal) {
         ModelAndView mav = new ModelAndView("home");
-        mav.addObject("user", principal);
-        mav.addObject("image",this.userService.findImageByUsername(principal.getUsername()));
+        String name = principal.getUsername();
+        String imageUrl = this.userService.findImageByUsername(principal.getUsername());
+        mav.addObject("user", name);
+        mav.addObject("image", imageUrl);
         return mav;
     }
 }

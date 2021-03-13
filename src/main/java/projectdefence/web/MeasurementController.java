@@ -33,7 +33,8 @@ public class MeasurementController {
     @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
     public String addMeasurement(@AuthenticationPrincipal UserDetails principal, Model model) {
 
-        model.addAttribute("name", principal);
+        String name = principal.getUsername();
+        model.addAttribute("name", name);
 
         if (!model.containsAttribute("measurementAddBindingModel")) {
             model.addAttribute("measurementAddBindingModel", new MeasurementAddBindingModel());
