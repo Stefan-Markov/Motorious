@@ -14,17 +14,13 @@ import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.repositories.RoleRepository;
+import projectdefence.repositories.TreatmentRepository;
 import projectdefence.repositories.UserRepository;
-import projectdefence.service.CloudinaryService;
-import projectdefence.service.RoleService;
-import projectdefence.service.UserService;
+import projectdefence.service.*;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
+import java.util.*;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -36,16 +32,21 @@ public class UserServiceImpl implements UserService {
     private final RoleService roleService;
     private final RoleRepository roleRepository;
     private final CloudinaryService cloudinaryService;
+    private final TreatmentService treatmentService;
+    private final MeasurementService measurementService;
+    private final TreatmentRepository treatmentRepository;
 
     public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository,
-                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService, RoleRepository roleRepository, CloudinaryService cloudinaryService) {
+                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService, RoleRepository roleRepository, CloudinaryService cloudinaryService, TreatmentService treatmentService, MeasurementService measurementService, TreatmentRepository treatmentRepository) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.roleService = roleService;
         this.roleRepository = roleRepository;
-
         this.cloudinaryService = cloudinaryService;
+        this.treatmentService = treatmentService;
+        this.measurementService = measurementService;
+        this.treatmentRepository = treatmentRepository;
     }
 
 
@@ -166,7 +167,14 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.findImageUrl(username);
     }
 
+    @Override
+    public List<UserWrapInfoViewModel> findAllUsersByKinesiotherapist(String name) {
 
+        return this.userRepository.findAllByKinesitherapistName(name)
+                .stream().map(c -> this.modelMapper
+                        .map(c, UserWrapInfoViewModel.class))
+                .collect(Collectors.toList());
+    }
 }
 
 

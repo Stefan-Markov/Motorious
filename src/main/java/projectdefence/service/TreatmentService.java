@@ -9,4 +9,5 @@ public interface TreatmentService {
     void addTreatment(TreatmentAddBindingModel treatmentAddBindingModel, String username, String nameKt);
 
     List<TreatmentViewModel> findAllTreatmentsByUsername(String username);
+
 }

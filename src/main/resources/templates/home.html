@@ -40,7 +40,7 @@
                     <a th:href="@{/role/role-downgrade}"><i class="fas fa-arrow-circle-right"></i>Downgrade role</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>View your clients</a>
+                    <a th:href="@{/client/all/(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>View your clients</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>View client info</a>

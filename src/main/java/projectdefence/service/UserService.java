@@ -2,7 +2,6 @@ package projectdefence.service;
 
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
-import projectdefence.models.viewModels.MeasurementByUserNameViewModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 
 import java.util.List;
@@ -30,4 +29,6 @@ public interface UserService {
 
 
     String findImageByUsername(String image);
+
+    List<UserWrapInfoViewModel> findAllUsersByKinesiotherapist(String name);
 }

@@ -2,11 +2,9 @@ package projectdefence.models.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "treatments")
@@ -23,6 +21,8 @@ public class Treatment extends BaseEntity {
 
     public Treatment() {
     }
+
+
 
     @Column(name = "disease", nullable = false)
     public String getDisease() {
@@ -84,6 +84,7 @@ public class Treatment extends BaseEntity {
         this.content = content;
         return this;
     }
+
 
     @ManyToOne
     public User getUser() {
