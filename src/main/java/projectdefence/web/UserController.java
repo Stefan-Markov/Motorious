@@ -70,25 +70,21 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Model model) {
-        if (!model.containsAttribute("userLoginBindingModel")) {
-            model.addAttribute("userLoginBindingModel", new UserLoginBindingModel());
-            model.addAttribute("notFound", false);
-        }
+//        if (!model.containsAttribute("userLoginBindingModel")) {
+//            model.addAttribute("userLoginBindingModel", new UserLoginBindingModel());
+//            model.addAttribute("notFound", false);
+//        }
 
         return "login";
     }
-    
+
     @PostMapping("/login-error")
-    public ModelAndView failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
-                                            String username) {
-        ModelAndView modelAndView = new ModelAndView();
+    public String failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+                                      String username, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("notFound", true);
+        redirectAttributes.addFlashAttribute("username", username);
 
-        modelAndView.addObject("notFound", true);
-        modelAndView.addObject("username", username);
-
-        modelAndView.setViewName("/login");
-
-        return modelAndView;
+        return "redirect:/user/login";
     }
 
     @GetMapping("delete-user")

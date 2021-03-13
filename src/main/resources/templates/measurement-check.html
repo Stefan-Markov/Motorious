@@ -15,6 +15,7 @@
 
 <main>
     <h2>Here you can take a look at your measurements.</h2>
+    <h2 th:if="${no}">You have no measurement for now.</h2>
     <section th:each="m : ${allMeasurements}" class="wrap-measurement">
         <section class="main-check">
             <img alt="measurement" class="measurement-pic" th:src="@{/img/measurement.jpeg}">

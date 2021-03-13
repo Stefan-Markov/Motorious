@@ -14,6 +14,7 @@
 <header th:include="/fragment/source :: navigation"></header>
 <main>
     <h2>Here you can take a look at your treatments.</h2>
+    <h2 th:if="${no}">You have no treatment for now.</h2>
 
     <section th:each="t : ${allTreatments}" class="wrap-treatment">
         <section class="main-check">

@@ -10,10 +10,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.TreatmentAddBindingModel;
+import projectdefence.models.viewModels.TreatmentViewModel;
 import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/treatment")
@@ -74,7 +76,12 @@ public class TreatmentController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public String checkTreatment(@RequestParam("username") String username, Model model) {
 
-        model.addAttribute("allTreatments", this.treatmentService.findAllTreatmentsByUsername(username));
+        List<TreatmentViewModel> allTreatmentsByUsername = this.treatmentService.findAllTreatmentsByUsername(username);
+        if (allTreatmentsByUsername.size() == 0) {
+            model.addAttribute("no", true);
+        } else {
+            model.addAttribute("allTreatments", allTreatmentsByUsername);
+        }
         return "treatment_check";
     }
 }

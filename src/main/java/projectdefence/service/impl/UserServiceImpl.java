@@ -8,13 +8,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import projectdefence.exceptions.UserRegistrationEx;
 import projectdefence.models.entities.Role;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.repositories.RoleRepository;
-import projectdefence.repositories.TreatmentRepository;
 import projectdefence.repositories.UserRepository;
 import projectdefence.service.*;
 
@@ -32,21 +32,17 @@ public class UserServiceImpl implements UserService {
     private final RoleService roleService;
     private final RoleRepository roleRepository;
     private final CloudinaryService cloudinaryService;
-    private final TreatmentService treatmentService;
-    private final MeasurementService measurementService;
-    private final TreatmentRepository treatmentRepository;
+
 
     public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository,
-                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService, RoleRepository roleRepository, CloudinaryService cloudinaryService, TreatmentService treatmentService, MeasurementService measurementService, TreatmentRepository treatmentRepository) {
+                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService,
+                           RoleRepository roleRepository, CloudinaryService cloudinaryService) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.roleService = roleService;
         this.roleRepository = roleRepository;
         this.cloudinaryService = cloudinaryService;
-        this.treatmentService = treatmentService;
-        this.measurementService = measurementService;
-        this.treatmentRepository = treatmentRepository;
     }
 
 
@@ -91,7 +87,9 @@ public class UserServiceImpl implements UserService {
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (Exception e) {
+
             return false;
+//            throw new UserRegistrationEx("Username is already taken!");
         }
         return true;
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
 
 </header>
 <main>
-    <form  th:action="@{/user/login}" method="POST">
+    <form th:action="@{/user/login}" method="POST">
 
         <section class="login-main">
 
@@ -25,13 +25,12 @@
 
             <h5 th:if="${notFound}" class="error-login">Please enter valid credentials.</h5>
 
-
             <div class="info-container">
                 <article class="label-style">
                     <label for="inputUsername">Username</label>
                 </article>
                 <article>
-                    <input th:object="${username}" th:value="${username}" class="input-style" name="username" type="text"
+                    <input th:value="${username}" class="input-style" name="username" type="text"
                            id="inputUsername"
                            placeholder="Enter username">
                 </article>

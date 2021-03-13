@@ -31,23 +31,6 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .antMatchers("/index", "/blog", "/", "/info/**", "/user/registration", "/user/login").permitAll()
-//                .antMatchers("/js/**", "/css/**", "/img/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .exceptionHandling().accessDeniedPage("/user/login")
-//                .and()
-//                .formLogin()
-//                .loginPage("/user/login")
-//                .usernameParameter("username")
-//                .passwordParameter("password")
-//                .defaultSuccessUrl("/index")
-//                .and()
-//                .logout()
-//                .logoutSuccessUrl("/index");
-
-
         http.
                 authorizeRequests().
                 // allow access to static resources to anyone

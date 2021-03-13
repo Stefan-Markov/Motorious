@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.MeasurementAddBindingModel;
 import projectdefence.models.serviceModels.MeasurementAddServiceModel;
+import projectdefence.models.viewModels.MeasurementByUserNameViewModel;
 import projectdefence.service.MeasurementService;
 import projectdefence.service.UserService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/measurement")
@@ -73,7 +75,13 @@ public class MeasurementController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public String checkMeasurement(@RequestParam("username") String username, Model model) {
 
-        model.addAttribute("allMeasurements", this.measurementService.findAllMeasurementsByUsername(username));
+        List<MeasurementByUserNameViewModel> allMeasurementsByUsername = this.measurementService.findAllMeasurementsByUsername(username);
+
+        if (allMeasurementsByUsername.size() == 0) {
+            model.addAttribute("no", true);
+        } else {
+            model.addAttribute("allMeasurements", allMeasurementsByUsername);
+        }
         return "measurement-check";
     }
 }
