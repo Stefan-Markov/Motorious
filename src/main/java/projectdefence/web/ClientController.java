@@ -3,9 +3,7 @@ package projectdefence.web;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.service.UserService;
 
@@ -30,5 +28,14 @@ public class ClientController {
         model.addAttribute("viewAllClients", clients);
 
         return "view_all_clients";
+    }
+
+
+    @GetMapping("/info{username}")
+    @ResponseBody
+    public String getInfoByUsername(@PathVariable String username) {
+
+
+        return "/";
     }
 }
