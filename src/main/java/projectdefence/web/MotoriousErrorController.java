@@ -35,6 +35,6 @@ public class MotoriousErrorController implements ErrorController {
 
     @GetMapping("/access-denied")
     public String getAccessDenied() {
-        return "/error/error_404";
+        return "/error/error_high_voltage";
     }
 }
