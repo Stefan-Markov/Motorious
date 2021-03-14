@@ -1,6 +1,7 @@
 package projectdefence.security;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -10,7 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import projectdefence.exceptions.CustomAccessDeniedHandler;
 import projectdefence.service.impl.MotoriousUserDetailsService;
 
 @Configuration
@@ -52,8 +55,10 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         defaultSuccessUrl("/home").
                 // on login failure redirect here
                         failureForwardUrl("/user/login-error").
-                and().
-                logout().
+                and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
+                .and()
+                .logout().
                 // which endpoint performs logout, e.g. http://localhost:8080/logout (!this should be POST request)
                         logoutUrl("/logout").
                 // where to land after logout
@@ -76,5 +81,10 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/vendor/**", "/fonts/**");
+    }
+
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() {
+        return new CustomAccessDeniedHandler();
     }
 }

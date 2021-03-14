@@ -3,6 +3,7 @@ package projectdefence.web;
 import org.apache.http.HttpStatus;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.RequestDispatcher;
@@ -30,5 +31,10 @@ public class MotoriousErrorController implements ErrorController {
     @Override
     public String getErrorPath() {
         return "error/error";
+    }
+
+    @GetMapping("/access-denied")
+    public String getAccessDenied() {
+        return "/error/error_404";
     }
 }
