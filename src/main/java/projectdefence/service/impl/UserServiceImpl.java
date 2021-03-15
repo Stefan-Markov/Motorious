@@ -2,7 +2,6 @@ package projectdefence.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CachePut;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import projectdefence.exceptions.UserRegistrationEx;
+import projectdefence.event.RegisterEventPublisher;
 import projectdefence.models.entities.Role;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
@@ -34,17 +33,19 @@ public class UserServiceImpl implements UserService {
     private final RoleService roleService;
     private final RoleRepository roleRepository;
     private final CloudinaryService cloudinaryService;
+    private final RegisterEventPublisher registerEventPublisher;
 
 
     public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository,
                            PasswordEncoder bCryptPasswordEncoder, RoleService roleService,
-                           RoleRepository roleRepository, CloudinaryService cloudinaryService) {
+                           RoleRepository roleRepository, CloudinaryService cloudinaryService, RegisterEventPublisher registerEventPublisher) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.roleService = roleService;
         this.roleRepository = roleRepository;
         this.cloudinaryService = cloudinaryService;
+        this.registerEventPublisher = registerEventPublisher;
     }
 
 
@@ -79,6 +80,7 @@ public class UserServiceImpl implements UserService {
             user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
 
             userRepository.save(user);
+            registerEventPublisher.publishUserRegisterEvent(userServiceModel);
 
             UserDetails principal = userRepository.findByUsername(user.getUsername());
 
