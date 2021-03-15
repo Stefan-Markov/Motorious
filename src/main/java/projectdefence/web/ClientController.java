@@ -65,9 +65,10 @@ public class ClientController {
         return "info_by_username";
     }
 
+
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
-    private String delete(@PathVariable(name = "id") String id) {
+    public String delete(@PathVariable(name = "id") String id) {
 
 
         this.measurementService.deleteById(id);

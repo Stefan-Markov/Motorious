@@ -52,3 +52,12 @@ main{
     background: orange;
     text-align: center;
 }
+
+.delete{
+
+    padding: 5px;
+    margin: 30px;
+    background: white;
+    color: red;
+    border-radius: 30px;
+}
