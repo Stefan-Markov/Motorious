@@ -2,11 +2,16 @@ package projectdefence.models.binding;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
+import projectdefence.validators.FieldMatch;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+@FieldMatch(
+        first = "password",
+        second = "confirmPassword"
+)
 public class UserRegisterBindingModel {
 
     private String firstName;
