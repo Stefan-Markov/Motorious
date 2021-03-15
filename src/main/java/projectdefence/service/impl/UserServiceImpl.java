@@ -1,6 +1,7 @@
 package projectdefence.service.impl;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -135,6 +136,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @CachePut("users")
     public List<UserWrapInfoViewModel> findAllUsers() {
         return this.userRepository.findAll().stream().map(u ->
                 this.modelMapper.map(u, UserWrapInfoViewModel.class))
