@@ -5,7 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import projectdefence.models.entities.User;
+import projectdefence.models.viewModels.UserWrapInfoViewModel;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,4 +32,8 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Query("select distinct u from User u, Treatment t, Measurement  m" +
             " where t.createdBy = :name or m.createdBy = :name order by u.createdDate desc")
     List<User> findAllByKinesitherapistName(@Param("name") String name);
+
+
+    @Query("select u from  User  u order by u.createdDate desc ")
+    List<User> findAllOrderByDate();
 }

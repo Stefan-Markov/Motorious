@@ -138,7 +138,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @CachePut("users")
     public List<UserWrapInfoViewModel> findAllUsers() {
-        return this.userRepository.findAll().stream().map(u ->
+        return this.userRepository.findAllOrderByDate().stream().map(u ->
                 this.modelMapper.map(u, UserWrapInfoViewModel.class))
                 .collect(Collectors.toList());
     }
