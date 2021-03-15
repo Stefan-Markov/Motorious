@@ -13,6 +13,7 @@ import projectdefence.service.MeasurementService;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,5 +48,13 @@ public class MeasurementServiceImpl implements MeasurementService {
         return user.getMeasurements().stream().map(m -> modelMapper.map(m, MeasurementByUserNameViewModel.class))
                 .sorted(Comparator.comparing(MeasurementByUserNameViewModel::getDate).reversed())
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteById(String id) {
+
+        Optional<Measurement> measurement = this.measurementRepository.findById(id);
+        measurement.ifPresent(this.measurementRepository::delete);
+
     }
 }

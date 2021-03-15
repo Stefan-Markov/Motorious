@@ -3,6 +3,7 @@ package projectdefence.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import projectdefence.models.binding.TreatmentAddBindingModel;
+import projectdefence.models.entities.Measurement;
 import projectdefence.models.entities.Treatment;
 import projectdefence.models.entities.User;
 import projectdefence.models.viewModels.MeasurementByUserNameViewModel;
@@ -14,6 +15,7 @@ import projectdefence.service.TreatmentService;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -49,5 +51,10 @@ public class TreatmentServiceImpl implements TreatmentService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void deleteById(String id) {
 
+        Optional<Treatment> treatment = this.treatmentRepository.findById(id);
+        treatment.ifPresent(this.treatmentRepository::delete);
+    }
 }

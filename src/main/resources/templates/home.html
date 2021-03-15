@@ -42,10 +42,6 @@
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/client/all/(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>View your clients</a>
                 </li>
-                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/#}"><i class="fas fa-arrow-circle-right"></i>View client info</a>
-                </li>
-
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
                     <a th:href="@{/treatment/check/(username = ${user})}"><i
                             class="fas fa-arrow-circle-right"></i>Check treatment</a>

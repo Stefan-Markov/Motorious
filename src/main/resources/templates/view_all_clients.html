@@ -23,6 +23,8 @@
         <p th:text="|Username: *{c.username}|">Username</p>
         <p th:text="|Email: *{c.email}|">Email:</p>
         <p th:text="|Active from:  *{c.createdDate.toString().substring(0,10)}|">Active from: </p>
+        <p><a th:href="@{/client/info/{username}(username = ${c.username})}"><i
+                class="fas fa-arrow-circle-right"> </i>Check treatment and measurement</a></p>
     </section>
 </main>
 <div th:include="/fragment/source :: benefit"></div>

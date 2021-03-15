@@ -12,7 +12,7 @@ public class UserLoginBindingModel {
     }
 
     @NotBlank(message = "Should be not empty")
-    @Size(min = 6, max = 50, message = "Username must be minimum three characters")
+    @Size(min = 3, max = 50, message = "Username must be minimum three characters")
     public String getUsername() {
         return username;
     }

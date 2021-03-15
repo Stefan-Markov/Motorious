@@ -4,6 +4,18 @@ package projectdefence.models.viewModels;
 import java.time.LocalDate;
 
 public class MeasurementByUserNameViewModel {
+
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public MeasurementByUserNameViewModel setId(String id) {
+        this.id = id;
+        return this;
+    }
+
     private LocalDate date;
     private String content;
     private String stage;

@@ -9,4 +9,6 @@ public interface MeasurementService {
     void addMeasurement(MeasurementAddServiceModel measurementAddServiceModel, String username, String name);
 
     List<MeasurementByUserNameViewModel> findAllMeasurementsByUsername(String username);
+
+    void deleteById(String id);
 }

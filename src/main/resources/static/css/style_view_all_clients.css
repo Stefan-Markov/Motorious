@@ -49,5 +49,13 @@ main {
             rgba(0, 0, 0, 0)
     ) 1 100%;
     border-radius: 30px;
+}
 
+.user-info > p{
+    margin-right: 5px;
+}
+.user-info > p >a{
+    text-decoration: none;
+    color: darkorange;
+    font-weight: bold;
 }

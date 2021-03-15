@@ -5,6 +5,17 @@ import java.time.LocalDate;
 
 public class TreatmentViewModel {
 
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public TreatmentViewModel setId(String id) {
+        this.id = id;
+        return this;
+    }
+
     private String disease;
     private LocalDate dateAdded;
     private String createdBy;
