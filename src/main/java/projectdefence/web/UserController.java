@@ -125,4 +125,13 @@ public class UserController {
 
         return "view_all_users";
     }
+
+
+    @GetMapping("/profile/{username}")
+    @PreAuthorize("#username == authentication.name")
+    public String profileUser(@PathVariable(name = "username") String username) {
+
+
+        return "/index";
+    }
 }

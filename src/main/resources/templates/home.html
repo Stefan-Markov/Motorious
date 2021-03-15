@@ -24,6 +24,9 @@
                 <li class="action-hover">
                     <a th:href="@{/}"><i class="fas fa-arrow-circle-right"></i>Info page</a>
                 </li>
+                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
+                    <a th:href="@{/user/profile/(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>Profile</a>
+                </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/blog/add-blog}"><i class="fas fa-arrow-circle-right"></i>Add blog</a>
                 </li>

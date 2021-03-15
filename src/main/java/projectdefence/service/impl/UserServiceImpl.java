@@ -2,6 +2,7 @@ package projectdefence.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -169,7 +170,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserWrapInfoViewModel> findAllUsersByKinesiotherapist(String name) {
-
         return this.userRepository.findAllByKinesitherapistName(name)
                 .stream().map(c -> this.modelMapper
                         .map(c, UserWrapInfoViewModel.class))
