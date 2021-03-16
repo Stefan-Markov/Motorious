@@ -16,7 +16,6 @@ import projectdefence.service.UserService;
 import java.util.List;
 
 @Controller
-
 @RequestMapping("/client")
 public class ClientController {
     private final UserService userService;
@@ -69,7 +68,6 @@ public class ClientController {
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
     public String delete(@PathVariable(name = "id") String id) {
-
 
         this.measurementService.deleteById(id);
 

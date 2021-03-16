@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/style_view_all_users.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
-
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>View all users</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
     <p th:text="|Total count of clients: ${viewAllClients}|">Total count of clients:</p>
     <br>
     <p th:text="|Total count of kinesitherapists: ${viewAllKts}|">Total count of kinesitherapists:</p>
-
+    <div id="piechart" style="width: 500px; height: 500px;"></div>
 </section>
 <main>
     <section th:each="u : ${allUsers}" class="user-info">
@@ -35,3 +35,26 @@
 
 </body>
 </html>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        let kt = [[${viewAllKts}]];
+        let client = [[${viewAllClients}]];
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Kinesiotherapists',     kt],
+            ['Clients',      client],
+        ]);
+
+        var options = {
+            title: 'Users'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+</script>

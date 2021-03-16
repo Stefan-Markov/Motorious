@@ -9,7 +9,7 @@ body {
     margin: 0 auto;
 }
 
-.static-info{
+.static-info {
     font-size: 1.3em;
     border-top: 10px solid black;
     text-align: center;
@@ -17,6 +17,7 @@ body {
     margin: 0 auto;
     background: lightblue;
 }
+
 main {
     background: linear-gradient(to right, lightblue, black);
 
@@ -35,13 +36,16 @@ main {
     line-height: 2;
     padding: 30px;
     width: 20vw;
-    border-style:  solid;
-    border-image:
-            linear-gradient(
-                    to bottom,
-                    blue,
-                    rgba(0, 0, 0, 0)
-            ) 1 100%;
+    border-style: solid;
+    border-image: linear-gradient(
+            to bottom,
+            blue,
+            rgba(0, 0, 0, 0)
+    ) 1 100%;
     border-radius: 30px;
+}
 
+#piechart {
+    margin: 10px auto;
+    font-size: 1.3em;
 }
