@@ -19,8 +19,8 @@ public class LoggerServiceImpl implements LoggerService {
         logger.setLevel(Level.FINE);
         logger.addHandler(new FileHandler());
         try {
-            Handler fileHandler = new FileHandler("src/main/java/projectdefence/event/ApplicationLog.txt", true);
-//            Handler fileHandler = new FileHandler("src/main/java/projectdefence/event/ApplicationLog.log", true);
+            Handler fileHandler = new FileHandler("src/main/java/projectdefence/event/UserRegisterLog.txt", true);
+//            Handler fileHandler = new FileHandler("src/main/java/projectdefence/event/UserRegisterLog.log", true);
 
             fileHandler.setFormatter(new LogFormatter());
             logger.addHandler(fileHandler);
