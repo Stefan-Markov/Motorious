@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
     <link rel="stylesheet" th:href="@{/css/style_blog.css}">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>Motorious</title>
 </head>
 <body>
@@ -25,6 +26,8 @@
             Here is the place where with a few word our professionals will talk about useful guidelines and tips from
             practice.
         </p>
+        <p th:text="|Total blogs: ${size}|">Total blogs:</p>
+        <div id="chart_div" style="margin-left:550px;"></div>
     </section>
 
     <section class="blog-content">
@@ -55,25 +58,33 @@
             </section>
         </th:block>
 
-        <!--        <section class="single-content">-->
-        <!--            <p>Title:</p>-->
-        <!--            <h5 class="blog-content-head">-->
-        <!--                Good tips for recovery of immobilized leg after injury-->
-        <!--            </h5>-->
-        <!--            <article>Info:</article>-->
-        <!--            <p>For fastest and complete recovery of immobilized leg after injury, we have to use exercise with light-->
-        <!--                weights.-->
-        <!--                Also toning massage about 30min every time before the procedure. After the massage we could use post-->
-        <!--                isometric relaxation.</p>-->
-        <!--            <p class="date-added">Date added: <span>01.03.2021</span></p>-->
-        <!--            <p class="date-added">Author: <span>Someone one</span></p>-->
-        <!--        </section>-->
-
-
     </section>
 </main>
 
 <div th:include="/fragment/source :: benefit"></div>
 <div th:include="/fragment/source :: footer"></div>
 </body>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['gauge']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Label', 'Value'],
+            ['Total blogs', [[${size}]]],
+        ]);
+
+        var options = {
+            width: 400, height: 200,
+            redFrom: 90, redTo: 120,
+            yellowFrom:75, yellowTo: 90,
+            minorTicks: 5,max:120
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+</script>
 </html>

@@ -11,11 +11,11 @@ import projectdefence.service.BlogService;
 @RequestMapping("/info")
 public class InformationController {
 
-    private final ModelMapper modelMapper;
+
     private final BlogService blogService;
 
-    public InformationController(ModelMapper modelMapper, BlogService blogService) {
-        this.modelMapper = modelMapper;
+    public InformationController(BlogService blogService) {
+
         this.blogService = blogService;
     }
 
@@ -40,8 +40,9 @@ public class InformationController {
 
     @GetMapping("/blog")
     public String blog(Model model) {
-        if(!model.containsAttribute("blogViewModels")){
-            model.addAttribute("blogViewModels",this.blogService.findAllBlogs());
+        if (!model.containsAttribute("blogViewModels")) {
+            model.addAttribute("size",this.blogService.findAllBlogs().size());
+            model.addAttribute("blogViewModels", this.blogService.findAllBlogs());
         }
         return "blog";
     }
