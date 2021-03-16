@@ -14,8 +14,20 @@
 <body>
 <header th:include="/fragment/source :: navigation"></header>
 <form th:object="${measurementAddBindingModel}" th:action="@{/measurement/add}" method="post">
+
     <main class="setting">
-        <h2>Add measurement</h2>
+        <section class="wrap-pic">
+            <h2 class="main-info">Add personal measurement for a client.</h2>
+            <details>
+                <summary><p class="help-info"><i class="fas fa-info-circle"></i>
+                    Click here to see a good measurement procedure.
+                </p></summary>
+                <img th:src="@{/img/measurement-example.png}" class="plan-example" alt="plan">
+            </details>
+        </section>
+
+
+
         <p>Enter username</p>
         <label>
             <p class="p-style" th:if="${userFound}">Username don't exist!</p>
@@ -49,7 +61,8 @@
                th:errors="*{disease}" class="p-style">Enter valid age.</p>
         </label>
 
-        <label>Content
+        <p>Content</p>
+        <label>
             <textarea th:field="*{content}" class="content-blog"></textarea>
             <p th:if="${#fields.hasErrors('content')}"
                th:errors="*{content}" class="p-style">Enter valid age.</p>
