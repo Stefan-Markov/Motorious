@@ -7,6 +7,12 @@
     <link rel="stylesheet" th:href="@{/css/style_home.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <script src="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.js"
+            integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.css"
+          integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w"
+          crossorigin="anonymous">
     <title>Motorious</title>
 </head>
 <body>
@@ -16,7 +22,12 @@
 <main>
 
     <h2 class="name-person" th:text="|Hello, ${user}|">Hello,...</h2>
+
+    <section class="calendar">
     <img class="image" th:src="${image}" alt="Picture" width="200px" height="200px">
+
+
+    </section>
     <section class="wrap-action">
         <aside>
             <h2>Action panel</h2>
@@ -25,7 +36,7 @@
                     <a th:href="@{/}"><i class="fas fa-arrow-circle-right"></i>Info page</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
-                    <a th:href="@{/user/profile/(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>Profile</a>
+                    <a th:href="@{/profile/{username}(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>Profile</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/blog/add-blog}"><i class="fas fa-arrow-circle-right"></i>Add blog</a>
@@ -43,7 +54,8 @@
                     <a th:href="@{/role/role-downgrade}"><i class="fas fa-arrow-circle-right"></i>Downgrade role</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/client/all/(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>View your clients</a>
+                    <a th:href="@{/client/all/(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>View your
+                        clients</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
                     <a th:href="@{/treatment/check/(username = ${user})}"><i
@@ -65,6 +77,7 @@
             <img class="home-pic" th:src="@{img/index.jpeg}" alt="home pic">
         </article>
     </section>
+    <div class="auto-jsCalendar"></div>
     <div th:include="/fragment/source :: benefit"></div>
 </main>
 <div th:include="/fragment/source :: footer"></div>

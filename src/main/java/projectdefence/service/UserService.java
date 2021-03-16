@@ -31,4 +31,6 @@ public interface UserService {
     String findImageByUsername(String image);
 
     List<UserWrapInfoViewModel> findAllUsersByKinesiotherapist(String name);
+
+    UserWrapInfoViewModel findProfileByUserName(String username);
 }

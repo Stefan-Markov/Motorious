@@ -177,6 +177,12 @@ public class UserServiceImpl implements UserService {
                         .map(c, UserWrapInfoViewModel.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public UserWrapInfoViewModel findProfileByUserName(String username) {
+        User user = this.userRepository.findByUsername(username);
+        return this.modelMapper.map(user, UserWrapInfoViewModel.class);
+    }
 }
 
 
