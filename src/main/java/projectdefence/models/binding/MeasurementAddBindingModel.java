@@ -28,7 +28,7 @@ public class MeasurementAddBindingModel {
     }
 
     @NotBlank(message = "Enter content for the measurement.")
-    @Length(min = 6, max = 1000, message = "Must contains minimum six characters.")
+    @Length(min = 6, max = 2000, message = "Must contains minimum six characters.")
     public String getContent() {
         return content;
     }
@@ -62,6 +62,7 @@ public class MeasurementAddBindingModel {
     }
 
     @NotBlank(message = "Must contains information.")
+    @Length(min = 3,max = 200, message = "Enter valid info for disease.")
     public String getDisease() {
         return disease;
     }

@@ -2,6 +2,7 @@ package projectdefence.models.binding;
 
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -50,6 +51,7 @@ public class TreatmentAddBindingModel {
 
     @NotNull(message = "Must contains info.")
     @Min(value = 1, message = "Enter valid duration.")
+    @Max(value = 100,message = "Enter lower duration.")
     public Double getDuration() {
         return duration;
     }
@@ -61,6 +63,7 @@ public class TreatmentAddBindingModel {
 
     @NotNull(message = "Must contains info.")
     @Min(value = 1, message = "Enter valid visits.")
+    @Max(value = 100,message = "Enter lower visits.")
     public Integer getVisits() {
         return visits;
     }
@@ -71,7 +74,7 @@ public class TreatmentAddBindingModel {
     }
 
     @NotBlank(message = "Must contains info.")
-    @Length(min = 3, message = "Enter content for the user.")
+    @Length(min = 3,max = 2000, message = "Enter content for the user.")
     public String getContent() {
         return content;
     }

@@ -23,7 +23,7 @@ public class UserLoginBindingModel {
     }
 
     @NotBlank(message = "Should be not empty")
-    @Size(min = 6, max = 30, message = "Password must be minimum six characters.")
+    @Size(min = 6, max = 50, message = "Password must be minimum six characters.")
     public String getPassword() {
         return password;
     }

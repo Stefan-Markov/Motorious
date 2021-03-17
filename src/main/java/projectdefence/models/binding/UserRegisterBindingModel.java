@@ -36,6 +36,7 @@ public class UserRegisterBindingModel {
     }
 
     @NotBlank(message = "Please fill the information.")
+    @Length(min = 6, max = 50, message = "Must contains minimum six characters.")
     public String getConfirmPassword() {
         return confirmPassword;
     }
