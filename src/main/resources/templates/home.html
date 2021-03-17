@@ -20,14 +20,10 @@
 
 </header>
 <main>
-
     <h2 class="name-person" th:text="|Hello, ${user}|">Hello,...</h2>
 
-    <section class="calendar">
-    <img class="image" th:src="${image}" alt="Picture" width="200px" height="200px">
+        <img class="image" th:src="${image}" alt="Picture" width="200px" height="200px">
 
-
-    </section>
     <section class="wrap-action">
         <aside>
             <h2>Action panel</h2>
@@ -36,7 +32,7 @@
                     <a th:href="@{/}"><i class="fas fa-arrow-circle-right"></i>Info page</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
-                    <a th:href="@{/profile/{username}(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>Profile</a>
+                    <a th:href="@{/profile/edit/{username}(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>Profile</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/blog/add-blog}"><i class="fas fa-arrow-circle-right"></i>Add blog</a>
@@ -74,7 +70,9 @@
             </ul>
         </aside>
         <article>
+
             <img class="home-pic" th:src="@{img/index.jpeg}" alt="home pic">
+
         </article>
     </section>
     <div class="auto-jsCalendar"></div>
@@ -83,4 +81,5 @@
 <div th:include="/fragment/source :: footer"></div>
 
 </body>
+
 </html>

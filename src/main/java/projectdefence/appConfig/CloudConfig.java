@@ -2,9 +2,12 @@ package projectdefence.appConfig;
 
 import com.cloudinary.Cloudinary;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.unit.DataSize;
 
+import javax.servlet.MultipartConfigElement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,5 +29,12 @@ public class CloudConfig {
         config.put("api_key", apiKey);
         config.put("api_secret", apiSecret);
         return new Cloudinary(config);
+    }
+
+    @Bean
+    public MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory multipartConfigFactory = new MultipartConfigFactory();
+        multipartConfigFactory.setMaxFileSize(DataSize.ofMegabytes(10));
+        return multipartConfigFactory.createMultipartConfig();
     }
 }

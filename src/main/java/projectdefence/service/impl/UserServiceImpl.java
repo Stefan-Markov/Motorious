@@ -91,7 +91,6 @@ public class UserServiceImpl implements UserService {
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (Exception e) {
-
             return false;
 //            throw new UserRegistrationEx("Username is already taken!");
         }

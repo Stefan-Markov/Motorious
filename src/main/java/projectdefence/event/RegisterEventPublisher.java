@@ -16,7 +16,6 @@ public class RegisterEventPublisher {
         return applicationEventPublisher;
     }
 
-
     public void publishUserRegisterEvent(UserServiceModel userServiceModel) {
         UserRegisterEvent userRegisterEvent = new UserRegisterEvent(
                 userServiceModel.getFirstName(),

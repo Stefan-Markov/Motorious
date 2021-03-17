@@ -12,10 +12,8 @@ public class WebConfigurationInterceptor implements WebMvcConfigurer {
         this.requestProcessingTimeInterceptor = requestProcessingTimeInterceptor;
     }
 
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(requestProcessingTimeInterceptor);
     }
-
 }

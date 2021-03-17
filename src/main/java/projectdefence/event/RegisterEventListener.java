@@ -15,7 +15,7 @@ public class RegisterEventListener {
     }
 
     @EventListener(UserRegisterEvent.class)
-    public void onUserRegisterEvent(UserRegisterEvent userRegisterEvent) throws IOException {
+    public void catchUserRegisterEvent(UserRegisterEvent userRegisterEvent) throws IOException {
         loggerService.log(userRegisterEvent);
     }
 }

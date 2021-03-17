@@ -98,7 +98,32 @@ main {
     color: white;
 }
 
+
 .select-title {
     display: flex;
     align-items: center;
+}
+
+.image {
+    align-items: center;
+
+    border: 6px solid white;
+    margin: 0 auto;
+    border-image-source: linear-gradient(60deg, orange, white, gold, white, orange, gold);
+    border-image-slice: 1;
+}
+
+.heading-second {
+    margin: 0 auto;
+    width: 600px;
+    font-size: 1.5em;
+    border: 10px solid;
+    border-image-source: linear-gradient(60deg, orange, white, gold, white, orange, gold);
+    border-image-slice: 1;
+}
+
+.flex-item-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

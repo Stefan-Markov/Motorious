@@ -38,4 +38,6 @@ public class MyScheduler {
         this.userService.findAllUsers();
         log.info("Create cache of all user at: time is now " + dateFormat.format(new Date()));
     }
+
+
 }

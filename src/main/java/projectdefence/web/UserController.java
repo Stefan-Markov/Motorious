@@ -69,12 +69,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
-//        if (!model.containsAttribute("userLoginBindingModel")) {
-//            model.addAttribute("userLoginBindingModel", new UserLoginBindingModel());
-//            model.addAttribute("notFound", false);
-//        }
-
+    public String login() {
         return "login";
     }
 
