@@ -5,13 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import projectdefence.repositories.UserRepository;
 import projectdefence.service.UserService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Component
+//@Component
 public class MyScheduler {
 
     private static final Logger log = LoggerFactory.getLogger(MyScheduler.class);
