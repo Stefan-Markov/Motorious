@@ -10,7 +10,7 @@ import projectdefence.service.UserService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//@Component
+@Component
 public class MyScheduler {
 
     private static final Logger log = LoggerFactory.getLogger(MyScheduler.class);
