@@ -13,6 +13,7 @@
 <header th:include="/fragment/source :: navigation"></header>
 <main>
     <form th:object="${userProfile}" th:action="@{/profile/edit/{username}(username = ${userProfile.username})}"
+          enctype="multipart/form-data"
           method="POST">
 
         <section class="flex-item-head">
@@ -24,31 +25,13 @@
             </section>
         </section>
         <section class="head-welcome">
-            <h2>If you need to change your profile, edit info below:</h2>
+            <h2>If you want to change your profile, enter full info below:</h2>
         </section>
         <section th:object="${editProfileBindingModel}" class="user-details">
 
             <div class="info-container">
                 <article class="label-style">
-                    <label for="inputLastName">Change last name (Only if you want) </label>
-                </article>
-                <article>
-                    <input th:field="${editProfileBindingModel.lastName}" class="input-style" name="lastName"
-                           type="text" id="inputLastName"
-                           placeholder="Enter last name">
-                </article>
-                <article>
-                    <p th:if="${#fields.hasErrors('lastName')}" th:errors="${editProfileBindingModel.lastName}"
-                       class="p-style">Last name length
-                        must be more than 2
-                        characters</p>
-                </article>
-            </div>
-
-
-            <div class="info-container">
-                <article class="label-style">
-                    <label for="inputFirstName">Change first name (Only if you want)</label>
+                    <label for="inputFirstName">Change first name</label>
                 </article>
                 <article>
                     <input th:field="${editProfileBindingModel.firstName}" class="input-style" name="firstName"
@@ -64,13 +47,30 @@
             </div>
 
             <div class="info-container">
+                <article class="label-style">
+                    <label for="inputLastName">Change last name </label>
+                </article>
+                <article>
+                    <input th:field="${editProfileBindingModel.lastName}" class="input-style" name="lastName"
+                           type="text" id="inputLastName"
+                           placeholder="Enter last name">
+                </article>
+                <article>
+                    <p th:if="${#fields.hasErrors('lastName')}" th:errors="${editProfileBindingModel.lastName}"
+                       class="p-style">Last name length
+                        must be more than 2
+                        characters</p>
+                </article>
+            </div>
+
+            <div class="info-container">
                 <label class="label-style" for="image">Change picture (Only if you want)</label>
                 <input class="input-style" type="file" id="image" name="image">
             </div>
 
             <div class="info-container">
                 <article class="label-style">
-                    <label for="inputEmail">Change email (Only if you want)</label>
+                    <label for="inputEmail">Change email </label>
                 </article>
                 <article>
                     <input th:field="${editProfileBindingModel.email}" class="input-style" name="email" type="email"
@@ -86,7 +86,7 @@
 
             <div class="info-container">
                 <article class="label-style">
-                    <label for="inputPassword">Change password (Only if you want)</label>
+                    <label for="inputPassword">Change password</label>
                 </article>
                 <article>
                     <input th:field="${editProfileBindingModel.password}" class="input-style" name="password"
@@ -101,7 +101,7 @@
 
             <div class="info-container">
                 <article class="label-style">
-                    <label for="inputPasswordConfirm">Confirm password (Only if you want)</label>
+                    <label for="inputPasswordConfirm">Confirm password </label>
                 </article>
                 <article>
                     <input th:field="${editProfileBindingModel.confirmPassword}" class="input-style"

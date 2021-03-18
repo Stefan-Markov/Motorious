@@ -37,7 +37,8 @@ public class TreatmentServiceImpl implements TreatmentService {
         Treatment treatment = this.modelMapper.map(treatmentAddBindingModel, Treatment.class);
         treatment.setUser(user);
         treatment.setDateAdded(LocalDate.now());
-        treatment.setCreatedBy(nameKt);
+        User kt = this.userRepository.findByUsername(nameKt);
+        treatment.setCreatedBy(kt.getFirstName() + " " + kt.getLastName());
 
         this.treatmentRepository.save(treatment);
     }

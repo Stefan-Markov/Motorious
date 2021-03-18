@@ -16,7 +16,7 @@
 <main>
     <form th:object="${userRegisterBindingModel}" th:action="@{/user/registration}" method="POST"  enctype="multipart/form-data">
         <section class="head-welcome">
-            <h2 class="welcome">Welcome to the register form for our site.</h2>
+            <h2 class="welcome">Welcome to the register form.</h2>
         </section>
         <section class="user-details">
 
@@ -75,7 +75,7 @@
                     <label for="title" class="label-style">Select Title</label>
                     <select class="input-style" name="title" id="title">
                         <option selected value="client">Client</option>
-                        <option value="Kinesitherapist">Kinesitherapist</option>
+                        <option value="kinesitherapist">Kinesitherapist</option>
                     </select>
                 </div>
 

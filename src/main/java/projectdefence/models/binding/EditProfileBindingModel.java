@@ -1,4 +1,5 @@
 package projectdefence.models.binding;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
 import projectdefence.validators.FieldMatch;
 
@@ -20,8 +21,10 @@ public class EditProfileBindingModel {
     public EditProfileBindingModel() {
     }
 
-    @NotEmpty
-    @Size(min = 3, max = 50, message = "Must contains minimum three characters.")
+
+
+    @NotBlank(message = "Enter first name")
+    @Length(min = 3, max = 50, message = "Must contains between three and fifty characters.")
     public String getFirstName() {
         return firstName;
     }
@@ -32,8 +35,8 @@ public class EditProfileBindingModel {
     }
 
 
-    @NotEmpty
-    @Size(min = 3, max = 50, message = "Must contains minimum three characters.")
+    @NotBlank(message = "Enter last name")
+    @Length(min = 3, max = 50, message = "Must contains between three and fifty characters.")
     public String getLastName() {
         return lastName;
     }
@@ -43,7 +46,7 @@ public class EditProfileBindingModel {
         return this;
     }
 
-    @NotEmpty
+    @NotBlank(message = "Enter valid mail")
     @Email(message = "Enter valid email address.")
     public String getEmail() {
         return email;
@@ -54,8 +57,8 @@ public class EditProfileBindingModel {
         return this;
     }
 
-    @NotEmpty
-    @Size(min = 6, max = 50, message = "Must contains minimum six characters.")
+    @NotBlank(message = "Enter valid password")
+    @Length(min = 6, max = 50, message = "Must contains between six and fifty characters.")
     public String getPassword() {
         return password;
     }
@@ -65,8 +68,8 @@ public class EditProfileBindingModel {
         return this;
     }
 
-    @NotEmpty
-    @Size(min = 6, max = 50, message = "Must contains minimum six characters.")
+    @NotBlank(message = "Enter valid password")
+    @Length(min = 6, max = 50, message = "Must contains between six and fifty characters.")
     public String getConfirmPassword() {
         return confirmPassword;
     }

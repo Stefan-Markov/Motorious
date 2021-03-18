@@ -30,13 +30,14 @@ public class MeasurementServiceImpl implements MeasurementService {
 
     @Override
     public void addMeasurement(MeasurementAddServiceModel measurementAddServiceModel,
-                               String username, String name) {
+                               String username, String nameKt) {
 
         User user = this.userRepository.findByUsername(username);
         Measurement measurement = this.modelMapper.map(measurementAddServiceModel, Measurement.class);
         measurement.setUser(user);
         measurement.setDate(LocalDate.now());
-        measurement.setCreatedBy(name);
+        User kt = this.userRepository.findByUsername(nameKt);
+        measurement.setCreatedBy(kt.getFirstName() + " " + kt.getLastName());
 
         this.measurementRepository.save(measurement);
     }

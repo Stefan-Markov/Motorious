@@ -7,6 +7,7 @@ import projectdefence.validators.FieldMatch;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @FieldMatch(
         first = "password",
@@ -36,7 +37,7 @@ public class UserRegisterBindingModel {
     }
 
     @NotBlank(message = "Please fill the information.")
-    @Length(min = 6, max = 50, message = "Must contains minimum six characters.")
+    @Length(min = 6, max = 50, message = "Must contains between six and fifty characters.")
     public String getConfirmPassword() {
         return confirmPassword;
     }
@@ -46,8 +47,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 3, max = 50, message = "Must contains minimum three characters.")
-    @NotEmpty(message = "")
+    @Length(min = 3, max = 50, message = "Must contains between three and fifty characters.")
+    @NotBlank(message = "")
     public String getFirstName() {
         return firstName;
     }
@@ -57,8 +58,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 3, max = 50, message = "Must contains minimum three characters.")
-    @NotEmpty(message = "")
+    @Length(min = 3, max = 50, message = "Must contains between three and fifty characters.")
+    @NotBlank(message = "")
     public String getLastName() {
         return lastName;
     }
@@ -68,8 +69,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 3, max = 50, message = "Must contains minimum three characters.")
-    @NotEmpty(message = "")
+    @Length(min = 3, max = 50, message = "Must contains between three and fifty characters.")
+    @NotBlank(message = "")
     public String getUsername() {
         return username;
     }
@@ -89,8 +90,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 6, max = 50, message = "Must contains minimum six characters.")
-    @NotEmpty(message = "")
+    @Length(min = 6, max = 50, message = "Must contains between six and fifty characters.")
+    @NotBlank(message = "")
     public String getPassword() {
         return password;
     }
