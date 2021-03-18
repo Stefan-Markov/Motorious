@@ -1,4 +1,5 @@
 package projectdefence.models.binding;
+
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
 import projectdefence.validators.FieldMatch;
@@ -20,7 +21,6 @@ public class EditProfileBindingModel {
 
     public EditProfileBindingModel() {
     }
-
 
 
     @NotBlank(message = "Enter first name")

@@ -1,28 +1,31 @@
 package projectdefence.web;
 
 
+import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.EditProfileBindingModel;
-import projectdefence.models.binding.UserRegisterBindingModel;
+import projectdefence.models.serviceModels.UserServiceModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.service.UserService;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/profile")
 public class ProfileController {
 
     private final UserService userService;
+    private final ModelMapper modelMapper;
 
-    public ProfileController(UserService userService) {
+    public ProfileController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -44,7 +47,7 @@ public class ProfileController {
     public String
     profileUserConfirm(@PathVariable(name = "username") String username,
                        @Valid @ModelAttribute EditProfileBindingModel editProfileBindingModel,
-                       BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+                       BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("editProfileBindingModel", editProfileBindingModel);
@@ -52,6 +55,12 @@ public class ProfileController {
                     bindingResult);
 
             return "redirect:/profile/edit/" + username;
+        }
+
+        boolean isDone = this.userService.editProfile(this.modelMapper.map(editProfileBindingModel, UserServiceModel.class), username);
+
+        if(!isDone){
+            // TODO: 18.03.21
         }
         return "redirect:/home";
     }

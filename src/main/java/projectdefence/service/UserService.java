@@ -1,9 +1,11 @@
 package projectdefence.service;
 
+import projectdefence.models.binding.EditProfileBindingModel;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface UserService {
@@ -33,4 +35,7 @@ public interface UserService {
     List<UserWrapInfoViewModel> findAllUsersByKinesiotherapist(String name);
 
     UserWrapInfoViewModel findProfileByUserName(String username);
+
+
+    boolean editProfile(UserServiceModel userServiceModel, String username) throws IOException;
 }

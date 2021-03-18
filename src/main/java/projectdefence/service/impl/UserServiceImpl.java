@@ -19,6 +19,7 @@ import projectdefence.repositories.RoleRepository;
 import projectdefence.repositories.UserRepository;
 import projectdefence.service.*;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -183,6 +184,27 @@ public class UserServiceImpl implements UserService {
     public UserWrapInfoViewModel findProfileByUserName(String username) {
         User user = this.userRepository.findByUsername(username);
         return this.modelMapper.map(user, UserWrapInfoViewModel.class);
+    }
+
+    @Override
+    public boolean editProfile(UserServiceModel userServiceModel, String username) {
+        User user = this.userRepository.findByUsername(username);
+        try {
+            if (!userServiceModel.getImage().isEmpty()) {
+                MultipartFile image = userServiceModel.getImage();
+                String imageUrl = cloudinaryService.uploadImage(image);
+                user.setImageUrl(imageUrl);
+            }
+            user.setFirstName(userServiceModel.getFirstName());
+            user.setLastName(userServiceModel.getLastName());
+            user.setPassword(this.bCryptPasswordEncoder.encode(userServiceModel.getPassword()));
+
+            this.userRepository.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
 
