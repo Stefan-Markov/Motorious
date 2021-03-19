@@ -36,6 +36,7 @@ public class ProfileController {
         UserWrapInfoViewModel profileByUserName = this.userService.findProfileByUserName(username);
         model.addAttribute("userProfile", profileByUserName);
         if (!model.containsAttribute("editProfileBindingModel")) {
+            model.addAttribute("isFallback", false);
             model.addAttribute("editProfileBindingModel", new EditProfileBindingModel());
         }
 
@@ -57,10 +58,12 @@ public class ProfileController {
             return "redirect:/profile/edit/" + username;
         }
 
-        boolean isDone = this.userService.editProfile(this.modelMapper.map(editProfileBindingModel, UserServiceModel.class), username);
+        boolean isFallback = this.userService.editProfile(this.modelMapper.map(editProfileBindingModel, UserServiceModel.class), username);
 
-        if(!isDone){
-            // TODO: 18.03.21
+        if (!isFallback) {
+            redirectAttributes.addFlashAttribute("editProfileBindingModel", editProfileBindingModel);
+            redirectAttributes.addFlashAttribute("isFallback", true);
+            return "redirect:/profile/edit/" + username;
         }
         return "redirect:/home";
     }

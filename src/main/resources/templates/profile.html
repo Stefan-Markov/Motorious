@@ -28,7 +28,7 @@
             <h2>If you want to change your profile, enter full info below:</h2>
         </section>
         <section th:object="${editProfileBindingModel}" class="user-details">
-
+            <p th:if="${isFallback}">Enter information properly again to edit your profile</p>
             <div class="info-container">
                 <article class="label-style">
                     <label for="inputFirstName">Change first name</label>

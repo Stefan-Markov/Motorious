@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
 .navigation {
+    font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
     height: 10vh;
     background: lightblue;
     color: white;

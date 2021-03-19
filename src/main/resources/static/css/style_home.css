@@ -1,9 +1,11 @@
-
+@import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
 html, * {
     margin: 0;
     padding: 0;
-    font-family: "Helvetica", sans-serif, 'Montserrat', sans-serif;
+    font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
 }
+
 
 body {
     width: 1350px;
@@ -14,7 +16,6 @@ main {
     padding: 30px;
     display: flex;
     flex-direction: column;
-
     border-top: 10px solid black;
     border-bottom: 10px solid black;
     background: lightblue;
@@ -30,17 +31,22 @@ aside {
 }
 
 .wrap-action {
+
     padding: 30px;
     margin: 30px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+    background: white;
+    border: 3px solid white;
+    border-radius: 30px;
 }
 
 .home-pic {
     margin-left: 150px;
     align-items: center;
-    width: 770px;
+    width: 660px;
     height: 500px;
     border: 3px solid white;
 
@@ -49,7 +55,7 @@ aside {
 
 aside h2 {
     border-bottom: 1px solid black;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 aside ul li a {
@@ -75,9 +81,10 @@ aside ul li {
 }
 
 .name-person {
+    margin-bottom: 15px;
     text-align: center;
     color: black;
-    font-weight: bold;
+    font-weight: bolder;
     font-size: 1.5em;
 }
 
@@ -87,7 +94,22 @@ aside ul li {
     margin-left: 70px;
 }
 
-.auto-jsCalendar{
+.auto-jsCalendar {
     width: auto;
-    margin-left: 50px;
+    margin-right: 80px;
+}
+
+.wrap-calendar {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.ul-action {
+    padding: 30px;
+    border-radius: 30px;
+    border: 10px solid lightblue;
 }

@@ -1,6 +1,8 @@
 @import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
 
 .footer {
+    font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
