@@ -2,12 +2,11 @@ package projectdefence.models.binding;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
+import projectdefence.messages.ExceptionMessages;
 import projectdefence.validators.FieldMatch;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 @FieldMatch(
         first = "password",
@@ -36,8 +35,9 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @NotBlank(message = "Please fill the information.")
-    @Length(min = 6, max = 50, message = "Must contains between six and fifty characters.")
+
+    @Length(min = 6, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_6_50_CHARACTERS)
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
     public String getConfirmPassword() {
         return confirmPassword;
     }
@@ -47,8 +47,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 3, max = 50, message = "Must contains between three and fifty characters.")
-    @NotBlank(message = "")
+    @Length(min = 3, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_3_50_CHARACTERS)
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
     public String getFirstName() {
         return firstName;
     }
@@ -58,8 +58,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 3, max = 50, message = "Must contains between three and fifty characters.")
-    @NotBlank(message = "")
+    @Length(min = 3, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_3_50_CHARACTERS)
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
     public String getLastName() {
         return lastName;
     }
@@ -69,8 +69,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 3, max = 50, message = "Must contains between three and fifty characters.")
-    @NotBlank(message = "")
+    @Length(min = 3, max = 50, message = ExceptionMessages.INVALID_USERNAME_LENGTH)
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
     public String getUsername() {
         return username;
     }
@@ -80,7 +80,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Email(message = "Enter valid email address.")
+    @Email(message = ExceptionMessages.INVALID_EMAIL)
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
     public String getEmail() {
         return email;
     }
@@ -90,8 +91,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 6, max = 50, message = "Must contains between six and fifty characters.")
-    @NotBlank(message = "")
+    @Length(min = 6, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_6_50_CHARACTERS)
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
     public String getPassword() {
         return password;
     }

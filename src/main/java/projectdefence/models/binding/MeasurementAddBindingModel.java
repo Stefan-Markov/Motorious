@@ -2,6 +2,7 @@ package projectdefence.models.binding;
 
 
 import org.hibernate.validator.constraints.Length;
+import projectdefence.messages.ExceptionMessages;
 
 import javax.validation.constraints.*;
 
@@ -16,8 +17,8 @@ public class MeasurementAddBindingModel {
     public MeasurementAddBindingModel() {
     }
 
-    @NotBlank(message = "Should be not empty")
-    @Size(min = 3, max = 50, message = "Username has minimum three characters")
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Size(min = 3, max = 50, message = ExceptionMessages.INVALID_USERNAME_LENGTH)
     public String getUsername() {
         return username;
     }
@@ -27,8 +28,8 @@ public class MeasurementAddBindingModel {
         return this;
     }
 
-    @NotBlank(message = "Enter content for the measurement.")
-    @Length(min = 6, max = 2000, message = "Must contains minimum six characters.")
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 6, max = 2000, message = ExceptionMessages.INVALID_CONTENT)
     public String getContent() {
         return content;
     }
@@ -39,7 +40,7 @@ public class MeasurementAddBindingModel {
     }
 
 
-    @NotBlank(message = "Must contain stage")
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
     public String getStage() {
         return stage;
     }
@@ -49,9 +50,9 @@ public class MeasurementAddBindingModel {
         return this;
     }
 
-    @NotNull(message = "Must contain age.")
-    @Min(value = 1, message = "Age must be greater than one.")
-    @Max(value = 140, message = "Age must be lower than one hundred and forty.")
+    @NotNull(message = ExceptionMessages.EMPTY_AGE)
+    @Min(value = 1, message = ExceptionMessages.INVALID_AGE_MIN_1)
+    @Max(value = 140, message = ExceptionMessages.INVALID_AGE_MAX_140)
     public Integer getAge() {
         return age;
     }
@@ -61,8 +62,8 @@ public class MeasurementAddBindingModel {
         return this;
     }
 
-    @NotBlank(message = "Must contains information.")
-    @Length(min = 3,max = 200, message = "Enter valid info for disease.")
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 2, max = 200, message = ExceptionMessages.INVALID_DISEASE)
     public String getDisease() {
         return disease;
     }

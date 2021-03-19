@@ -1,11 +1,9 @@
 package projectdefence.models.binding;
 
 import org.hibernate.validator.constraints.Length;
+import projectdefence.messages.ExceptionMessages;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 public class TreatmentAddBindingModel {
     private String username;
@@ -16,8 +14,8 @@ public class TreatmentAddBindingModel {
     private String content;
     private String createdBy;
 
-    @NotBlank(message = "")
-    @Length(min = 2, max = 50, message = "Enter valid username.")
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 2, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_2_50_CHARACTERS)
     public String getUsername() {
         return username;
     }
@@ -27,8 +25,8 @@ public class TreatmentAddBindingModel {
         return this;
     }
 
-    @NotBlank(message = "")
-    @Length(min = 2, max = 200, message = "Enter valid disease.")
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 2, max = 200, message = ExceptionMessages.INVALID_DISEASE)
     public String getDisease() {
         return disease;
     }
@@ -38,8 +36,8 @@ public class TreatmentAddBindingModel {
         return this;
     }
 
-    @NotBlank(message = "Must contains info.")
-    @Length(min = 2, max = 200, message = "Enter valid goal.")
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 2, max = 200, message = ExceptionMessages.INVALID_GOAL)
     public String getGoal() {
         return goal;
     }
@@ -49,9 +47,9 @@ public class TreatmentAddBindingModel {
         return this;
     }
 
-    @NotNull(message = "Must contains info.")
-    @Min(value = 1, message = "Enter valid duration.")
-    @Max(value = 100,message = "Enter lower duration.")
+    @NotNull(message = ExceptionMessages.EMPTY_FIELD)
+    @Min(value = 1, message = ExceptionMessages.INVALID_MIN_VALUE_1)
+    @Max(value = 100, message = ExceptionMessages.INVALID_MAX_VALUE_100)
     public Double getDuration() {
         return duration;
     }
@@ -61,9 +59,9 @@ public class TreatmentAddBindingModel {
         return this;
     }
 
-    @NotNull(message = "Must contains info.")
-    @Min(value = 1, message = "Enter valid visits.")
-    @Max(value = 100,message = "Enter lower visits.")
+    @NotNull(message = ExceptionMessages.EMPTY_FIELD)
+    @Min(value = 1, message = ExceptionMessages.INVALID_MIN_VALUE_1)
+    @Max(value = 100, message = ExceptionMessages.INVALID_MAX_VALUE_100)
     public Integer getVisits() {
         return visits;
     }
@@ -73,8 +71,8 @@ public class TreatmentAddBindingModel {
         return this;
     }
 
-    @NotBlank(message = "Must contains info.")
-    @Length(min = 3,max = 2000, message = "Enter content for the user.")
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 6, max = 2000, message = ExceptionMessages.INVALID_CONTENT)
     public String getContent() {
         return content;
     }

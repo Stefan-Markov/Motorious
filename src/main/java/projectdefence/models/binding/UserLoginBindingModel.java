@@ -1,5 +1,7 @@
 package projectdefence.models.binding;
 
+import projectdefence.messages.ExceptionMessages;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -11,8 +13,8 @@ public class UserLoginBindingModel {
     public UserLoginBindingModel() {
     }
 
-    @NotBlank(message = "Should be not empty")
-    @Size(min = 3, max = 50, message = "Username must be minimum three characters")
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Size(min = 3, max = 50, message = ExceptionMessages.INVALID_USERNAME_LENGTH)
     public String getUsername() {
         return username;
     }
@@ -22,8 +24,8 @@ public class UserLoginBindingModel {
         return this;
     }
 
-    @NotBlank(message = "Should be not empty")
-    @Size(min = 6, max = 50, message = "Password must be minimum six characters.")
+    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Size(min = 6, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_6_50_CHARACTERS)
     public String getPassword() {
         return password;
     }

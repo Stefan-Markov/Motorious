@@ -27,9 +27,8 @@
         </section>
 
 
-
         <p>Enter username</p>
-        <label>
+        <label style="align-items: center">
             <p class="p-style" th:if="${userFound}">Username don't exist!</p>
             <input th:field="*{username}" class="title-name" type="text">
             <p th:if="${#fields.hasErrors('username')}"
@@ -53,7 +52,7 @@
             </select>
         </label>
 
-        <input type="hidden" th:name="nameKt"  th:value="${name}">
+        <input type="hidden" th:name="nameKt" th:value="${name}">
         <p>Disease</p>
         <label>
             <input th:field="*{disease}" class="title-name disease" type="text">
