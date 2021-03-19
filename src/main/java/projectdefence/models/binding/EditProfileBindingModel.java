@@ -7,6 +7,8 @@ import projectdefence.validators.FieldMatch;
 
 import javax.validation.constraints.*;
 
+import static projectdefence.messages.ExceptionMessages.*;
+
 @FieldMatch(
         first = "password",
         second = "confirmPassword"
@@ -24,8 +26,8 @@ public class EditProfileBindingModel {
     }
 
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Length(min = 3, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_3_50_CHARACTERS)
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 3, max = 50, message = LENGTH_BETWEEN_3_50_CHARACTERS)
     public String getFirstName() {
         return firstName;
     }
@@ -36,8 +38,8 @@ public class EditProfileBindingModel {
     }
 
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Length(min = 3, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_3_50_CHARACTERS)
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 3, max = 50, message = LENGTH_BETWEEN_3_50_CHARACTERS)
     public String getLastName() {
         return lastName;
     }
@@ -47,8 +49,8 @@ public class EditProfileBindingModel {
         return this;
     }
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Email(message = ExceptionMessages.INVALID_EMAIL)
+    @NotBlank(message = EMPTY_FIELD)
+    @Email(message = INVALID_EMAIL)
     public String getEmail() {
         return email;
     }
@@ -58,8 +60,8 @@ public class EditProfileBindingModel {
         return this;
     }
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Length(min = 6, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_6_50_CHARACTERS)
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 6, max = 50, message = LENGTH_BETWEEN_6_50_CHARACTERS)
     public String getPassword() {
         return password;
     }
@@ -69,8 +71,8 @@ public class EditProfileBindingModel {
         return this;
     }
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Length(min = 6, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_6_50_CHARACTERS)
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 6, max = 50, message = LENGTH_BETWEEN_6_50_CHARACTERS)
     public String getConfirmPassword() {
         return confirmPassword;
     }

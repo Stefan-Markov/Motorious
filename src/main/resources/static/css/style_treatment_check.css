@@ -37,6 +37,7 @@ main{
     border-bottom-left-radius: 60px;
 }
 .wrap-treatment{
+    background: whitesmoke;
     padding: 30px;
     margin: 10px;
     width: 50vw;
@@ -47,9 +48,6 @@ main{
 }
 
 .main-check{
-    color: black;
-}
-.main-check {
     color: black;
 }
 

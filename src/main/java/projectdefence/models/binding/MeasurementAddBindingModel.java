@@ -2,9 +2,10 @@ package projectdefence.models.binding;
 
 
 import org.hibernate.validator.constraints.Length;
-import projectdefence.messages.ExceptionMessages;
 
 import javax.validation.constraints.*;
+
+import static projectdefence.messages.ExceptionMessages.*;
 
 public class MeasurementAddBindingModel {
 
@@ -17,8 +18,8 @@ public class MeasurementAddBindingModel {
     public MeasurementAddBindingModel() {
     }
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Size(min = 3, max = 50, message = ExceptionMessages.INVALID_USERNAME_LENGTH)
+    @NotBlank(message = EMPTY_FIELD)
+    @Size(min = 3, max = 50, message = INVALID_USERNAME_LENGTH)
     public String getUsername() {
         return username;
     }
@@ -28,8 +29,8 @@ public class MeasurementAddBindingModel {
         return this;
     }
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Length(min = 6, max = 2000, message = ExceptionMessages.INVALID_CONTENT)
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 6, max = 2000, message = INVALID_CONTENT)
     public String getContent() {
         return content;
     }
@@ -40,7 +41,7 @@ public class MeasurementAddBindingModel {
     }
 
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @NotBlank(message = EMPTY_FIELD)
     public String getStage() {
         return stage;
     }
@@ -50,9 +51,9 @@ public class MeasurementAddBindingModel {
         return this;
     }
 
-    @NotNull(message = ExceptionMessages.EMPTY_AGE)
-    @Min(value = 1, message = ExceptionMessages.INVALID_AGE_MIN_1)
-    @Max(value = 140, message = ExceptionMessages.INVALID_AGE_MAX_140)
+    @NotNull(message = EMPTY_AGE)
+    @Min(value = 1, message = INVALID_AGE_MIN_1)
+    @Max(value = 140, message = INVALID_AGE_MAX_140)
     public Integer getAge() {
         return age;
     }
@@ -62,8 +63,8 @@ public class MeasurementAddBindingModel {
         return this;
     }
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Length(min = 2, max = 200, message = ExceptionMessages.INVALID_DISEASE)
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 2, max = 200, message = INVALID_DISEASE)
     public String getDisease() {
         return disease;
     }

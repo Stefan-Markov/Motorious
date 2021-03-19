@@ -8,6 +8,8 @@ import projectdefence.validators.FieldMatch;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import static projectdefence.messages.ExceptionMessages.*;
+
 @FieldMatch(
         first = "password",
         second = "confirmPassword"
@@ -36,8 +38,8 @@ public class UserRegisterBindingModel {
     }
 
 
-    @Length(min = 6, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_6_50_CHARACTERS)
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 6, max = 50, message = LENGTH_BETWEEN_6_50_CHARACTERS)
+    @NotBlank(message = EMPTY_FIELD)
     public String getConfirmPassword() {
         return confirmPassword;
     }
@@ -47,8 +49,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 3, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_3_50_CHARACTERS)
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 3, max = 50, message = LENGTH_BETWEEN_3_50_CHARACTERS)
+    @NotBlank(message = EMPTY_FIELD)
     public String getFirstName() {
         return firstName;
     }
@@ -58,8 +60,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 3, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_3_50_CHARACTERS)
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 3, max = 50, message = LENGTH_BETWEEN_3_50_CHARACTERS)
+    @NotBlank(message = EMPTY_FIELD)
     public String getLastName() {
         return lastName;
     }
@@ -69,8 +71,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 3, max = 50, message = ExceptionMessages.INVALID_USERNAME_LENGTH)
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 3, max = 50, message = INVALID_USERNAME_LENGTH)
+    @NotBlank(message = EMPTY_FIELD)
     public String getUsername() {
         return username;
     }
@@ -80,8 +82,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Email(message = ExceptionMessages.INVALID_EMAIL)
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Email(message = INVALID_EMAIL)
+    @NotBlank(message = EMPTY_FIELD)
     public String getEmail() {
         return email;
     }
@@ -91,8 +93,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    @Length(min = 6, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_6_50_CHARACTERS)
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
+    @Length(min = 6, max = 50, message = LENGTH_BETWEEN_6_50_CHARACTERS)
+    @NotBlank(message = EMPTY_FIELD)
     public String getPassword() {
         return password;
     }

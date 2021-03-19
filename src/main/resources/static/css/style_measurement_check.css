@@ -43,6 +43,7 @@ main {
 }
 
 .wrap-measurement {
+    background: whitesmoke;
     padding: 30px;
     margin: 10px;
     width: 50vw;

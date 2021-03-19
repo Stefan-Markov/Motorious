@@ -4,6 +4,8 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 
+import static projectdefence.messages.ExceptionMessages.*;
+
 public class AddBlogBindingModel {
 
     private String title;
@@ -12,8 +14,8 @@ public class AddBlogBindingModel {
     public AddBlogBindingModel() {
     }
 
-    @NotBlank(message = "Please enter the title.")
-    @Length(min = 6, max = 200, message = "Enter minimum six characters.")
+    @NotBlank(message = EMPTY_BLOG_TITLE)
+    @Length(min = 6, max = 50, message = LENGTH_BETWEEN_6_50_CHARACTERS)
     public String getTitle() {
         return title;
     }
@@ -23,8 +25,8 @@ public class AddBlogBindingModel {
         return this;
     }
 
-    @NotBlank(message = "Please enter the content.")
-    @Length(min = 6, max = 2000, message = "Enter minimum six characters.")
+    @NotBlank(message = EMPTY_CONTENT)
+    @Length(min = 6, max = 2000, message = INVALID_CONTENT)
     public String getContent() {
         return content;
     }

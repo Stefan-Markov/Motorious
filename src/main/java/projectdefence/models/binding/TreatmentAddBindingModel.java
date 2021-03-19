@@ -2,6 +2,7 @@ package projectdefence.models.binding;
 
 import org.hibernate.validator.constraints.Length;
 import projectdefence.messages.ExceptionMessages;
+import static projectdefence.messages.ExceptionMessages.*;
 
 import javax.validation.constraints.*;
 
@@ -14,8 +15,8 @@ public class TreatmentAddBindingModel {
     private String content;
     private String createdBy;
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Length(min = 2, max = 50, message = ExceptionMessages.LENGTH_BETWEEN_2_50_CHARACTERS)
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 2, max = 50, message = LENGTH_BETWEEN_2_50_CHARACTERS)
     public String getUsername() {
         return username;
     }
@@ -25,8 +26,8 @@ public class TreatmentAddBindingModel {
         return this;
     }
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Length(min = 2, max = 200, message = ExceptionMessages.INVALID_DISEASE)
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 2, max = 200, message = INVALID_DISEASE)
     public String getDisease() {
         return disease;
     }
@@ -36,8 +37,8 @@ public class TreatmentAddBindingModel {
         return this;
     }
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Length(min = 2, max = 200, message = ExceptionMessages.INVALID_GOAL)
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 2, max = 200, message = INVALID_GOAL)
     public String getGoal() {
         return goal;
     }
@@ -47,9 +48,9 @@ public class TreatmentAddBindingModel {
         return this;
     }
 
-    @NotNull(message = ExceptionMessages.EMPTY_FIELD)
-    @Min(value = 1, message = ExceptionMessages.INVALID_MIN_VALUE_1)
-    @Max(value = 100, message = ExceptionMessages.INVALID_MAX_VALUE_100)
+    @NotNull(message = EMPTY_FIELD)
+    @Min(value = 1, message = INVALID_MIN_VALUE_1)
+    @Max(value = 100, message = INVALID_MAX_VALUE_100)
     public Double getDuration() {
         return duration;
     }
@@ -59,9 +60,9 @@ public class TreatmentAddBindingModel {
         return this;
     }
 
-    @NotNull(message = ExceptionMessages.EMPTY_FIELD)
-    @Min(value = 1, message = ExceptionMessages.INVALID_MIN_VALUE_1)
-    @Max(value = 100, message = ExceptionMessages.INVALID_MAX_VALUE_100)
+    @NotNull(message = EMPTY_FIELD)
+    @Min(value = 1, message = INVALID_MIN_VALUE_1)
+    @Max(value = 100, message = INVALID_MAX_VALUE_100)
     public Integer getVisits() {
         return visits;
     }
@@ -71,8 +72,8 @@ public class TreatmentAddBindingModel {
         return this;
     }
 
-    @NotBlank(message = ExceptionMessages.EMPTY_FIELD)
-    @Length(min = 6, max = 2000, message = ExceptionMessages.INVALID_CONTENT)
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 6, max = 2000, message = INVALID_CONTENT)
     public String getContent() {
         return content;
     }
