@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import projectdefence.service.UserService;
 
 import java.awt.print.Pageable;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,6 +26,7 @@ public class MyScheduler {
 
     }
 
+    // every 10 sec.
     @Scheduled(cron = "10 * * * * *")
     public void onSeconds() {
         System.out.println("Tic tac");
@@ -34,11 +37,19 @@ public class MyScheduler {
         log.info("The time is now " + dateFormat.format(new Date()));
     }
 
+    // every 30 sec
     @Scheduled(cron = "30 * * * * *")
     @CachePut("users")
     public void updateAllUsers() {
 
         this.userService.findAllUsers();
         log.info("Create cache of all user at: time is now " + dateFormat.format(new Date()));
+    }
+
+    // “At every 60th minute past every 12th hour in every 6th month.”
+    @Scheduled(cron = "* */60 */12 * */6 *")
+    public void emptyRegisterDoc() {
+        // short path
+        new File("src/main/java/projectdefence/event/UserRegisterLog.txt").delete();
     }
 }
