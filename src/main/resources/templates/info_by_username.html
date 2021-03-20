@@ -34,7 +34,7 @@
                 <i class="fas fa-info-circle"></i>
                 <p th:text="|Content: *{t.content}|">Content:</p>
                 <i class="fas fa-info-circle"></i>
-                <p th:text="|Kinesitherapist: *{t.createdBy}|">Kinesitherapist:</p>
+                <p th:text="|Kinesitherapist: ${t.ktFullName}|">Kinesitherapist:</p>
                 <p><a class="delete" th:href="@{/client/delete/{id}(id = ${t.id})}">Delete treatment</a></p>
             </section>
         </section>
@@ -56,7 +56,7 @@
                 <i class="fas fa-info-circle"></i>
                 <p th:text="|Content: *{m.content}|">Content:</p>
                 <i class="fas fa-info-circle"></i>
-                <p th:text="|Kinesitherapist: *{m.createdBy}|">Kinesitherapist:</p>
+                <p th:text="|Kinesitherapist: *{m.ktFullName}|">Kinesitherapist:</p>
                 <p><a class="delete" th:href="@{/client/delete/{id}(id = ${m.id})}">Delete measurement</a></p>
             </section>
         </section>

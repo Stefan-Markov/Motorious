@@ -2,6 +2,7 @@ package projectdefence.models.binding;
 
 import org.hibernate.validator.constraints.Length;
 import projectdefence.messages.ExceptionMessages;
+
 import static projectdefence.messages.ExceptionMessages.*;
 
 import javax.validation.constraints.*;
@@ -14,6 +15,16 @@ public class TreatmentAddBindingModel {
     private Integer visits;
     private String content;
     private String createdBy;
+    private String KtFullName;
+
+    public String getKtFullName() {
+        return KtFullName;
+    }
+
+    public TreatmentAddBindingModel setKtFullName(String ktFullName) {
+        KtFullName = ktFullName;
+        return this;
+    }
 
     @NotBlank(message = EMPTY_FIELD)
     @Length(min = 2, max = 50, message = LENGTH_BETWEEN_2_50_CHARACTERS)

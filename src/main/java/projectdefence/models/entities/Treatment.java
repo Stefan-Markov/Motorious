@@ -18,10 +18,20 @@ public class Treatment extends BaseEntity {
     private String content;
     private User user;
     private String goal;
+    private String KtFullName;
+
+    @Column(name = "kinesiotherapist_full_name",nullable = false)
+    public String getKtFullName() {
+        return KtFullName;
+    }
+
+    public Treatment setKtFullName(String ktFullName) {
+        KtFullName = ktFullName;
+        return this;
+    }
 
     public Treatment() {
     }
-
 
 
     @Column(name = "disease", nullable = false)

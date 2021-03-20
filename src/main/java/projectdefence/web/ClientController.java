@@ -1,20 +1,16 @@
 package projectdefence.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import projectdefence.models.viewModels.MeasurementByUserNameViewModel;
+import projectdefence.models.viewModels.MeasurementViewModel;
 import projectdefence.models.viewModels.TreatmentViewModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.service.MeasurementService;
 import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @Controller
@@ -39,6 +35,7 @@ public class ClientController {
     public String allClient(@RequestParam("username") String username, Model model) {
 
         List<UserWrapInfoViewModel> clients = this.userService.findAllUsersByKinesiotherapist(username);
+
         model.addAttribute("size", clients.size());
         model.addAttribute("viewAllClients", clients);
 
@@ -56,7 +53,7 @@ public class ClientController {
         } else {
             model.addAttribute("allTreatments", allTreatmentsByUsername);
         }
-        List<MeasurementByUserNameViewModel> allMeasurementsByUsername = this.measurementService.findAllMeasurementsByUsername(username);
+        List<MeasurementViewModel> allMeasurementsByUsername = this.measurementService.findAllMeasurementsByUsername(username);
 
         if (allMeasurementsByUsername.size() == 0) {
             model.addAttribute("noMeasurement", true);

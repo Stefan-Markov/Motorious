@@ -3,43 +3,52 @@ package projectdefence.models.viewModels;
 
 import java.time.LocalDate;
 
-public class MeasurementByUserNameViewModel {
+public class MeasurementViewModel {
 
     private String id;
-
-    public String getId() {
-        return id;
-    }
-
-    public MeasurementByUserNameViewModel setId(String id) {
-        this.id = id;
-        return this;
-    }
-
     private LocalDate date;
     private String content;
     private String stage;
     private Integer age;
     private String disease;
     private String createdBy;
+    private String KtFullName;
+
+    public MeasurementViewModel() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public MeasurementViewModel setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getKtFullName() {
+        return KtFullName;
+    }
+
+    public MeasurementViewModel setKtFullName(String ktFullName) {
+        KtFullName = ktFullName;
+        return this;
+    }
 
     public String getCreatedBy() {
         return createdBy;
     }
 
-    public MeasurementByUserNameViewModel setCreatedBy(String createdBy) {
+    public MeasurementViewModel setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
         return this;
-    }
-
-    public MeasurementByUserNameViewModel() {
     }
 
     public LocalDate getDate() {
         return date;
     }
 
-    public MeasurementByUserNameViewModel setDate(LocalDate date) {
+    public MeasurementViewModel setDate(LocalDate date) {
         this.date = date;
         return this;
     }
@@ -48,7 +57,7 @@ public class MeasurementByUserNameViewModel {
         return content;
     }
 
-    public MeasurementByUserNameViewModel setContent(String content) {
+    public MeasurementViewModel setContent(String content) {
         this.content = content;
         return this;
     }
@@ -57,7 +66,7 @@ public class MeasurementByUserNameViewModel {
         return stage;
     }
 
-    public MeasurementByUserNameViewModel setStage(String stage) {
+    public MeasurementViewModel setStage(String stage) {
         this.stage = stage;
         return this;
     }
@@ -66,7 +75,7 @@ public class MeasurementByUserNameViewModel {
         return age;
     }
 
-    public MeasurementByUserNameViewModel setAge(Integer age) {
+    public MeasurementViewModel setAge(Integer age) {
         this.age = age;
         return this;
     }
@@ -75,7 +84,7 @@ public class MeasurementByUserNameViewModel {
         return disease;
     }
 
-    public MeasurementByUserNameViewModel setDisease(String disease) {
+    public MeasurementViewModel setDisease(String disease) {
         this.disease = disease;
         return this;
     }

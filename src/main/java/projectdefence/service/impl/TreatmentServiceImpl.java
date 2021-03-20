@@ -3,10 +3,9 @@ package projectdefence.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import projectdefence.models.binding.TreatmentAddBindingModel;
-import projectdefence.models.entities.Measurement;
 import projectdefence.models.entities.Treatment;
 import projectdefence.models.entities.User;
-import projectdefence.models.viewModels.MeasurementByUserNameViewModel;
+import projectdefence.models.serviceModels.TreatmentAddServiceModel;
 import projectdefence.models.viewModels.TreatmentViewModel;
 import projectdefence.repositories.TreatmentRepository;
 import projectdefence.repositories.UserRepository;
@@ -31,15 +30,15 @@ public class TreatmentServiceImpl implements TreatmentService {
     }
 
     @Override
-    public void addTreatment(TreatmentAddBindingModel treatmentAddBindingModel, String username, String nameKt) {
+    public void addTreatment(TreatmentAddServiceModel treatmentAddBindingModel, String username, String nameKt) {
 
         User user = this.userRepository.findByUsername(username);
         Treatment treatment = this.modelMapper.map(treatmentAddBindingModel, Treatment.class);
         treatment.setUser(user);
         treatment.setDateAdded(LocalDate.now());
-        User kt = this.userRepository.findByUsername(nameKt);
-        treatment.setCreatedBy(kt.getFirstName() + " " + kt.getLastName());
-
+        User ktUser = this.userRepository.findByUsername(nameKt);
+        treatment.setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName());
+        treatment.setCreatedBy(nameKt);
         this.treatmentRepository.save(treatment);
     }
 

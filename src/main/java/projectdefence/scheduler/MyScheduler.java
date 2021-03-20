@@ -34,13 +34,11 @@ public class MyScheduler {
         log.info("The time is now " + dateFormat.format(new Date()));
     }
 
-    @Scheduled(cron = "10 * * * * *")
+    @Scheduled(cron = "30 * * * * *")
     @CachePut("users")
     public void updateAllUsers() {
 
         this.userService.findAllUsers();
         log.info("Create cache of all user at: time is now " + dateFormat.format(new Date()));
     }
-
-
 }

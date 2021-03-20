@@ -7,7 +7,7 @@ import java.util.logging.LogRecord;
 public class LogFormatter extends Formatter {
     @Override
     public String format(LogRecord record) {
-        return record.getThreadID() + " " + record.getLoggerName() + " "
+        return record.getLoggerName() + " "
                 + record.getSourceMethodName() + " "
                 + new Date(record.getMillis()) + " "
                 + record.getMessage() + "\n";

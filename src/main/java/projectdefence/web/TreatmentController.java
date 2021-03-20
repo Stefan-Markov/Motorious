@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.TreatmentAddBindingModel;
+import projectdefence.models.serviceModels.TreatmentAddServiceModel;
 import projectdefence.models.viewModels.TreatmentViewModel;
 import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;
@@ -66,7 +67,7 @@ public class TreatmentController {
             return "redirect:add";
         }
 
-        this.treatmentService.addTreatment(this.modelMapper.map(treatmentAddBindingModel, TreatmentAddBindingModel.class),
+        this.treatmentService.addTreatment(this.modelMapper.map(treatmentAddBindingModel, TreatmentAddServiceModel.class),
                 treatmentAddBindingModel.getUsername(), nameKt);
 
         return "redirect:/home";

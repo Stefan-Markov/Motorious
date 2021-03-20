@@ -14,8 +14,18 @@ public class MeasurementAddBindingModel {
     private Integer age;
     private String disease;
     private String username;
+    private String KtFullName;
 
     public MeasurementAddBindingModel() {
+    }
+
+    public String getKtFullName() {
+        return KtFullName;
+    }
+
+    public MeasurementAddBindingModel setKtFullName(String ktFullName) {
+        KtFullName = ktFullName;
+        return this;
     }
 
     @NotBlank(message = EMPTY_FIELD)

@@ -1,6 +1,7 @@
 package projectdefence.models.serviceModels;
 
 public class UserServiceChangeRoleModel {
+
     private String username;
 
     public UserServiceChangeRoleModel() {

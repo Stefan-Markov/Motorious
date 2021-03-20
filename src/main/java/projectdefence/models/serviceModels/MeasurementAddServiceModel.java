@@ -1,10 +1,22 @@
 package projectdefence.models.serviceModels;
 
 public class MeasurementAddServiceModel {
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public MeasurementAddServiceModel setId(String id) {
+        this.id = id;
+        return this;
+    }
+
     private String content;
     private String stage;
     private Integer age;
     private String disease;
+
 
     public MeasurementAddServiceModel() {
     }

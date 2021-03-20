@@ -30,8 +30,11 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Query("SELECT u.imageUrl from  User u where u.username = :username")
     String findImageUrl(@Param("username") String username);
 
-    @Query("select distinct u from User u, Treatment t, Measurement  m" +
-            " where t.createdBy = :name or m.createdBy = :name order by u.createdDate desc")
+    @Query("select distinct u from User u " +
+            "left join Treatment t on t.user.id = u.id" +
+            " left join Measurement m on m.user.id = u.id " +
+            " where  m.createdBy = :name or t.createdBy = :name " +
+            " order by u.createdDate desc ")
     List<User> findAllByKinesitherapistName(@Param("name") String name);
 
 

@@ -24,6 +24,7 @@ public class User extends BaseEntity implements UserDetails {
     private List<Treatment> treatments;
     private LocalDateTime createdDate = LocalDateTime.now();
     private Set<Role> authorities;
+
     public User() {
     }
 

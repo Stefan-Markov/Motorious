@@ -20,6 +20,17 @@ public class Measurement extends BaseEntity {
     private Integer age;
     private String disease;
     private String createdBy;
+    private String KtFullName;
+
+    @Column(name = "kinesiotherapist_full_name", nullable = false)
+    public String getKtFullName() {
+        return KtFullName;
+    }
+
+    public Measurement setKtFullName(String ktFullName) {
+        KtFullName = ktFullName;
+        return this;
+    }
 
     @Column(name = "created_by", nullable = false)
     public String getCreatedBy() {

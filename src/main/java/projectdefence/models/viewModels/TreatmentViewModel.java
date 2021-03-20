@@ -23,6 +23,16 @@ public class TreatmentViewModel {
     private Integer visits;
     private String content;
     private String goal;
+    private String KtFullName;
+
+    public String getKtFullName() {
+        return KtFullName;
+    }
+
+    public TreatmentViewModel setKtFullName(String ktFullName) {
+        KtFullName = ktFullName;
+        return this;
+    }
 
     public TreatmentViewModel() {
     }

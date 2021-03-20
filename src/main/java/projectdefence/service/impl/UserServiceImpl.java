@@ -9,11 +9,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import projectdefence.event.RegisterEventPublisher;
+import projectdefence.event.userDeleteEvent.DeleteEventPublisher;
+import projectdefence.event.userRegisterEvent.RegisterEventPublisher;
 import projectdefence.models.entities.Role;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
+import projectdefence.models.viewModels.UserViewModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.repositories.RoleRepository;
 import projectdefence.repositories.UserRepository;
@@ -34,11 +36,12 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final CloudinaryService cloudinaryService;
     private final RegisterEventPublisher registerEventPublisher;
+    private final DeleteEventPublisher deleteEventPublisher;
 
 
     public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository,
                            PasswordEncoder bCryptPasswordEncoder, RoleService roleService,
-                           RoleRepository roleRepository, CloudinaryService cloudinaryService, RegisterEventPublisher registerEventPublisher) {
+                           RoleRepository roleRepository, CloudinaryService cloudinaryService, RegisterEventPublisher registerEventPublisher, DeleteEventPublisher deleteEventPublisher) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -46,6 +49,8 @@ public class UserServiceImpl implements UserService {
         this.roleRepository = roleRepository;
         this.cloudinaryService = cloudinaryService;
         this.registerEventPublisher = registerEventPublisher;
+
+        this.deleteEventPublisher = deleteEventPublisher;
     }
 
 
@@ -136,6 +141,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserByUsername(String username) {
         Optional<User> user = userRepository.findUserByUsername(username);
+
+        user.ifPresent(deleteEventPublisher::publishUserDeleteEvent);
         user.ifPresent(this.userRepository::delete);
     }
 
@@ -205,6 +212,13 @@ public class UserServiceImpl implements UserService {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public UserViewModel findByUsernameUser(String username) {
+
+        User user = this.userRepository.findByUsername(username);
+        return this.modelMapper.map(user, UserViewModel.class);
     }
 }
 

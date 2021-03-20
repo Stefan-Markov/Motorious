@@ -1,4 +1,4 @@
-package projectdefence.event;
+package projectdefence.event.userRegisterEvent;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;

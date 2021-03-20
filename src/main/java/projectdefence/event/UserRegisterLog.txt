@@ -1,0 +1,7 @@
+54 projectdefence.event.userRegisterEvent.UserRegisterEvent log Sat Mar 20 14:20:08 EET 2021 UserRegisterEvent{firstName='nikite', lastName='markova', username='nikite10'}
+53 projectdefence.event.userRegisterEvent.UserRegisterEvent log Sat Mar 20 14:25:58 EET 2021 UserRegisterEvent{firstName='nikita13', lastName='markova', username='nikita13'}
+54 projectdefence.event.userRegisterEvent.UserRegisterEvent log Sat Mar 20 14:27:15 EET 2021 UserRegisterEvent{firstName='nikita13', lastName='markova', username='nikita13'}
+52 projectdefence.event.userRegisterEvent.UserRegisterEvent log Sat Mar 20 14:38:47 EET 2021 UserRegisterEvent{firstName='nikite', lastName='markova', username='nikite10'}
+50 projectdefence.event.userRegisterEvent.UserRegisterEvent log Sat Mar 20 15:46:36 EET 2021 UserRegisterEvent{firstName='leo31', lastName='markov', username='leo31'}
+46 projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Sat Mar 20 15:54:16 EET 2021 UserRegisterEvent{firstName='nikite13', lastName='Markova', username='nikite13'}
+47 projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Sat Mar 20 16:22:05 EET 2021 UserRegisterEvent{firstName='Stefan', lastName='Markov', username='markov30'}

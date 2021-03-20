@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import projectdefence.models.entities.Measurement;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.MeasurementAddServiceModel;
-import projectdefence.models.viewModels.MeasurementByUserNameViewModel;
+import projectdefence.models.viewModels.MeasurementViewModel;
 import projectdefence.repositories.MeasurementRepository;
 import projectdefence.repositories.UserRepository;
 import projectdefence.service.MeasurementService;
@@ -36,18 +36,20 @@ public class MeasurementServiceImpl implements MeasurementService {
         Measurement measurement = this.modelMapper.map(measurementAddServiceModel, Measurement.class);
         measurement.setUser(user);
         measurement.setDate(LocalDate.now());
-        User kt = this.userRepository.findByUsername(nameKt);
-        measurement.setCreatedBy(kt.getFirstName() + " " + kt.getLastName());
+
+        User ktUser = this.userRepository.findByUsername(nameKt);
+        measurement.setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName());
+        measurement.setCreatedBy(nameKt);
 
         this.measurementRepository.save(measurement);
     }
 
     @Override
-    public List<MeasurementByUserNameViewModel> findAllMeasurementsByUsername(String username) {
+    public List<MeasurementViewModel> findAllMeasurementsByUsername(String username) {
         User user = this.userRepository.findByUsername(username);
 
-        return user.getMeasurements().stream().map(m -> modelMapper.map(m, MeasurementByUserNameViewModel.class))
-                .sorted(Comparator.comparing(MeasurementByUserNameViewModel::getDate).reversed())
+        return user.getMeasurements().stream().map(m -> modelMapper.map(m, MeasurementViewModel.class))
+                .sorted(Comparator.comparing(MeasurementViewModel::getDate).reversed())
                 .collect(Collectors.toList());
     }
 

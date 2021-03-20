@@ -1,4 +1,4 @@
-package projectdefence.event;
+package projectdefence.event.userRegisterEvent;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ public class RegisterEventListener {
     }
 
     @EventListener(UserRegisterEvent.class)
-    public void catchUserRegisterEvent(UserRegisterEvent userRegisterEvent) throws IOException {
-        loggerService.log(userRegisterEvent);
+    public void userRegisterEvent(UserRegisterEvent userRegisterEvent) throws IOException {
+        loggerService.logRegister(userRegisterEvent);
     }
 }

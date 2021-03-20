@@ -2,6 +2,7 @@ package projectdefence.service;
 
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
+import projectdefence.models.viewModels.UserViewModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 
 import java.io.IOException;
@@ -37,4 +38,6 @@ public interface UserService {
 
 
     boolean editProfile(UserServiceModel userServiceModel, String username) throws IOException;
+
+    UserViewModel findByUsernameUser(String username);
 }
