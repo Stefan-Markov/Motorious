@@ -19,7 +19,6 @@ import projectdefence.repositories.RoleRepository;
 import projectdefence.repositories.UserRepository;
 import projectdefence.service.*;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -143,6 +142,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @CachePut("users")
     public List<UserWrapInfoViewModel> findAllUsers() {
+
         return this.userRepository.findAllOrderByDate().stream().map(u ->
                 this.modelMapper.map(u, UserWrapInfoViewModel.class))
                 .collect(Collectors.toList());

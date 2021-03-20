@@ -29,6 +29,7 @@ public class RoleController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String changeRole(Model model) {
         if (!model.containsAttribute("userChangeRoleBindingModel")) {
+            model.addAttribute("userFound", false);
             model.addAttribute("userChangeRoleBindingModel", new UserChangeRoleBindingModel());
         }
 
@@ -47,6 +48,13 @@ public class RoleController {
                     bindingResult);
             return "redirect:role-change";
         }
+        boolean userFound = this.userService.findByUsername(userChangeRoleBindingModel.getUsername());
+
+        if (!userFound) {
+            redirectAttributes.addFlashAttribute("userChangeRoleBindingModel", userChangeRoleBindingModel);
+            redirectAttributes.addFlashAttribute("userFound", true);
+            return "redirect:role-change";
+        }
 
         this.userService.changeRole(this.modelMapper
                 .map(userChangeRoleBindingModel, UserServiceChangeRoleModel.class), role);
@@ -57,6 +65,7 @@ public class RoleController {
     @PreAuthorize("hasRole('ROLE_ROOT')")
     public String roleDowngrade(Model model) {
         if (!model.containsAttribute("userChangeRoleBindingModel")) {
+            model.addAttribute("userFound", false);
             model.addAttribute("userChangeRoleBindingModel", new UserChangeRoleBindingModel());
         }
 
@@ -74,6 +83,15 @@ public class RoleController {
                     bindingResult);
             return "redirect:role-downgrade";
         }
+
+        boolean userFound = this.userService.findByUsername(userChangeRoleBindingModel.getUsername());
+
+        if (!userFound) {
+            redirectAttributes.addFlashAttribute("userChangeRoleBindingModel", userChangeRoleBindingModel);
+            redirectAttributes.addFlashAttribute("userFound", true);
+            return "redirect:role-downgrade";
+        }
+
 
         this.userService.downgradeRole(this.modelMapper
                 .map(userChangeRoleBindingModel, UserServiceChangeRoleModel.class), role);

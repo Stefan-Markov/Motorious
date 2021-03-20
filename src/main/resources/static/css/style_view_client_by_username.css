@@ -6,18 +6,23 @@ html, * {
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
 }
 
+html {
+    background: black;
+}
+
 body {
     width: 1350px;
     margin: 0 auto;
 }
 
-main{
+main {
 
     padding: 50px;
     background: lightblue;
     border-top: 10px solid black;
 }
-.enter-username{
+
+.enter-username {
     text-align: center;
     display: flex;
     line-height: 2;
@@ -30,7 +35,8 @@ main{
     padding-bottom: 10px;
     border-bottom: 3px solid black;
 }
-.style-username{
+
+.style-username {
     padding-left: 10px;
     border-radius: 30px;
     margin: 30px;
@@ -38,7 +44,7 @@ main{
     height: 30px;
 }
 
-.username-button{
+.username-button {
     margin: 0 auto;
     width: 300px;
     height: 40px;
@@ -47,19 +53,21 @@ main{
     color: black;
     font-size: 1.3em;
 }
+
 .p-style {
     margin: 10px;
     border-radius: 10px;
     padding: 10px 5px;
     background: orange;
     text-align: center;
+    line-height: 1.2;
 }
 
-.delete{
-
-    padding: 5px;
+.delete {
+    padding: 5px 10px;
     margin: 30px;
-    background: white;
-    color: red;
+    background: orange;
+    color: white;
+    font-weight: bolder;
     border-radius: 30px;
 }

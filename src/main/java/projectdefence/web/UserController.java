@@ -17,12 +17,14 @@ import projectdefence.service.UserService;
 
 import javax.validation.Valid;
 
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
     private final ModelMapper modelMapper;
     private final UserService userService;
+
 
     public UserController(ModelMapper modelMapper, UserService userService) {
         this.modelMapper = modelMapper;
@@ -87,7 +89,9 @@ public class UserController {
     public String deleteUser(Model model) {
         if (!model.containsAttribute("userChangeRoleBindingModel")) {
             model.addAttribute("userChangeRoleBindingModel", new UserChangeRoleBindingModel());
+            model.addAttribute("userFound", false);
         }
+
 
         return "delete-user";
     }
@@ -102,6 +106,14 @@ public class UserController {
             redirectAttributes.addFlashAttribute("userChangeRoleBindingModel", userChangeRoleBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userChangeRoleBindingModel",
                     bindingResult);
+            return "redirect:delete-user";
+        }
+
+        boolean userFound = this.userService.findByUsername(userChangeRoleBindingModel.getUsername());
+
+        if (!userFound) {
+            redirectAttributes.addFlashAttribute("userChangeRoleBindingModel", userChangeRoleBindingModel);
+            redirectAttributes.addFlashAttribute("userFound", true);
             return "redirect:delete-user";
         }
 

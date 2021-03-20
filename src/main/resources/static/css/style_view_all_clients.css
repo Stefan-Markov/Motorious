@@ -6,6 +6,11 @@ html, * {
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
 }
 
+html {
+    background: black;
+}
+
+
 body {
     width: 1350px;
     margin: 0 auto;
@@ -16,6 +21,14 @@ h2 {
     margin: 15px auto;
     padding-bottom: 10px;
     width: 600px;
+}
+
+.background-info {
+    width: border-box;
+    padding: 20px;
+    border: 3px solid white;
+    border-radius: 30px;
+    background: whitesmoke;
 }
 
 .static-info {
@@ -53,10 +66,12 @@ main {
     border-radius: 30px;
 }
 
-.user-info > p{
-    margin-right: 5px;
+.fa-arrow-circle-right{
+    margin-right: 10px;
 }
-.user-info > p >a{
+
+.user-info > section > p > a {
+    margin-right: 5px;
     text-decoration: none;
     color: darkorange;
     font-weight: bold;

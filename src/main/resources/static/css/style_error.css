@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
+html {
+    background: black;
+}
+
 body {
 
+    color: white;
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
-    color: black;
     display: flex;
     flex-direction: column;
     align-items: center;

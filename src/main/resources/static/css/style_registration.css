@@ -7,6 +7,11 @@ html, * {
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
 }
 
+html {
+    background: black;
+}
+
+
 body {
     width: 1350px;
     margin: 0 auto;
@@ -123,8 +128,17 @@ main {
     border-image-slice: 1;
 }
 
-.flex-item-head{
+.flex-item-head {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.input-validation:invalid {
+    border: 2px solid red;
+}
+
+.input-validation:valid {
+    background: lightblue;
+    border: 2px solid green;
 }

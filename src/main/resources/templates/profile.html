@@ -34,7 +34,8 @@
                     <label for="inputFirstName">Change first name</label>
                 </article>
                 <article>
-                    <input th:field="${editProfileBindingModel.firstName}" class="input-style" name="firstName"
+                    <input required minlength="3" maxlength="50" th:field="${editProfileBindingModel.firstName}"
+                           class="input-style input-validation" name="firstName"
                            type="text" id="inputFirstName"
                            placeholder="Enter first name">
                 </article>
@@ -51,15 +52,14 @@
                     <label for="inputLastName">Change last name </label>
                 </article>
                 <article>
-                    <input th:field="${editProfileBindingModel.lastName}" class="input-style" name="lastName"
+                    <input required minlength="3" maxlength="50" th:field="${editProfileBindingModel.lastName}"
+                           class="input-style input-validation" name="lastName"
                            type="text" id="inputLastName"
                            placeholder="Enter last name">
                 </article>
                 <article>
                     <p th:if="${#fields.hasErrors('lastName')}" th:errors="${editProfileBindingModel.lastName}"
-                       class="p-style">Last name length
-                        must be more than 2
-                        characters</p>
+                       class="p-style"></p>
                 </article>
             </div>
 
@@ -73,7 +73,8 @@
                     <label for="inputEmail">Change email </label>
                 </article>
                 <article>
-                    <input th:field="${editProfileBindingModel.email}" class="input-style" name="email" type="email"
+                    <input required minlength="3" maxlength="50" th:field="${editProfileBindingModel.email}"
+                           class="input-style input-validation" name="email" type="email"
                            id="inputEmail"
                            placeholder="Enter valid email">
                 </article>
@@ -89,13 +90,14 @@
                     <label for="inputPassword">Change password</label>
                 </article>
                 <article>
-                    <input th:field="${editProfileBindingModel.password}" class="input-style" name="password"
+                    <input required minlength="6" maxlength="50" th:field="${editProfileBindingModel.password}"
+                           class="input-style input-validation" name="password"
                            type="password" id="inputPassword"
                            placeholder="Enter valid password">
                 </article>
                 <article>
                     <p th:if="${#fields.hasErrors('password')}" th:errors="${editProfileBindingModel.password}"
-                       class="p-style">Enter password length must be more than 6 characters.</p>
+                       class="p-style"></p>
                 </article>
             </div>
 
@@ -104,7 +106,8 @@
                     <label for="inputPasswordConfirm">Confirm password </label>
                 </article>
                 <article>
-                    <input th:field="${editProfileBindingModel.confirmPassword}" class="input-style"
+                    <input required minlength="6" maxlength="50" th:field="${editProfileBindingModel.confirmPassword}"
+                           class="input-style input-validation"
                            name="confirmPassword" type="password" id="inputPasswordConfirm"
                            placeholder="Enter valid password">
                 </article>

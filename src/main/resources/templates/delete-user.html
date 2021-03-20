@@ -16,15 +16,14 @@
     <form th:object="${userChangeRoleBindingModel}" th:action="@{/user/delete-user}" method="POST">
         <h2>Delete user</h2>
         <p class="wise">Delete user by username</p>
+        <p class="p-style" th:if="${userFound}">Username don't exist!</p>
         <section class="action">
             <label class="first">Enter username
-                <input th:field="*{username}" class="username-enter" type="text"
+                <input required minlength="3" maxlength="50" th:field="*{username}"
+                       class="username-enter input-validation" type="text"
                        placeholder="Enter valid username">
             </label>
-            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error">Username
-                length must be more than 6
-                characters
-            </p>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></p>
             <br>
             <br>
             <br>

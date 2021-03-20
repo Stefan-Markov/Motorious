@@ -6,12 +6,16 @@ html, * {
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
 }
 
+html {
+    background: black;
+}
+
 body {
     width: 1350px;
     margin: 0 auto;
 }
 
-.login-main{
+.login-main {
     border-top: 10px solid black;
     border-bottom: 10px solid black;
     background: lightblue;
@@ -23,6 +27,7 @@ body {
     align-items: center;
     padding: 30px;
 }
+
 .welcome {
     align-items: center;
     margin: 0 auto;

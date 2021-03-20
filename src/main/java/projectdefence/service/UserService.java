@@ -1,6 +1,5 @@
 package projectdefence.service;
 
-import projectdefence.models.binding.EditProfileBindingModel;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;

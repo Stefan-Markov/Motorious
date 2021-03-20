@@ -17,6 +17,7 @@
         <h2>Downgrade the role of user</h2>
         <p class="wise">Here you can downgrade the role of user. Be wise! </p>
         <section class="action">
+            <p class="p-style" th:if="${userFound}">Username don't exist!</p>
             <label class="first">Enter username
                 <input th:field="*{username}" class="username-enter" type="text"
                        placeholder="Enter valid username to downgrade the role">

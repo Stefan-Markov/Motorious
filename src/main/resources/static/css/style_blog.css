@@ -6,6 +6,10 @@ html, * {
     padding: 0;
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
 }
+html {
+    background: black;
+}
+
 
 
 body {
