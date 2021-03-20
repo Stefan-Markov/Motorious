@@ -41,7 +41,6 @@ public class MeasurementController {
         if (!model.containsAttribute("measurementAddBindingModel")) {
             model.addAttribute("measurementAddBindingModel", new MeasurementAddBindingModel());
             model.addAttribute("userFound", false);
-
         }
         return "measurement_add";
     }

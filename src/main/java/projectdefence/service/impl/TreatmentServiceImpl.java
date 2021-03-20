@@ -30,10 +30,10 @@ public class TreatmentServiceImpl implements TreatmentService {
     }
 
     @Override
-    public void addTreatment(TreatmentAddServiceModel treatmentAddBindingModel, String username, String nameKt) {
+    public void addTreatment(TreatmentAddServiceModel treatmentAddServiceModel, String username, String nameKt) {
 
         User user = this.userRepository.findByUsername(username);
-        Treatment treatment = this.modelMapper.map(treatmentAddBindingModel, Treatment.class);
+        Treatment treatment = this.modelMapper.map(treatmentAddServiceModel, Treatment.class);
         treatment.setUser(user);
         treatment.setDateAdded(LocalDate.now());
         User ktUser = this.userRepository.findByUsername(nameKt);

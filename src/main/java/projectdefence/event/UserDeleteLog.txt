@@ -1,3 +1,0 @@
-
-53 projectdefence.event.userDeleteEvent.UserDeleteEvent logDelete Sat Mar 20 15:55:10 EET 2021 UserDeleteEvent{firstName='nikite13', lastName='Markova', username='nikite13'}
-46 projectdefence.event.userDeleteEvent.UserDeleteEvent logDelete Sat Mar 20 16:21:05 EET 2021 UserDeleteEvent{firstName='stefan100', lastName='markov', username='markov30'}

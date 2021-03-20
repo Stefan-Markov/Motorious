@@ -1,6 +1,5 @@
 package projectdefence.service;
 
-import projectdefence.models.binding.TreatmentAddBindingModel;
 import projectdefence.models.serviceModels.TreatmentAddServiceModel;
 import projectdefence.models.viewModels.TreatmentViewModel;
 
