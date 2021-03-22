@@ -117,7 +117,6 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Column(name = "username", nullable = false, unique = true)
-    @Length(min = 3, message = "Must contain minimum three characters.")
     public String getUsername() {
         return username;
     }

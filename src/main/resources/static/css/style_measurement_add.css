@@ -16,8 +16,8 @@ body {
 }
 
 .setting {
-    border-top: 10px solid white;
-    border-bottom: 10px solid white;
+    border-top: 10px solid black;
+    border-bottom: 5px solid black;
     display: flex;
     flex-direction: column;
     line-height: 3;

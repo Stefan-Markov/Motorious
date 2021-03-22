@@ -23,8 +23,9 @@
     <h2 class="name-person" th:text="|Hello, ${user}|">Hello,...</h2>
 
     <section class="wrap-calendar">
-        <img class="image" th:src="${image}" alt="Picture" width="250px" height="250px">
-
+        <img class="image" th:src="${image}" alt="Picture" width="250px" height="250px"
+             style="margin-left: 65px;">
+        <img class="image" th:src="@{/img/Logo.png}" alt="Logo" width="550px" height="320px">
         <div class="auto-jsCalendar"></div>
     </section>
     <section class="wrap-action">

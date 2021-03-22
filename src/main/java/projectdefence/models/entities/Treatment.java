@@ -20,7 +20,10 @@ public class Treatment extends BaseEntity {
     private String goal;
     private String KtFullName;
 
-    @Column(name = "kinesiotherapist_full_name",nullable = false)
+    public Treatment() {
+    }
+
+    @Column(name = "kinesiotherapist_full_name", nullable = false)
     public String getKtFullName() {
         return KtFullName;
     }
@@ -29,10 +32,6 @@ public class Treatment extends BaseEntity {
         KtFullName = ktFullName;
         return this;
     }
-
-    public Treatment() {
-    }
-
 
     @Column(name = "disease", nullable = false)
     public String getDisease() {

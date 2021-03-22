@@ -53,7 +53,9 @@ public class MyScheduler {
         // short path
         File file =
                 new File(String.valueOf(Path.of("src/main/java/projectdefence/event/UserRegisterLog.txt")));
-        file.delete();
-
+        boolean delete = file.delete();
+        if (delete) {
+            log.info("Successful cleared file: UserRegisterLog.txt. at " + dateFormat.format(new Date()));
+        }
     }
 }

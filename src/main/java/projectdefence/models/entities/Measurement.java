@@ -42,6 +42,7 @@ public class Measurement extends BaseEntity {
         return this;
     }
 
+    @Column(name = "age", nullable = false)
     public Integer getAge() {
         return age;
     }
@@ -71,7 +72,7 @@ public class Measurement extends BaseEntity {
         return this;
     }
 
-    @Column(name = "date")
+    @Column(name = "date", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public LocalDate getDate() {
         return date;
@@ -82,7 +83,7 @@ public class Measurement extends BaseEntity {
         return this;
     }
 
-    @Column(name = "content", columnDefinition = "TEXT")
+    @Column(name = "content", columnDefinition = "TEXT", nullable = false)
     public String getContent() {
         return content;
     }
