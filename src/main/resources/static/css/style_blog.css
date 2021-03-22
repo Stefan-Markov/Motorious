@@ -6,10 +6,10 @@ html, * {
     padding: 0;
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
 }
+
 html {
     background: black;
 }
-
 
 
 body {
@@ -26,6 +26,7 @@ body {
 }
 
 .heading-intro {
+    border-top: 10px solid black;
     background: lightblue;
     line-height: 2;
     text-align: center;
@@ -44,7 +45,7 @@ body {
     margin: 20px;
 }
 
-.blog-title{
+.blog-title {
     font-weight: bolder;
     border-bottom: 1px solid black;
 }

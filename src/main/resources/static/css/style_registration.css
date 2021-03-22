@@ -18,10 +18,17 @@ body {
 }
 
 .welcome {
+    padding: 30px;
     align-items: center;
     margin: 0 auto;
     width: 70%;
     border-bottom: 1px solid black;
+}
+
+.top-border{
+    width: border-box;
+    border-top: 10px solid black;
+    margin-bottom: 20px;
 }
 
 .head-welcome {

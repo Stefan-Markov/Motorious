@@ -12,6 +12,7 @@
 <body>
 <header th:include="/fragment/source :: navigation"></header>
 <main>
+    <section class="top-border"></section>
     <form th:object="${userProfile}" th:action="@{/profile/edit/{username}(username = ${userProfile.username})}"
           enctype="multipart/form-data"
           method="POST">

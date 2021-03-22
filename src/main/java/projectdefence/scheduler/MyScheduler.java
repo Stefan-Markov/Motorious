@@ -11,6 +11,7 @@ import projectdefence.service.UserService;
 import java.awt.print.Pageable;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -50,6 +51,9 @@ public class MyScheduler {
     @Scheduled(cron = "* */60 */12 * */6 *")
     public void emptyRegisterDoc() {
         // short path
-        new File("src/main/java/projectdefence/event/UserRegisterLog.txt").delete();
+        File file =
+                new File(String.valueOf(Path.of("src/main/java/projectdefence/event/UserRegisterLog.txt")));
+        file.delete();
+
     }
 }
