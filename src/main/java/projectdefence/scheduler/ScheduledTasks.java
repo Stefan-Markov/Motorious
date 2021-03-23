@@ -3,26 +3,23 @@ package projectdefence.scheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CachePut;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import projectdefence.service.UserService;
 
-import java.awt.print.Pageable;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Component
-public class MyScheduler {
+public class ScheduledTasks {
 
-    private static final Logger log = LoggerFactory.getLogger(MyScheduler.class);
+    private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     private final UserService userService;
 
-    public MyScheduler(UserService userService) {
+    public ScheduledTasks(UserService userService) {
         this.userService = userService;
 
     }
@@ -42,7 +39,6 @@ public class MyScheduler {
     @Scheduled(cron = "30 * * * * *")
     @CachePut("users")
     public void updateAllUsers() {
-
         this.userService.findAllUsers();
         log.info("Create cache of all user at: time is now " + dateFormat.format(new Date()));
     }
@@ -56,6 +52,20 @@ public class MyScheduler {
         boolean delete = file.delete();
         if (delete) {
             log.info("Successful cleared file: UserRegisterLog.txt. at " + dateFormat.format(new Date()));
+        }
+    }
+
+    // Every night at 23:59
+    @Scheduled(cron = "* 59 23 * * *")
+    public void emptyDeniedLogs() {
+        try {
+            FileOutputStream writer = new FileOutputStream("src/main/java/projectdefence/exceptions/UserDeniedLogs.txt");
+            writer.write(("").getBytes());
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            log.info("Everything is cool with finally.");
         }
     }
 }

@@ -10,4 +10,7 @@ public interface LoggerService {
      void logRegister(UserRegisterEvent applicationEvent) throws IOException;
 
      void logDelete(UserDeleteEvent userDeleteEvent) throws IOException;
+
+
+
 }

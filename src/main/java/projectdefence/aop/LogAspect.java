@@ -25,7 +25,6 @@ public class LogAspect {
 
     @After("detailsPointcut()")
     public void afterAdvice(JoinPoint joinPoint) {
-
         Object[] args = joinPoint.getArgs();
         String measurementId = (String) args[0];
         String action = joinPoint.getSignature().getName();
