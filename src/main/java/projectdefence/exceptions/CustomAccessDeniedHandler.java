@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.FileHandler;
 
 
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
@@ -22,7 +23,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null) {
-
+            FileHandler file = new FileHandler();
             LOG.info("User '" + authentication.getName() +
                     "' attempted to access the URL: " +
                     request.getRequestURI());

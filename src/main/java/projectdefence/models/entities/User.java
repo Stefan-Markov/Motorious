@@ -28,6 +28,7 @@ public class User extends BaseEntity implements UserDetails {
     public User() {
     }
 
+
     @OneToMany(mappedBy = "user")
     public List<Treatment> getTreatments() {
         return treatments;

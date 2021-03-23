@@ -20,7 +20,7 @@ public class Blog extends BaseItemsEntity {
     public Blog() {
     }
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     public String getTitle() {
         return title;
     }
@@ -30,7 +30,7 @@ public class Blog extends BaseItemsEntity {
         return this;
     }
 
-    @Column(name = "content", columnDefinition = "TEXT")
+    @Column(name = "content", columnDefinition = "TEXT", nullable = false)
     public String getContent() {
         return content;
     }
@@ -40,7 +40,7 @@ public class Blog extends BaseItemsEntity {
         return this;
     }
 
-    @Column(name = "date")
+    @Column(name = "date",nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public LocalDate getDate() {
         return date;
@@ -51,7 +51,7 @@ public class Blog extends BaseItemsEntity {
         return this;
     }
 
-    @Column(name = "author")
+    @Column(name = "author" ,nullable = false)
     public String getAuthor() {
         return author;
     }

@@ -52,4 +52,10 @@ public class BlogServiceImpl implements BlogService {
     public void deleteById(Long id) {
         this.blogRepository.deleteById(id);
     }
+
+    @Override
+    public List<BlogViewModel> findAll() {
+        return this.blogRepository.findAll().stream().map(b -> this.modelMapper.map(b, BlogViewModel.class))
+                .collect(Collectors.toList());
+    }
 }

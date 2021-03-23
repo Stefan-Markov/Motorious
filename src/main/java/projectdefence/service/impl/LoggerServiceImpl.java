@@ -32,7 +32,6 @@ public class LoggerServiceImpl implements LoggerService {
         } catch (SecurityException | IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override

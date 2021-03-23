@@ -14,4 +14,6 @@ public interface BlogService {
     List<BlogViewModel> findAllBlogs();
 
     void deleteById(Long id);
+
+    List<BlogViewModel> findAll();
 }

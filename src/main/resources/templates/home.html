@@ -72,12 +72,13 @@
                 <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
                     <a th:href="@{/user/delete-user}"><i class="fas fa-arrow-circle-right"></i>Delete user</a>
                 </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
+                    <a th:href="@{/measurement/logs}"><i class="fas fa-arrow-circle-right"></i>Measurement activity</a>
+                </li>
             </ul>
         </aside>
         <article>
-
             <img class="home-pic" th:src="@{img/index.jpeg}" alt="home pic">
-
         </article>
     </section>
     <div th:include="/fragment/source :: benefit"></div>

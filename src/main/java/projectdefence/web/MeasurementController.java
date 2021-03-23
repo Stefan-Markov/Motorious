@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.MeasurementAddBindingModel;
 import projectdefence.models.serviceModels.MeasurementAddServiceModel;
 import projectdefence.models.viewModels.MeasurementViewModel;
+import projectdefence.service.LogService;
 import projectdefence.service.MeasurementService;
 import projectdefence.service.UserService;
 
@@ -24,11 +25,13 @@ public class MeasurementController {
     private final UserService userService;
     private final ModelMapper modelMapper;
     private final MeasurementService measurementService;
+    private final LogService logService;
 
-    public MeasurementController(UserService userService, ModelMapper modelMapper, MeasurementService measurementService) {
+    public MeasurementController(UserService userService, ModelMapper modelMapper, MeasurementService measurementService, LogService logService) {
         this.userService = userService;
         this.modelMapper = modelMapper;
         this.measurementService = measurementService;
+        this.logService = logService;
     }
 
     @GetMapping("/add")
@@ -81,6 +84,15 @@ public class MeasurementController {
         } else {
             model.addAttribute("allMeasurements", allMeasurementsByUsername);
         }
+
         return "measurement-check";
+    }
+
+    @GetMapping("/logs")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String measurementLogs(Model model) {
+        model.addAttribute("logs", this.logService.findAllLogs());
+
+        return "measurements_log";
     }
 }

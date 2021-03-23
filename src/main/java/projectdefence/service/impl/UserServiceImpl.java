@@ -220,6 +220,11 @@ public class UserServiceImpl implements UserService {
         User user = this.userRepository.findByUsername(username);
         return this.modelMapper.map(user, UserViewModel.class);
     }
+
+    @Override
+    public User findUserByUsername(String username) {
+        return this.userRepository.findByUsername(username);
+    }
 }
 
 

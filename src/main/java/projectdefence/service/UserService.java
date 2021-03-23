@@ -1,5 +1,6 @@
 package projectdefence.service;
 
+import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
 import projectdefence.models.serviceModels.UserServiceModel;
 import projectdefence.models.viewModels.UserViewModel;
@@ -40,4 +41,6 @@ public interface UserService {
     boolean editProfile(UserServiceModel userServiceModel, String username) throws IOException;
 
     UserViewModel findByUsernameUser(String username);
+
+    User findUserByUsername(String username);
 }

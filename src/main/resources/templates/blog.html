@@ -65,7 +65,7 @@
 <div th:include="/fragment/source :: footer"></div>
 </body>
 <script type="text/javascript">
-    google.charts.load('current', {'packages':['gauge']});
+    google.charts.load('current', {'packages': ['gauge']});
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
@@ -78,8 +78,8 @@
         var options = {
             width: 400, height: 200,
             redFrom: 90, redTo: 120,
-            yellowFrom:75, yellowTo: 90,
-            minorTicks: 5,max:120
+            yellowFrom: 75, yellowTo: 90,
+            minorTicks: 5, max: 120
         };
 
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));

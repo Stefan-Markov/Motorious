@@ -60,4 +60,5 @@ public class MeasurementServiceImpl implements MeasurementService {
         measurement.ifPresent(this.measurementRepository::delete);
 
     }
+
 }

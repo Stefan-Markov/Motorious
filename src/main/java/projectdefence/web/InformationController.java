@@ -19,20 +19,20 @@ public class InformationController {
         this.blogService = blogService;
     }
 
-    @GetMapping("exercise")
+    @GetMapping("/exercise")
     public String exercise() {
 
         return "exercise_info";
     }
 
-    @GetMapping("massage")
+    @GetMapping("/massage")
     public String massage() {
 
         return "massage_info";
     }
 
 
-    @GetMapping("physiotherapy")
+    @GetMapping("/physiotherapy")
     public String physiotherapy() {
 
         return "physiotherapy_info";
