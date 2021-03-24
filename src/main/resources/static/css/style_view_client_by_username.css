@@ -7,16 +7,15 @@ html, * {
 }
 
 html {
+    min-width: 584px;
     background: black;
 }
 
 body {
-    width: 1350px;
     margin: 0 auto;
 }
 
 main {
-
     padding: 50px;
     background: lightblue;
     border-top: 10px solid black;

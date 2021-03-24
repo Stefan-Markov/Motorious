@@ -17,7 +17,7 @@
 </section>
 <main>
     <section th:each="c : ${viewAllClients}" class="user-info">
-        <img th:src="*{c.imageUrl}" width="300px" height="300px">
+        <img th:src="*{c.imageUrl}" class="pic-style">
         <section  class="background-info">
             <p th:text="|First name: *{c.firstName}|">First name</p>
             <p th:text="|Last name: *{c.lastName}|">Last name</p>

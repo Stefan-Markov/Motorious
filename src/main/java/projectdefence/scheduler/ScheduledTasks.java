@@ -24,19 +24,8 @@ public class ScheduledTasks {
 
     }
 
-    // every 10 sec.
-    @Scheduled(cron = "10 * * * * *")
-    public void onSeconds() {
-        System.out.println("Tic tac");
-    }
-
-    @Scheduled(fixedRate = 1000000)
-    public void reportCurrentTime() {
-        log.info("The time is now " + dateFormat.format(new Date()));
-    }
-
-    // every 30 sec
-    @Scheduled(cron = "30 * * * * *")
+    // every 59 min
+    @Scheduled(cron = "* 59 * * * *")
     @CachePut("users")
     public void updateAllUsers() {
         this.userService.findAllUsers();

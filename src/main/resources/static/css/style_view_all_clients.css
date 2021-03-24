@@ -52,11 +52,11 @@ main {
 }
 
 .user-info {
-
-    margin: 10px;
+    margin: 0 auto;
+    /*margin: 10px;*/
     line-height: 2;
     padding: 30px;
-    width: 20vw;
+    width: 260px;
     border-style: solid;
     border-image: linear-gradient(
             to bottom,
@@ -77,9 +77,25 @@ main {
     font-weight: bold;
 }
 
+.pic-style {
+    margin: 0 auto;
+    align-items: center;
+    width: 260px;
+    height: 260px;
+    border-radius: 15px;
+}
+
+
 @media screen and (max-width: 900px ) {
     main {
         display: block;
         font-size: 1em;
+    }
+
+}
+
+@media screen and (max-width: 540px ) {
+    .pic-style {
+        display: none;
     }
 }
