@@ -7,11 +7,12 @@ html, * {
 }
 
 html {
+    min-width: 584px;
     background: black;
 }
 
 body {
-    width: 1350px;
+
     margin: 0 auto;
 }
 
@@ -136,4 +137,16 @@ summary {
     width: 600px;
     height: 600px;
     align-items: center;
+}
+
+
+@media screen and (max-width: 1000px ) {
+    * {
+        display: block;
+        font-size: 1em;
+    }
+
+    .disease, .content-blog, .title-name {
+        width: 80vw;
+    }
 }

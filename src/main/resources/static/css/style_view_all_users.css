@@ -5,13 +5,14 @@ html, * {
     padding: 0;
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
 }
+
 html {
+    min-width: 500px;
     background: black;
 }
 
 
 body {
-    width: 1350px;
     margin: 0 auto;
 }
 
@@ -37,11 +38,10 @@ main {
 }
 
 .user-info {
-
+    align-content: center;
     margin: 10px;
     line-height: 2;
     padding: 30px;
-    width: 20vw;
     border-style: solid;
     border-width: 5px;
     border-image: linear-gradient(
@@ -58,9 +58,34 @@ main {
 }
 
 .background-info {
-    width: border-box;
+    align-items: center;
+    width: 200px;
+    margin: 0 auto;
     padding: 20px;
     border: 3px solid white;
     border-radius: 30px;
     background: whitesmoke;
+}
+
+.pic-style {
+    margin: 0 auto;
+    align-items: center;
+    width: 260px;
+    height: 260px;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 900px ) {
+    main {
+        display: block;
+        font-size: 1em;
+    }
+
+}
+
+@media screen and (max-width: 540px ) {
+    .pic-style {
+        display: none;
+
+    }
 }

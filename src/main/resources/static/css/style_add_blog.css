@@ -8,11 +8,12 @@ html, * {
 }
 
 html {
+    min-width: 550px;
     background: black;
 }
 
 body {
-    width: 1350px;
+
     margin: 0 auto;
 }
 
@@ -22,7 +23,6 @@ main {
     display: flex;
     flex-direction: column;
     line-height: 3;
-    /*height: 60.5vh;*/
     align-items: center;
     background: lightblue;
     padding: 50px;
@@ -68,3 +68,4 @@ textarea {
     padding: 30px;
     resize: none;
 }
+

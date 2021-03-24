@@ -23,7 +23,8 @@
             <br>
         </label>
 
-        <label>Content
+        <p>Content</p>
+        <label>
             <textarea th:field="*{content}" class="content-blog"></textarea>
             <br>
             <small class="error" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Enter valid

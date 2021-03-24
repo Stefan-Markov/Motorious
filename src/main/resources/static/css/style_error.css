@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
 
 html {
+    min-width: 584px;
     background: black;
 }
 
 body {
-
     color: white;
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
     display: flex;
@@ -26,7 +26,7 @@ a {
 
 img {
     margin: 10px;
-    width: 800px;
+    width: 80vw;
     height: 400px;
     align-items: center;
     border: 5px solid white;
@@ -35,4 +35,12 @@ img {
 
 a:hover {
     background: lightblue;
+}
+
+
+@media screen and (max-width: 1000px ) {
+    * {
+        display: block;
+        font-size: 1em;
+    }
 }

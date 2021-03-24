@@ -8,12 +8,13 @@ html, * {
 }
 
 html {
+    min-width: 550px;
     background: black;
 }
 
 
 body {
-    width: 1350px;
+
     margin: 0 auto;
 }
 
@@ -85,4 +86,9 @@ body {
     text-decoration: none;
     color: orange;
     font-weight: bold;
+}
+
+.index {
+    display: flex;
+    justify-content: center;
 }

@@ -64,7 +64,7 @@ public class ScheduledTasks {
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             log.info("Everything is cool with finally.");
         }
     }

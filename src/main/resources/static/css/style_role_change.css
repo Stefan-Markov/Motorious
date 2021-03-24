@@ -7,11 +7,12 @@ html, * {
 }
 
 html {
+    min-width: 584px;
     background: black;
 }
 
 body {
-    width: 1350px;
+
     margin: 0 auto;
 }
 
@@ -24,7 +25,7 @@ body {
     border-top: 3px solid black;
     border-bottom: 3px solid black;
     background: lightblue;
-    height: 60vh;
+    min-height: 60vh;
 }
 
 .wise {
@@ -115,4 +116,16 @@ button:hover {
     justify-content: center;
     flex-direction: row;
     align-items: center;
+}
+
+
+@media screen and (max-width: 680px ) {
+    * {
+        display: block;
+        font-size: 1em;
+    }
+
+    .username-enter {
+        width: 90vw;
+    }
 }

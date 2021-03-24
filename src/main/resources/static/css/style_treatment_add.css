@@ -8,11 +8,11 @@ html, * {
 }
 
 html {
+    min-width: 584px;
     background: black;
 }
 
 body {
-    width: 1350px;
     margin: 0 auto;
 }
 
@@ -133,4 +133,14 @@ summary {
     color: orange;
     font-size: 1.3em;
     padding-right: 10px;
+}
+
+@media screen and (max-width: 1000px ) {
+    * {
+        display: block;
+        font-size: 1em;
+    }
+    .content{
+        width: 400px;
+    }
 }

@@ -8,12 +8,12 @@ html, * {
 }
 
 html {
+    min-width: 550px;
     background: black;
 }
 
 
 body {
-    width: 1350px;
     margin: 0 auto;
 }
 
@@ -116,3 +116,22 @@ aside ul li {
     border: 10px solid lightblue;
 }
 
+@media screen and (max-width: 1324px) {
+    .wrap-calendar {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        font-size: 1em;
+    }
+
+
+    .home-pic, .auto-jsCalendar, .logo {
+        display: none;
+    }
+
+    .wrap-action {
+        margin: 0;
+        display: flex;
+        align-content: space-around;
+    }
+}

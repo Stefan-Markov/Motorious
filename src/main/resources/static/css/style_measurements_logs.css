@@ -10,27 +10,53 @@ html {
     background: black;
 }
 
-h2{
+h2 {
     border-top: 10px solid black;
     text-align: center;
     font-size: 1.5em;
     padding-top: 15px;
 }
+
 body {
 
     background: lightblue;
     width: 1350px;
     margin: 0 auto;
 }
-table{
+
+table {
     margin: 30px auto;
     border: 3px solid black;
-    padding: 5px;
+    padding: 7px;
     font-size: 1.5em;
 }
-table,td,tr {
+
+table, th, td, tr {
     text-align: center;
     align-content: center;
     padding: 10px;
     border: 3px solid black;
 }
+
+
+tbody > tr:nth-child(even) {
+    background: #CCC
+}
+
+tbody > tr:nth-child(odd) {
+    background: #FFF
+}
+
+thead > tr {
+    background: darkgrey;
+}
+
+tbody > tr:hover {
+    background: yellow;
+    border-color: red;
+}
+
+table {
+    background: lightgray;
+}
+

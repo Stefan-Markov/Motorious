@@ -8,12 +8,13 @@ html, * {
 }
 
 html {
+    min-width: 584px;
     background: black;
 }
 
 
 body {
-    width: 1350px;
+
     margin: 0 auto;
 }
 
@@ -25,7 +26,7 @@ body {
     border-bottom: 1px solid black;
 }
 
-.top-border{
+.top-border {
     width: border-box;
     border-top: 10px solid black;
     margin-bottom: 20px;
@@ -148,4 +149,11 @@ main {
 .input-validation:valid {
     background: lightblue;
     border: 2px solid green;
+}
+
+@media screen and (max-width: 1000px ) {
+    * {
+        display: block;
+        font-size: 1em;
+    }
 }

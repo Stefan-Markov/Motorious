@@ -7,13 +7,14 @@ html, * {
     padding: 0;
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
 }
+
 html {
+    min-width: 584px;
     background: black;
 }
 
 
 body {
-    width: 1350px;
     margin: 0 auto;
     font-size: 20px;
 }
@@ -21,7 +22,7 @@ body {
 .physio-content {
     border-top: 10px solid black;
     border-bottom: 10px solid black;
-    height: 67vh;
+    min-height: 67vh;
     text-align: center;
     padding: 30px 30px;
     background: lightblue;
@@ -48,4 +49,23 @@ body {
     justify-content: space-between;
     overflow: auto;
     flex-wrap: wrap;
+}
+
+
+@media screen and (max-width: 1000px ) {
+    * {
+        display: block;
+        font-size: 1em;
+    }
+
+    .info-pic {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+    }
+
+    .pic-size {
+        margin: 0 auto;
+    }
 }

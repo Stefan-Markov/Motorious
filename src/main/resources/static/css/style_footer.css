@@ -4,8 +4,6 @@
 html {
     background: black;
 }
-
-
 .footer {
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
     display: flex;
@@ -33,4 +31,11 @@ html {
     text-decoration: none;
     color: black;
     font-size: 1.3em;
+}
+
+@media screen and (max-width: 600px) {
+    footer {
+        display: block;
+        font-size: 1em;
+    }
 }

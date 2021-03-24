@@ -8,18 +8,17 @@ html, * {
 }
 
 html {
+    min-width: 550px;
     background: black;
 }
 
 body {
-    width: 1350px;
     margin: 0 auto;
 }
 
 
 .div-main {
     border-top: 10px solid black;
-    height: 40vh;
     text-align: center;
     padding: 30px 30px;
     background: lightblue;
@@ -36,7 +35,7 @@ body {
 
     border-top: 10px solid black;
     background: lightblue;
-    height: 40vh;
+
     text-align: center;
     padding: 50px 40px;
 }
@@ -64,7 +63,7 @@ body {
 
     background: lightblue;
     color: white;
-    height: 40vh;
+    /*height: 40vh;*/
     padding: 30px 30px;
     font-size: 1.6em;
 }
@@ -100,3 +99,18 @@ body {
     background: white;
 }
 
+@media screen and (max-width: 1000px ) {
+    * {
+        display: block;
+        font-size: 1em;
+    }
+
+    .name {
+        font-size: 1.2em;
+    }
+
+    .benefit-kt {
+        display: block;
+        font-size: 1em;
+    }
+}

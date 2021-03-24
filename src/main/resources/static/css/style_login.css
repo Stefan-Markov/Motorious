@@ -7,11 +7,11 @@ html, * {
 }
 
 html {
+    min-width: 584px;
     background: black;
 }
 
 body {
-    width: 1350px;
     margin: 0 auto;
 }
 
@@ -20,7 +20,7 @@ body {
     border-bottom: 10px solid black;
     background: lightblue;
     color: white;
-    height: 66vh;
+    height: 60vh;
 
     display: flex;
     flex-direction: column;
