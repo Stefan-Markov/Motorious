@@ -24,7 +24,8 @@ public class BlogServiceImpl implements BlogService {
     private final UserRepository userRepository;
 
 
-    public BlogServiceImpl(BlogRepository blogRepository, ModelMapper modelMapper, UserRepository userRepository) {
+    public BlogServiceImpl(BlogRepository blogRepository,
+                           ModelMapper modelMapper, UserRepository userRepository) {
         this.blogRepository = blogRepository;
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
@@ -43,7 +44,8 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public List<BlogViewModel> findAllBlogs() {
-        return this.blogRepository.findAllOrderByDate().stream()
+        return this.blogRepository.findAllOrderByDate()
+                .stream()
                 .map(b -> modelMapper.map(b, BlogViewModel.class))
                 .collect(Collectors.toList());
     }
@@ -55,7 +57,9 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public List<BlogViewModel> findAll() {
-        return this.blogRepository.findAll().stream().map(b -> this.modelMapper.map(b, BlogViewModel.class))
+        return this.blogRepository.findAll()
+                .stream()
+                .map(b -> this.modelMapper.map(b, BlogViewModel.class))
                 .collect(Collectors.toList());
     }
 }

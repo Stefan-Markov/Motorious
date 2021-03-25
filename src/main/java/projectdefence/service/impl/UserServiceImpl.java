@@ -29,6 +29,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private static final String KT_TITLE = "kinesitherapist";
+    private static final String CLIENT_TITLE = "client";
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
     private final PasswordEncoder bCryptPasswordEncoder;
@@ -41,7 +43,9 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository,
                            PasswordEncoder bCryptPasswordEncoder, RoleService roleService,
-                           RoleRepository roleRepository, CloudinaryService cloudinaryService, RegisterEventPublisher registerEventPublisher, DeleteEventPublisher deleteEventPublisher) {
+                           RoleRepository roleRepository, CloudinaryService cloudinaryService,
+                           RegisterEventPublisher registerEventPublisher,
+                           DeleteEventPublisher deleteEventPublisher) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -64,11 +68,11 @@ public class UserServiceImpl implements UserService {
             } else {
                 userServiceModel.setAuthorities(new HashSet<>());
 
-                if (userServiceModel.getTitle().equals("kinesitherapist")) {
+                if (userServiceModel.getTitle().equals(KT_TITLE)) {
                     userServiceModel.getAuthorities().add(this.roleService.findByAuthority("ROLE_USER"));
                     userServiceModel.getAuthorities().add(this.roleService.findByAuthority("ROLE_KINESITHERAPIST"));
                 } else {
-                    userServiceModel.setTitle("client");
+                    userServiceModel.setTitle(CLIENT_TITLE);
                     userServiceModel.getAuthorities().add(this.roleService.findByAuthority("ROLE_USER"));
                 }
             }
@@ -99,7 +103,6 @@ public class UserServiceImpl implements UserService {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (Exception e) {
             return false;
-//            throw new UserRegistrationEx("Username is already taken!");
         }
         return true;
     }
@@ -141,7 +144,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserByUsername(String username) {
         Optional<User> user = userRepository.findUserByUsername(username);
-
         user.ifPresent(deleteEventPublisher::publishUserDeleteEvent);
         user.ifPresent(this.userRepository::delete);
     }
@@ -156,14 +158,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer findByTitleKT() {
-        String title = "Kinesitherapist";
-        return this.userRepository.findAllByTitle(title).size();
+        return this.userRepository.findAllByTitle(KT_TITLE).size();
     }
 
     @Override
     public Integer findByTitleClient() {
-        String title = "client";
-        return this.userRepository.findAllByTitle(title).size();
+        return this.userRepository.findAllByTitle(CLIENT_TITLE).size();
     }
 
     @Override
@@ -215,7 +215,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserViewModel findByUsernameUser(String username) {
-
         User user = this.userRepository.findByUsername(username);
         return this.modelMapper.map(user, UserViewModel.class);
     }

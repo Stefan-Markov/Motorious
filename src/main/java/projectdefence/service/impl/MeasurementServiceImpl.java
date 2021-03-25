@@ -58,7 +58,5 @@ public class MeasurementServiceImpl implements MeasurementService {
 
         Optional<Measurement> measurement = this.measurementRepository.findById(id);
         measurement.ifPresent(this.measurementRepository::delete);
-
     }
-
 }

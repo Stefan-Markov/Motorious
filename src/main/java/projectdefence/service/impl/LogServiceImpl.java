@@ -70,7 +70,7 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public void deleteAll() {
-        if (this.logRepository.count() > 10000) {
+        if (this.logRepository.count() > 1000) {
             this.logRepository.deleteAll();
         }
     }

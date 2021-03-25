@@ -24,16 +24,16 @@ public class ScheduledTasks {
 
     }
 
-    // every 59 min
-    @Scheduled(cron = "* 59 * * * *")
+    // at 01:00
+    @Scheduled(cron = "* 0 1 * * *")
     @CachePut("users")
     public void updateAllUsers() {
         this.userService.findAllUsers();
         log.info("Create cache of all user at: time is now " + dateFormat.format(new Date()));
     }
 
-    // “At every 60th minute past every 12th hour in every 6th month.”
-    @Scheduled(cron = "* */60 */12 * */6 *")
+    // “At every 59th minute past every 12th hour in every 6th month.”
+    @Scheduled(cron = "* */59 */12 * */6 *")
     public void emptyRegisterDoc() {
         // short path
         File file =
