@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 public class LogServiceImpl implements LogService {
 
     private final LogRepository logRepository;
-
     private final UserService userService;
     private final ModelMapper modelMapper;
 

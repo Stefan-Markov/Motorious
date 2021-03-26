@@ -92,8 +92,6 @@ public class UserController {
             model.addAttribute("userChangeRoleBindingModel", new UserChangeRoleBindingModel());
             model.addAttribute("userFound", false);
         }
-
-
         return "delete-user";
     }
 
@@ -101,7 +99,6 @@ public class UserController {
     @PreAuthorize("hasRole('ROLE_ROOT')")
     public String deleteUserConfirm(@Valid @ModelAttribute UserChangeRoleBindingModel userChangeRoleBindingModel,
                                     BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userChangeRoleBindingModel", userChangeRoleBindingModel);

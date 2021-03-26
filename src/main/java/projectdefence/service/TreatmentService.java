@@ -6,6 +6,7 @@ import projectdefence.models.viewModels.TreatmentViewModel;
 import java.util.List;
 
 public interface TreatmentService {
+
     void addTreatment(TreatmentAddServiceModel treatmentAddServiceModel, String username, String nameKt);
 
     List<TreatmentViewModel> findAllTreatmentsByUsername(String username);

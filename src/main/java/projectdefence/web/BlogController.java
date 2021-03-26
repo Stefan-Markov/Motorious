@@ -63,5 +63,4 @@ public class BlogController {
         blogService.deleteById(id);
         return "redirect:/";
     }
-
 }

@@ -10,8 +10,6 @@ import projectdefence.service.BlogService;
 @Controller
 @RequestMapping("/info")
 public class InformationController {
-
-
     private final BlogService blogService;
 
     public InformationController(BlogService blogService) {

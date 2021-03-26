@@ -34,12 +34,12 @@ public class MeasurementServiceImpl implements MeasurementService {
 
         User user = this.userRepository.findByUsername(username);
         Measurement measurement = this.modelMapper.map(measurementAddServiceModel, Measurement.class);
-        measurement.setUser(user);
-        measurement.setDate(LocalDate.now());
+        measurement.setUser(user)
+                .setDate(LocalDate.now());
 
         User ktUser = this.userRepository.findByUsername(nameKt);
-        measurement.setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName());
-        measurement.setCreatedBy(nameKt);
+        measurement.setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName())
+                .setCreatedBy(nameKt);
 
         this.measurementRepository.save(measurement);
     }
@@ -48,14 +48,15 @@ public class MeasurementServiceImpl implements MeasurementService {
     public List<MeasurementViewModel> findAllMeasurementsByUsername(String username) {
         User user = this.userRepository.findByUsername(username);
 
-        return user.getMeasurements().stream().map(m -> modelMapper.map(m, MeasurementViewModel.class))
+        return user.getMeasurements()
+                .stream()
+                .map(m -> modelMapper.map(m, MeasurementViewModel.class))
                 .sorted(Comparator.comparing(MeasurementViewModel::getDate).reversed())
                 .collect(Collectors.toList());
     }
 
     @Override
     public void deleteById(String id) {
-
         Optional<Measurement> measurement = this.measurementRepository.findById(id);
         measurement.ifPresent(this.measurementRepository::delete);
     }

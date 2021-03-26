@@ -53,7 +53,6 @@ public class UserServiceImpl implements UserService {
         this.roleRepository = roleRepository;
         this.cloudinaryService = cloudinaryService;
         this.registerEventPublisher = registerEventPublisher;
-
         this.deleteEventPublisher = deleteEventPublisher;
     }
 
@@ -132,10 +131,10 @@ public class UserServiceImpl implements UserService {
     public void downgradeRole(UserServiceChangeRoleModel userServiceModel, String role) {
         Optional<User> user = userRepository.findUserByUsername(userServiceModel.getUsername());
         if (user.isPresent()) {
-            Role newRole = this.roleRepository.findByAuthority(role);
-            Set<Role> tryNewRole = new HashSet<>(user.get().getAuthorities());
-            if (tryNewRole.contains(newRole)) {
-                user.get().getAuthorities().remove(newRole);
+            Role removeRole = this.roleRepository.findByAuthority(role);
+            Set<Role> tryRemoveRole = new HashSet<>(user.get().getAuthorities());
+            if (tryRemoveRole.contains(removeRole)) {
+                user.get().getAuthorities().remove(removeRole);
                 this.userRepository.save(user.get());
             }
         }
@@ -168,9 +167,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean findByUsername(String username) {
-        Optional<User> user = userRepository.findByUsernameOptional(username);
-
-        return user.isPresent();
+        return userRepository.findByUsernameOptional(username).isPresent();
     }
 
     @Override

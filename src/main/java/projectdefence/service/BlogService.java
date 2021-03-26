@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface BlogService {
 
-
     void addBlog(AddBlogServiceModel blogServiceModel, UserDetails principal);
 
     List<BlogViewModel> findAllBlogs();

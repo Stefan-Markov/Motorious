@@ -35,10 +35,8 @@ public class BlogServiceImpl implements BlogService {
     public void addBlog(AddBlogServiceModel blogServiceModel, UserDetails principal) {
 
         Blog blog = this.modelMapper.map(blogServiceModel, Blog.class);
-        blog.setDate(LocalDate.now());
         User user = this.userRepository.findByUsername(principal.getUsername());
-        blog.setAuthor(user.getFirstName() + " " + user.getLastName());
-
+        blog.setAuthor(user.getFirstName() + " " + user.getLastName()).setDate(LocalDate.now());
         this.blogRepository.save(blog);
     }
 

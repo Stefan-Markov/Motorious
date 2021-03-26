@@ -34,11 +34,12 @@ public class TreatmentServiceImpl implements TreatmentService {
 
         User user = this.userRepository.findByUsername(username);
         Treatment treatment = this.modelMapper.map(treatmentAddServiceModel, Treatment.class);
-        treatment.setUser(user);
-        treatment.setDateAdded(LocalDate.now());
+        treatment.setUser(user)
+                .setDateAdded(LocalDate.now());
+
         User ktUser = this.userRepository.findByUsername(nameKt);
-        treatment.setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName());
-        treatment.setCreatedBy(nameKt);
+        treatment.setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName())
+                .setCreatedBy(nameKt);
         this.treatmentRepository.save(treatment);
     }
 
@@ -53,7 +54,6 @@ public class TreatmentServiceImpl implements TreatmentService {
 
     @Override
     public void deleteById(String id) {
-
         Optional<Treatment> treatment = this.treatmentRepository.findById(id);
         treatment.ifPresent(this.treatmentRepository::delete);
     }

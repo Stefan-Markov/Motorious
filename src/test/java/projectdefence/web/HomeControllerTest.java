@@ -1,42 +1,43 @@
-package projectdefence;
+package projectdefence.web;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
+import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import static org.springframework.http.ResponseEntity.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class UserControllerTest {
+public class    HomeControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
+    @WithMockUser(username = "Leonkov")
     @Test
-    public void testUserRegistration() throws Exception {
+    void testHome() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
-                .get("**/user/registration"))
-                .andExpect(view().name("registration"))
-                .andExpect((ResultMatcher) status(HttpStatus.OK))
-                .andExpect(MockMvcResultMatchers.redirectedUrlPattern("**/user/login"));
+                .get("/home"))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(view().name("home"))
+                .andExpect(model().attribute("user", "Leonkov"));
     }
 
+    @WithAnonymousUser
     @Test
-    public void testUserLogin() throws Exception {
+    void testHomeAuthentication() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
-                .get("**/user/login"))
-                .andExpect(view().name("login"))
-                .andExpect(MockMvcResultMatchers.redirectedUrlPattern("/home"));
+                .get("/home"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrlPattern("**/user/login"));
     }
 }
