@@ -20,7 +20,7 @@ h2 {
 body {
 
     background: lightblue;
-    width: 1350px;
+    min-height: 70vh;
     margin: 0 auto;
 }
 

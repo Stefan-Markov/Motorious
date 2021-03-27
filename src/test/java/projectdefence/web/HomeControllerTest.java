@@ -1,4 +1,5 @@
 package projectdefence.web;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class    HomeControllerTest {
+public class HomeControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

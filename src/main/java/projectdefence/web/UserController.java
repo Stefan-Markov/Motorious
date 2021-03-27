@@ -85,7 +85,7 @@ public class UserController {
         return "redirect:/user/login";
     }
 
-    @GetMapping("delete-user")
+    @GetMapping("/delete-user")
     @PreAuthorize("hasRole('ROLE_ROOT')")
     public String deleteUser(Model model) {
         if (!model.containsAttribute("userChangeRoleBindingModel")) {
@@ -95,7 +95,7 @@ public class UserController {
         return "delete-user";
     }
 
-    @PostMapping("delete-user")
+    @PostMapping("/delete-user")
     @PreAuthorize("hasRole('ROLE_ROOT')")
     public String deleteUserConfirm(@Valid @ModelAttribute UserChangeRoleBindingModel userChangeRoleBindingModel,
                                     BindingResult bindingResult, RedirectAttributes redirectAttributes) {
@@ -120,7 +120,7 @@ public class UserController {
         return "redirect:/home";
     }
 
-    @GetMapping("all-users")
+    @GetMapping("/all-users")
     @PreAuthorize("hasRole('ROLE_ROOT')")
     public String allUsers(Model model) {
 
