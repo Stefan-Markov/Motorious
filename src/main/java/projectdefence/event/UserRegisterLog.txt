@@ -1,0 +1,1 @@
+projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Fri Mar 26 21:58:23 EET 2021 UserRegisterEvent{firstName='Stefan', lastName='Markov', username='stefan'}

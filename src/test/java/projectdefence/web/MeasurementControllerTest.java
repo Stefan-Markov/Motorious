@@ -11,92 +11,91 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import projectdefence.models.binding.TreatmentAddBindingModel;
-import projectdefence.service.TreatmentService;
+import projectdefence.models.binding.MeasurementAddBindingModel;
+import projectdefence.models.viewModels.LogServiceModel;
+import projectdefence.service.LogService;
+import projectdefence.service.MeasurementService;
 
+import java.util.List;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class TreatmentControllerTest {
+public class MeasurementControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private TreatmentService treatmentService;
-
+    private MeasurementService measurementService;
+    @MockBean
+    private LogService logService;
 
     @WithMockUser(username = "Leonkov", roles = "KINESITHERAPIST")
     @Test
-    public void testTreatmentAddWorkProper() throws Exception {
+    public void testMeasurementAddGet() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
-                .get("/treatment/add"))
+                .get("/measurement/add"))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(model().attribute("userFound", false))
-                .andExpect(view().name("treatment_add"));
-
+                .andExpect(view().name("measurement_add"));
     }
+
 
     @WithMockUser(username = "Leonkov", roles = "USER")
     @Test
-    public void testTreatmentAddAccessDenied() throws Exception {
+    public void testMeasurementAddGetAccessDenied() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
-                .get("/treatment/add"))
+                .get("/measurement/add"))
                 .andExpect(MockMvcResultMatchers.redirectedUrl("/access-denied"));
     }
 
+    @WithMockUser(username = "Leonkov", roles = "ADMIN")
+    @Test
+    public void testMeasurementLogsGet() throws Exception {
+
+        List<LogServiceModel> allLogs = this.logService.findAllLogs();
+        mockMvc.perform(MockMvcRequestBuilders
+                .get("/measurement/logs")
+                .param("logs", "allLogs"))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(view().name("measurements_log"));
+    }
+
+
     @WithMockUser(username = "Leonkov", roles = "KINESITHERAPIST")
     @Test
-    public void testTreatmentAddPostNotFoundUser() throws Exception {
+    public void testMeasurementAddPostFlashAttribute() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
-                .post("/treatment/add")
-                .param("username", "username-test")
-                .param("disease", "test-disease")
-                .param("goal", "test-goal")
-                .param("duration", "1")
-                .param("visits", "1")
-                .param("content", "test-content")
-                .param("createdBy", "test")
-                .param("KtFullName", "test")
-                .param("nameKt", "name-test")
+                .post("/measurement/add")
+                .param("nameKt", "username-nameKt")
+                .flashAttr("measurementAddBindingModel", new MeasurementAddBindingModel())
+                .with(csrf()))
+                .andExpect(MockMvcResultMatchers.redirectedUrl("add"));
+    }
+
+
+    @WithMockUser(username = "Leonkov", roles = "KINESITHERAPIST")
+    @Test
+    public void testMeasurementAddPostUserNotFound() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/measurement/add")
+                .param("nameKt", "username-nameKt")
                 .flashAttr("userFound", true)
                 .with(csrf()))
                 .andExpect(MockMvcResultMatchers.redirectedUrl("add"));
     }
 
-
-    @WithMockUser(username = "Leonkov", roles = "KINESITHERAPIST")
-    @Test
-    public void testTreatmentAddPostBindingErrors() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/treatment/add")
-                .param("username", "username-test")
-                .param("disease", "test-disease")
-                .param("goal", "test-goal")
-                .param("duration", "1")
-//                .param("visits","1")
-                .param("content", "test-content")
-                .param("createdBy", "test")
-                .param("KtFullName", "test")
-                .param("nameKt", "test-name")
-                .flashAttr("treatmentAddBindingModel", new TreatmentAddBindingModel())
-                .with(csrf()))
-
-                .andExpect(MockMvcResultMatchers.redirectedUrl("add"));
-    }
-
     @WithMockUser(username = "Leonkov", roles = "USER")
     @Test
-    public void testTreatmentCheck() throws Exception {
+    public void testMeasurementCheckGet() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
-                .get("/treatment/check")
+                .get("/measurement/check")
                 .param("username", "Leonkov"))
-                .andExpect(model().attribute("no", true))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(view().name("treatment_check"));
+                .andExpect(view().name("measurement-check"));
     }
 }
