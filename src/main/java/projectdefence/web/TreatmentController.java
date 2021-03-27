@@ -40,7 +40,6 @@ public class TreatmentController {
         model.addAttribute("name", name);
 
         if (!model.containsAttribute("treatmentAddBindingModel")) {
-
             model.addAttribute("treatmentAddBindingModel", new TreatmentAddBindingModel());
             model.addAttribute("userFound", false);
         }

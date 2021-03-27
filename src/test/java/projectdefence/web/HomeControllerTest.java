@@ -25,7 +25,7 @@ public class HomeControllerTest {
 
     @WithMockUser(username = "Leonkov")
     @Test
-    void testHome() throws Exception {
+    public void testHome() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/home"))
                 .andExpect(status().is2xxSuccessful())
@@ -35,10 +35,20 @@ public class HomeControllerTest {
 
     @WithAnonymousUser
     @Test
-    void testHomeAuthentication() throws Exception {
+    public void testHomeAuthentication() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/home"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(MockMvcResultMatchers.redirectedUrlPattern("**/user/login"));
     }
+
+    @WithAnonymousUser
+    @Test
+    void testInfoPageGet() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders
+                .get("/"))
+                .andExpect(view().name("index"));
+    }
+
+
 }

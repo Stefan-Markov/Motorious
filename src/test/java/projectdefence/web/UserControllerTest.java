@@ -50,7 +50,7 @@ public class UserControllerTest {
 
     @Test
     @WithAnonymousUser
-    public void testUserRegistrationPostShouldReturnFalse() throws Exception {
+    public void testUserRegistrationPostShouldReturnFalseIsExists() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/user/registration")
                 .param("firstName", "test")
                 .param("lastName", "testov")
@@ -131,7 +131,6 @@ public class UserControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/user/all-users"))
                 .andExpect(view().name("view_all_users"));
     }
-
 
     @Test
     @WithMockUser(username = "Leonkov", roles = "USER")
