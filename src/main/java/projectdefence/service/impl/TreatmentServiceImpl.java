@@ -45,7 +45,6 @@ public class TreatmentServiceImpl implements TreatmentService {
 
     @Override
     public List<TreatmentViewModel> findAllTreatmentsByUsername(String username) {
-
         User user = this.userRepository.findByUsername(username);
         return user.getTreatments().stream().map(t -> this.modelMapper.map(t, TreatmentViewModel.class))
                 .sorted(Comparator.comparing(TreatmentViewModel::getDateAdded).reversed())

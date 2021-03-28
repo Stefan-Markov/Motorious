@@ -57,6 +57,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
+
     @Override
     public boolean register(UserServiceModel userServiceModel) {
         try {
