@@ -66,7 +66,6 @@ public class ClientControllerTest {
     @WithMockUser(username = "Leonkov", roles = "KINESITHERAPIST")
     @Test
     public void testDeleteMeasurementOrTreatment() throws Exception {
-
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/client/delete/{id}", "5"))
                 .andExpect(status().is3xxRedirection())

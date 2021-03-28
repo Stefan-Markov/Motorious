@@ -50,7 +50,6 @@ public class BlogController {
             return "redirect:add-blog";
         }
 
-
         this.blogService.addBlog(this.modelMapper.map(addBlogBindingModel, AddBlogServiceModel.class),principal);
 
         return "redirect:/info/blog";
