@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.multipart.MultipartFile;
 import projectdefence.event.userDeleteEvent.DeleteEventPublisher;
 import projectdefence.event.userRegisterEvent.RegisterEventPublisher;
 import projectdefence.models.entities.Role;
@@ -25,8 +26,9 @@ import projectdefence.service.impl.UserServiceImpl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -180,13 +182,16 @@ public class UserServiceTest {
     }
 
     @Test
-    @ExceptionHandler
+    @ExceptionHandler(NullPointerException.class)
     public void testChangeProfileExpectToFail() throws IOException {
 
         Mockito.when(userRepository.findByUsername("username"))
                 .thenReturn(user);
 
-        userService.editProfile(userServiceModel, "username");
+        userServiceModel.setImage(null);
+        boolean username = userService.editProfile(userServiceModel, "username");
+
+        Assert.assertFalse(username);
     }
 
     @Test

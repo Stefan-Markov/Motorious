@@ -27,6 +27,8 @@ public class TreatmentServiceImpl implements TreatmentService {
         this.modelMapper = modelMapper;
         this.treatmentRepository = treatmentRepository;
         this.userRepository = userRepository;
+
+
     }
 
     @Override
