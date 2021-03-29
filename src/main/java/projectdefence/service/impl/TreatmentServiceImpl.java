@@ -23,7 +23,8 @@ public class TreatmentServiceImpl implements TreatmentService {
     private final TreatmentRepository treatmentRepository;
     private final UserRepository userRepository;
 
-    public TreatmentServiceImpl(ModelMapper modelMapper, TreatmentRepository treatmentRepository, UserRepository userRepository) {
+    public TreatmentServiceImpl(ModelMapper modelMapper, TreatmentRepository treatmentRepository,
+                                UserRepository userRepository) {
         this.modelMapper = modelMapper;
         this.treatmentRepository = treatmentRepository;
         this.userRepository = userRepository;
