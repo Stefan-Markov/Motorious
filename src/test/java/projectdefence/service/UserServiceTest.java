@@ -8,8 +8,7 @@ import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.multipart.MultipartFile;
+
 import projectdefence.event.userDeleteEvent.DeleteEventPublisher;
 import projectdefence.event.userRegisterEvent.RegisterEventPublisher;
 import projectdefence.models.entities.Role;
@@ -26,9 +25,8 @@ import projectdefence.service.impl.UserServiceImpl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -67,27 +65,28 @@ public class UserServiceTest {
         userServiceModel = new UserServiceModel();
         userServiceModel.setId("one")
                 .setTitle("client")
-                .setAuthorities(Set.of(role))
+                .setAuthorities(new HashSet<>())
                 .setPassword("password")
                 .setFirstName("firstName")
                 .setLastName("lastName")
                 .setEmail("email")
+                .setImage(null)
                 .setUsername("username");
-
+        userServiceModel.getAuthorities().add(role);
 
         Role roleUser = new Role();
         roleUser.setAuthority("ROLE_USER");
         user = new User();
         user
                 .setTitle("client")
-                .setAuthorities(Set.of(roleUser))
+                .setAuthorities(new HashSet<>())
                 .setPassword("password")
                 .setFirstName("firstName")
                 .setLastName("lastName")
                 .setEmail("email")
                 .setImageUrl("www.image.url")
                 .setUsername("username");
-
+        user.getAuthorities().add(roleUser);
 
         Mockito.when(userRepository.count())
                 .thenReturn(1L);
@@ -139,6 +138,7 @@ public class UserServiceTest {
         Mockito.when(userRepository.findByUsernameAndPassword("username", "password"))
                 .thenReturn(Optional.of(user));
 
+
         assertEquals(user.getFirstName(), "firstName");
         assertEquals(user.getLastName(), "lastName");
 
@@ -182,20 +182,58 @@ public class UserServiceTest {
     }
 
     @Test
-    @ExceptionHandler(NullPointerException.class)
-    public void testChangeProfileExpectToFail() throws IOException {
+    public void testFindUserByUsername() {
 
         Mockito.when(userRepository.findByUsername("username"))
                 .thenReturn(user);
 
-        userServiceModel.setImage(null);
-        boolean username = userService.editProfile(userServiceModel, "username");
+        User username = userService.findUserByUsername("username");
 
-        Assert.assertFalse(username);
+        Assert.assertEquals(username.getUsername(), user.getUsername());
+    }
+
+
+    @Test
+    public void testDeleteByUsername() {
+
+        Mockito.when(userRepository.findUserByUsername("username"))
+                .thenReturn(Optional.of(user));
+
+        userService.deleteUserByUsername("username");
+
+        Mockito.when(userRepository.findUserByUsername("username"))
+                .thenReturn(null);
+        Assert.assertNull(userRepository.findUserByUsername("username"));
     }
 
     @Test
-    public void testFindAllUsersByKinesiotherapist() throws IOException {
+    public void testFindProfileByUserName() {
+
+        Mockito.when(userRepository.findByUsername("username"))
+                .thenReturn(user);
+
+        UserWrapInfoViewModel userWrapInfoViewModel = userService.findProfileByUserName("username");
+
+        Assert.assertEquals(userWrapInfoViewModel.getUsername(), user.getUsername());
+    }
+
+    @Test
+    public void testChangeRole() {
+
+        Mockito.when(userRepository.findUserByUsername("username"))
+                .thenReturn(Optional.of(user));
+        UserServiceChangeRoleModel userServiceChangeRoleModel = new UserServiceChangeRoleModel();
+        userServiceChangeRoleModel.setUsername("username");
+        userService.changeRole(userServiceChangeRoleModel, "ROLE_ADMIN");
+
+        int size = user.getAuthorities().size();
+
+        Assert.assertEquals(2, size);
+
+    }
+
+    @Test
+    public void testFindAllUsersByKinesiotherapist() {
         Mockito.when(userRepository.findAllByKinesitherapistName("username"))
                 .thenReturn(List.of(user));
 

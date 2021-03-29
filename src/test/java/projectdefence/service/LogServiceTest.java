@@ -1,15 +1,10 @@
 package projectdefence.service;
 
-import com.mysql.cj.log.Log;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import projectdefence.models.entities.LogUnit;
 import projectdefence.models.entities.Role;
 import projectdefence.models.entities.User;
@@ -67,7 +62,6 @@ public class LogServiceTest {
     public void testFindAll() {
         Mockito.when(logRepository.findAllOrderByDateTime())
                 .thenReturn(List.of(log));
-
 
         List<LogServiceModel> allLogs = logService.findAllLogs();
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
+
 public class MotoriousErrorController implements ErrorController {
 
     @RequestMapping("/error")
