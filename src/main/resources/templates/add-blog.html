@@ -13,7 +13,7 @@
 <body>
 <header th:include="/fragment/source :: navigation"></header>
 <main>
-    <h2>Add blog content</h2>
+    <h2 class="name-title">Add blog </h2>
     <form th:object="${addBlogBindingModel}" th:action="@{/blog/add-blog}" method="POST">
         <p>Title</p>
         <label>

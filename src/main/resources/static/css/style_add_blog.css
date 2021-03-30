@@ -69,3 +69,22 @@ textarea {
     resize: none;
 }
 
+.name-title{
+    animation: border 5s 3;
+}
+
+@keyframes border {
+    0% {
+
+        color: white;
+    }
+    50% {
+
+        color: darkgoldenrod;
+    }
+    100% {
+
+        color: white;
+    }
+
+}

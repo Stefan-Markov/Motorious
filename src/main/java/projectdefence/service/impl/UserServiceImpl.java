@@ -120,7 +120,7 @@ public class UserServiceImpl implements UserService {
         if (user.isPresent()) {
             Role newRole = this.roleRepository.findByAuthority(role);
             Set<Role> tryNewRole = new HashSet<>(user.get().getAuthorities());
-            if (!tryNewRole.contains(newRole)) {
+            if (!tryNewRole.contains(newRole) && !newRole.getAuthority().equals("ROLE_ROOT")) {
                 user.get().getAuthorities().add(newRole);
                 this.userRepository.save(user.get());
             }
@@ -133,7 +133,7 @@ public class UserServiceImpl implements UserService {
         if (user.isPresent()) {
             Role removeRole = this.roleRepository.findByAuthority(role);
             Set<Role> tryRemoveRole = new HashSet<>(user.get().getAuthorities());
-            if (tryRemoveRole.contains(removeRole)) {
+            if (tryRemoveRole.contains(removeRole) && !removeRole.getAuthority().equals("ROLE_ROOT")) {
                 user.get().getAuthorities().remove(removeRole);
                 this.userRepository.save(user.get());
             }

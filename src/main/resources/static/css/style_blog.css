@@ -92,3 +92,23 @@ body {
     display: flex;
     justify-content: center;
 }
+
+.name-title{
+    animation: border 5s infinite;
+}
+
+@keyframes border {
+    0% {
+        border-bottom: white;
+        color: white;
+    }
+    50% {
+        border-bottom: orange;
+        color: darkgoldenrod;
+    }
+    100% {
+        border-bottom: darkgoldenrod;
+        color: white;
+    }
+
+}

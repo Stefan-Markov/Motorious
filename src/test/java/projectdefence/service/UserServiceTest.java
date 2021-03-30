@@ -222,8 +222,13 @@ public class UserServiceTest {
 
         Mockito.when(userRepository.findUserByUsername("username"))
                 .thenReturn(Optional.of(user));
+        Role role = new Role();
+        Mockito.when(this.roleRepository.findByAuthority("ROLE_ADMIN"))
+                .thenReturn(role);
+        role.setAuthority("ROLE_ADMIN");
         UserServiceChangeRoleModel userServiceChangeRoleModel = new UserServiceChangeRoleModel();
         userServiceChangeRoleModel.setUsername("username");
+
         userService.changeRole(userServiceChangeRoleModel, "ROLE_ADMIN");
 
         int size = user.getAuthorities().size();

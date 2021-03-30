@@ -35,46 +35,35 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.
-                authorizeRequests().
-                // allow access to static resources to anyone
-                        requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
-                // allow access to index, user login and registration to anyone
-                        antMatchers("/", "/info/**", "/user/login", "/user/registration").permitAll().
-                // protect all other pages
-                        antMatchers("/**").authenticated().
-                and().
-                // configure login with HTML form
-                        formLogin().
-                // our login page will be served by the controller with mapping /users/login
-                        loginPage("/user/login").
-                // the name of the user name input field in OUR login form is username (optional)
-                        usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
-                // the name of the user password input field in OUR login form is password (optional)
-                        passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
-                // on login success redirect here
-                        defaultSuccessUrl("/home").
-                // on login failure redirect here
-                        failureForwardUrl("/user/login-error").
-                and()
+                authorizeRequests()
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+                .permitAll()
+                .antMatchers("/", "/info/**", "/user/login", "/user/registration")
+                .permitAll()
+                .antMatchers("/**").authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/user/login")
+                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
+                .defaultSuccessUrl("/home")
+                .failureForwardUrl("/user/login-error")
+                .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
                 .and()
-                .logout().
-                // which endpoint performs logout, e.g. http://localhost:8080/logout (!this should be POST request)
-                        logoutUrl("/logout").
-                // where to land after logout
-                        logoutSuccessUrl("/").
-                // remove the session from the server
-                        invalidateHttpSession(true).
-                // delete the session cookie
-                        deleteCookies("JSESSIONID");
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID");
     }
 
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.
-                userDetailsService(userDetailsService).
-                passwordEncoder(passwordEncoder);
+                userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder);
     }
 
     @Override
