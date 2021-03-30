@@ -15,7 +15,7 @@ public class AddBlogBindingModel {
     }
 
     @NotBlank(message = EMPTY_BLOG_TITLE)
-    @Length(min = 6, max = 50, message = LENGTH_BETWEEN_6_50_CHARACTERS)
+    @Length(min = 6, max = 100, message = LENGTH_BETWEEN_6_100_CHARACTERS)
     public String getTitle() {
         return title;
     }

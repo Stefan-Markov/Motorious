@@ -84,6 +84,7 @@ public class UserRegisterBindingModel {
 
     @Email(message = INVALID_EMAIL)
     @NotBlank(message = EMPTY_FIELD)
+    @Length(max = 150, message = INVALID_EMAIL)
     public String getEmail() {
         return email;
     }

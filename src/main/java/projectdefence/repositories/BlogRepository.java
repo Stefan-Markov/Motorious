@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface BlogRepository extends JpaRepository<Blog, Long> {
 
-    @Query("SELECT b from Blog b order by b.date desc")
-    List<Blog> findAllOrderByDate();
+    @Query(value = "SELECT * from blog as b order by b.date desc limit 120", nativeQuery = true)
+    List<Blog> findFirst120_OrderByDate();
 }

@@ -60,6 +60,6 @@ public class BlogController {
     public String delete(@PathVariable Long id){
 
         blogService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/home";
     }
 }

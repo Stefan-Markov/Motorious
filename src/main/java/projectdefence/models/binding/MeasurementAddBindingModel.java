@@ -52,6 +52,7 @@ public class MeasurementAddBindingModel {
 
 
     @NotBlank(message = EMPTY_FIELD)
+    @Length(max = 100, message = INVALID_CONTENT)
     public String getStage() {
         return stage;
     }

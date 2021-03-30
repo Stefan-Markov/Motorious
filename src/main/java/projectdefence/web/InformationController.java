@@ -1,6 +1,5 @@
 package projectdefence.web;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,8 +38,8 @@ public class InformationController {
     @GetMapping("/blog")
     public String blog(Model model) {
         if (!model.containsAttribute("blogViewModels")) {
-            model.addAttribute("size",this.blogService.findAllBlogs().size());
-            model.addAttribute("blogViewModels", this.blogService.findAllBlogs());
+            model.addAttribute("size",this.blogService.findFirst120Blogs().size());
+            model.addAttribute("blogViewModels", this.blogService.findFirst120Blogs());
         }
         return "blog";
     }

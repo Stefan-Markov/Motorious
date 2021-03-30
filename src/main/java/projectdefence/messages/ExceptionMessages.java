@@ -10,6 +10,8 @@ public class ExceptionMessages {
 
     public static final String LENGTH_BETWEEN_6_50_CHARACTERS = "Must contains between six and fifty characters.";
 
+    public static final String LENGTH_BETWEEN_6_100_CHARACTERS = "Must contains between six and one hundred characters.";
+
     public static final String LENGTH_BETWEEN_3_50_CHARACTERS = "Must contains between three and fifty characters.";
 
     public static final String LENGTH_BETWEEN_2_50_CHARACTERS = "Must contains between two and fifty characters.";

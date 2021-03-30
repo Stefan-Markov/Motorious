@@ -33,8 +33,8 @@ public class ProfileController {
     @PreAuthorize("#username == authentication.name")
     public String profileUser(@PathVariable(name = "username") String username, Model model) {
 
-        UserWrapInfoViewModel profileByUserName = this.userService.findProfileByUserName(username);
-        model.addAttribute("userProfile", profileByUserName);
+        UserWrapInfoViewModel profileByUsername = this.userService.findProfileByUserName(username);
+        model.addAttribute("userProfile", profileByUsername);
         if (!model.containsAttribute("editProfileBindingModel")) {
             model.addAttribute("isFallback", false);
             model.addAttribute("editProfileBindingModel", new EditProfileBindingModel());
@@ -45,10 +45,9 @@ public class ProfileController {
 
     @PostMapping("/edit/{username}")
     @PreAuthorize("#username ==  authentication.name")
-    public String
-    profileUserConfirm(@PathVariable(name = "username") String username,
-                       @Valid @ModelAttribute EditProfileBindingModel editProfileBindingModel,
-                       BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
+    public String profileUserConfirm(@PathVariable(name = "username") String username,
+                                     @Valid @ModelAttribute EditProfileBindingModel editProfileBindingModel,
+                                     BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("editProfileBindingModel", editProfileBindingModel);

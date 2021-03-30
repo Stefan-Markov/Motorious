@@ -51,6 +51,7 @@ public class EditProfileBindingModel {
 
     @NotBlank(message = EMPTY_FIELD)
     @Email(message = INVALID_EMAIL)
+    @Length(max = 150, message = INVALID_EMAIL)
     public String getEmail() {
         return email;
     }

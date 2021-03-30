@@ -22,9 +22,7 @@
                 <input th:field="*{username}" class="username-enter" type="text"
                        placeholder="Enter valid username to downgrade the role">
             </label>
-            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error">Username
-                length must be more than 6
-                characters
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error">
             </p>
 
             <label>Role type

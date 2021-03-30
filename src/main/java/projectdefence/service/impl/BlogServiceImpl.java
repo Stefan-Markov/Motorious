@@ -12,7 +12,6 @@ import projectdefence.repositories.UserRepository;
 import projectdefence.service.BlogService;
 
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,8 +42,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<BlogViewModel> findAllBlogs() {
-        return this.blogRepository.findAllOrderByDate()
+    public List<BlogViewModel> findFirst120Blogs() {
+        return this.blogRepository.findFirst120_OrderByDate()
                 .stream()
                 .map(b -> modelMapper.map(b, BlogViewModel.class))
                 .collect(Collectors.toList());

@@ -10,7 +10,7 @@ public interface BlogService {
 
     void addBlog(AddBlogServiceModel blogServiceModel, UserDetails principal);
 
-    List<BlogViewModel> findAllBlogs();
+    List<BlogViewModel> findFirst120Blogs();
 
     void deleteById(Long id);
 

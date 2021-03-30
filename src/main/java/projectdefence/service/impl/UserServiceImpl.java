@@ -142,9 +142,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUserByUsername(String username) {
-        Optional<User> user = userRepository.findUserByUsername(username);
-        user.ifPresent(deleteEventPublisher::publishUserDeleteEvent);
-        user.ifPresent(this.userRepository::delete);
+        String rootAdminName = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
+
+        if (!rootAdminName.equals(username)) {
+            Optional<User> user = userRepository.findUserByUsername(username);
+            user.ifPresent(deleteEventPublisher::publishUserDeleteEvent);
+            user.ifPresent(this.userRepository::delete);
+        }
     }
 
     @Override
