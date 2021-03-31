@@ -1,14 +1,14 @@
-package projectdefence.interceptor;
+package projectdefence.interceptor.requestInterceptor;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfigurationInterceptor implements WebMvcConfigurer {
+public class RequestConfigurationInterceptor implements WebMvcConfigurer {
     private final RequestProcessingTimeInterceptor requestProcessingTimeInterceptor;
 
-    public WebConfigurationInterceptor(RequestProcessingTimeInterceptor requestProcessingTimeInterceptor) {
+    public RequestConfigurationInterceptor(RequestProcessingTimeInterceptor requestProcessingTimeInterceptor) {
         this.requestProcessingTimeInterceptor = requestProcessingTimeInterceptor;
     }
 

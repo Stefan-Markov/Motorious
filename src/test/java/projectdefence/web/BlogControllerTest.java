@@ -63,6 +63,6 @@ public class BlogControllerTest {
                 .get("/blog/delete/{id}", "5")
                 .with(csrf()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(MockMvcResultMatchers.redirectedUrl("/"));
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/home"));
     }
 }

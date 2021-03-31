@@ -1,5 +1,7 @@
 package projectdefence.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,10 +17,10 @@ import projectdefence.service.BlogService;
 
 import javax.validation.Valid;
 
+
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
-
     private final ModelMapper modelMapper;
     private final BlogService blogService;
 
@@ -50,14 +52,14 @@ public class BlogController {
             return "redirect:add-blog";
         }
 
-        this.blogService.addBlog(this.modelMapper.map(addBlogBindingModel, AddBlogServiceModel.class),principal);
+        this.blogService.addBlog(this.modelMapper.map(addBlogBindingModel, AddBlogServiceModel.class), principal);
 
         return "redirect:/info/blog";
     }
 
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id) {
 
         blogService.deleteById(id);
         return "redirect:/home";

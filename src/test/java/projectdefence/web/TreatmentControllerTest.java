@@ -77,14 +77,12 @@ public class TreatmentControllerTest {
                 .param("disease", "test-disease")
                 .param("goal", "test-goal")
                 .param("duration", "1")
-//                .param("visits","1")
                 .param("content", "test-content")
                 .param("createdBy", "test")
                 .param("KtFullName", "test")
                 .param("nameKt", "test-name")
                 .flashAttr("treatmentAddBindingModel", new TreatmentAddBindingModel())
                 .with(csrf()))
-
                 .andExpect(MockMvcResultMatchers.redirectedUrl("add"));
     }
 

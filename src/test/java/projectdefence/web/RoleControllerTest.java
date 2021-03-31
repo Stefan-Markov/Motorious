@@ -38,12 +38,6 @@ public class RoleControllerTest {
     @MockBean
     private UserService userService;
 
-
-    @BeforeEach
-    public void setup() {
-        this.init();
-    }
-
     @WithMockUser(username = "Leonkov", roles = "KINESITHERAPIST")
     @Test
     public void testChangeRoleAccessDenied() throws Exception {
@@ -115,20 +109,5 @@ public class RoleControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/role/role-change"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("role_change"));
-    }
-
-
-    private void init() {
-        Role role = new Role();
-        role.setAuthority("ROLE_USER");
-        User user = new User();
-        user.setUsername("username")
-                .setLastName("testov")
-                .setFirstName("test")
-                .setPassword("test123")
-                .setEmail("mail@mail.bg")
-                .setCreatedDate(LocalDateTime.now())
-                .setAuthorities(Set.of(role));
-        this.userRepository.save(user);
     }
 }

@@ -1,11 +1,15 @@
 package projectdefence.service;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -24,6 +28,8 @@ import projectdefence.service.impl.UserServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 
 import java.util.HashSet;
@@ -44,15 +50,16 @@ public class UserServiceTest {
     private UserServiceModel userServiceModel;
     private User user;
 
+
     @Before
     public void init() {
-        userRepository = Mockito.mock(UserRepository.class);
-        bCryptPasswordEncoder = Mockito.mock(BCryptPasswordEncoder.class);
-        roleService = Mockito.mock(RoleService.class);
-        roleRepository = Mockito.mock(RoleRepository.class);
-        registerEventPublisher = Mockito.mock(RegisterEventPublisher.class);
-        deleteEventPublisher = Mockito.mock(DeleteEventPublisher.class);
-        cloudinaryService = Mockito.mock(CloudinaryService.class);
+        userRepository = mock(UserRepository.class);
+        bCryptPasswordEncoder = mock(BCryptPasswordEncoder.class);
+        roleService = mock(RoleService.class);
+        roleRepository = mock(RoleRepository.class);
+        registerEventPublisher = mock(RegisterEventPublisher.class);
+        deleteEventPublisher = mock(DeleteEventPublisher.class);
+        cloudinaryService = mock(CloudinaryService.class);
 
         userService = new UserServiceImpl(new ModelMapper(), userRepository,
                 bCryptPasswordEncoder, roleService,
@@ -88,18 +95,18 @@ public class UserServiceTest {
                 .setUsername("username");
         user.getAuthorities().add(roleUser);
 
-        Mockito.when(userRepository.count())
+        when(userRepository.count())
                 .thenReturn(1L);
     }
 
     @Test
     public void testRegisterUser() {
-        Mockito.when(roleService.findByAuthority("ROLE_USER"))
+        when(roleService.findByAuthority("ROLE_USER"))
                 .thenReturn(new RoleServiceModel() {{
                     setAuthority("ROLE_USER");
                 }});
 
-        Mockito.when(userRepository.saveAndFlush(any(User.class)))
+        when(userRepository.saveAndFlush(any(User.class)))
                 .thenReturn(user);
 
         Assert.assertEquals(userRepository.count(), 1);
@@ -108,10 +115,10 @@ public class UserServiceTest {
 
     @Test
     public void testRegisterUserShouldReturnFalse() {
-        Mockito.when(userRepository.findByUsername("username"))
+        when(userRepository.findByUsername("username"))
                 .thenReturn(user);
 
-        Mockito.when(roleService.findByAuthority("ROLE_USER"))
+        when(roleService.findByAuthority("ROLE_USER"))
                 .thenReturn(new RoleServiceModel() {{
                     setAuthority("ROLE_USER");
                 }});
@@ -124,7 +131,7 @@ public class UserServiceTest {
 
     @Test
     public void testFindByUsernameViewModel() {
-        Mockito.when(userRepository.findByUsername("username"))
+        when(userRepository.findByUsername("username"))
                 .thenReturn(user);
 
         UserViewModel userViewModel = userService.findByUsernameUser("username");
@@ -135,9 +142,8 @@ public class UserServiceTest {
 
     @Test
     public void testFindByUsernameOptional() {
-        Mockito.when(userRepository.findByUsernameAndPassword("username", "password"))
+        when(userRepository.findByUsernameAndPassword("username", "password"))
                 .thenReturn(Optional.of(user));
-
 
         assertEquals(user.getFirstName(), "firstName");
         assertEquals(user.getLastName(), "lastName");
@@ -146,7 +152,7 @@ public class UserServiceTest {
 
     @Test
     public void testFindByUsernameAndPassword() {
-        Mockito.when(userRepository.findByUsernameAndPassword("username", "password"))
+        when(userRepository.findByUsernameAndPassword("username", "password"))
                 .thenReturn(Optional.of(user));
 
         assertEquals(user.getUsername(), "username");
@@ -155,7 +161,7 @@ public class UserServiceTest {
 
     @Test
     public void testFindByUsernameAndPasswordShouldFail() {
-        Mockito.when(userRepository.findByUsernameAndPassword("username", "password"))
+        when(userRepository.findByUsernameAndPassword("username", "password"))
                 .thenReturn(Optional.of(user));
 
         assertEquals(user.getUsername(), "username");
@@ -165,7 +171,7 @@ public class UserServiceTest {
     @Test
     public void testDowngradeRole() {
 
-        Mockito.when(userRepository.findUserByUsername("username"))
+        when(userRepository.findUserByUsername("username"))
                 .thenReturn(Optional.of(user));
 
         UserServiceChangeRoleModel userServiceChangeRoleModel = new UserServiceChangeRoleModel();
@@ -173,7 +179,7 @@ public class UserServiceTest {
         Role newRole = new Role();
         newRole.setAuthority("ROLE_ADMIN");
 
-        Mockito.when(roleRepository.findByAuthority("ROLE_ADMIN"))
+        when(roleRepository.findByAuthority("ROLE_ADMIN"))
                 .thenReturn(newRole);
 
         userService.downgradeRole(userServiceChangeRoleModel, "ROLE_ADMIN");
@@ -183,8 +189,7 @@ public class UserServiceTest {
 
     @Test
     public void testFindUserByUsername() {
-
-        Mockito.when(userRepository.findByUsername("username"))
+        when(userRepository.findByUsername("username"))
                 .thenReturn(user);
 
         User username = userService.findUserByUsername("username");
@@ -192,24 +197,10 @@ public class UserServiceTest {
         Assert.assertEquals(username.getUsername(), user.getUsername());
     }
 
-
-    @Test
-    public void testDeleteByUsername() {
-
-        Mockito.when(userRepository.findUserByUsername("username"))
-                .thenReturn(Optional.of(user));
-
-        userService.deleteUserByUsername("username");
-
-        Mockito.when(userRepository.findUserByUsername("username"))
-                .thenReturn(null);
-        Assert.assertNull(userRepository.findUserByUsername("username"));
-    }
-
     @Test
     public void testFindProfileByUserName() {
 
-        Mockito.when(userRepository.findByUsername("username"))
+        when(userRepository.findByUsername("username"))
                 .thenReturn(user);
 
         UserWrapInfoViewModel userWrapInfoViewModel = userService.findProfileByUserName("username");
@@ -220,10 +211,10 @@ public class UserServiceTest {
     @Test
     public void testChangeRole() {
 
-        Mockito.when(userRepository.findUserByUsername("username"))
+        when(userRepository.findUserByUsername("username"))
                 .thenReturn(Optional.of(user));
         Role role = new Role();
-        Mockito.when(this.roleRepository.findByAuthority("ROLE_ADMIN"))
+        when(this.roleRepository.findByAuthority("ROLE_ADMIN"))
                 .thenReturn(role);
         role.setAuthority("ROLE_ADMIN");
         UserServiceChangeRoleModel userServiceChangeRoleModel = new UserServiceChangeRoleModel();
@@ -239,7 +230,7 @@ public class UserServiceTest {
 
     @Test
     public void testFindAllUsersByKinesiotherapist() {
-        Mockito.when(userRepository.findAllByKinesitherapistName("username"))
+        when(userRepository.findAllByKinesitherapistName("username"))
                 .thenReturn(List.of(user));
 
         List<UserWrapInfoViewModel> username = userService.findAllUsersByKinesiotherapist("username");
@@ -261,7 +252,7 @@ public class UserServiceTest {
                 .setTitle("client")
                 .setAuthorities(Set.of(role));
 
-        Mockito.when(userRepository.findByUsername("username")).
+        when(userRepository.findByUsername("username")).
                 thenReturn(user);
 
         User username = userRepository.findByUsername("username");

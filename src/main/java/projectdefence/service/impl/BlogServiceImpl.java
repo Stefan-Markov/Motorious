@@ -1,6 +1,7 @@
 package projectdefence.service.impl;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import projectdefence.models.entities.Blog;
@@ -29,7 +30,6 @@ public class BlogServiceImpl implements BlogService {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
     }
-
 
 
     @Override

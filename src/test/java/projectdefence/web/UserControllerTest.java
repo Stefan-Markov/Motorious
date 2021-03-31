@@ -30,7 +30,6 @@ public class UserControllerTest {
                 .andExpect(view().name("registration"));
     }
 
-
     @Test
     @WithAnonymousUser
     public void testUserRegistrationPost() throws Exception {

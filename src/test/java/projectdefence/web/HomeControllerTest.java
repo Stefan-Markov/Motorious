@@ -48,6 +48,4 @@ public class HomeControllerTest {
                 .get("/"))
                 .andExpect(view().name("index"));
     }
-
-
 }
