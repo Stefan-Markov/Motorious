@@ -83,8 +83,9 @@ body {
 
     background: lightblue;
     color: white;
-    /*height: 40vh;*/
+
     padding: 30px 30px;
+    margin-bottom: 5px;
     font-size: 1.6em;
 }
 

@@ -4,7 +4,10 @@
 html {
     background: black;
 }
+
 .footer {
+
+    border-top: 10px solid black;
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
     display: flex;
     justify-content: center;
@@ -31,6 +34,13 @@ html {
     text-decoration: none;
     color: black;
     font-size: 1.3em;
+}
+
+.mail {
+    padding-left: 3px;
+    padding-right: 3px;
+    border-left: 2px solid orange;
+    border-right: 2px solid orange;
 }
 
 @media screen and (max-width: 600px) {
