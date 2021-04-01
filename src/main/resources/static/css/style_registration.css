@@ -112,6 +112,9 @@ main {
     color: white;
 }
 
+button:hover{
+    cursor: pointer;
+}
 
 .select-title {
     display: flex;

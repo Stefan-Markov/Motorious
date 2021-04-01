@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -119,10 +120,12 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = userRepository.findUserByUsername(userServiceModel.getUsername());
         if (user.isPresent()) {
             Role newRole = this.roleRepository.findByAuthority(role);
-            Set<Role> tryNewRole = new HashSet<>(user.get().getAuthorities());
-            if (!tryNewRole.contains(newRole) && !newRole.getAuthority().equals("ROLE_ROOT")) {
-                user.get().getAuthorities().add(newRole);
-                this.userRepository.save(user.get());
+            if (newRole != null) {
+                Set<Role> tryNewRole = new HashSet<>(user.get().getAuthorities());
+                if (!tryNewRole.contains(newRole) && !newRole.getAuthority().equals("ROLE_ROOT")) {
+                    user.get().getAuthorities().add(newRole);
+                    this.userRepository.save(user.get());
+                }
             }
         }
     }
@@ -132,10 +135,12 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = userRepository.findUserByUsername(userServiceModel.getUsername());
         if (user.isPresent()) {
             Role removeRole = this.roleRepository.findByAuthority(role);
-            Set<Role> tryRemoveRole = new HashSet<>(user.get().getAuthorities());
-            if (tryRemoveRole.contains(removeRole) && !removeRole.getAuthority().equals("ROLE_ROOT")) {
-                user.get().getAuthorities().remove(removeRole);
-                this.userRepository.save(user.get());
+            if (removeRole != null) {
+                Set<Role> tryRemoveRole = new HashSet<>(user.get().getAuthorities());
+                if (tryRemoveRole.contains(removeRole) && !removeRole.getAuthority().equals("ROLE_ROOT")) {
+                    user.get().getAuthorities().remove(removeRole);
+                    this.userRepository.save(user.get());
+                }
             }
         }
     }

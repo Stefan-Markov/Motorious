@@ -17,6 +17,10 @@ public class TreatmentAddBindingModel {
     private String createdBy;
     private String KtFullName;
 
+    public TreatmentAddBindingModel() {
+    }
+
+
     public String getKtFullName() {
         return KtFullName;
     }

@@ -51,6 +51,8 @@
                 <option value="At the middle of the recovery period">At the middle of the recovery period</option>
                 <option value="After last procedure">After last procedure</option>
             </select>
+            <p th:if="${#fields.hasErrors('stage')}"
+               th:errors="*{stage}" class="p-style">Enter valid age.</p>
         </label>
 
         <input type="hidden" th:name="nameKt" th:value="${name}">

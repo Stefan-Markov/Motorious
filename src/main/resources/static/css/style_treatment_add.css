@@ -88,10 +88,11 @@ button {
     border: 3px solid white;
     border-radius: 30px;
     font-size: 1.3em;
+
 }
 
 button:hover {
-
+    cursor: pointer;
     background: white;
     color: orange;
     font-weight: bolder;
@@ -140,7 +141,8 @@ summary {
         display: block;
         font-size: 1em;
     }
-    .content{
+
+    .content {
         width: 400px;
     }
 }

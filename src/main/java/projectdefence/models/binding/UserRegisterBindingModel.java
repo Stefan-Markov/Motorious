@@ -105,7 +105,8 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-
+    @NotBlank(message = EMPTY_FIELD)
+    @Length(min = 3, max = 50, message = LENGTH_BETWEEN_3_50_CHARACTERS)
     public String getTitle() {
         return title;
     }
