@@ -11,7 +11,7 @@
     <groupId>projectdefence</groupId>
     <artifactId>projectdefence</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>projectdefence</name>
+    <name>motorious</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
@@ -97,7 +97,6 @@
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
