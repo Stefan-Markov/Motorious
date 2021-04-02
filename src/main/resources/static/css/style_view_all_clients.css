@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
+}
+
+html {
+    min-width: 584px;
+    background: black;
+}
+
+
+body {
+    margin: 0 auto;
+}
+
+h2 {
+    border-bottom: 1px solid black;
+    margin: 15px auto;
+    padding-bottom: 10px;
+    width: 600px;
+}
+
+.background-info {
+    width: border-box;
+    padding: 20px;
+    border: 3px solid white;
+    border-radius: 30px;
+    background: whitesmoke;
+}
+
+.static-info {
+    font-size: 1.3em;
+    border-top: 10px solid black;
+    text-align: center;
+    padding-top: 50px;
+    margin: 0 auto;
+    background: lightblue;
+}
+
+main {
+    background: linear-gradient(to right, lightblue, black);
+    border-bottom: 10px solid black;
+    background: lightblue;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.user-info {
+    margin: 0 auto;
+    /*margin: 10px;*/
+    line-height: 2;
+    padding: 30px;
+    width: 260px;
+    border-style: solid;
+    border-image: linear-gradient(
+            to bottom,
+            blue,
+            rgba(0, 0, 0, 0)
+    ) 1 100%;
+    border-radius: 30px;
+}
+
+.fa-arrow-circle-right {
+    margin-right: 10px;
+}
+
+.user-info > section > p > a {
+    margin-right: 5px;
+    text-decoration: none;
+    color: darkorange;
+    font-weight: bold;
+}
+
+.pic-style {
+    margin: 0 auto;
+    align-items: center;
+    width: 260px;
+    height: 260px;
+    border-radius: 15px;
+}
+
+
+@media screen and (max-width: 900px ) {
+    main {
+        display: block;
+        font-size: 1em;
+    }
+
+}
+
+@media screen and (max-width: 540px ) {
+    .pic-style {
+        display: none;
+    }
+}

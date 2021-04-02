@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style_role_change.css}">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <title>Role downgrade menu</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation"></header>
+<main class="wrap-change">
+    <form th:object="${userChangeRoleBindingModel}" th:action="@{/role/role-downgrade}" method="POST">
+        <h2>Downgrade the role of user</h2>
+        <p class="wise">Here you can downgrade the role of user. Be wise! </p>
+        <section class="action">
+            <p class="p-style" th:if="${userFound}">Username don't exist!</p>
+            <label class="first">Enter username
+                <input th:field="*{username}" class="username-enter" type="text"
+                       placeholder="Enter valid username to downgrade the role">
+            </label>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error">
+            </p>
+
+            <label>Role type
+                <select th:name="role">
+                    <option selected th:value="ROLE_KINESITHERAPIST">Kinesitherapist</option>
+                    <option th:value="ROLE_ADMIN">Admin</option>
+                </select>
+            </label>
+
+            <button type="submit">Send changes</button>
+        </section>
+    </form>
+</main>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
+
+</body>
+</html>

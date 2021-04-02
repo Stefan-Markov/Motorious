@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style_registration.css}">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <title>Motorious</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation">
+
+</header>
+<main>
+    <section class="top-border"></section>
+    <form th:object="${userRegisterBindingModel}" th:action="@{/user/registration}" method="POST"
+          enctype="multipart/form-data">
+        <section class="head-welcome">
+            <h2 class="welcome">Welcome to the register form.</h2>
+        </section>
+        <section class="user-details">
+
+            <h5 th:if="${isExists}" class="error">User already exists.</h5>
+            <h5 th:if="${notSame}" class="error">Password fields do not match.</h5>
+
+            <section class="user-inputs">
+
+                <div class="info-container">
+                    <article class="label-style">
+                        <label for="inputFirstName">First Name</label>
+                    </article>
+                    <article>
+                        <input required minlength="3" maxlength="50"
+                               th:field="*{firstName}" class="input-style input-validation" name="firstName" type="text"
+                               id="inputFirstName"
+                               placeholder="Enter First Name">
+                    </article>
+                    <article>
+                        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="p-style">First name
+                            length must be more than 6
+                            characters
+                        </p>
+                    </article>
+                </div>
+
+                <div class="info-container">
+                    <article class="label-style">
+                        <label for="inputLastName">Last Name</label>
+                    </article>
+                    <article>
+                        <input required minlength="3" maxlength="50"
+                               th:field="*{lastName}" class="input-style input-validation" name="lastName" type="text"
+                               id="inputLastName"
+                               placeholder="Enter Last Name">
+                    </article>
+                    <article>
+                        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="p-style"></p>
+                    </article>
+                </div>
+                <div class="info-container">
+                    <article class="label-style">
+                        <label for="inputUsername">Username</label>
+                    </article>
+                    <article>
+                        <input required minlength="3" maxlength="50"
+                               th:field="*{username}" class="input-style input-validation" name="username" type="text"
+                               id="inputUsername"
+                               placeholder="Think about unique username">
+                    </article>
+                    <article>
+                        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="p-style"></p>
+                    </article>
+                </div>
+
+                <div class="info-container">
+                    <label for="title" class="label-style">Select Title from the dropdown</label>
+                    <select required class="input-style" name="title" id="title">
+                        <option selected value="client">Client</option>
+                        <option value="kinesitherapist">Kinesitherapist</option>
+                    </select>
+                </div>
+
+                <div class="info-container">
+                    <label class="label-style" for="image">Add Picture (If you want)</label>
+                    <input th:field="*{image}" class="input-style" type="file" id="image" name="image">
+                </div>
+
+                <div class="info-container">
+                    <article class="label-style">
+                        <label for="inputEmail">Email</label>
+                    </article>
+                    <article>
+                        <input required th:field="*{email}" class="input-style input-validation" name="email"
+                               type="email"
+                               id="inputEmail"
+                               placeholder="Enter valid email">
+                    </article>
+                    <article>
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="p-style"></p>
+                    </article>
+                </div>
+
+                <div class="info-container">
+                    <article class="label-style">
+                        <label for="inputPassword">Password</label>
+                    </article>
+                    <article>
+                        <input required minlength="6" maxlength="50" th:field="*{password}"
+                               class="input-style input-validation"
+                               name="password" type="password"
+                               id="inputPassword"
+                               placeholder="Enter valid password">
+                    </article>
+                    <article>
+                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="p-style"></p>
+                    </article>
+                </div>
+
+                <div class="info-container">
+                    <article class="label-style">
+                        <label for="inputPasswordConfirm">Confirm password</label>
+                    </article>
+                    <article>
+                        <input required minlength="6" maxlength="50" th:field="*{confirmPassword}"
+                               class="input-style input-validation"
+                               name="passwordConfirm" type="password"
+                               id="inputPasswordConfirm"
+                               placeholder="Confirm password">
+                    </article>
+                    <article>
+                        <p th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"
+                           class="p-style"></p>
+                    </article>
+                </div>
+
+            </section>
+            <button class="button-style" type="submit">Register</button>
+        </section>
+    </form>
+</main>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
+</body>
+</html>

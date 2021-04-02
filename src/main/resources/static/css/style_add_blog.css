@@ -1,0 +1,90 @@
+@import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
+}
+
+html {
+    min-width: 550px;
+    background: black;
+}
+
+body {
+
+    margin: 0 auto;
+}
+
+main {
+    border-top: 10px solid black;
+    border-bottom: 10px solid black;
+    display: flex;
+    flex-direction: column;
+    line-height: 3;
+    align-items: center;
+    background: lightblue;
+    padding: 50px;
+}
+
+.title-name {
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.content-blog {
+    width: 85vw;
+    height: 100px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.button-style {
+    margin-top: 10px;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 20px 40px;
+    color: black;
+    font-weight: bold;
+    background: orange;
+    font-size: 1.1em;
+}
+
+
+.button-style:hover {
+    font-size: 1.3em;
+    color: white;
+}
+
+.error {
+    color: red;
+    font-size: 1.2em;
+}
+
+textarea {
+    padding: 30px;
+    resize: none;
+}
+
+.name-title{
+    animation: border 5s 3;
+}
+
+@keyframes border {
+    0% {
+
+        color: white;
+    }
+    50% {
+
+        color: darkgoldenrod;
+    }
+    100% {
+
+        color: white;
+    }
+
+}

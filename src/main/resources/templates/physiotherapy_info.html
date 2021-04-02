@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" th:href="@{/css/style_physiotherapy_info.css}">
+    <title>Motorious</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation">
+
+</header>
+
+<main class="physio-content">
+    <section class="physio-heading">
+        <h2>Physiotherapy</h2>
+        <p>Physiotherapy is widely used in recovery from sports injuries, diseases, injuries and others.
+            They can be a variety of devices that heat, ultrasound, conduct electricity, stimulate metabolism and have a
+            beneficial
+            effect on the disease.
+            Here we have listed some of the most used in our practice.</p>
+    </section>
+    <section class="physio-types">
+        <article>
+            <h2 class="title">
+                Infrared therapy
+            </h2>
+            <article>
+
+                <img class="physio-pic" th:src="@{/img/infra-red-crop.jpg}" alt="procedure">
+            </article>
+        </article>
+        <article>
+            <h2 class="title">
+                Magnetic therapy
+            </h2>
+            <article>
+
+                <img class="physio-pic" th:src="@{/img/magnet-image.jpg}" alt="procedure">
+            </article>
+        </article>
+        <article>
+            <h2 class="title">
+                Electrotherapy
+            </h2>
+            <article>
+
+                <img class="physio-pic" th:src="@{/img/electrotherapy-new.jpg}" alt="procedure">
+            </article>
+        </article>
+        <article>
+            <h2 class="title">
+                Ultrasound therapy
+            </h2>
+            <article>
+
+                <img class="physio-pic" th:src="@{/img/ultrasound.jpg}" alt="procedure">
+            </article>
+        </article>
+    </section>
+</main>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
+</body>
+</html>

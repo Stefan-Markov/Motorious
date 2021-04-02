@@ -1,0 +1,162 @@
+@import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
+}
+
+html {
+    min-width: 584px;
+    background: black;
+}
+
+
+body {
+
+    margin: 0 auto;
+}
+
+.welcome {
+    padding: 30px;
+    align-items: center;
+    margin: 0 auto;
+    width: 70%;
+    border-bottom: 1px solid black;
+}
+
+.top-border {
+    width: border-box;
+    border-top: 10px solid black;
+    margin-bottom: 20px;
+}
+
+.head-welcome {
+    padding: 30px;
+    text-align: center;
+    background: lightblue;
+    color: white;
+    line-height: 2;
+}
+
+main {
+    background: lightblue;
+    color: black;
+    padding: 30px;
+}
+
+.error {
+    color: red;
+    font-size: 20px;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+
+}
+
+.info-container {
+
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.label-style {
+    text-align: center;
+    color: black;
+    padding-bottom: 8px;
+    font-weight: bold;
+}
+
+.input-style {
+    padding-left: 20px;
+    width: 400px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.input-style::placeholder {
+    padding-left: 10px;
+    color: grey;
+}
+
+.p-style {
+    margin-top: 6px;
+    border-radius: 10px;
+    padding: 10px 5px;
+    background: orange;
+    text-align: center;
+}
+
+.button-style {
+    margin-top: 10px;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 20px 40px;
+    color: black;
+    font-weight: bold;
+    background: orange;
+    font-size: 1.1em;
+
+}
+
+.button-style:hover {
+    font-size: 1.3em;
+    color: white;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.select-title {
+    display: flex;
+    align-items: center;
+}
+
+.image {
+    align-items: center;
+
+    border: 6px solid white;
+    margin: 0 auto;
+    border-image-source: linear-gradient(60deg, orange, white, gold, white, orange, gold);
+    border-image-slice: 1;
+}
+
+.heading-second {
+    margin: 0 auto;
+    width: 600px;
+    font-size: 1.5em;
+    border: 10px solid;
+    border-image-source: linear-gradient(60deg, orange, white, gold, white, orange, gold);
+    border-image-slice: 1;
+}
+
+.flex-item-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.input-validation:invalid {
+    border: 2px solid red;
+}
+
+.input-validation:valid {
+    background: lightblue;
+    border: 2px solid green;
+}
+
+@media screen and (max-width: 1000px ) {
+    * {
+        display: block;
+        font-size: 1em;
+    }
+}

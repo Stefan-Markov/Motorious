@@ -1,0 +1,87 @@
+@import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
+}
+
+html {
+    min-width: 584px;
+    background: black;
+}
+
+body {
+
+    margin: 0 auto;
+}
+
+.main-info {
+    text-align: center;
+    line-height: 3;
+    padding: 5px;
+}
+
+
+.main-content {
+    padding: 30px;
+    border-top: 10px solid black;
+    background: lightblue;
+    color: black;
+    border-bottom: 10px solid black;
+}
+
+
+.info-pic {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    text-align: center;
+}
+
+.exercise {
+    width: auto;
+    height: auto;
+    padding: 20px;
+}
+
+.exercise-heading {
+    font-weight: bold;
+}
+
+.exercise > p {
+    padding-bottom: 10px;
+}
+
+.pic-size {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.exercise-info {
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 1000px ) {
+    * {
+        display: block;
+        font-size: 1em;
+    }
+
+    .info-pic {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+    }
+
+    .pic-size {
+        margin: 0 auto;
+    }
+}

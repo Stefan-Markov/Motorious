@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_view_all_clients.css}">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <title>Title</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation"></header>
+<section class="static-info">
+    <h2>Profiles of all your clients</h2>
+    <p th:text="|Total count of clients: ${size}|">Total count of clients:</p>
+</section>
+<main>
+    <section th:each="c : ${viewAllClients}" class="user-info">
+        <img th:src="*{c.imageUrl}" class="pic-style">
+        <section  class="background-info">
+            <p th:text="|First name: *{c.firstName}|">First name</p>
+            <p th:text="|Last name: *{c.lastName}|">Last name</p>
+            <p th:text="|Username: *{c.username}|">Username</p>
+            <p th:text="|Email: *{c.email}|">Email:</p>
+            <p th:text="|Active from:  *{c.createdDate.toString().substring(0,10)}|">Active from: </p>
+            <p><a th:href="@{/client/info/{username}(username = ${c.username})}"><i
+                    class="fas fa-arrow-circle-right"> </i>Check treatment and measurement</a></p>
+        </section>
+    </section>
+</main>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
+</body>
+</html>

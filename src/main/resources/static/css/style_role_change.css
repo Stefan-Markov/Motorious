@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
+}
+
+html {
+    min-width: 584px;
+    background: black;
+}
+
+body {
+
+    margin: 0 auto;
+}
+
+.wrap-change {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 2;
+    padding: 50px;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    background: lightblue;
+    min-height: 60vh;
+}
+
+.wise {
+    border-bottom: 1px solid black;
+}
+
+label {
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+
+.first {
+    margin-left: 20px;
+}
+
+select {
+    border-radius: 30px;
+    padding-left: 30px;
+    width: 300px;
+    height: 70px;
+    font-size: 1.1em;
+    margin: 30px;
+    border: 3px solid black;
+}
+
+.action {
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.username-enter {
+    border: 3px solid black;
+    width: 500px;
+    height: 60px;
+    border-radius: 30px;
+    padding-left: 30px;
+    font-size: 1.1em;
+}
+
+button {
+    padding: 20px 40px;
+    background: orange;
+    color: white;
+    border: 3px solid white;
+    border-radius: 30px;
+    font-size: 1.3em;
+}
+
+select {
+    padding-left: 50px;
+    width: 400px;
+    margin-left: 50px;
+}
+
+button:hover {
+    background: white;
+    color: orange;
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+
+.error {
+    color: red;
+}
+
+.input-validation:invalid {
+    border: 2px solid red;
+}
+
+.input-validation:valid {
+    background: lightblue;
+    border: 2px solid green;
+}
+
+.p-style {
+
+    margin: 5px auto;
+    text-align: center;
+
+    border-radius: 10px;
+    padding: 5px 5px;
+    background: orange;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+button:hover{
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 680px ) {
+    * {
+        display: block;
+        font-size: 1em;
+    }
+
+    .username-enter {
+        width: 90vw;
+    }
+}

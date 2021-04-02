@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" th:href="@{/css/style_measurements_logs.css}">
+
+    <title>Logs</title>
+</head>
+<header th:include="/fragment/source :: navigation"></header>
+<body>
+<h2>Measurement logs from users.</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Number</th>
+        <th>Username and full name</th>
+        <th>Action</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="l,iter : ${logs}">
+        <td th:text="|${iter.index+1}|"></td>
+        <td th:text="|${l.user}|"></td>
+        <td th:text="|${l.action}| "></td>
+        <td th:text="|${l.dateTime.toString().substring(0,16).replace('T',' ')}| "></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
+</html>

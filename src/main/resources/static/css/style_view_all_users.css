@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
+html, * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
+}
+
+html {
+    min-width: 500px;
+    background: black;
+}
+
+
+body {
+    margin: 0 auto;
+}
+
+.static-info {
+    font-size: 1.3em;
+    border-top: 10px solid black;
+    text-align: center;
+    padding-top: 50px;
+    margin: 0 auto;
+    background: lightblue;
+}
+
+main {
+    background: linear-gradient(to right, lightblue, black);
+
+    border-bottom: 10px solid black;
+    background: lightblue;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.user-info {
+    align-content: center;
+    margin: 10px;
+    line-height: 2;
+    padding: 30px;
+    border-style: solid;
+    border-width: 5px;
+    border-image: linear-gradient(
+            to bottom,
+            whitesmoke,
+            rgba(0, 0, 0, 0)
+    ) 1 100%;
+    border-radius: 30px;
+}
+
+#piechart {
+    margin: 10px auto;
+    font-size: 1.3em;
+}
+
+.background-info {
+    align-items: center;
+    width: 200px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 3px solid white;
+    border-radius: 30px;
+    background: whitesmoke;
+}
+
+.pic-style {
+    margin: 0 auto;
+    align-items: center;
+    width: 260px;
+    height: 260px;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 900px ) {
+    main {
+        display: block;
+        font-size: 1em;
+    }
+
+}
+
+@media screen and (max-width: 540px ) {
+    .pic-style {
+        display: none;
+
+    }
+}

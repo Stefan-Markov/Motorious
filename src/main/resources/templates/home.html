@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_home.css}">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <script src="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.js"
+            integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.css"
+          integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w"
+          crossorigin="anonymous">
+    <title>Motorious</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation">
+
+</header>
+<main>
+    <a class="stone" href="mailto:headquaters@motorious.io"><i class="fas fa-mail-bulk"></i>write us</a>
+    <h2 class="name-person" th:text="|Hello, ${user}|">Hello,...</h2>
+    <section class="wrap-calendar">
+        <img class="image" th:src="${image}" alt="Picture" width="250px" height="250px"
+             style="margin-left: 65px;">
+        <img class="image logo" th:src="@{/img/Logo.png}" alt="Logo" width="550px" height="320px">
+        <div class="auto-jsCalendar"></div>
+    </section>
+    <section class="wrap-action">
+        <aside>
+            <h2><span class="a">A</span>ction panel</h2>
+            <ul class="ul-action">
+                <li class="action-hover">
+                    <a th:href="@{/}"><i class="fas fa-arrow-circle-right"></i>Info page</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
+                    <a th:href="@{/profile/edit/{username}(username = ${user})}"><i
+                            class="fas fa-arrow-circle-right"></i>Profile</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
+                    <a th:href="@{/info/blog}"><i
+                            class="fas fa-arrow-circle-right"></i>View blogs</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
+                    <a th:href="@{/blog/add-blog}"><i class="fas fa-arrow-circle-right"></i>Add blog</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
+                    <a th:href="@{/measurement/add}"><i class="fas fa-arrow-circle-right"></i>Add measurement</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
+                    <a th:href="@{/treatment/add}"><i class="fas fa-arrow-circle-right"></i>Add treatment</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
+                    <a th:href="@{/role/role-change}"><i class="fas fa-arrow-circle-right"></i>Change role</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
+                    <a th:href="@{/role/role-downgrade}"><i class="fas fa-arrow-circle-right"></i>Downgrade role</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
+                    <a th:href="@{/client/all/(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>View your
+                        clients</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
+                    <a th:href="@{/treatment/check/(username = ${user})}"><i
+                            class="fas fa-arrow-circle-right"></i>Check treatment</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
+                    <a th:href="@{/measurement/check/(username = ${user})}"><i
+                            class="fas fa-arrow-circle-right"></i>Check measurement</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
+                    <a th:href="@{/user/all-users}"><i class="fas fa-arrow-circle-right"></i>View all users</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
+                    <a th:href="@{/user/delete-user}"><i class="fas fa-arrow-circle-right"></i>Delete user</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
+                    <a th:href="@{/measurement/logs}"><i class="fas fa-arrow-circle-right"></i>Measurement activity</a>
+                </li>
+            </ul>
+        </aside>
+        <article>
+            <img class="home-pic" th:src="@{img/index.jpeg}" alt="home pic">
+        </article>
+    </section>
+    <div th:include="/fragment/source :: benefit"></div>
+</main>
+<div th:include="/fragment/source :: footer"></div>
+
+</body>
+
+</html>
