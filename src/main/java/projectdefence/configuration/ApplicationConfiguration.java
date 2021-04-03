@@ -1,4 +1,4 @@
-package projectdefence.appConfig;
+package projectdefence.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.EnableCaching;
