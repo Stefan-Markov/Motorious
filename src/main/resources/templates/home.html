@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <th:block th:include="/fragment/source :: favicon"> </th:block>
+    <th:block th:include="/fragment/source :: favicon"></th:block>
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_home.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
@@ -20,7 +20,7 @@
 <header th:include="/fragment/source :: navigation">
 </header>
 <main>
-    <a class="stone" href="mailto:headquaters@motorious.io"><i class="fas fa-mail-bulk"></i>write us</a>
+    <a class="stone" href="mailto:motorious.headquarters@gmail.com"><i class="fas fa-mail-bulk"></i>write us</a>
     <h2 class="name-person" th:text="|Hello, ${user}|">Hello,...</h2>
     <section class="wrap-calendar">
         <img class="image" th:src="${image}" alt="Picture" width="250px" height="250px"

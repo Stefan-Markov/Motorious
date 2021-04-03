@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <th:block th:include="/fragment/source :: favicon"> </th:block>
+    <th:block th:include="/fragment/source :: favicon"></th:block>
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
@@ -12,7 +12,6 @@
 <body>
 <main>
     <header th:include="/fragment/source :: navigation">
-
     </header>
     <div class="div-main">
         <h2>
@@ -21,6 +20,10 @@
         <h1 class="name">
             Motorious
         </h1>
+        <h3 class="years">For over
+            <strong>28</strong>
+            years people have entrusted their health to us.
+        </h3>
         <h2>
             Our mission is yours full recovery.
         </h2>
@@ -54,6 +57,5 @@
 
     <div th:include="/fragment/source :: footer"></div>
 </main>
-
 </body>
 </html>

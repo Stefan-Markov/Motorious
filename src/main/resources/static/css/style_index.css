@@ -34,6 +34,9 @@ body {
     animation: pulse 5s infinite;
 }
 
+.years{
+    color: darkgoldenrod;
+}
 @keyframes pulse {
     0% {
         color: white;
