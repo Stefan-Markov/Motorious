@@ -1,5 +1,5 @@
-function moveMap(map){
-    map.setCenter({lat:42.69586549728161, lng:23.329053326199812});
+function moveMap(map) {
+    map.setCenter({lat: 42.69586549728161, lng: 23.329053326199812});
     map.setZoom(14);
 }
 
@@ -9,8 +9,8 @@ var platform = new H.service.Platform({
 var defaultLayers = platform.createDefaultLayers();
 
 var map = new H.Map(document.getElementById('center'),
-    defaultLayers.vector.normal.map,{
-        center: {lat:50, lng:5},
+    defaultLayers.vector.normal.map, {
+        center: {lat: 50, lng: 5},
         zoom: 12,
         pixelRatio: window.devicePixelRatio || 1
     });

@@ -1,4 +1,4 @@
-package projectdefence.appConfig;
+package projectdefence.configuration;
 
 import com.cloudinary.Cloudinary;
 import org.springframework.beans.factory.annotation.Value;

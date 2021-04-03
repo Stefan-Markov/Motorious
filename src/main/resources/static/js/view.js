@@ -1,5 +1,6 @@
 function initMap() {
     // The location of Uluru
+    // Motorious center location
     const uluru = { lat: 42.69586549728161, lng: 23.329053326199812 };
     // 42.69586549728161, 23.329053326199812
     // The map, centered at Uluru

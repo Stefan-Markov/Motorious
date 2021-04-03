@@ -99,7 +99,32 @@ body {
     justify-content: space-around;
     flex-direction: row;
     list-style: none;
+}
 
+.qr {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.codes {
+    margin-top: 5px;
+    padding: 20px;
+    width: 160px;
+    height: 160px;
+}
+
+.qr-inner {
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.qr-inner > div {
+    color: darkgoldenrod;
+    font-weight: bolder;
 }
 
 .benefit-kt-li > a {
@@ -132,6 +157,7 @@ body {
 
     .name {
         font-size: 1.2em;
+        animation: none;
     }
 
     .benefit-kt {

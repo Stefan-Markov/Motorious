@@ -83,6 +83,16 @@
         </aside>
         <article>
             <img class="home-pic" th:src="@{img/index.jpeg}" alt="home pic">
+            <section class="qr">
+                <section class="qr-inner">
+                    <div>Scan to navigate to our address.</div>
+                    <img class="codes" th:src="@{/img/QR_code_address.png}" alt="address">
+                </section>
+                <section class="qr-inner">
+                    <div>Scan to make a call to us</div>
+                    <img class="codes" th:src="@{/img/QR_code_phone.png}" alt="phone">
+                </section>
+            </section>
         </article>
     </section>
     <div th:include="/fragment/source :: benefit"></div>

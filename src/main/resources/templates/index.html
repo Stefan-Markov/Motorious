@@ -27,7 +27,6 @@
         </h2>
     </div>
     <div class="info">
-
         <h3 class="info-title">If you have a recent musculoskeletal disease or injury you are in the right place.</h3>
         <p class="info-start">Here you can:</p>
         <ul class="info-list">
@@ -41,6 +40,16 @@
                 <i class="fas fa-star"></i> Read our blog with news written especially by our professionals.
             </li>
         </ul>
+        <section class="qr">
+            <section class="qr-inner">
+                <div>Scan to navigate to our address.</div>
+                <img class="codes" th:src="@{/img/QR_code_address.png}" alt="address">
+            </section>
+            <section class="qr-inner">
+                <div>Scan to make a call to us</div>
+                <img class="codes" th:src="@{/img/QR_code_phone.png}" alt="phone">
+            </section>
+        </section>
     </div>
     <div th:include="/fragment/source :: benefit"></div>
 

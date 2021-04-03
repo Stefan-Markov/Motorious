@@ -34,7 +34,7 @@ public interface UserService {
 
     UserWrapInfoViewModel findProfileByUserName(String username);
 
-    boolean editProfile(UserServiceModel userServiceModel, String username) throws IOException;
+    boolean editProfile(UserServiceModel userServiceModel, String username);
 
     UserViewModel findByUsernameUser(String username);
 
