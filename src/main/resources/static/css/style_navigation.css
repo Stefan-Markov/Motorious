@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
 html {
     background: black;
 }
@@ -69,5 +70,9 @@ html {
     * {
         display: block;
         font-size: 1em;
+    }
+
+    .navigation ul li a {
+        padding: 5px 10px;
     }
 }

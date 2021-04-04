@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <th:block th:include="/fragment/source :: favicon"> </th:block>
+    <th:block th:include="/fragment/source :: favicon"></th:block>
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
@@ -16,14 +16,14 @@
 <table>
     <thead>
     <tr>
-        <th>Number</th>
-        <th>Username and full name</th>
-        <th>Action</th>
-        <th>Date</th>
+        <th><i class="fas fa-sort-numeric-down"></i> Number</th>
+        <th><i class="fas fa-users"></i> Username and full name</th>
+        <th><i class="fas fa-bullseye"></i> Action</th>
+        <th><i class="far fa-calendar-alt"></i> Date</th>
     </tr>
     </thead>
     <tbody>
-    <tr  th:each="l,iter : ${logs}">
+    <tr th:each="l,iter : ${logs}">
         <td th:text="|${iter.index+1}|"></td>
         <td th:text="|${l.user}|"></td>
         <td th:text="|${l.action}| "></td>

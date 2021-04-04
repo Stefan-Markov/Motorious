@@ -34,9 +34,10 @@ body {
     animation: pulse 5s infinite;
 }
 
-.years{
+.years {
     color: darkgoldenrod;
 }
+
 @keyframes pulse {
     0% {
         color: white;
@@ -166,5 +167,9 @@ body {
     .benefit-kt {
         display: block;
         font-size: 1em;
+    }
+
+    .benefit-kt-li > a {
+        padding: 10px;
     }
 }

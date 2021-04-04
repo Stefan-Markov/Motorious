@@ -28,7 +28,7 @@
 
         <section class="wrap-info">
             <article>
-                <p class="title">Username</p>
+                <p class="title"><i class="fas fa-user"></i> Username</p>
                 <label for="username">
                     <p class="p-style" th:if="${userFound}">Username don't exist!</p>
                     <input th:field="*{username}" class="wrap-info-inside" id="username" type="text"
@@ -39,7 +39,7 @@
             </article>
 
             <article>
-                <p class="title">Disease</p>
+                <p class="title"><i class="fas fa-file-medical-alt"></i> Disease</p>
                 <label for="disease">
                     <input th:field="*{disease}" placeholder="Enter the disease" class="wrap-info-inside" id="disease"
                            type="text">
@@ -49,7 +49,7 @@
             </article>
             <input type="hidden" th:name="nameKt" th:value="${name}">
             <article>
-                <p class="title">Goal</p>
+                <p class="title"><i class="fas fa-bullseye"></i> Goal</p>
                 <label for="goal">
                     <input th:field="*{goal}" placeholder="Enter the search result" class="wrap-info-inside" id="goal"
                            type="text">
@@ -59,7 +59,7 @@
             </article>
 
             <article>
-                <p class="title">Visits</p>
+                <p class="title"><i class="fas fa-file-medical-alt"></i> Visits</p>
                 <label for="visits">
                     <input th:field="*{visits}" placeholder="Visits for a week" class="wrap-info-inside" id="visits"
                            type="number">
@@ -69,7 +69,7 @@
             </article>
 
             <article>
-                <p class="title">Duration</p>
+                <p class="title"><i class="fas fa-clock"></i> Duration</p>
                 <label for="duration">
                     <input th:field="*{duration}" placeholder="Total duration in weeks" class="wrap-info-inside"
                            id="duration" type="number">
@@ -79,7 +79,7 @@
             </article>
 
             <article>
-                <p class="title">Content</p>
+                <p class="title"><i class="fas fa-book-open"></i> Content</p>
                 <label for="content">
                     <textarea th:field="*{content}" class="content" id="content"></textarea>
                     <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="p-style">
@@ -88,7 +88,7 @@
             </article>
 
 
-            <button type="submit">Send</button>
+            <button type="submit"><i class="fas fa-plus"></i> Send</button>
         </section>
     </form>
 </main>
