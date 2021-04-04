@@ -25,7 +25,6 @@ public class LogServiceImpl implements LogService {
 
     public LogServiceImpl(LogRepository logRepository, UserService userService, ModelMapper modelMapper) {
         this.logRepository = logRepository;
-
         this.userService = userService;
         this.modelMapper = modelMapper;
     }

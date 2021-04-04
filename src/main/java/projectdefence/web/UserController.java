@@ -19,14 +19,12 @@ import projectdefence.service.UserService;
 import javax.validation.Valid;
 
 
-
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
     private final ModelMapper modelMapper;
     private final UserService userService;
-
 
     public UserController(ModelMapper modelMapper, UserService userService) {
         this.modelMapper = modelMapper;
@@ -42,7 +40,6 @@ public class UserController {
         }
         return "registration";
     }
-
 
     @PostMapping("/registration")
     public String registerConfirm(@Valid @ModelAttribute UserRegisterBindingModel userRegisterBindingModel,

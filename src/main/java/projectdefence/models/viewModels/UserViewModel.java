@@ -1,14 +1,11 @@
 package projectdefence.models.viewModels;
 
 
-
 public class UserViewModel {
 
     private String firstName;
     private String lastName;
     private String username;
-
-
 
     public UserViewModel() {
     }

@@ -11,6 +11,4 @@ public interface LoggerService {
 
      void logDelete(UserDeleteEvent userDeleteEvent) throws IOException;
 
-
-
 }

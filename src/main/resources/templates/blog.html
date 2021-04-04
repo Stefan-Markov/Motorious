@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <th:block th:include="/fragment/source :: favicon"> </th:block>
+    <th:block th:include="/fragment/source :: favicon"></th:block>
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
@@ -33,20 +33,19 @@
     <section class="blog-content">
         <th:block th:each="blog, iter : ${blogViewModels}">
             <section class="single-content">
-                <p class="blog-title">Title</p>
+                <p class="blog-title"><i class="fas fa-text-height"></i> Title</p>
                 <h5 th:text="*{blog.title}" class="blog-content-head left-padd">
                     Good tips for recovery of immobilized leg after injury
                 </h5>
-                <article>Content</article>
+                <article><i class="fas fa-file-alt"></i> Content</article>
                 <p th:text="*{blog.content}" class="left-padd"></p>
-                <p th:text="|Date added: *{blog.date}|" class="date-added">Date added: <span>01.03.2021</span></p>
-                <p th:text="|Author: *{blog.author}|" class="date-added">Author: <span>Someone one</span></p>
-                <p th:text="|Identification code: *{blog.id}|" class="date-added">Identification code:
-                    <span>one</span></p>
+                <p th:text="|Date added: *{blog.date}|" class="date-added"></p>
+                <p th:text="|Author: *{blog.author}|" class="date-added"></p>
+                <p th:text="|Identification code: *{blog.id}|" class="date-added"></p>
                 <ul>
                     <li class="delete-blog" sec:authorize="hasRole('ROLE_ADMIN')">
                         <a th:href="@{/blog/delete/{id}(id = *{blog.id})}" type="button"
-                        >Delete blog</a>
+                        ><i class="fas fa-trash"></i> Delete blog</a>
                     </li>
                 </ul>
 

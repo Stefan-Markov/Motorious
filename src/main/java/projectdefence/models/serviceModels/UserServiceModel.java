@@ -12,7 +12,6 @@ public class UserServiceModel {
     private String username;
     private String email;
     private String password;
-
     private String title;
     private MultipartFile image;
     private Set<RoleServiceModel> authorities;

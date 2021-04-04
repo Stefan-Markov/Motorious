@@ -14,7 +14,6 @@ public class LogAspect {
 
     private final LogService logService;
 
-
     public LogAspect(LogService logService) {
         this.logService = logService;
     }

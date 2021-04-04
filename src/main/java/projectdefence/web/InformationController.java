@@ -38,10 +38,9 @@ public class InformationController {
     @GetMapping("/blog")
     public String blog(Model model) {
         if (!model.containsAttribute("blogViewModels")) {
-            model.addAttribute("size",this.blogService.findFirst120Blogs().size());
+            model.addAttribute("size", this.blogService.findFirst120Blogs().size());
             model.addAttribute("blogViewModels", this.blogService.findFirst120Blogs());
         }
         return "blog";
     }
-
 }

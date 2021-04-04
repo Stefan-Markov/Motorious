@@ -23,7 +23,6 @@ public class ClientController {
     private final TreatmentService treatmentService;
     private final MeasurementService measurementService;
 
-
     public ClientController(UserService userService,
                             TreatmentService treatmentService,
                             MeasurementService measurementService) {

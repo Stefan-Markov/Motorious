@@ -14,6 +14,9 @@ public class UserWrapInfoViewModel {
     private LocalDateTime createdDate;
     private String imageUrl;
 
+    public UserWrapInfoViewModel() {
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -21,9 +24,6 @@ public class UserWrapInfoViewModel {
     public UserWrapInfoViewModel setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
-    }
-
-    public UserWrapInfoViewModel() {
     }
 
     public String getFirstName() {

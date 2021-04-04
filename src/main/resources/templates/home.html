@@ -33,51 +33,63 @@
             <h2><span class="a">A</span>ction panel</h2>
             <ul class="ul-action">
                 <li class="action-hover">
-                    <a th:href="@{/}"><i class="fas fa-arrow-circle-right"></i>Info page</a>
+                    <a th:href="@{/}"><i class="fas fa-arrow-circle-right"></i><i class="fas fa-info"></i> Info page</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
                     <a th:href="@{/profile/edit/{username}(username = ${user})}"><i
-                            class="fas fa-arrow-circle-right"></i>Profile</a>
+                            class="fas fa-arrow-circle-right"></i><i class="fas fa-id-badge"></i> Profile</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
                     <a th:href="@{/info/blog}"><i
-                            class="fas fa-arrow-circle-right"></i>View blogs</a>
+                            class="fas fa-arrow-circle-right"></i><i class="fas fa-book"></i> View blogs</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/blog/add-blog}"><i class="fas fa-arrow-circle-right"></i>Add blog</a>
+                    <a th:href="@{/blog/add-blog}"><i class="fas fa-arrow-circle-right"></i><i class="fas fa-pen"></i>
+                        Add blog</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/measurement/add}"><i class="fas fa-arrow-circle-right"></i>Add measurement</a>
+                    <a th:href="@{/measurement/add}"><i class="fas fa-arrow-circle-right"></i><i class="fas fa-pen"></i>
+                        Add measurement</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/treatment/add}"><i class="fas fa-arrow-circle-right"></i>Add treatment</a>
+                    <a th:href="@{/treatment/add}"><i class="fas fa-arrow-circle-right"></i><i class="fas fa-pen"></i>
+                        Add treatment</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
-                    <a th:href="@{/role/role-change}"><i class="fas fa-arrow-circle-right"></i>Change role</a>
+                    <a th:href="@{/role/role-change}"><i class="fas fa-arrow-circle-right"></i><i
+                            class="fas fa-user-shield"></i> Change role</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
-                    <a th:href="@{/role/role-downgrade}"><i class="fas fa-arrow-circle-right"></i>Downgrade role</a>
+                    <a th:href="@{/role/role-downgrade}"><i class="fas fa-arrow-circle-right"></i><i
+                            class="fas fa-user-shield"></i> Downgrade role</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
-                    <a th:href="@{/client/all/(username = ${user})}"><i class="fas fa-arrow-circle-right"></i>View your
+                    <a th:href="@{/client/all/(username = ${user})}"><i class="fas fa-arrow-circle-right"></i><i
+                            class="fas fa-users"></i>
+                        View your
                         clients</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
                     <a th:href="@{/treatment/check/(username = ${user})}"><i
-                            class="fas fa-arrow-circle-right"></i>Check treatment</a>
+                            class="fas fa-arrow-circle-right"></i><i class="fas fa-file-medical-alt"></i> Check
+                        treatment</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" class="action-hover">
                     <a th:href="@{/measurement/check/(username = ${user})}"><i
-                            class="fas fa-arrow-circle-right"></i>Check measurement</a>
+                            class="fas fa-arrow-circle-right"></i><i class="fas fa-file-medical-alt"></i> Check
+                        measurement</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
-                    <a th:href="@{/user/all-users}"><i class="fas fa-arrow-circle-right"></i>View all users</a>
+                    <a th:href="@{/user/all-users}"><i class="fas fa-arrow-circle-right"></i><i
+                            class="fas fa-users"></i> View all users</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
-                    <a th:href="@{/user/delete-user}"><i class="fas fa-arrow-circle-right"></i>Delete user</a>
+                    <a th:href="@{/user/delete-user}"><i class="fas fa-arrow-circle-right"></i><i
+                            class="fas fa-user-alt-slash"></i> Delete user</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
-                    <a th:href="@{/measurement/logs}"><i class="fas fa-arrow-circle-right"></i>Measurement activity</a>
+                    <a th:href="@{/measurement/logs}"><i class="fas fa-arrow-circle-right"></i><i
+                            class="fas fa-passport"></i> Measurement activity</a>
                 </li>
             </ul>
         </aside>
@@ -85,11 +97,11 @@
             <img class="home-pic" th:src="@{img/index.jpeg}" alt="home pic">
             <section class="qr">
                 <section class="qr-inner">
-                    <div>Scan to navigate to our address.</div>
+                    <div>Scan to navigate to our address. <i class="fas fa-map-marked"></i></div>
                     <img class="codes" th:src="@{/img/QR_code_address.png}" alt="address">
                 </section>
                 <section class="qr-inner">
-                    <div>Scan to make a call to us</div>
+                    <div>Scan to make a call to us <i class="fas fa-phone-square"></i></div>
                     <img class="codes" th:src="@{/img/QR_code_phone.png}" alt="phone">
                 </section>
             </section>

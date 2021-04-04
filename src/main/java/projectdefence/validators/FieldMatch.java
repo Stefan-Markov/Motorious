@@ -12,11 +12,13 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = FieldMatchValidator.class)
 public @interface FieldMatch {
 
-  String message() default "Password fields should match!";
+    String message() default "Password fields should match!";
 
-  String first();
-  String second();
+    String first();
 
-  Class<?>[] groups() default { };
-  Class<? extends Payload>[] payload() default { };
+    String second();
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <th:block th:include="/fragment/source :: favicon"> </th:block>
+    <th:block th:include="/fragment/source :: favicon"></th:block>
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
@@ -15,7 +15,7 @@
 <main>
     <h2 class="name-title">Add blog </h2>
     <form th:object="${addBlogBindingModel}" th:action="@{/blog/add-blog}" method="POST">
-        <p>Title</p>
+        <p class="blog-info"><i class="fas fa-text-height"></i> Title</p>
         <label>
             <input th:field="*{title}" class="title-name" type="text">
             <br>
@@ -23,7 +23,7 @@
             <br>
         </label>
 
-        <p>Content</p>
+        <p class="blog-info"><i class="fas fa-file-alt"></i> Content</p>
         <label>
             <textarea th:field="*{content}" class="content-blog"></textarea>
             <br>
@@ -32,7 +32,7 @@
             <br>
         </label>
 
-        <button class="button-style" type="submit">Submit content</button>
+        <button class="button-style" type="submit"><i class="fas fa-pen-square"></i> Submit content</button>
     </form>
 </main>
 <div th:include="/fragment/source :: benefit"></div>

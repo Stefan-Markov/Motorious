@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <th:block th:include="/fragment/source :: favicon"> </th:block>
+    <th:block th:include="/fragment/source :: favicon"></th:block>
     <link rel="stylesheet" th:href="@{/css/style_registration.css}">
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
@@ -27,13 +27,13 @@
             </section>
         </section>
         <section class="head-welcome">
-            <h2>If you want to change your profile, enter full info below:</h2>
+            <h2>If you want to change your profile <i class="fas fa-retweet"></i> , enter full info below:</h2>
         </section>
         <section th:object="${editProfileBindingModel}" class="user-details">
             <p th:if="${isFallback}">Enter information properly again to edit your profile</p>
             <div class="info-container">
                 <article class="label-style">
-                    <label for="inputFirstName">Change first name</label>
+                    <label for="inputFirstName"><i class="fas fa-user-edit"></i> Change first name</label>
                 </article>
                 <article>
                     <input required minlength="3" maxlength="50" th:field="${editProfileBindingModel.firstName}"
@@ -51,7 +51,7 @@
 
             <div class="info-container">
                 <article class="label-style">
-                    <label for="inputLastName">Change last name </label>
+                    <label for="inputLastName"><i class="fas fa-user-edit"></i> Change last name </label>
                 </article>
                 <article>
                     <input required minlength="3" maxlength="50" th:field="${editProfileBindingModel.lastName}"
@@ -66,13 +66,13 @@
             </div>
 
             <div class="info-container">
-                <label class="label-style" for="image">Change picture (Only if you want)</label>
+                <label class="label-style" for="image"><i class="fas fa-portrait"></i> Change picture (Only if you want)</label>
                 <input class="input-style" type="file" id="image" name="image">
             </div>
 
             <div class="info-container">
                 <article class="label-style">
-                    <label for="inputEmail">Change email </label>
+                    <label for="inputEmail"><i class="fas fa-envelope-open-text"></i> Change email </label>
                 </article>
                 <article>
                     <input required minlength="3" maxlength="50" th:field="${editProfileBindingModel.email}"
@@ -89,7 +89,7 @@
 
             <div class="info-container">
                 <article class="label-style">
-                    <label for="inputPassword">Change password</label>
+                    <label for="inputPassword"><i class="fas fa-user-lock"></i> Change password</label>
                 </article>
                 <article>
                     <input required minlength="6" maxlength="50" th:field="${editProfileBindingModel.password}"
@@ -105,7 +105,7 @@
 
             <div class="info-container">
                 <article class="label-style">
-                    <label for="inputPasswordConfirm">Confirm password </label>
+                    <label for="inputPasswordConfirm"><i class="fas fa-user-lock"></i> Confirm password </label>
                 </article>
                 <article>
                     <input required minlength="6" maxlength="50" th:field="${editProfileBindingModel.confirmPassword}"
@@ -114,7 +114,7 @@
                            placeholder="Enter valid password">
                 </article>
             </div>
-            <button class="button-style" type="submit">Submit change</button>
+            <button class="button-style" type="submit"><i class="fas fa-retweet"></i> Submit change</button>
         </section>
     </form>
 </main>

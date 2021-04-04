@@ -14,7 +14,6 @@ import java.util.Map;
 @Configuration
 public class CloudConfig {
 
-
     @Value("${cloudinary.cloud-name}")
     private String cloudName;
     @Value("${cloudinary.api-key}")

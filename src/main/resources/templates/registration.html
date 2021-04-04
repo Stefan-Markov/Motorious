@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <th:block th:include="/fragment/source :: favicon"> </th:block>
+    <th:block th:include="/fragment/source :: favicon"></th:block>
     <link rel="stylesheet" th:href="@{/css/style_registration.css}">
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
@@ -23,14 +23,14 @@
         </section>
         <section class="user-details">
 
-            <h5 th:if="${isExists}" class="error">User already exists.</h5>
-            <h5 th:if="${notSame}" class="error">Password fields do not match.</h5>
+            <h5 th:if="${isExists}" class="error"><i class="fas fa-users-cog"></i> User already exists.</h5>
+            <h5 th:if="${notSame}" class="error"><i class="fas fa-times"></i> Password fields do not match.</h5>
 
             <section class="user-inputs">
 
                 <div class="info-container">
                     <article class="label-style">
-                        <label for="inputFirstName">First Name</label>
+                        <label for="inputFirstName"><i class="fas fa-user"></i> First Name</label>
                     </article>
                     <article>
                         <input required minlength="3" maxlength="50"
@@ -39,16 +39,14 @@
                                placeholder="Enter First Name">
                     </article>
                     <article>
-                        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="p-style">First name
-                            length must be more than 6
-                            characters
+                        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="p-style">
                         </p>
                     </article>
                 </div>
 
                 <div class="info-container">
                     <article class="label-style">
-                        <label for="inputLastName">Last Name</label>
+                        <label for="inputLastName"><i class="fas fa-user"></i> Last Name</label>
                     </article>
                     <article>
                         <input required minlength="3" maxlength="50"
@@ -62,7 +60,7 @@
                 </div>
                 <div class="info-container">
                     <article class="label-style">
-                        <label for="inputUsername">Username</label>
+                        <label for="inputUsername"><i class="fas fa-user"></i> Username</label>
                     </article>
                     <article>
                         <input required minlength="3" maxlength="50"
@@ -76,7 +74,8 @@
                 </div>
 
                 <div class="info-container">
-                    <label for="title" class="label-style">Select Title from the dropdown</label>
+                    <label for="title" class="label-style"><i class="fas fa-user"></i> Select Title from the
+                        dropdown</label>
                     <select required class="input-style" name="title" id="title">
                         <option selected value="client">Client</option>
                         <option value="kinesitherapist">Kinesitherapist</option>
@@ -84,13 +83,14 @@
                 </div>
 
                 <div class="info-container">
-                    <label class="label-style" for="image">Add Picture (If you want)</label>
+                    <label class="label-style" for="image"><i class="fas fa-portrait"></i> Add Picture (If you
+                        want)</label>
                     <input th:field="*{image}" class="input-style" type="file" id="image" name="image">
                 </div>
 
                 <div class="info-container">
                     <article class="label-style">
-                        <label for="inputEmail">Email</label>
+                        <label for="inputEmail"><i class="fas fa-envelope"></i> Email</label>
                     </article>
                     <article>
                         <input required th:field="*{email}" class="input-style input-validation" name="email"
@@ -105,7 +105,7 @@
 
                 <div class="info-container">
                     <article class="label-style">
-                        <label for="inputPassword">Password</label>
+                        <label for="inputPassword"><i class="fas fa-user-shield"></i> Password</label>
                     </article>
                     <article>
                         <input required minlength="6" maxlength="50" th:field="*{password}"
@@ -121,7 +121,7 @@
 
                 <div class="info-container">
                     <article class="label-style">
-                        <label for="inputPasswordConfirm">Confirm password</label>
+                        <label for="inputPasswordConfirm"><i class="fas fa-user-shield"></i> Confirm password</label>
                     </article>
                     <article>
                         <input required minlength="6" maxlength="50" th:field="*{confirmPassword}"
@@ -137,7 +137,7 @@
                 </div>
 
             </section>
-            <button class="button-style" type="submit">Register</button>
+            <button class="button-style" type="submit"><i class="fas fa-sign-in-alt"></i> Register</button>
         </section>
     </form>
 </main>

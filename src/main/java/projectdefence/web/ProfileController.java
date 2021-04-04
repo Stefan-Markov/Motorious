@@ -47,7 +47,7 @@ public class ProfileController {
     @PreAuthorize("#username ==  authentication.name")
     public String profileUserConfirm(@PathVariable(name = "username") String username,
                                      @Valid @ModelAttribute EditProfileBindingModel editProfileBindingModel,
-                                     BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
+                                     BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("editProfileBindingModel", editProfileBindingModel);

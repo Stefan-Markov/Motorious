@@ -6,6 +6,17 @@ import java.time.LocalDate;
 public class TreatmentViewModel {
 
     private String id;
+    private String disease;
+    private LocalDate dateAdded;
+    private String createdBy;
+    private Double duration;
+    private Integer visits;
+    private String content;
+    private String goal;
+    private String KtFullName;
+
+    public TreatmentViewModel() {
+    }
 
     public String getId() {
         return id;
@@ -16,15 +27,6 @@ public class TreatmentViewModel {
         return this;
     }
 
-    private String disease;
-    private LocalDate dateAdded;
-    private String createdBy;
-    private Double duration;
-    private Integer visits;
-    private String content;
-    private String goal;
-    private String KtFullName;
-
     public String getKtFullName() {
         return KtFullName;
     }
@@ -32,9 +34,6 @@ public class TreatmentViewModel {
     public TreatmentViewModel setKtFullName(String ktFullName) {
         KtFullName = ktFullName;
         return this;
-    }
-
-    public TreatmentViewModel() {
     }
 
     public String getDisease() {

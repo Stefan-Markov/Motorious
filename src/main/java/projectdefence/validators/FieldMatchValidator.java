@@ -8,43 +8,43 @@ import javax.validation.ConstraintValidatorContext;
 
 public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object> {
 
-  private String firstField;
-  private String secondField;
-  private String message;
+    private String firstField;
+    private String secondField;
+    private String message;
 
-  @Override
-  public void initialize(FieldMatch constraintAnnotation) {
-    this.firstField = constraintAnnotation.first();
-    this.secondField = constraintAnnotation.second();
-    this.message = constraintAnnotation.message();
-  }
-
-  @Override
-  public boolean isValid(Object value, ConstraintValidatorContext context) {
-    BeanWrapper beanWrapper = PropertyAccessorFactory.forBeanPropertyAccess(value);
-
-    Object firstFieldValue = beanWrapper.getPropertyValue(firstField);
-    Object secondFieldValue = beanWrapper.getPropertyValue(secondField);
-
-    boolean valid;
-
-    if (firstFieldValue == null) {
-      valid = secondFieldValue == null;
-    } else {
-      valid = firstFieldValue.equals(secondFieldValue);
+    @Override
+    public void initialize(FieldMatch constraintAnnotation) {
+        this.firstField = constraintAnnotation.first();
+        this.secondField = constraintAnnotation.second();
+        this.message = constraintAnnotation.message();
     }
 
-    if (!valid) {
-      context.
-          buildConstraintViolationWithTemplate(message).
-            addPropertyNode(firstField).
-            addConstraintViolation().
-          buildConstraintViolationWithTemplate(message).
-            addPropertyNode(secondField).
-            addConstraintViolation().
-          disableDefaultConstraintViolation();
-    }
+    @Override
+    public boolean isValid(Object value, ConstraintValidatorContext context) {
+        BeanWrapper beanWrapper = PropertyAccessorFactory.forBeanPropertyAccess(value);
 
-    return valid;
-  }
+        Object firstFieldValue = beanWrapper.getPropertyValue(firstField);
+        Object secondFieldValue = beanWrapper.getPropertyValue(secondField);
+
+        boolean valid;
+
+        if (firstFieldValue == null) {
+            valid = secondFieldValue == null;
+        } else {
+            valid = firstFieldValue.equals(secondFieldValue);
+        }
+
+        if (!valid) {
+            context.
+                    buildConstraintViolationWithTemplate(message).
+                    addPropertyNode(firstField).
+                    addConstraintViolation().
+                    buildConstraintViolationWithTemplate(message).
+                    addPropertyNode(secondField).
+                    addConstraintViolation().
+                    disableDefaultConstraintViolation();
+        }
+
+        return valid;
+    }
 }
