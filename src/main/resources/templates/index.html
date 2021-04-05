@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <script th:src="@{/js/view.js}"></script>
     <title>Motorious</title>
 </head>
 <body>
@@ -53,9 +54,16 @@
             </section>
         </section>
     </div>
+    <p class="find-us">Find us in the easiest way</p>
+    <div id="map"></div>
+
     <div th:include="/fragment/source :: benefit"></div>
 
     <div th:include="/fragment/source :: footer"></div>
 </main>
 </body>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly"
+        async
+></script>
 </html>

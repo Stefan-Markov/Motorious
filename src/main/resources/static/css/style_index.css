@@ -153,6 +153,21 @@ body {
     color: darkgoldenrod;
 }
 
+.find-us {
+    color: darkgoldenrod;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    background: lightblue;
+    font-size: 1.3rem;
+    border-bottom: 1px solid darkgoldenrod;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
 @media screen and (max-width: 1000px ) {
     * {
         display: block;

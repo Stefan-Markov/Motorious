@@ -38,6 +38,11 @@ html {
     font-size: 1.3em;
 }
 
+.coryright {
+    margin: 5px;
+    padding: 2px;
+}
+
 .mail {
     padding-left: 3px;
     padding-right: 3px;
@@ -57,5 +62,4 @@ html {
         display: flex;
         flex-direction: column;
     }
-
 }
