@@ -159,8 +159,13 @@ body {
     display: flex;
     justify-content: center;
     background: lightblue;
-    font-size: 1.3rem;
-    border-bottom: 1px solid darkgoldenrod;
+    font-size: 1.4rem;
+    border-bottom: 3px solid darkgoldenrod;
+    margin-bottom: 10px;
+}
+
+.fas {
+    padding-left: 10px;
 }
 
 #map {
