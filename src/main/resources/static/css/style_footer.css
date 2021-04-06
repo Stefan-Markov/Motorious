@@ -6,16 +6,13 @@ html {
 }
 
 .footer {
-
     border-top: 10px solid black;
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 3vh;
     background: lightblue;
-
     padding: 20px 20px;
     color: black;
 

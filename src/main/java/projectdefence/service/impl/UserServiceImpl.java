@@ -72,6 +72,7 @@ public class UserServiceImpl implements UserService {
                 userServiceModel.setAuthorities(new HashSet<>());
 
                 if (userServiceModel.getTitle().equals(KT_TITLE)) {
+                    // for demo use only 
                     userServiceModel.getAuthorities().add(this.roleService.findByAuthority("ROLE_USER"));
                     userServiceModel.getAuthorities().add(this.roleService.findByAuthority("ROLE_KINESITHERAPIST"));
                 } else {

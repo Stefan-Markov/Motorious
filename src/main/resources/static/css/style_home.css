@@ -128,7 +128,6 @@ aside ul li {
 }
 
 .stone {
-    position: -webkit-sticky; /* Safari */
     position: fixed;
     text-decoration: none;
     color: black;
@@ -138,9 +137,10 @@ aside ul li {
     text-align: center;
     width: fit-content;
     height: fit-content;
+    margin-right: 4px;
     top: 150px;
-    right: 6px;
-    padding: 10px;
+    right: 8px;
+    padding: 5px;
     border: 5px solid limegreen;
     border-radius: 15px;
 }
@@ -183,7 +183,7 @@ aside ul li {
     }
 
     .stone {
-        margin-right: 20px;
+        margin-right: 40px;
     }
 
     .wrap-action {
