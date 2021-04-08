@@ -32,6 +32,11 @@ body {
     border-bottom: 10px solid black;
 }
 
+h2 {
+    width: 300px;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+}
 
 .info-pic {
     display: flex;
