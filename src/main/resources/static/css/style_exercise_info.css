@@ -17,6 +17,11 @@ body {
     margin: 0 auto;
 }
 
+h2 {
+    width: 300px;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+}
 .main-info {
     text-align: center;
     line-height: 3;
