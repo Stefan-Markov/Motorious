@@ -216,6 +216,7 @@ public class UserServiceImpl implements UserService {
             }
             user.setFirstName(userServiceModel.getFirstName());
             user.setLastName(userServiceModel.getLastName());
+            user.setEmail(userServiceModel.getEmail());
             user.setPassword(this.bCryptPasswordEncoder.encode(userServiceModel.getPassword()));
 
             this.userRepository.save(user);

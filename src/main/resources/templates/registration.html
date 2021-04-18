@@ -24,7 +24,7 @@
         </section>
         <section class="user-details">
 
-            <h5 th:if="${isExists}" class="error"><i class="fas fa-users-cog"></i> User already exists.</h5>
+            <h5 th:if="${isExists}" class="error"><i class="fas fa-users-cog"></i> Username is already taken.</h5>
             <h5 th:if="${notSame}" class="error"><i class="fas fa-times"></i> Password fields do not match.</h5>
 
             <section class="user-inputs">
