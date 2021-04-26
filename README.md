@@ -3,7 +3,7 @@ Project defence for diploma work.
 Application in general:
 - 11 controllers
 - 9 services
-- 6 indipendent entities
+- 6 independent entities
 - 6 repositories
 - models - binding, view, service
 - Spring Security (prevent SQL injection, CSRF, parameter tampering, secure routes,secure password) 
@@ -24,7 +24,7 @@ Application in general:
 - Spring Schedule tasks
 - MySQL database
 - JPA
-- Clodinary API for picture upload
+- Cloudinary API for picture upload
 - Google API for data visualisation
 - Google API for maps
 - Media queries for responsive design
@@ -38,7 +38,7 @@ Application functionalities:
 - Add, delete measurement
 - Add, delete blog
 - View all users
-- View all clients by kinesiotherapist
+- View all clients by kinesitherapist
 - view all blogs
 - Contact form
 - Update user details
@@ -53,6 +53,6 @@ Application functionalities:
 - Responsive design for smartphones, tablets, laptop, etc.
 - JavaScript calendar 
 
-To try the app, please enter envoriment variables on your IDE for 
+To try the app, please enter environment variables on your IDE for 
 - MySQL username and password
 - Cloudinary credentials
