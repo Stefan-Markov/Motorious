@@ -26,7 +26,7 @@ public class AddBlogBindingModel {
     }
 
     @NotBlank(message = EMPTY_CONTENT)
-    @Length(min = 6, max = 2000, message = INVALID_CONTENT)
+    @Length(min = 6, max = 60000, message = INVALID_CONTENT)
     public String getContent() {
         return content;
     }

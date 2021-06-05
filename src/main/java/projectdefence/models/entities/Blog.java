@@ -39,7 +39,7 @@ public class Blog extends BaseItemsEntity {
         return this;
     }
 
-    @Column(name = "date",nullable = false)
+    @Column(name = "date", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public LocalDate getDate() {
         return date;
@@ -50,7 +50,7 @@ public class Blog extends BaseItemsEntity {
         return this;
     }
 
-    @Column(name = "author" ,nullable = false)
+    @Column(name = "author", nullable = false)
     public String getAuthor() {
         return author;
     }

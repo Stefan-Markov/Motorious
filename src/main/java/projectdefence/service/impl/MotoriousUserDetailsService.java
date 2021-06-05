@@ -34,7 +34,6 @@ public class MotoriousUserDetailsService implements UserDetailsService {
     }
 
     private UserDetails map(User user) {
-
         List<GrantedAuthority> authorities = user.
                 getAuthorities().
                 stream().
