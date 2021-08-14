@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:include="/fragment/source :: favicon"></th:block>
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" th:href="@{/css/style_blog.css}">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script th:src="@{/js/blogFetchDelete.js}" type="module" sec:authorize="hasRole('ROLE_ADMIN')"></script>
+    <title>Motorious</title>
+</head>
+<header th:include="/fragment/source :: navigation">
+
+</header>
+<body>
+<section class="heading-intro">
+    <article class="welcome">
+        <h2 class="name-title">
+            Remove blog
+        </h2>
+    </article>
+    <p>
+        Click on delete button to remove blog
+    </p>
+    <p id="total-size"></p>
+</section>
+<section class="blog-content" id="blog-class">
+
+</section>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
+</body>
+</html>

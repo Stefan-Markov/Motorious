@@ -1,18 +1,12 @@
 package projectdefence.service;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-
-import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
-
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import projectdefence.event.userDeleteEvent.DeleteEventPublisher;
 import projectdefence.event.userRegisterEvent.RegisterEventPublisher;
 import projectdefence.models.entities.Role;
@@ -26,16 +20,16 @@ import projectdefence.repositories.RoleRepository;
 import projectdefence.repositories.UserRepository;
 import projectdefence.service.impl.UserServiceImpl;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class UserServiceTest {
     private UserService userService;
