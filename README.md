@@ -11,6 +11,9 @@ Application in general:
 - Spring Security (prevent SQL injection, CSRF, parameter tampering, secure routes,secure password) 
 - Thymeleaf Security
 - Thymeleaf
+- AJAX
+- Fetch Api 
+- Async, await
 - HTML/CSS
 - JavaScript
 - Spring Events
