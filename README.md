@@ -14,6 +14,7 @@ Application in general:
 - AJAX
 - Fetch Api 
 - Async, await
+- Rest
 - HTML/CSS
 - JavaScript
 - Spring Events
