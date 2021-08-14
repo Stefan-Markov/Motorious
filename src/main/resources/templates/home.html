@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.js"
             integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB"
             crossorigin="anonymous"></script>
+    <script th:src="@{/js/homeMenu.js}" type="module"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.css"
           integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w"
           crossorigin="anonymous">
@@ -30,10 +32,11 @@
     </section>
     <section class="wrap-action">
         <aside>
-            <h2>
+            <h2 id=menu>
                 <span class="a">A</span>ction panel
+                <p id="i-menu">Hide menu <i class="fas fa-minus"></i></p>
             </h2>
-            <ul class="ul-action">
+            <ul class="ul-action" style="display: block">
                 <li class="action-hover">
                     <a th:href="@{/}"><i class="fas fa-arrow-circle-right"></i><i class="fas fa-info"></i> Info page</a>
                 </li>
@@ -48,6 +51,10 @@
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/blog/add-blog}"><i class="fas fa-arrow-circle-right"></i><i class="fas fa-pen"></i>
                         Add blog</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
+                    <a th:href="@{/blog/view-blog-delete}"><i class="fas fa-arrow-circle-right"></i><i class="fas fa-eraser"></i>
+                        Delete blog</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
                     <a th:href="@{/measurement/add}"><i class="fas fa-arrow-circle-right"></i><i class="fas fa-pen"></i>

@@ -29,8 +29,9 @@ public class MotoriousUserDetailsService implements UserDetailsService {
         Optional<User> userOpt = userRepository
                 .findUserByUsername(username);
 
-        return userOpt.map(this::map).orElseThrow(
-                () -> new UsernameNotFoundException("No user " + username));
+        return userOpt
+                .map(this::map)
+                .orElseThrow(() -> new UsernameNotFoundException("No user " + username));
     }
 
     private UserDetails map(User user) {

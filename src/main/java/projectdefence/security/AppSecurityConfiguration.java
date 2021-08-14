@@ -37,7 +37,7 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
-                .antMatchers("/", "/info/**", "/user/login", "/user/registration")
+                .antMatchers("/", "/info/**", "/blogs/**", "/user/login", "/user/registration")
                 .permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
@@ -49,6 +49,9 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .failureForwardUrl("/user/login-error")
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
+                .and()
+                // 2 weeks is default - now is 1 day
+                .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400)
                 .and()
                 .logout()
                 .logoutUrl("/logout")

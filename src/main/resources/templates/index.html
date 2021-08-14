@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <th:block th:include="/fragment/source :: favicon"></th:block>
+    <th:block th:replace="/fragment/source :: favicon"></th:block>
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
@@ -12,7 +12,7 @@
 </head>
 <body>
 <main>
-    <header th:include="/fragment/source :: navigation">
+    <header th:replace="/fragment/source :: navigation">
     </header>
     <div class="div-main">
         <h2>
@@ -61,9 +61,9 @@
     <p class="find-us">Find us in the easiest way <i class="fas fa-route"></i></p>
     <div id="map"></div>
 
-    <div th:include="/fragment/source :: benefit"></div>
+    <div th:replace="/fragment/source :: benefit"></div>
 
-    <div th:include="/fragment/source :: footer"></div>
+    <div th:replace="/fragment/source :: footer"></div>
 </main>
 </body>
 <script

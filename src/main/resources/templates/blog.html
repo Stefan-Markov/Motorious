@@ -9,6 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
     <link rel="stylesheet" th:href="@{/css/style_blog.css}">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script th:src="@{/js/blogInfoFetch.js}" type="module"></script>
     <title>Motorious</title>
 </head>
 <body>
@@ -26,32 +27,34 @@
             Here is the place where with a few word our professionals will talk about useful guidelines and tips from
             practice.
         </p>
-        <p th:text="|Total blogs: ${size}|">Total blogs:</p>
+        <!--        <p id="total-size" th:text="|Total blogs: ${size}|">Total blogs:</p>-->
+        <p id="total-size"></p>
         <div class="index" id="chart_div"></div>
     </section>
 
-    <section class="blog-content">
-        <th:block th:each="blog, iter : ${blogViewModels}">
-            <section class="single-content">
-                <p class="blog-title"><i class="fas fa-text-height"></i> Title</p>
-                <h5 th:text="*{blog.title}" class="blog-content-head left-padd">
-                    Good tips for recovery of immobilized leg after injury
-                </h5>
-                <article><i class="fas fa-file-alt"></i> Content</article>
-                <p th:text="*{blog.content}" class="left-padd"></p>
-                <p th:text="|Date added: *{blog.date}|" class="date-added"></p>
-                <p th:text="|Author: *{blog.author}|" class="date-added"></p>
-                <p th:text="|Identification code: *{blog.id}|" class="date-added"></p>
-                <ul>
-                    <li class="delete-blog" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a th:href="@{/blog/delete/{id}(id = *{blog.id})}" type="button"
-                        ><i class="fas fa-trash"></i> Delete blog</a>
-                    </li>
-                </ul>
+    <!--    <section class="blog-content">-->
+    <!--        <th:block th:each="blog, iter : ${blogViewModels}">-->
+    <!--            <section class="single-content">-->
+    <!--                <p class="blog-title"><i class="fas fa-text-height"></i> Title</p>-->
+    <!--                <h5 th:text="*{blog.title}" class="blog-content-head left-padd">-->
+    <!--                    Good tips for recovery of immobilized leg after injury-->
+    <!--                </h5>-->
+    <!--                <article><i class="fas fa-file-alt"></i> Content</article>-->
+    <!--                <p th:text="*{blog.content}" class="left-padd"></p>-->
+    <!--                <p th:text="|Date added: *{blog.date}|" class="date-added"></p>-->
+    <!--                <p th:text="|Author: *{blog.author}|" class="date-added"></p>-->
+    <!--                <p th:text="|Identification code: *{blog.id}|" class="date-added"></p>-->
+    <!--                <ul>-->
+    <!--                    <li class="delete-blog" sec:authorize="hasRole('ROLE_ADMIN')">-->
+    <!--                        <a th:href="@{/blog/delete/{id}(id = *{blog.id})}" type="button"-->
+    <!--                        ><i class="fas fa-trash"></i> Delete blog</a>-->
+    <!--                    </li>-->
+    <!--                </ul>-->
+    <!--            </section>-->
+    <!--        </th:block>-->
+    <section class="blog-content" id="blog-class">
 
-            </section>
-        </th:block>
-
+    </section>
     </section>
 </main>
 

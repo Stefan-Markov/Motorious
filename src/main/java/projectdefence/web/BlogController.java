@@ -37,6 +37,13 @@ public class BlogController {
     }
 
 
+    @GetMapping("/view-blog-delete")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String deleteBlog() {
+        return "blog_delete";
+    }
+
+
     @PostMapping("/add-blog")
     @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
     public String addBlogPost(@Valid @ModelAttribute AddBlogBindingModel addBlogBindingModel,

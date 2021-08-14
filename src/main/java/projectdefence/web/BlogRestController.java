@@ -10,7 +10,7 @@ import projectdefence.service.BlogService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/blog")
+@RequestMapping("/blogs")
 public class BlogRestController {
 
     private final BlogService blogService;
@@ -25,4 +25,6 @@ public class BlogRestController {
                 .ok()
                 .body(blogService.findAll());
     }
+
+
 }

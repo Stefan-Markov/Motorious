@@ -12,7 +12,7 @@ import java.util.List;
 public interface UserService {
     boolean register(UserServiceModel userServiceModel);
 
-    UserServiceModel findByUsernameAndPassword(String username, String password);
+//    UserServiceModel findByUsernameAndPassword(String username, String password);
 
     void changeRole(UserServiceChangeRoleModel userServiceModel, String role);
 
