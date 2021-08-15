@@ -26,14 +26,14 @@ async function search() {
         let filtered = users.filter(user => {
             return user.firstName.toLowerCase().includes(username)
         });
-        filtered = filtered.filter((u1, u2) => u1.firstName !== u2.firstName);
+        filtered = filtered.filter((u1, u2) => u1.username !== u2.username);
 
         filtered.forEach(u => {
             let li = document.createElement('li');
             li.classList = 'rest-user';
             let aTag = document.createElement('a');
 
-            aTag.href = "http://localhost:8080/client/info/" + u.firstName;
+            aTag.href = "http://localhost:8080/client/info/" + u.username;
             aTag.textContent = ": click HERE to get info for user.";
             aTag.id = 'user-span';
             aTag.innerHTML += `<i class="fas fa-id-card"></i>`;
