@@ -1,5 +1,5 @@
 # Motorious
-Deployed with Heroku, but changed database from MySQL to PostreSQL,little changes to thymeleaf, etc.
+Deployed with Heroku, changed database from MySQL to PostreSQL,little changes to thymeleaf, etc.
 
 Project defence for diploma work.
 Application in general:
@@ -46,12 +46,13 @@ Application functionalities:
 - Add, delete blog
 - View all users
 - View all clients by kinesitherapist
-- view all blogs
+- View all blogs
 - Contact form
 - Update user details
 - View yours treatments
 - View yours measurements
-- Downgrade role, change role of user
+- Downgrade role of user 
+- Change role of user
 - Information page
 - Measurement activity of action - Spring AOP
 - Delete user or register user - Spring Events
