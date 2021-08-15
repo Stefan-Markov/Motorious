@@ -1,7 +1,6 @@
 # Motorious
 Deployed with Heroku, changed database from MySQL to PostreSQL,little changes to thymeleaf, etc.
 
-Project defence for diploma work.
 Application in general:
 - 11 controllers
 - 9 services
