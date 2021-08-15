@@ -83,6 +83,9 @@ body {
     width: fit-content;
     transition: background 3s;
 }
+a:hover{
+    cursor: pointer;
+}
 
 @keyframes background {
     from {

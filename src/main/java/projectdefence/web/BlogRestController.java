@@ -1,9 +1,7 @@
 package projectdefence.web;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.BlogViewModel;
 import projectdefence.service.BlogService;
 
@@ -12,7 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/blogs")
 public class BlogRestController {
-
     private final BlogService blogService;
 
     public BlogRestController(BlogService blogService) {
@@ -26,5 +23,8 @@ public class BlogRestController {
                 .body(blogService.findAll());
     }
 
-
+    @GetMapping("/deleteById/{id}")
+    public void delete(@PathVariable Long id) {
+        blogService.deleteById(id);
+    }
 }

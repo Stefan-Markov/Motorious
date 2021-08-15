@@ -1,9 +1,13 @@
 let section = document.getElementById('blog-class');
 let blogs = [];
-fetch('http://localhost:8080/blogs/info')
-    .then(res => res.json())
-    .then(data => blogs.push(data))
-    .then(fillBlogs);
+
+function blogsFunc() {
+    fetch('http://localhost:8080/blogs/info')
+        .then(res => res.json())
+        .then(data => blogs.push(data))
+        .then(fillBlogs);
+}
+
 
 function fillBlogs() {
     for (const b of blogs) {
@@ -20,17 +24,41 @@ function fillBlogs() {
                 <p  class="date-added">Identification code: ${bElement.id}</p>
                <ul>
                     <li class="delete-blog" >
-                        <a href="/blog/delete/${bElement.id}"  type="button">
+                        <a data-set="/blogs/deleteById/${bElement.id}"  type="button">
                         <i class="fas fa-trash"></i> Delete blog</a>
                     </li>
                 </ul>
             </section>`;
             section.appendChild(pTag);
         }
-        let pSizeTag = document.getElementById('total-size');
-        pSizeTag.textContent = `Total blogs: ${b.length}`;
     }
 }
 
+
+let aTags = [...document.querySelectorAll('#blog-class')];
+
+aTags.forEach(a => {
+    a.addEventListener('click', (e) => {
+        if (e.target.tagName.toLowerCase() === 'a') {
+            let href = e.target.getAttribute("data-set");
+            let link = `http://localhost:8080${href}`;
+            deleteData(link, e);
+        }
+    });
+})
+
+function deleteData(link, e) {
+    let confirmed = confirm('Are you sure?');
+    if (confirmed) {
+        fetch(`${link}`).catch(er => console.log(er));
+
+        let sec = e.target.closest('section');
+        sec.remove();
+        alert(`Successful delete blog with id: ${link.substring(link.lastIndexOf('/'))}`)
+    }
+}
+
+
+blogsFunc();
 
 

@@ -21,6 +21,7 @@
         <section class="flex-item-head">
             <img class="image" th:src="${userProfile.imageUrl}" alt="Picture" width="200px" height="200px">
             <section class="head-welcome heading-second">
+                <input id="username" type="hidden"th:value="${userProfile.username}">
                 <p th:text="|First name: ${userProfile.firstName}|">First name:</p>
                 <p th:text="|Last name: ${userProfile.lastName}|">Last name:</p>
                 <p th:text="|Email: ${userProfile.email}|">Email:</p>
@@ -36,13 +37,13 @@
                     <label for="inputFirstName"><i class="fas fa-user-edit"></i> Change first name</label>
                 </article>
                 <article>
-                    <input required minlength="3" maxlength="50" th:field="${editProfileBindingModel.firstName}"
+                    <input  required minlength="3" maxlength="50" th:field="${editProfileBindingModel.firstName}"
                            class="input-style input-validation" name="firstName"
                            type="text" id="inputFirstName"
-                           placeholder="Enter first name">
+                           placeholder="Enter first name" >
                 </article>
                 <article>
-                    <p th:if="${#fields.hasErrors('firstName')}" th:errors="${editProfileBindingModel.firstName}"
+                    <p  th:if="${#fields.hasErrors('firstName')}" th:errors="${editProfileBindingModel.firstName}"
                        class="p-style">First name
                         length must be more than 2
                         characters</p>
@@ -120,5 +121,6 @@
 </main>
 <div th:include="/fragment/source :: benefit"></div>
 <div th:include="/fragment/source :: footer"></div>
+<script th:src="@{/js/profileEditFetch.js}"></script>
 </body>
 </html>

@@ -9,7 +9,6 @@
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
     <link rel="stylesheet" th:href="@{/css/style_blog.css}">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script th:src="@{/js/blogFetchDelete.js}" type="module" sec:authorize="hasRole('ROLE_ADMIN')"></script>
     <title>Motorious</title>
 </head>
 <header th:include="/fragment/source :: navigation">
@@ -32,5 +31,6 @@
 </section>
 <div th:include="/fragment/source :: benefit"></div>
 <div th:include="/fragment/source :: footer"></div>
+<script th:src="@{/js/blogFetchDelete.js}" type="module" sec:authorize="hasRole('ROLE_ADMIN')"></script>
 </body>
 </html>

@@ -11,7 +11,6 @@ function toggle() {
         i.innerHTML = `<i class="fas fa-plus-square"></i>`;
         p.appendChild(i)
     } else {
-
         e.style.display = 'block'
         p.textContent = `Hide menu`;
         let i = document.createElement('i');
