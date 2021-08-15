@@ -20,7 +20,8 @@ Application in general:
 - Spring Events
 - Spring AOP
 - Mapping library - Model mapper
-- Data validation - frond-end and back-end
+- Data validation - frondend and backend
+- Custom validator
 - Using layers with multiple layouts 
 - Testing - unit test and integration tests for some of the controllers using mocking - 80% coverage
 - Exceptions handling and CustomAccessDeniedHandler
