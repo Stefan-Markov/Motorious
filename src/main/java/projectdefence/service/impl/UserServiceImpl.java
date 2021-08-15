@@ -111,6 +111,14 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    @Override
+    public List<UserWrapInfoViewModel> findByGivenUsername(String username) {
+        return this.userRepository.findAllByGivenUsername(username).stream()
+                .map(user -> modelMapper
+                        .map(user, UserWrapInfoViewModel.class))
+                .collect(Collectors.toList());
+    }
+
 //    @Override
 //    public UserServiceModel findByUsernameAndPassword(String username, String password) {
 //        return this.userRepository.findByUsernameAndPassword(username, password)
@@ -167,7 +175,7 @@ public class UserServiceImpl implements UserService {
     @CachePut("users")
     public List<UserWrapInfoViewModel> findAllUsers() {
         return this.userRepository.findAllOrderByDate().stream().map(u ->
-                this.modelMapper.map(u, UserWrapInfoViewModel.class))
+                        this.modelMapper.map(u, UserWrapInfoViewModel.class))
                 .collect(Collectors.toList());
     }
 

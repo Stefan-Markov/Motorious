@@ -14,6 +14,8 @@ public interface UserService {
 
 //    UserServiceModel findByUsernameAndPassword(String username, String password);
 
+    List<UserWrapInfoViewModel> findByGivenUsername(String username);
+
     void changeRole(UserServiceChangeRoleModel userServiceModel, String role);
 
     void downgradeRole(UserServiceChangeRoleModel userServiceChangeRoleModel, String role);

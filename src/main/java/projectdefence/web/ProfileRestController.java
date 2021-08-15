@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.service.UserService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/profile-rest")
 public class ProfileRestController {
@@ -27,4 +29,9 @@ public class ProfileRestController {
         return ResponseEntity.ok(profileByUsername);
     }
 
+    @GetMapping("/users/{username}")
+    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    public ResponseEntity<List<UserWrapInfoViewModel>> findUserByUsername(@PathVariable String username){
+        return ResponseEntity.ok().body(this.userService.findByGivenUsername(username));
+    }
 }

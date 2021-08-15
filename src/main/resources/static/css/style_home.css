@@ -149,6 +149,18 @@ aside ul li {
     background: limegreen;
 }
 
+.rest-user{
+    border-bottom: 1px solid blue;
+}
+#user-span{
+    color: blue;
+    background: white;
+}
+#search-username{
+    margin-top: 10px;
+    padding: 2px;
+    border-radius: 5px
+}
 
 @keyframes border {
     0% {

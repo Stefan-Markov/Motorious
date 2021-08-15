@@ -12,6 +12,7 @@
             integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB"
             crossorigin="anonymous"></script>
     <script th:src="@{/js/homeMenu.js}" type="module"></script>
+    <script th:src="@{/js/searchUser.js}" type="module"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.css"
           integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w"
@@ -53,7 +54,8 @@
                         Add blog</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ADMIN')" class="action-hover">
-                    <a th:href="@{/blog/view-blog-delete}"><i class="fas fa-arrow-circle-right"></i><i class="fas fa-eraser"></i>
+                    <a th:href="@{/blog/view-blog-delete}"><i class="fas fa-arrow-circle-right"></i><i
+                            class="fas fa-eraser"></i>
                         Delete blog</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_KINESITHERAPIST')" class="action-hover">
@@ -101,6 +103,14 @@
                             class="fas fa-passport"></i> Measurement activity</a>
                 </li>
             </ul>
+            <section  sec:authorize="hasRole('ROLE_KINESITHERAPIST')">
+                <label>Search client by username
+                    <input id="search-username" name="username" type="text" placeholder="Write username...">
+                </label>
+                <ul id="result">
+
+                </ul>
+            </section>
         </aside>
         <article>
             <img class="home-pic" th:src="@{img/index.jpeg}" alt="home pic">
