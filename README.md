@@ -38,7 +38,8 @@ Application in general:
 Application functionalities:
 - 4 manageable roles - ROOT, ADMIN, KINESITHERAPIST, USER
 - Picture upload if user want via Cloudinary API
-- Search engine(find user by username) and generate dynamic content - AJAX with JPA filtration
+- Search engine(find user by username or email) and generate dynamic content - AJAX with JPA filtration
+- Search treatment by keyword - generate dynamic content with AJAX.
 - Add, delete users
 - Registration, login
 - Add, delete treatment
