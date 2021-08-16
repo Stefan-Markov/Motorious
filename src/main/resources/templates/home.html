@@ -13,6 +13,7 @@
             crossorigin="anonymous"></script>
     <script th:src="@{/js/homeMenu.js}" type="module"></script>
     <script th:src="@{/js/searchUser.js}" type="module"></script>
+    <script th:src="@{/js/searchTreatment.js}" type="module"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.css"
           integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w"
@@ -103,11 +104,20 @@
                             class="fas fa-passport"></i> Measurement activity</a>
                 </li>
             </ul>
-            <section  sec:authorize="hasRole('ROLE_KINESITHERAPIST')">
-                <label>Search client by username
-                    <input id="search-username" name="username" type="text" placeholder="Write username...">
+            <section class="searchBar" sec:authorize="hasRole('ROLE_KINESITHERAPIST')">
+                <label>Search client by username or email
+                    <input class="input-search" id="search-username" name="username" type="text" placeholder="write username or email">
                 </label>
                 <ul id="result">
+
+                </ul>
+            </section>
+
+            <section class="searchBar" sec:authorize="hasRole('ROLE_KINESITHERAPIST')">
+                <label>Search treatment by proper disease
+                    <input class="input-search" id="search-treatment" name="username" type="text" placeholder="write disease">
+                </label>
+                <ul id="result-treatment">
 
                 </ul>
             </section>

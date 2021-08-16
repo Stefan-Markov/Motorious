@@ -12,4 +12,6 @@ public interface TreatmentService {
     List<TreatmentViewModel> findAllTreatmentsByUsername(String username);
 
     void deleteById(String id);
+
+    List<TreatmentViewModel> findAllByCriteria(String criteria);
 }

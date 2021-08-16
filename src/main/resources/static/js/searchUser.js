@@ -24,7 +24,8 @@ async function search() {
     if (username.length > 0) {
         ul.innerHTML = '';
         let filtered = users.filter(user => {
-            return user.firstName.toLowerCase().includes(username)
+            return user.firstName.toLowerCase().includes(username) ||
+                user.email.toLowerCase().includes(username);
         });
         filtered = filtered.filter((u1, u2) => u1.username !== u2.username);
 
@@ -34,7 +35,7 @@ async function search() {
             let aTag = document.createElement('a');
 
             aTag.href = "http://localhost:8080/client/info/" + u.username;
-            aTag.textContent = ": click HERE to get info for user.";
+            aTag.textContent = " click |HERE| to get info for user.";
             aTag.id = 'user-span';
             aTag.innerHTML += `<i class="fas fa-id-card"></i>`;
             li.textContent = u.firstName;

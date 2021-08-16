@@ -56,4 +56,13 @@ public class TreatmentServiceImpl implements TreatmentService {
         Optional<Treatment> treatment = this.treatmentRepository.findById(id);
         treatment.ifPresent(this.treatmentRepository::delete);
     }
+
+    @Override
+    public List<TreatmentViewModel> findAllByCriteria(String criteria) {
+        return this.treatmentRepository.findAllByGivenCriteria(criteria)
+                .stream()
+                .map(t -> this.modelMapper.map(t, TreatmentViewModel.class))
+                .sorted(Comparator.comparing(TreatmentViewModel::getDateAdded).reversed())
+                .collect(Collectors.toList());
+    }
 }
