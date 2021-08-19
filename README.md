@@ -18,6 +18,8 @@ Application in general:
 - JavaScript
 - Spring Events
 - Spring AOP
+- Pagination
+- Spring @Async
 - Mapping library - Model mapper
 - Data validation - frontend and backend
 - Custom validator
@@ -38,6 +40,7 @@ Application in general:
 Application functionalities:
 - 4 manageable roles - ROOT, ADMIN, KINESITHERAPIST, USER
 - Picture upload if user want via Cloudinary API
+- Pagination of all users - AJAX with JPA.
 - Search engine(find user by username or email) and generate dynamic content - AJAX with JPA filtration
 - Search treatment by keyword - generate dynamic content with AJAX.
 - Add, delete users
@@ -45,6 +48,7 @@ Application functionalities:
 - Add, delete treatment
 - Add, delete measurement
 - Add, delete blog
+- Confirm when delete blog, otherwise stop action
 - View all users
 - View all clients by kinesitherapist
 - View all blogs
