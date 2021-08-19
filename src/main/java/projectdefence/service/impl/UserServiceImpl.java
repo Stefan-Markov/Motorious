@@ -2,6 +2,10 @@ package projectdefence.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,10 +28,7 @@ import projectdefence.service.RoleService;
 import projectdefence.service.UserService;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -176,6 +177,25 @@ public class UserServiceImpl implements UserService {
     public List<UserWrapInfoViewModel> findAllUsers() {
         return this.userRepository.findAllOrderByDate().stream().map(u ->
                         this.modelMapper.map(u, UserWrapInfoViewModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UserWrapInfoViewModel> getUsersPage(int page, int limit) {
+
+        if (page > 0) page = page - 1;
+
+        Pageable pageableRequest = PageRequest.of(page, limit);
+        //  Sort.by("firstName").and(Sort.by("lastName"))
+
+        Page<User> usersPage = userRepository.findAll(pageableRequest);
+        List<User> users = usersPage.getContent()
+                .stream()
+                .sorted(Comparator.comparing(User::getUsername)
+                        .thenComparing(User::getFirstName))
+                .collect(Collectors.toList());
+
+        return users.stream().map(e -> modelMapper.map(e, UserWrapInfoViewModel.class))
                 .collect(Collectors.toList());
     }
 

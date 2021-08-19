@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:include="/fragment/source :: favicon"></th:block>
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_view_all_users.css}">
+    <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script th:src="@{/js/usersPageFetch.js}" type="module"></script>
+    <title>View all users</title>
+</head>
+<body>
+<header th:include="/fragment/source :: navigation">
+
+</header>
+<section>
+    <section class="section-pagination">
+        <button id="previous" class="pagination"><i class="fas fa-arrow-circle-left"></i> Previous page with users
+        </button>
+        <h2 id="pages"></h2>
+        <button id="next" class="pagination">Next page with users <i class="fas fa-arrow-circle-right"></i>
+        </button>
+    </section>
+</section>
+<main id="info">
+
+</main>
+<div th:include="/fragment/source :: benefit"></div>
+<div th:include="/fragment/source :: footer"></div>
+</body>
+
+</html>

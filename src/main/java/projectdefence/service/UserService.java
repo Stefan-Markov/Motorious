@@ -24,6 +24,8 @@ public interface UserService {
 
     List<UserWrapInfoViewModel> findAllUsers();
 
+    List<UserWrapInfoViewModel> getUsersPage(int page, int limit);
+
     Integer findByTitleKT();
 
     Integer findByTitleClient();

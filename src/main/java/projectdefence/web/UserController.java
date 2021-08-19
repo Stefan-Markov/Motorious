@@ -128,4 +128,11 @@ public class UserController {
 
         return "view_all_users";
     }
+
+    @GetMapping("/all-rest")
+    @PreAuthorize("hasRole('ROLE_ROOT')")
+    public String allRestUsers() {
+
+        return "view_all_users_pages";
+    }
 }

@@ -100,7 +100,7 @@ public class UserServiceTest {
                     setAuthority("ROLE_USER");
                 }});
 
-        when(userRepository.saveAndFlush(any(User.class)))
+        when(userRepository.save(any(User.class)))
                 .thenReturn(user);
 
         Assert.assertEquals(userRepository.count(), 1);

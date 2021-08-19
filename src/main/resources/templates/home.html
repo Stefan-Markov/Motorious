@@ -96,6 +96,10 @@
                             class="fas fa-users"></i> View all users</a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
+                    <a th:href="@{/user/all-rest}"><i class="fas fa-arrow-circle-right"></i><i
+                            class="fas fa-users"></i> View all users pagination</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ROOT')" class="action-hover">
                     <a th:href="@{/user/delete-user}"><i class="fas fa-arrow-circle-right"></i><i
                             class="fas fa-user-alt-slash"></i> Delete user</a>
                 </li>
