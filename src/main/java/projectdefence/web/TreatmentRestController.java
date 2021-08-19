@@ -1,7 +1,7 @@
 package projectdefence.web;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.TreatmentViewModel;
@@ -9,6 +9,7 @@ import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/tr")
@@ -25,10 +26,9 @@ public class TreatmentRestController {
 
     @GetMapping("/{criteria}")
     @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
-    public ResponseEntity<List<TreatmentViewModel>> allTreatmentByCriteria(@PathVariable String criteria) {
-
-        List<TreatmentViewModel> treatments = this.treatmentService.findAllByCriteria(criteria);
-        return ResponseEntity.ok().body(treatments);
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<TreatmentViewModel> allTreatmentByCriteria(@PathVariable String criteria) {
+        return this.treatmentService.findAllByCriteria(criteria);
     }
-
 }

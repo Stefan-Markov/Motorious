@@ -4,6 +4,7 @@ import projectdefence.models.serviceModels.TreatmentAddServiceModel;
 import projectdefence.models.viewModels.TreatmentViewModel;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public interface TreatmentService {
 

@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,10 +60,13 @@ public class TreatmentServiceImpl implements TreatmentService {
 
     @Override
     public List<TreatmentViewModel> findAllByCriteria(String criteria) {
-        return this.treatmentRepository.findAllByGivenCriteria(criteria)
-                .stream()
-                .map(t -> this.modelMapper.map(t, TreatmentViewModel.class))
-                .sorted(Comparator.comparing(TreatmentViewModel::getDateAdded).reversed())
-                .collect(Collectors.toList());
+        try {
+            return this.treatmentRepository.findAllByGivenCriteria(criteria).get()
+                    .stream()
+                    .map(t -> this.modelMapper.map(t, TreatmentViewModel.class))
+                    .sorted(Comparator.comparing(TreatmentViewModel::getDateAdded).reversed())
+                    .collect(Collectors.toList());
+        } catch (Exception ignored) {}
+        return null;
     }
 }

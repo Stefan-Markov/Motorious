@@ -1,8 +1,0 @@
-projectdefence.event.userDeleteEvent.UserDeleteEvent logDelete Fri Apr 02 21:56:42 EEST 2021 UserDeleteEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userDeleteEvent.UserDeleteEvent logDelete Fri Apr 02 22:01:02 EEST 2021 UserDeleteEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userDeleteEvent.UserDeleteEvent logDelete Fri Apr 02 22:03:00 EEST 2021 UserDeleteEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userDeleteEvent.UserDeleteEvent logDelete Fri Apr 02 22:04:38 EEST 2021 UserDeleteEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userDeleteEvent.UserDeleteEvent logDelete Fri Apr 02 22:06:24 EEST 2021 UserDeleteEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userDeleteEvent.UserDeleteEvent logDelete Fri Apr 02 22:16:26 EEST 2021 UserDeleteEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userDeleteEvent.UserDeleteEvent logDelete Fri Apr 02 22:32:26 EEST 2021 UserDeleteEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userDeleteEvent.UserDeleteEvent logDelete Fri Apr 02 22:33:56 EEST 2021 UserDeleteEvent{firstName='firstName', lastName='lastName', username='username'}

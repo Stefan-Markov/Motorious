@@ -1,9 +1,0 @@
-projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Fri Mar 26 21:58:23 EET 2021 UserRegisterEvent{firstName='Stefan', lastName='Markov', username='stefan'}
-projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Fri Apr 02 21:56:42 EEST 2021 UserRegisterEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Fri Apr 02 22:01:02 EEST 2021 UserRegisterEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Fri Apr 02 22:03:00 EEST 2021 UserRegisterEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Fri Apr 02 22:04:38 EEST 2021 UserRegisterEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Fri Apr 02 22:06:24 EEST 2021 UserRegisterEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Fri Apr 02 22:16:27 EEST 2021 UserRegisterEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Fri Apr 02 22:32:26 EEST 2021 UserRegisterEvent{firstName='firstName', lastName='lastName', username='username'}
-projectdefence.event.userRegisterEvent.UserRegisterEvent logRegister Fri Apr 02 22:33:57 EEST 2021 UserRegisterEvent{firstName='firstName', lastName='lastName', username='username'}
