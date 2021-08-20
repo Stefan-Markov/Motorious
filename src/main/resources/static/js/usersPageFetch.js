@@ -24,12 +24,10 @@ function fillInfo() {
     if (result.length === 0) {
         let p = document.createElement('p');
         let i = document.createElement('i');
-        i.classList = `fas fa-backward`;
-
+        i.classList = `fas fa-check`;
         p.id = 'last';
-        p.textContent = 'No more info!';
+        p.textContent = 'That was all info!';
         p.appendChild(i);
-
         mainTag.appendChild(p);
         return;
     }

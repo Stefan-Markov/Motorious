@@ -21,7 +21,6 @@ public interface UserRepository extends PagingAndSortingRepository<User, String>
 
     Page<User> findAll(Pageable page);
 
-
     @Query("select u from User u where  u.username = :username")
     Optional<User> findByUsernameOptional(@Param("username") String username);
 

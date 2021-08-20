@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
     <script th:src="@{/js/view.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Motorious</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
         <h2>
             Center for kinesitherapy
         </h2>
-        <h1 class="name">
+        <h1 class="name" style="display: none">
             Motorious
         </h1>
         <h3 class="years">For over
@@ -32,7 +33,7 @@
     <div class="info">
         <h3 class="info-title">If you have a recent musculoskeletal disease or injury you are in the right place.</h3>
         <p class="info-start">Here you can:</p>
-        <ul class="info-list">
+        <ul class="info-list" style="display: none">
             <li>
                 <i class="fas fa-star"></i> See your treatment prescribed by your kinesitherapist.
             </li>
@@ -70,4 +71,11 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQS4pY-ctgM2bSCUMwkBKjeD5tHA4Hpbw&callback=initMap&libraries=&v=weekly"
         async
 ></script>
+<script>
+    $(document).ready(function () {
+        $(".info-list").show(2000);
+        $(".name").show(3000);
+    });
+
+</script>
 </html>

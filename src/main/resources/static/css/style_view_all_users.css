@@ -95,7 +95,7 @@ main {
 }
 
 #last {
-    padding: 30px;
+    padding: 10px;
     margin-left: auto;
     margin-right: auto;
     color: white;
@@ -118,6 +118,5 @@ main {
 @media screen and (max-width: 540px ) {
     .pic-style {
         display: none;
-
     }
 }

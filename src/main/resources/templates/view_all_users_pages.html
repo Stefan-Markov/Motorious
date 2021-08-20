@@ -10,13 +10,11 @@
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script th:src="@{/js/usersPageFetch.js}" type="module"></script>
+    <script th:src="@{/js/usersPageFetch.js}" type="module" sec:authorize="hasRole('ROLE_ROOT')"></script>
     <title>View all users</title>
 </head>
 <body>
-<header th:include="/fragment/source :: navigation">
-
-</header>
+<header th:include="/fragment/source :: navigation"></header>
 <section>
     <section class="section-pagination">
         <button id="previous" class="pagination"><i class="fas fa-arrow-circle-left"></i> Previous page with users
@@ -26,11 +24,8 @@
         </button>
     </section>
 </section>
-<main id="info">
-
-</main>
+<main id="info"></main>
 <div th:include="/fragment/source :: benefit"></div>
 <div th:include="/fragment/source :: footer"></div>
 </body>
-
 </html>

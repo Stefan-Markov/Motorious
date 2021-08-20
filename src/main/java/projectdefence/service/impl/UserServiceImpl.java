@@ -195,7 +195,8 @@ public class UserServiceImpl implements UserService {
                         .thenComparing(User::getFirstName))
                 .collect(Collectors.toList());
 
-        return users.stream().map(e -> modelMapper.map(e, UserWrapInfoViewModel.class))
+        return users.stream()
+                .map(e -> modelMapper.map(e, UserWrapInfoViewModel.class))
                 .collect(Collectors.toList());
     }
 

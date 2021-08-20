@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.js"
             integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB"
             crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script th:src="@{/js/homeMenu.js}" type="module"></script>
     <script th:src="@{/js/searchUser.js}" type="module"></script>
     <script th:src="@{/js/searchTreatment.js}" type="module"></script>
@@ -29,16 +30,16 @@
     <section class="wrap-calendar">
         <img class="image" th:src="${image}" alt="Picture" width="250px" height="250px"
              style="margin-left: 65px;">
-        <img class="image logo" th:src="@{/img/Logo.png}" alt="Logo" width="550px" height="320px">
+        <img id="logo-pic" class="image logo" th:src="@{/img/Logo.png}" alt="Logo" width="550px" height="320px">
         <div class="auto-jsCalendar"></div>
     </section>
     <section class="wrap-action">
         <aside>
-            <h2 id=menu>
+            <h2 id="menu">
                 <span class="a">A</span>ction panel
                 <p id="i-menu">Hide menu <i class="fas fa-minus"></i></p>
             </h2>
-            <ul class="ul-action" style="display: block">
+            <ul id="ul-menu" class="ul-action" style="display: block">
                 <li class="action-hover">
                     <a th:href="@{/}"><i class="fas fa-arrow-circle-right"></i><i class="fas fa-info"></i> Info page</a>
                 </li>
@@ -110,7 +111,8 @@
             </ul>
             <section class="searchBar" sec:authorize="hasRole('ROLE_KINESITHERAPIST')">
                 <label>Search client by username or email
-                    <input class="input-search" id="search-username" name="username" type="text" placeholder="write username or email">
+                    <input class="input-search" id="search-username" name="username" type="text"
+                           placeholder="write username or email">
                 </label>
                 <ul id="result">
 
@@ -119,7 +121,8 @@
 
             <section class="searchBar" sec:authorize="hasRole('ROLE_KINESITHERAPIST')">
                 <label>Search treatment by proper disease
-                    <input class="input-search" id="search-treatment" name="username" type="text" placeholder="write disease">
+                    <input class="input-search" id="search-treatment" name="username" type="text"
+                           placeholder="write disease">
                 </label>
                 <ul id="result-treatment">
 
@@ -145,5 +148,24 @@
 <div th:include="/fragment/source :: footer"></div>
 
 </body>
-
+<script>
+    $(document).ready(function () {
+        let p = document.querySelector('#i-menu');
+        $("#menu").click(function () {
+            let menu = document.getElementById('ul-menu');
+            if (menu.style.display === 'none') {
+                p.textContent = `Hide menu`;
+                let i = document.createElement('i');
+                i.innerHTML = `<i class="fas fa-minus"></i>`;
+                p.appendChild(i)
+            } else {
+                p.textContent = `Show menu`;
+                let i = document.createElement('i');
+                i.innerHTML = `<i class="fas fa-plus-square"></i>`;
+                p.appendChild(i)
+            }
+            $(".ul-action").slideToggle(2000);
+        });
+    });
+</script>
 </html>
