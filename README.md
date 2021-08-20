@@ -16,6 +16,7 @@ Application in general:
 - Rest
 - HTML/CSS
 - JavaScript
+- jQuery
 - Spring Events
 - Spring AOP
 - Pagination
