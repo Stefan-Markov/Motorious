@@ -44,6 +44,7 @@ Application functionalities:
 - Pagination of all users - AJAX with JPA.
 - Search engine(find user by username or email) and generate dynamic content - AJAX with JPA filtration
 - Search treatment by keyword - generate dynamic content with AJAX.
+- Add global eventListener to delegate events.
 - Add, delete users
 - Registration, login
 - Add, delete treatment
