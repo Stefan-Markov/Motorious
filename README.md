@@ -15,6 +15,7 @@ Application in general:
 - AJAX
 - Fetch Api 
 - Async, await
+- Dynamic content with JS.
 - JavaScript validation when user enter input 
 - Rest
 - HTML/CSS
