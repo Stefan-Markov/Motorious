@@ -10,6 +10,7 @@ Application in general:
 - Spring Security (prevent SQL injection, CSRF, parameter tampering, secure routes,secure password) 
 - Custom Security annotation (on some is used SpEl)
 - Custom route namespace
+- Custom successHandler, depends on user roles
 - Thymeleaf Security
 - Thymeleaf
 - AJAX
@@ -51,6 +52,7 @@ Application functionalities:
 - Add global eventListener to delegate events.
 - Add, delete users
 - Registration, login
+- Custom login page, depends on user roles.
 - Add, delete treatment
 - Add, delete measurement
 - Add, delete blog
