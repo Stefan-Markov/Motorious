@@ -11,13 +11,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import projectdefence.exceptions.CustomAccessDeniedHandler;
 import projectdefence.service.impl.MotoriousUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true,jsr250Enabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true)
 public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
@@ -43,9 +44,10 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/user/login")
+                // custom login
+                .successHandler(myAuthenticationSuccessHandler())
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
-                .defaultSuccessUrl("/home")
                 .failureForwardUrl("/user/login-error")
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
@@ -77,5 +79,10 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
         return new CustomAccessDeniedHandler();
+    }
+
+    @Bean
+    public UrlAuthenticationSuccessHandler myAuthenticationSuccessHandler() {
+        return new UrlAuthenticationSuccessHandler();
     }
 }
