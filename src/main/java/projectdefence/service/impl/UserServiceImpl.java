@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import projectdefence.event.userDeleteEvent.DeleteEventPublisher;
 import projectdefence.event.userRegisterEvent.RegisterEventPublisher;
+import projectdefence.messages.RoleValue;
 import projectdefence.models.entities.Role;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
@@ -31,11 +32,14 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static projectdefence.messages.RoleValue.*;
+
 
 @Service
 public class UserServiceImpl implements UserService {
     private static final String KT_TITLE = "kinesitherapist";
     private static final String CLIENT_TITLE = "client";
+    private static final String INNER_PIC_PATH = "/img/user.jpeg";
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
     private final PasswordEncoder bCryptPasswordEncoder;
@@ -74,18 +78,18 @@ public class UserServiceImpl implements UserService {
 
                 if (userServiceModel.getTitle().equals(KT_TITLE)) {
                     // for demo use only 
-                    userServiceModel.getAuthorities().add(this.roleService.findByAuthority("ROLE_USER"));
-                    userServiceModel.getAuthorities().add(this.roleService.findByAuthority("ROLE_KINESITHERAPIST"));
+                    userServiceModel.getAuthorities().add(this.roleService.findByAuthority(USER));
+                    userServiceModel.getAuthorities().add(this.roleService.findByAuthority(KINESITHERAPIST));
                 } else {
                     userServiceModel.setTitle(CLIENT_TITLE);
-                    userServiceModel.getAuthorities().add(this.roleService.findByAuthority("ROLE_USER"));
+                    userServiceModel.getAuthorities().add(this.roleService.findByAuthority(USER));
                 }
             }
 
             User user = this.modelMapper.map(userServiceModel, User.class);
 
             if (userServiceModel.getImage().isEmpty()) {
-                user.setImageUrl("/img/user.jpeg");
+                user.setImageUrl(INNER_PIC_PATH);
             } else {
                 MultipartFile image = userServiceModel.getImage();
                 String imageUrl = cloudinaryService.uploadImage(image);
@@ -135,7 +139,7 @@ public class UserServiceImpl implements UserService {
             Role newRole = this.roleRepository.findByAuthority(role);
             if (newRole != null) {
                 Set<Role> tryNewRole = new HashSet<>(user.get().getAuthorities());
-                if (!tryNewRole.contains(newRole) && !newRole.getAuthority().equals("ROLE_ROOT")) {
+                if (!tryNewRole.contains(newRole) && !newRole.getAuthority().equals(ROOT)) {
                     user.get().getAuthorities().add(newRole);
                     this.userRepository.save(user.get());
                 }
@@ -150,7 +154,7 @@ public class UserServiceImpl implements UserService {
             Role removeRole = this.roleRepository.findByAuthority(role);
             if (removeRole != null) {
                 Set<Role> tryRemoveRole = new HashSet<>(user.get().getAuthorities());
-                if (tryRemoveRole.contains(removeRole) && !removeRole.getAuthority().equals("ROLE_ROOT")) {
+                if (tryRemoveRole.contains(removeRole) && !removeRole.getAuthority().equals(ROOT)) {
                     user.get().getAuthorities().remove(removeRole);
                     this.userRepository.save(user.get());
                 }

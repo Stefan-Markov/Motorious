@@ -17,7 +17,7 @@ import projectdefence.service.impl.MotoriousUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true,jsr250Enabled = true)
 public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 

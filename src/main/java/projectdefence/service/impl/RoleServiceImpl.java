@@ -10,6 +10,8 @@ import projectdefence.service.RoleService;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static projectdefence.messages.RoleValue.*;
+
 @Service
 public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
@@ -23,10 +25,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void seedRolesInDb() {
         if (this.roleRepository.count() == 0) {
-            this.roleRepository.save(new Role("ROLE_KINESITHERAPIST"));
-            this.roleRepository.save(new Role("ROLE_USER"));
-            this.roleRepository.save(new Role("ROLE_ADMIN"));
-            this.roleRepository.save(new Role("ROLE_ROOT"));
+            this.roleRepository.save(new Role(KINESITHERAPIST));
+            this.roleRepository.save(new Role(USER));
+            this.roleRepository.save(new Role(ADMIN));
+            this.roleRepository.save(new Role(ROOT));
         }
     }
 

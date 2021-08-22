@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.UserChangeRoleBindingModel;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
+import projectdefence.security.IsRoot;
 import projectdefence.service.UserService;
 
 import javax.validation.Valid;
@@ -62,7 +63,7 @@ public class RoleController {
     }
 
     @GetMapping("/role-downgrade")
-    @PreAuthorize("hasRole('ROLE_ROOT')")
+    @IsRoot
     public String roleDowngrade(Model model) {
         if (!model.containsAttribute("userChangeRoleBindingModel")) {
             model.addAttribute("userFound", false);
@@ -73,7 +74,7 @@ public class RoleController {
     }
 
     @PostMapping("/role-downgrade")
-    @PreAuthorize("hasRole('ROLE_ROOT')")
+    @IsRoot
     public String roleDowngradeConfirm(@RequestParam(name = "role") String role,
                                        @Valid @ModelAttribute UserChangeRoleBindingModel userChangeRoleBindingModel,
                                        BindingResult bindingResult, RedirectAttributes redirectAttributes) {

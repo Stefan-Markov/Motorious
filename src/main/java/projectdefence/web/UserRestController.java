@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
+import projectdefence.security.IsRoot;
 import projectdefence.service.UserService;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class UserRestController {
     }
 
     @GetMapping("/all-users")
-    @PreAuthorize("hasRole('ROLE_ROOT')")
+    @IsRoot
     @ResponseStatus(HttpStatus.FOUND)
     @ResponseBody
     public List<UserWrapInfoViewModel> allUsers(

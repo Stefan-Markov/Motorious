@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
+import projectdefence.security.IsKinesitherapist;
+import projectdefence.security.IsProfileUser;
 import projectdefence.service.UserService;
 
 import java.util.List;
@@ -21,7 +23,7 @@ public class ProfileRestController {
     }
 
     @GetMapping("/edit/{username}")
-    @PreAuthorize("#username == authentication.name")
+    @IsProfileUser
     public ResponseEntity<UserWrapInfoViewModel> editProfile(@PathVariable String username) {
 
         UserWrapInfoViewModel profileByUsername = this.userService.findProfileByUserName(username);
@@ -30,7 +32,7 @@ public class ProfileRestController {
     }
 
     @GetMapping("/users/{username}")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     public ResponseEntity<List<UserWrapInfoViewModel>> findUserByUsername(@PathVariable String username){
         return ResponseEntity.ok().body(this.userService.findByGivenUsername(username));
     }

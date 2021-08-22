@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_add_blog.css}">
+    <script th:src="@{/js/dynamicBlogAdd.js}" type="module"></script>
     <title>Motorious</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
     <form th:object="${addBlogBindingModel}" th:action="@{/blog/add-blog}" method="POST">
         <p class="blog-info"><i class="fas fa-text-height"></i> Title</p>
         <label>
-            <input th:field="*{title}" class="title-name" type="text">
+            <input id="name" th:field="*{title}" class="title-name" type="text">
             <br>
             <small class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Enter valid info.</small>
             <br>

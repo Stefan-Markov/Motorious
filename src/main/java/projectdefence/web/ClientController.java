@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import projectdefence.models.viewModels.MeasurementViewModel;
 import projectdefence.models.viewModels.TreatmentViewModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
+import projectdefence.security.IsKinesitherapist;
 import projectdefence.service.MeasurementService;
 import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;
@@ -33,7 +34,7 @@ public class ClientController {
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     public String allClient(@RequestParam("username") String username, Model model) {
 
         List<UserWrapInfoViewModel> clients = this.userService.findAllUsersByKinesiotherapist(username);
@@ -45,7 +46,7 @@ public class ClientController {
     }
 
     @GetMapping("/info/{username}")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     public String profile(@PathVariable(name = "username") String username, Model model) {
 
         model.addAttribute("username", username);
@@ -67,7 +68,7 @@ public class ClientController {
 
 
     @GetMapping("/delete/{id}")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     public String delete(@PathVariable(name = "id") String id) {
 
         this.measurementService.deleteById(id);

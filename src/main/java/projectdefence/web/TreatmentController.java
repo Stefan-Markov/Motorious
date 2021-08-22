@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.TreatmentAddBindingModel;
 import projectdefence.models.serviceModels.TreatmentAddServiceModel;
 import projectdefence.models.viewModels.TreatmentViewModel;
+import projectdefence.security.IsKinesitherapist;
 import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;
 
@@ -33,7 +34,7 @@ public class TreatmentController {
     }
 
     @GetMapping("/add")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     public String addTreatment(@AuthenticationPrincipal UserDetails principal, Model model) {
 
         String name = principal.getUsername();
@@ -48,7 +49,7 @@ public class TreatmentController {
     }
 
     @PostMapping("/add")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     public String addTreatmentConfirm(@RequestParam(name = "nameKt") String nameKt, @Valid @ModelAttribute TreatmentAddBindingModel treatmentAddBindingModel,
                                       BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 

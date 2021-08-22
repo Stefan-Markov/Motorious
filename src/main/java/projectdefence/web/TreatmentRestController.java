@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.TreatmentViewModel;
+import projectdefence.security.IsKinesitherapist;
 import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;
 
@@ -25,7 +26,7 @@ public class TreatmentRestController {
     }
 
     @GetMapping("/{criteria}")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public List<TreatmentViewModel> allTreatmentByCriteria(@PathVariable String criteria) {

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.UserChangeRoleBindingModel;
 import projectdefence.models.binding.UserRegisterBindingModel;
 import projectdefence.models.serviceModels.UserServiceModel;
+import projectdefence.security.IsRoot;
 import projectdefence.service.UserService;
 
 import javax.validation.Valid;
@@ -84,7 +85,7 @@ public class UserController {
     }
 
     @GetMapping("/delete-user")
-    @PreAuthorize("hasRole('ROLE_ROOT')")
+    @IsRoot
     public String deleteUser(Model model) {
         if (!model.containsAttribute("userChangeRoleBindingModel")) {
             model.addAttribute("userChangeRoleBindingModel", new UserChangeRoleBindingModel());
@@ -94,7 +95,7 @@ public class UserController {
     }
 
     @PostMapping("/delete-user")
-    @PreAuthorize("hasRole('ROLE_ROOT')")
+    @IsRoot
     public String deleteUserConfirm(@Valid @ModelAttribute UserChangeRoleBindingModel userChangeRoleBindingModel,
                                     BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
@@ -119,7 +120,8 @@ public class UserController {
     }
 
     @GetMapping("/all-users")
-    @PreAuthorize("hasRole('ROLE_ROOT')")
+    // custom method for security
+    @IsRoot
     public String allUsers(Model model) {
 
         model.addAttribute("viewAllKts", this.userService.findByTitleKT());
@@ -130,7 +132,7 @@ public class UserController {
     }
 
     @GetMapping("/all-rest")
-    @PreAuthorize("hasRole('ROLE_ROOT')")
+    @IsRoot
     public String allRestUsers() {
 
         return "view_all_users_pages";

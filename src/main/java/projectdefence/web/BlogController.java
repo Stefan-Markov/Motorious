@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.AddBlogBindingModel;
 import projectdefence.models.serviceModels.AddBlogServiceModel;
+import projectdefence.security.IsKinesitherapist;
 import projectdefence.service.BlogService;
 
 import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("/blog")
-public class BlogController {
+public class BlogController implements BlogNamespace {
     private final ModelMapper modelMapper;
     private final BlogService blogService;
 
@@ -28,7 +28,7 @@ public class BlogController {
     }
 
     @GetMapping("/add-blog")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     public String addBlog(Model model) {
         if (!model.containsAttribute("addBlogBindingModel")) {
             model.addAttribute("addBlogBindingModel", new AddBlogBindingModel());
@@ -45,7 +45,7 @@ public class BlogController {
 
 
     @PostMapping("/add-blog")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     public String addBlogPost(@Valid @ModelAttribute AddBlogBindingModel addBlogBindingModel,
                               BindingResult bindingResult, RedirectAttributes redirectAttributes,
                               @AuthenticationPrincipal UserDetails principal) {

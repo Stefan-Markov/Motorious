@@ -1,6 +1,7 @@
 package projectdefence.service.impl;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import projectdefence.models.entities.Blog;
@@ -9,6 +10,7 @@ import projectdefence.models.serviceModels.AddBlogServiceModel;
 import projectdefence.models.viewModels.BlogViewModel;
 import projectdefence.repositories.BlogRepository;
 import projectdefence.repositories.UserRepository;
+import projectdefence.security.IsRoot;
 import projectdefence.service.BlogService;
 
 import java.time.LocalDate;
@@ -29,7 +31,6 @@ public class BlogServiceImpl implements BlogService {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
     }
-
 
     @Override
     public void addBlog(AddBlogServiceModel blogServiceModel, UserDetails principal) {

@@ -12,6 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.MeasurementAddBindingModel;
 import projectdefence.models.serviceModels.MeasurementAddServiceModel;
 import projectdefence.models.viewModels.MeasurementViewModel;
+
+import projectdefence.security.IsKinesitherapist;
 import projectdefence.service.LogService;
 import projectdefence.service.MeasurementService;
 import projectdefence.service.UserService;
@@ -35,7 +37,7 @@ public class MeasurementController {
     }
 
     @GetMapping("/add")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     public String addMeasurement(@AuthenticationPrincipal UserDetails principal, Model model) {
 
         String name = principal.getUsername();
@@ -49,7 +51,7 @@ public class MeasurementController {
     }
 
     @PostMapping("/add")
-    @PreAuthorize("hasRole('ROLE_KINESITHERAPIST')")
+    @IsKinesitherapist
     public String addMeasurementConfirm(@RequestParam(name = "nameKt") String nameKt, @Valid @ModelAttribute MeasurementAddBindingModel measurementAddBindingModel,
                                         BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
