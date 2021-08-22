@@ -8,11 +8,14 @@ Application in general:
 - 6 repositories
 - models - binding, view, service
 - Spring Security (prevent SQL injection, CSRF, parameter tampering, secure routes,secure password) 
+- Custom Security annotation (on some is used SpEl)
+- Custom route namespace
 - Thymeleaf Security
 - Thymeleaf
 - AJAX
 - Fetch Api 
 - Async, await
+- JavaScript validation when user enter input 
 - Rest
 - HTML/CSS
 - JavaScript
