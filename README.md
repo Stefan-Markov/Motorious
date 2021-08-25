@@ -13,6 +13,7 @@ Application in general:
 - Custom successHandler, depends on user roles
 - Thymeleaf Security
 - Thymeleaf
+- Mail sending for information
 - AJAX
 - Fetch Api 
 - Async, await
@@ -47,6 +48,7 @@ Application functionalities:
 - 4 manageable roles - ROOT, ADMIN, KINESITHERAPIST, USER
 - Picture upload if user want via Cloudinary API
 - Pagination of all users - AJAX with JPA.
+- Send mail when blog is created, when user have new treatment or measurement
 - Search engine(find user by username or email) and generate dynamic content - AJAX with JPA filtration
 - Search treatment by keyword - generate dynamic content with AJAX.
 - Add global eventListener to delegate events.
