@@ -12,7 +12,6 @@ import projectdefence.models.serviceModels.TreatmentAddServiceModel;
 import projectdefence.models.viewModels.TreatmentViewModel;
 import projectdefence.repositories.TreatmentRepository;
 import projectdefence.repositories.UserRepository;
-import projectdefence.service.impl.MeasurementServiceImpl;
 import projectdefence.service.impl.TreatmentServiceImpl;
 
 import java.time.LocalDate;
@@ -32,7 +31,8 @@ public class TreatmentServiceTest {
     public void init() {
         treatmentRepository = Mockito.mock(TreatmentRepository.class);
         userRepository = Mockito.mock(UserRepository.class);
-        treatmentService = new TreatmentServiceImpl(new ModelMapper(), treatmentRepository, userRepository);
+        EmailService emailService = null;
+        treatmentService = new TreatmentServiceImpl(new ModelMapper(), treatmentRepository, userRepository, null);
 
         Role roleUser = new Role();
         roleUser.setAuthority("ROLE_USER");

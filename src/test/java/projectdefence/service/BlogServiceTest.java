@@ -21,6 +21,7 @@ import java.util.Set;
 
 public class BlogServiceTest {
 
+    private EmailService emailService;
     private BlogService blogService;
     private BlogRepository blogRepository;
     private UserRepository userRepository;
@@ -31,7 +32,7 @@ public class BlogServiceTest {
     public void init() {
         blogRepository = Mockito.mock(BlogRepository.class);
         userRepository = Mockito.mock(UserRepository.class);
-        blogService = new BlogServiceImpl(blogRepository, new ModelMapper(), userRepository);
+        blogService = new BlogServiceImpl(emailService, blogRepository, new ModelMapper(), userRepository);
 
         Role roleUser = new Role();
         roleUser.setAuthority("ROLE_USER");
