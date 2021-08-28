@@ -1,5 +1,7 @@
 package projectdefence.service.impl;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,14 @@ import projectdefence.repositories.UserRepository;
 import projectdefence.service.BlogService;
 import projectdefence.service.EmailService;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static projectdefence.messages.EmailData.EMAIL_ADDRESS;
+import static projectdefence.messages.mailContent.MailBlog.BLOG_MAIL;
 
 @Service
 public class BlogServiceImpl implements BlogService {
@@ -43,12 +48,11 @@ public class BlogServiceImpl implements BlogService {
         this.blogRepository.save(blog);
         // mail sending
         String subject = "New added blog from user: " + user.getUsername();
-        String blogInfoAdded = "This user with username %s just added blog with <br> title: %s <br>and <br> content: %s.<br> " +
-                "Here can check the blog: <a href=\"http://localhost:8080/info/blog\">click here</a>";
+        String blogInfoAdded = String.format(BLOG_MAIL, user.getUsername(), blog.getTitle(), blog.getContent());
+
         emailService.sendMessageWithAttachment(EMAIL_ADDRESS,
                 subject,
-                String.format(blogInfoAdded, user.getUsername(), blog.getTitle(), blog.getContent())
-        );
+                blogInfoAdded);
     }
 
     @Override

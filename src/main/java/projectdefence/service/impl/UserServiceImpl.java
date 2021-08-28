@@ -24,6 +24,7 @@ import projectdefence.models.viewModels.UserViewModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.repositories.RoleRepository;
 import projectdefence.repositories.UserRepository;
+import projectdefence.repositories.UserSearchSpecification;
 import projectdefence.service.CloudinaryService;
 import projectdefence.service.RoleService;
 import projectdefence.service.UserService;
@@ -234,7 +235,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserWrapInfoViewModel findProfileByUserName(String username) {
-        User user = this.userRepository.findByUsername(username);
+        User user = this.userRepository.findOne(new UserSearchSpecification(username)).get();
         return this.modelMapper.map(user, UserWrapInfoViewModel.class);
     }
 

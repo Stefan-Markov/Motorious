@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static projectdefence.messages.mailContent.MailTreatment.TREATMENT_MAIL;
+
 @Service
 public class TreatmentServiceImpl implements TreatmentService {
     private final ModelMapper modelMapper;
@@ -44,12 +46,10 @@ public class TreatmentServiceImpl implements TreatmentService {
         treatment.setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName())
                 .setCreatedBy(nameKt);
 
-        String subject = String.format("New treatment for %s by: kinesitherapist %s", user.getUsername(), treatment.getKtFullName());
+        String subject = String.format("New treatment for %s by kinesitherapist: %s",
+                user.getUsername(), treatment.getKtFullName());
 
-        String content = String.format("Treatment:<br>Content: %s<br>Date added: %s<br>Visits: " +
-                        "%s<br>Goal: %s<br>Duration: %s<br>By kinesitherapist: %s<br>You can check this treatment at: <a href=\"http://localhost:8080/treatment/check/?username=%s\">Click here <a/>" +
-                        "<br>If you have any question, don't hesitate to contact us.<br> " +
-                        " mail: motorious.headquarters@gmail.com",
+        String content = String.format(TREATMENT_MAIL,
                 treatment.getContent(), treatment.getDateAdded(),
                 treatment.getVisits(), treatment.getGoal(),
                 treatment.getDuration(),
@@ -82,7 +82,8 @@ public class TreatmentServiceImpl implements TreatmentService {
                     .map(t -> this.modelMapper.map(t, TreatmentViewModel.class))
                     .sorted(Comparator.comparing(TreatmentViewModel::getDateAdded).reversed())
                     .collect(Collectors.toList());
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
         return null;
     }
 }

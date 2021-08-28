@@ -38,7 +38,9 @@ Application in general:
 - Spring Cache
 - Spring Schedule tasks
 - MySQL database
-- JPA
+- Jpa
+- JPQL, native queries
+- Jpa Specification Executor - find user by username
 - Cloudinary API for picture upload
 - Google API for data visualisation
 - Google API for maps

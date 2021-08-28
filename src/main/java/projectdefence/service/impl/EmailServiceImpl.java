@@ -1,6 +1,6 @@
 package projectdefence.service.impl;
 
-import org.springframework.core.io.FileSystemResource;
+
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import projectdefence.service.EmailService;
 
 import javax.mail.internet.MimeMessage;
-import java.io.File;
 
 import static projectdefence.messages.EmailData.EMAIL_ADDRESS;
 
@@ -52,7 +51,6 @@ public class EmailServiceImpl implements EmailService {
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(text,true);
-
             emailSender.send(message);
         } catch (Exception e) {
             e.printStackTrace();
