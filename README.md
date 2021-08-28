@@ -2,8 +2,8 @@
 Deployed with Heroku, changed database from MySQL to PostreSQL,little changes to thymeleaf, etc.
 
 Application in general:
-- 11 controllers
-- 9 services
+- RestControllers and Controllers
+- Over 10 services
 - 6 independent entities
 - 6 repositories
 - models - binding, view, service
@@ -13,7 +13,7 @@ Application in general:
 - Custom successHandler, depends on user roles
 - Thymeleaf Security
 - Thymeleaf
-- Mail sending for information
+- Sending mail for information
 - AJAX
 - Fetch Api 
 - Async, await
@@ -48,12 +48,13 @@ Application functionalities:
 - 4 manageable roles - ROOT, ADMIN, KINESITHERAPIST, USER
 - Picture upload if user want via Cloudinary API
 - Pagination of all users - AJAX with JPA.
-- Send mail when blog is created, when user have new treatment or measurement
+- Send mail when blog is created, when user have new treatment or measurement.
 - Search engine(find user by username or email) and generate dynamic content - AJAX with JPA filtration
 - Search treatment by keyword - generate dynamic content with AJAX.
 - Add global eventListener to delegate events.
 - Add, delete users
-- Registration, login
+- Registration form 
+- Login form
 - Custom login page, depends on user roles.
 - Add, delete treatment
 - Add, delete measurement
