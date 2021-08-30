@@ -40,6 +40,7 @@ Application in general:
 - Spring Cache
 - Spring Schedule tasks
 - MySQL database
+- Database quality control
 - Jpa
 - JPQL, native queries
 - Jpa Specification Executor - find user by username
