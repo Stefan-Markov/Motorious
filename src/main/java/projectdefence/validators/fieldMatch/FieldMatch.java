@@ -1,4 +1,4 @@
-package projectdefence.validators;
+package projectdefence.validators.fieldMatch;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

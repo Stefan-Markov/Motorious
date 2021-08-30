@@ -2,7 +2,8 @@ package projectdefence.models.binding;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
-import projectdefence.validators.FieldMatch;
+import projectdefence.validators.fieldMatch.FieldMatch;
+import projectdefence.validators.password.ValidPassword;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -18,6 +19,7 @@ public class EditProfileBindingModel {
     private String firstName;
     private String lastName;
     private String email;
+    @ValidPassword
     private String password;
     private String confirmPassword;
     private MultipartFile image;

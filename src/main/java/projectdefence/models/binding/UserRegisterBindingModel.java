@@ -2,7 +2,8 @@ package projectdefence.models.binding;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
-import projectdefence.validators.FieldMatch;
+import projectdefence.validators.fieldMatch.FieldMatch;
+import projectdefence.validators.password.ValidPassword;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -19,6 +20,7 @@ public class UserRegisterBindingModel {
     private String lastName;
     private String username;
     private String email;
+    @ValidPassword
     private String password;
     private String confirmPassword;
     private String title;

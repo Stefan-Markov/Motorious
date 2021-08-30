@@ -18,10 +18,10 @@ import projectdefence.service.impl.MotoriousUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true, securedEnabled = true)
 public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-
+    private final int _30_DAYS = 84600 * 30;
     private final MotoriousUserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
 
@@ -38,28 +38,32 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
-                .antMatchers("/", "/info/**", "/blogs/**", "/user/login", "/user/registration")
+                .antMatchers("/", "/blogs/**", "/info/**", "/user/login", "/user/registration")
                 .permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/user/login")
-                // custom login
-                .successHandler(myAuthenticationSuccessHandler())
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
+//                .defaultSuccessUrl("/home")
+                .successHandler(myAuthenticationSuccessHandler())
                 .failureForwardUrl("/user/login-error")
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
                 .and()
-                // 2 weeks is default - now is 1 day
-                .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400)
-                .and()
-                .logout()
+                .logout().clearAuthentication(true)
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID");
+                .deleteCookies("JSESSIONID")
+                .and()
+                .rememberMe()
+                .key("secretKeyMotorious")
+                .rememberMeParameter("remember")
+                .tokenValiditySeconds(_30_DAYS);
+
+        http.sessionManagement().maximumSessions(1).expiredUrl("/");
     }
 
 

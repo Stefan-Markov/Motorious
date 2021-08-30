@@ -27,6 +27,9 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
+
+            request.getSession(false).setMaxInactiveInterval(10 * 60);
+
             if (grantedAuthority.getAuthority().equals("ROLE_KINESITHERAPIST")) {
                 redirectUrl = "/info/blog";
                 break;
@@ -35,7 +38,6 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
                 break;
             }
         }
-        System.out.println("redirectUrl " + redirectUrl);
         if (redirectUrl == null) {
             throw new IllegalStateException();
         }

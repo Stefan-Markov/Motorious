@@ -10,6 +10,7 @@ Application in general:
 - Spring Security (prevent SQL injection, CSRF, parameter tampering, secure routes,secure password) 
 - Custom Security annotation (on some is used SpEl)
 - Custom route namespace
+- Custom login, logout
 - Custom successHandler, depends on user roles
 - Thymeleaf Security
 - Thymeleaf

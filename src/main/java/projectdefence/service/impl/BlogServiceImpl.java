@@ -1,11 +1,8 @@
 package projectdefence.service.impl;
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfWriter;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import projectdefence.messages.EmailData;
 import projectdefence.models.entities.Blog;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.AddBlogServiceModel;
@@ -15,8 +12,6 @@ import projectdefence.repositories.UserRepository;
 import projectdefence.service.BlogService;
 import projectdefence.service.EmailService;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
