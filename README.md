@@ -84,3 +84,4 @@ Application functionalities:
 To try the app, please enter environment variables on your IDE for 
 - MySQL username and password
 - Cloudinary credentials
+- Mail credentials
