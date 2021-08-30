@@ -1,5 +1,6 @@
 # Motorious
-Deployed with Heroku, changed database from MySQL to PostreSQL,little changes to thymeleaf, etc.
+Deployed with Heroku, visit here: https://center-motorious.herokuapp.com
+
 
 Application in general:
 - RestControllers and Controllers
