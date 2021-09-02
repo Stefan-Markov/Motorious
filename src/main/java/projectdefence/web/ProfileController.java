@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.EditProfileBindingModel;
 import projectdefence.models.serviceModels.UserServiceModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
-import projectdefence.security.IsProfileUser;
+import projectdefence.security.rolesAuth.IsProfileUser;
 import projectdefence.service.UserService;
 
 import javax.validation.Valid;

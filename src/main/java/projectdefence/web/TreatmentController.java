@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.TreatmentAddBindingModel;
 import projectdefence.models.serviceModels.TreatmentAddServiceModel;
 import projectdefence.models.viewModels.TreatmentViewModel;
-import projectdefence.security.IsKinesitherapist;
+import projectdefence.security.rolesAuth.IsKinesitherapist;
 import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;
 

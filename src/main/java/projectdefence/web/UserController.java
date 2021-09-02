@@ -1,7 +1,6 @@
 package projectdefence.web;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.UserChangeRoleBindingModel;
 import projectdefence.models.binding.UserRegisterBindingModel;
 import projectdefence.models.serviceModels.UserServiceModel;
-import projectdefence.security.IsRoot;
+import projectdefence.security.rolesAuth.IsRoot;
 import projectdefence.service.UserService;
 
 import javax.validation.Valid;
@@ -67,7 +66,8 @@ public class UserController {
             return "redirect:registration";
         }
 
-        return "redirect:/user/login";
+//        return "redirect:/user/login";
+        return "redirect:/home";
     }
 
     @GetMapping("/login")

@@ -5,17 +5,17 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import projectdefence.event.userDeleteEvent.DeleteEventPublisher;
 import projectdefence.event.userRegisterEvent.RegisterEventPublisher;
-import projectdefence.messages.RoleValue;
 import projectdefence.models.entities.Role;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     private static final String INNER_PIC_PATH = "/img/user.jpeg";
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
-    private final PasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final RoleService roleService;
     private final RoleRepository roleRepository;
     private final CloudinaryService cloudinaryService;
@@ -52,13 +52,13 @@ public class UserServiceImpl implements UserService {
 
 
     public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository,
-                           PasswordEncoder bCryptPasswordEncoder, RoleService roleService,
+                           PasswordEncoder passwordEncoder, RoleService roleService,
                            RoleRepository roleRepository, CloudinaryService cloudinaryService,
                            RegisterEventPublisher registerEventPublisher,
                            DeleteEventPublisher deleteEventPublisher) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.passwordEncoder = passwordEncoder;
         this.roleService = roleService;
         this.roleRepository = roleRepository;
         this.cloudinaryService = cloudinaryService;
@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
             }
 
             user.setCreatedDate(LocalDateTime.now());
-            user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
+            user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 
             userRepository.save(user);
             registerEventPublisher.publishUserRegisterEvent(userServiceModel);
@@ -251,7 +251,7 @@ public class UserServiceImpl implements UserService {
             user.setFirstName(userServiceModel.getFirstName());
             user.setLastName(userServiceModel.getLastName());
             user.setEmail(userServiceModel.getEmail());
-            user.setPassword(this.bCryptPasswordEncoder.encode(userServiceModel.getPassword()));
+            user.setPassword(this.passwordEncoder.encode(userServiceModel.getPassword()));
 
             this.userRepository.save(user);
         } catch (Exception e) {
@@ -270,6 +270,39 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserByUsername(String username) {
         return this.userRepository.findByUsername(username);
+    }
+
+    @Override
+    @Transactional
+    public User getOrCreateUser(String username, OAuth2User principal) {
+        User user = this.userRepository.findByUsername(username);
+        if (user != null) {
+
+            return user;
+        }
+        UserServiceModel userServiceModel = new UserServiceModel();
+
+        userServiceModel.setAuthorities(new HashSet<>());
+        userServiceModel.getAuthorities().add(this.roleService.findByAuthority(USER));
+
+        User newUser = this.modelMapper.map(userServiceModel, User.class);
+        newUser.setCreatedDate(LocalDateTime.now());
+        newUser.setUsername(username);
+        newUser.setFirstName(username);
+        newUser.setLastName(username);
+        newUser.setEmail(username);
+
+        newUser.setTitle(CLIENT_TITLE);
+
+        if (newUser.getPassword() != null) {
+            newUser.setPassword(this.passwordEncoder.encode(newUser.getPassword()));
+        }
+
+        newUser.setImageUrl(INNER_PIC_PATH);
+
+        this.userRepository.save(newUser);
+
+        return newUser;
     }
 }
 

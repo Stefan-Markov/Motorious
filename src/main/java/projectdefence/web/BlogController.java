@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.AddBlogBindingModel;
 import projectdefence.models.serviceModels.AddBlogServiceModel;
-import projectdefence.security.IsKinesitherapist;
+import projectdefence.security.rolesAuth.IsKinesitherapist;
 import projectdefence.service.BlogService;
 
 import javax.validation.Valid;

@@ -2,15 +2,13 @@ package projectdefence.web;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.TreatmentViewModel;
-import projectdefence.security.IsKinesitherapist;
+import projectdefence.security.rolesAuth.IsKinesitherapist;
 import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/tr")

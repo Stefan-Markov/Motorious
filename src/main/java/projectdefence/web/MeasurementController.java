@@ -13,7 +13,7 @@ import projectdefence.models.binding.MeasurementAddBindingModel;
 import projectdefence.models.serviceModels.MeasurementAddServiceModel;
 import projectdefence.models.viewModels.MeasurementViewModel;
 
-import projectdefence.security.IsKinesitherapist;
+import projectdefence.security.rolesAuth.IsKinesitherapist;
 import projectdefence.service.LogService;
 import projectdefence.service.MeasurementService;
 import projectdefence.service.UserService;

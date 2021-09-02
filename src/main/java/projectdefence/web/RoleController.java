@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import projectdefence.models.binding.UserChangeRoleBindingModel;
 import projectdefence.models.serviceModels.UserServiceChangeRoleModel;
-import projectdefence.security.IsRoot;
+import projectdefence.security.rolesAuth.IsRoot;
 import projectdefence.service.UserService;
 
 import javax.validation.Valid;

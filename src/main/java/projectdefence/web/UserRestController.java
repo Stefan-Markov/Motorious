@@ -1,13 +1,10 @@
 package projectdefence.web;
 
-import org.apache.http.protocol.HTTP;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
-import projectdefence.security.IsRoot;
+import projectdefence.security.rolesAuth.IsRoot;
 import projectdefence.service.UserService;
 
 import java.util.List;

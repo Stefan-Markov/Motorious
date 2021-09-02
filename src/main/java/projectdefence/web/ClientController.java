@@ -1,6 +1,5 @@
 package projectdefence.web;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import projectdefence.models.viewModels.MeasurementViewModel;
 import projectdefence.models.viewModels.TreatmentViewModel;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
-import projectdefence.security.IsKinesitherapist;
+import projectdefence.security.rolesAuth.IsKinesitherapist;
 import projectdefence.service.MeasurementService;
 import projectdefence.service.TreatmentService;
 import projectdefence.service.UserService;

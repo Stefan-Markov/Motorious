@@ -2,11 +2,10 @@ package projectdefence.web;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.UserWrapInfoViewModel;
-import projectdefence.security.IsKinesitherapist;
-import projectdefence.security.IsProfileUser;
+import projectdefence.security.rolesAuth.IsKinesitherapist;
+import projectdefence.security.rolesAuth.IsProfileUser;
 import projectdefence.service.UserService;
 
 import java.util.List;

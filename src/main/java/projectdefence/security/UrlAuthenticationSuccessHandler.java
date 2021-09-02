@@ -11,6 +11,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -29,7 +30,6 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
         for (GrantedAuthority grantedAuthority : authorities) {
 
             request.getSession(false).setMaxInactiveInterval(10 * 60);
-
             if (grantedAuthority.getAuthority().equals("ROLE_KINESITHERAPIST")) {
                 redirectUrl = "/info/blog";
                 break;

@@ -16,8 +16,6 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends PagingAndSortingRepository<User, String>,
         JpaSpecificationExecutor<User> {
-
-
 //    Iterable<User> findAll(Sort user);
 
     Page<User> findAll(Pageable page);

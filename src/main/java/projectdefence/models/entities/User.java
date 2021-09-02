@@ -161,7 +161,7 @@ public class User extends BaseEntity implements UserDetails {
         return this;
     }
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }

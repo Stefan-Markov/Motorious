@@ -13,8 +13,8 @@
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script th:src="@{/js/homeMenu.js}" type="module"></script>
-    <script th:src="@{/js/searchUser.js}" type="module"></script>
-    <script th:src="@{/js/searchTreatment.js}" type="module"></script>
+    <script th:src="@{/js/searchUser.js}" type="module" sec:authorize="hasRole('ROLE_KINESITHERAPIST')"></script>
+    <script th:src="@{/js/searchTreatment.js}" type="module" sec:authorize="hasRole('ROLE_KINESITHERAPIST')"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.css"
           integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w"
