@@ -12,7 +12,7 @@ Application in general:
 - Spring Security (prevent SQL injection, CSRF, parameter tampering, secure routes,secure password) 
 - Custom Security annotation (on some is used SpEl)
 - Custom route namespace
-- Custom login, logout
+- Custom login,login with Github, logout
 - Custom successHandler, depends on user roles
 - Thymeleaf Security
 - Thymeleaf
@@ -54,6 +54,7 @@ Application in general:
 Application functionalities:
 - 4 manageable roles - ROOT, ADMIN, KINESITHERAPIST, USER
 - Picture upload if user want via Cloudinary API
+- Login with GitHub
 - Pagination of all users - AJAX with JPA.
 - Send mail when blog is created, when user have new treatment or measurement.
 - Search engine(find user by username or email) and generate dynamic content - AJAX with JPA filtration
@@ -62,7 +63,6 @@ Application functionalities:
 - Add, delete users
 - Registration form 
 - Login form
-- Login with GitHub
 - Custom login page, depends on user roles.
 - Add, delete treatment
 - Add, delete measurement
