@@ -7,6 +7,7 @@ Application in general:
 - Over 10 services
 - 6 independent entities
 - 6 repositories
+- OAuth2 - login with GitHub
 - models - binding, view, service
 - Spring Security (prevent SQL injection, CSRF, parameter tampering, secure routes,secure password) 
 - Custom Security annotation (on some is used SpEl)
@@ -16,6 +17,7 @@ Application in general:
 - Thymeleaf Security
 - Thymeleaf
 - Sending mail for information
+- Custom filter
 - AJAX
 - Fetch Api 
 - Async, await
@@ -60,6 +62,7 @@ Application functionalities:
 - Add, delete users
 - Registration form 
 - Login form
+- Login with GitHub
 - Custom login page, depends on user roles.
 - Add, delete treatment
 - Add, delete measurement
