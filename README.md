@@ -31,7 +31,10 @@ Application in general:
 - Spring Events
 - Spring AOP
 - Pagination
-- Spring @Async
+- Spring @Async 
+- PreFilter & PostFilter
+- Limit session to only one
+- Remember me
 - Mapping library - Model mapper
 - Data validation - frontend and backend
 - Custom validators

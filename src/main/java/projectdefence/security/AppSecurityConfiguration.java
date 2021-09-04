@@ -32,12 +32,14 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
     private final OAuth2UserAuthSuccessHandler oAuth2UserAuthSuccessHandler;
 
+
     public AppSecurityConfiguration(MotoriousUserDetailsService userDetailsService,
                                     PasswordEncoder passwordEncoder, OAuth2UserAuthSuccessHandler oAuth2UserAuthSuccessHandler) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
         this.oAuth2UserAuthSuccessHandler = oAuth2UserAuthSuccessHandler;
     }
+
 
     private static void customizeCors(CorsConfigurer<HttpSecurity> c) {
         CorsConfigurationSource source = request -> {

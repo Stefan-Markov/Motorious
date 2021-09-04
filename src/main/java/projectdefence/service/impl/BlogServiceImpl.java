@@ -1,8 +1,12 @@
 package projectdefence.service.impl;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PostFilter;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 import projectdefence.models.entities.Blog;
 import projectdefence.models.entities.User;
 import projectdefence.models.serviceModels.AddBlogServiceModel;
@@ -64,6 +68,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    @PostFilter("filterObject.id < 120")
     public List<BlogViewModel> findAll() {
         return this.blogRepository.findAll()
                 .stream()
