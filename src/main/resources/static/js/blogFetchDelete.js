@@ -50,7 +50,9 @@ aTags.forEach(a => {
 function deleteData(link, e) {
     let confirmed = confirm('Are you sure?');
     if (confirmed) {
-        fetch(`${link}`).catch(er => console.log(er));
+        fetch(`${link}`)
+            .then(res => res.text())
+            .catch(er => console.log(er));
 
         let sec = e.target.closest('section');
         sec.remove();

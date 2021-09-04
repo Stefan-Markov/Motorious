@@ -8,6 +8,7 @@ Application in general:
 - 6 independent entities
 - 6 repositories
 - OAuth2 - login with GitHub
+- OAuth2 - login with Facebook (test/dev mode using)
 - models - binding, view, service
 - Spring Security (prevent SQL injection, CSRF, parameter tampering, secure routes,secure password) 
 - Custom Security annotation (on some is used SpEl)
@@ -33,7 +34,7 @@ Application in general:
 - Spring @Async
 - Mapping library - Model mapper
 - Data validation - frontend and backend
-- Custom validator
+- Custom validators
 - Using layers with multiple layouts 
 - Testing - unit test and integration tests for some of the controllers using mocking - 80% coverage
 - Exceptions handling and CustomAccessDeniedHandler

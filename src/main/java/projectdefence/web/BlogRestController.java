@@ -1,8 +1,12 @@
 package projectdefence.web;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import projectdefence.models.viewModels.BlogViewModel;
+import projectdefence.security.rolesAuth.IsAdmin;
+import projectdefence.security.rolesAuth.IsKinesitherapist;
 import projectdefence.service.BlogService;
 
 import java.util.List;
@@ -23,8 +27,11 @@ public class BlogRestController {
                 .body(blogService.findAll());
     }
 
-    @GetMapping("/deleteById/{id}")
-    public void delete(@PathVariable Long id) {
+    @RequestMapping(value = "/deleteById/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    @IsAdmin
+    public ResponseEntity<Object> delete(@PathVariable Long id) {
         blogService.deleteById(id);
+
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

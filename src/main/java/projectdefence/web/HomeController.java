@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+import projectdefence.models.viewModels.UserWrapInfoViewModel;
 import projectdefence.service.UserService;
 
 @Controller
@@ -26,9 +27,11 @@ public class HomeController {
     @PreAuthorize("isAuthenticated()")
     public ModelAndView home(@AuthenticationPrincipal UserDetails principal) {
         ModelAndView mav = new ModelAndView("home");
-        String name = principal.getUsername();
-        String imageUrl = this.userService.findImageByUsername(principal.getUsername());
-        mav.addObject("user", name);
+        String username = principal.getUsername();
+        UserWrapInfoViewModel userWrapInfoViewModel = this.userService.findProfileByUserName(username);
+
+        String imageUrl = this.userService.findImageByUsername(username);
+        mav.addObject("user", userWrapInfoViewModel.getFirstName());
         mav.addObject("image", imageUrl);
         return mav;
     }

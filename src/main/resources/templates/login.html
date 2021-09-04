@@ -26,12 +26,20 @@
             <h5 th:if="${notFound}" class="error-login">Please enter valid credentials.</h5>
 
             <div class="info-container">
-                <p class="github">
-                    <a class="s-github" th:href="@{/oauth2/authorization/github}">
-                        <i  class="fab fa-github s-github"></i>
-                        Login via Github
-                    </a>
-                </p>
+                <div class="login-oauth">
+                    <p class="github">
+                        <a class="s-github" th:href="@{/oauth2/authorization/github}">
+                            <i class="fab fa-github s-login"></i>
+                            Login via Github
+                        </a>
+                    </p>
+                    <p class="facebook">
+                        <a class="s-github" th:href="@{/oauth2/authorization/facebook}">
+                            <i class="fab fa-facebook s-login"></i>
+                            Login via Facebook
+                        </a>
+                    </p>
+                </div>
                 <article class="label-style">
                     <label for="inputUsername"><i class="fas fa-user"></i> Username</label>
                 </article>

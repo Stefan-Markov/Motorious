@@ -274,7 +274,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User getOrCreateUser(String username, OAuth2User principal) {
+    public User getOrCreateUser(String filteredUsername, OAuth2User principal) {
+        String username = filteredUsername.replaceAll("\\s+", "");
         User user = this.userRepository.findByUsername(username);
         if (user != null) {
 

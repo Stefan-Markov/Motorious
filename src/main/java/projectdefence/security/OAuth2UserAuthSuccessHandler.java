@@ -6,7 +6,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -42,8 +41,15 @@ public class OAuth2UserAuthSuccessHandler extends SavedRequestAwareAuthenticatio
 
             OAuth2User principal = oAuth2AuthenticationToken.
                     getPrincipal();
+            User userEntity = null;
+                //Github
+            if (principal.getAttribute("login") != null) {
+                userEntity = userService.getOrCreateUser(principal.getAttribute("login"), principal);
+                // Facebook
+            } else if (principal.getAttribute("name") != null) {
+                userEntity = userService.getOrCreateUser(principal.getAttribute("name"), principal);
+            }
 
-            User userEntity = userService.getOrCreateUser(principal.getAttribute("login"), principal);
             //should not be null -> throw bad error :)
             UserDetails userDetails = userDetailsService.loadUserByUsername(userEntity.getUsername());
 
