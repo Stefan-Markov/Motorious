@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import projectdefence.models.entities.Treatment;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.concurrent.Future;
 public interface TreatmentRepository extends JpaRepository<Treatment, String> {
 
     @Async
+    @Transactional(readOnly = true)
     @Query("select t from Treatment t where t.disease like %:criteria%")
     Future<List<Treatment>> findAllByGivenCriteria(String criteria);
 }

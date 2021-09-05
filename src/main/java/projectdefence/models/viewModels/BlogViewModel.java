@@ -1,13 +1,15 @@
 package projectdefence.models.viewModels;
 
-import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 public class BlogViewModel {
 
     private Long id;
     private String title;
     private String content;
-    private LocalDate date;
+    private Date date;
     private String author;
 
     public BlogViewModel() {
@@ -40,11 +42,12 @@ public class BlogViewModel {
         return this;
     }
 
-    public LocalDate getDate() {
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    public Date getDate() {
         return date;
     }
 
-    public BlogViewModel setDate(LocalDate date) {
+    public BlogViewModel setDate(Date date) {
         this.date = date;
         return this;
     }

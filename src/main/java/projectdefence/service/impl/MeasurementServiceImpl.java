@@ -38,7 +38,8 @@ public class MeasurementServiceImpl implements MeasurementService {
                 .setDate(LocalDate.now());
 
         User ktUser = this.userRepository.findByUsername(nameKt);
-        measurement.setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName())
+        measurement
+                .setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName())
                 .setCreatedBy(nameKt);
 
         this.measurementRepository.save(measurement);

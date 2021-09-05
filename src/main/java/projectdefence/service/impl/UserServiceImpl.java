@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import projectdefence.event.userDeleteEvent.DeleteEventPublisher;
@@ -273,7 +274,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public User getOrCreateUser(String filteredUsername, OAuth2User principal) {
         String username = filteredUsername.replaceAll("\\s+", "");
         User user = this.userRepository.findByUsername(username);

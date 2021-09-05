@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import projectdefence.models.entities.User;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, String>
         JpaSpecificationExecutor<User> {
 //    Iterable<User> findAll(Sort user);
 
+    @Transactional(readOnly = true)
     Page<User> findAll(Pageable page);
 
     @Query("select u from User u where  u.username = :username")

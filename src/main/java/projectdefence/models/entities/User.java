@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -96,6 +97,7 @@ public class User extends BaseEntity implements UserDetails {
 
 
     @Column(name = "firs_name", nullable = false)
+    @NotNull
     @Length(min = 3, message = "Must contain minimum three characters.")
     public String getFirstName() {
         return firstName;
@@ -107,6 +109,7 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Column(name = "last_name", nullable = false)
+    @NotNull
     @Length(min = 3, message = "Must contain minimum three characters.")
     public String getLastName() {
         return lastName;

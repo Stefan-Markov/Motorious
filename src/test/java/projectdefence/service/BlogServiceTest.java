@@ -53,8 +53,8 @@ public class BlogServiceTest {
 
         blog = new Blog();
         blog.setAuthor(user.getFirstName() + " " + user.getLastName())
-                .setUser(List.of(user))
-                .setDate(LocalDate.now())
+                .setUser(user)
+//                .setDate(LocalDate.now())
                 .setContent("content")
                 .setTitle("title");
 

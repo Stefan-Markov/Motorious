@@ -39,11 +39,13 @@ public class TreatmentServiceImpl implements TreatmentService {
 
         User user = this.userRepository.findByUsername(username);
         Treatment treatment = this.modelMapper.map(treatmentAddServiceModel, Treatment.class);
-        treatment.setUser(user)
+        treatment
+                .setUser(user)
                 .setDateAdded(LocalDate.now());
 
         User ktUser = this.userRepository.findByUsername(nameKt);
-        treatment.setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName())
+        treatment
+                .setKtFullName(ktUser.getFirstName() + " " + ktUser.getLastName())
                 .setCreatedBy(nameKt);
 
         String subject = String.format("New treatment for %s by kinesitherapist: %s",
