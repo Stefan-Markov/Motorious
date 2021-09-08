@@ -1,6 +1,7 @@
 package projectdefence.web;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,7 @@ public class UserController {
     }
 
     @GetMapping("/registration")
+    @PreAuthorize("!isAuthenticated()")
     public String register(Model model) {
         if (!model.containsAttribute("userRegisterBindingModel")) {
             model.addAttribute("userRegisterBindingModel", new UserRegisterBindingModel());
@@ -42,6 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/registration")
+    @PreAuthorize("!isAuthenticated()")
     public String registerConfirm(@Valid @ModelAttribute UserRegisterBindingModel userRegisterBindingModel,
                                   BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
@@ -71,11 +74,13 @@ public class UserController {
     }
 
     @GetMapping("/login")
+    @PreAuthorize("!isAuthenticated()")
     public String login() {
         return "login";
     }
 
     @PostMapping("/login-error")
+    @PreAuthorize("!isAuthenticated()")
     public String failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                                       String username, RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("notFound", true);

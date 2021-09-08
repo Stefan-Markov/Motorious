@@ -110,9 +110,11 @@
                 </li>
             </ul>
             <section class="searchBar" sec:authorize="hasRole('ROLE_KINESITHERAPIST')">
-                <label>Search client by username or email
-                    <input class="input-search" id="search-username" name="username" type="text"
-                           placeholder="write username or email">
+                <label class="slabel">Search client by username or email
+                    <input class="input-search" id="search-username" name="username" type="text">
+<!--                           placeholder="write username or email"-->
+
+                    <i class="fas fa-search lupe"></i>
                 </label>
                 <ul id="result">
 
@@ -120,9 +122,11 @@
             </section>
 
             <section class="searchBar" sec:authorize="hasRole('ROLE_KINESITHERAPIST')">
-                <label>Search treatment by proper disease
-                    <input class="input-search" id="search-treatment" name="username" type="text"
-                           placeholder="write disease">
+                <label class="slabel">Search treatment by proper disease
+                    <input class="input-search" id="search-treatment" name="username" type="text">
+<!--                           placeholder="write disease"-->
+
+                    <i class="fas fa-search lupe"></i>
                 </label>
                 <ul id="result-treatment">
 

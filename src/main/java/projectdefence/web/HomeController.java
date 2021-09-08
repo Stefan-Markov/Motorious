@@ -28,10 +28,9 @@ public class HomeController {
     public ModelAndView home(@AuthenticationPrincipal UserDetails principal) {
         ModelAndView mav = new ModelAndView("home");
         String username = principal.getUsername();
-        UserWrapInfoViewModel userWrapInfoViewModel = this.userService.findProfileByUserName(username);
 
         String imageUrl = this.userService.findImageByUsername(username);
-        mav.addObject("user", userWrapInfoViewModel.getFirstName());
+        mav.addObject("user", principal.getUsername());
         mav.addObject("image", imageUrl);
         return mav;
     }

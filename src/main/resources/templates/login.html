@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_login.css}">
+    <script th:src="@{/js/slider.js}"></script>
     <title>Motorious</title>
 </head>
 <body>
@@ -16,15 +17,11 @@
 </header>
 <main>
     <form th:action="@{/user/login}" method="POST">
-
         <section class="login-main">
-
             <section class="login-welcome">
                 <h2 class="welcome">Login</h2>
             </section>
-
             <h5 th:if="${notFound}" class="error-login">Please enter valid credentials.</h5>
-
             <div class="info-container">
                 <div class="login-oauth">
                     <p class="github">
@@ -69,6 +66,47 @@
                 </label>
                 <button class="button-style" type="submit"><i class="fas fa-door-open"></i> Login</button>
             </section>
+            <section>
+                <br>
+                <br>
+                <p>Don't have account ? Register <a th:href="@{/user/registration}">here</a></p>
+            </section>
+            <br>
+            <div class="slider" sec:authorize="!isAuthenticated()">
+                <div class="slideshow-container">
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <div>
+                        <a th:href="@{/info/blog}">
+                            <div class="mySlides fade" style="display: block">
+                                <div class="numbertext">1 / 3</div>
+                                <img th:src="@{/img/blogs_read.jpeg}" alt="pic">
+                                <div class="text">Read blogs here</div>
+                            </div>
+                        </a>
+                        <a th:href="@{/user/login}">
+                            <div class="mySlides fade" style="display: none">
+                                <div class="numbertext">2 / 3</div>
+                                <img th:src="@{/img/Logo.png}" alt="pic">
+                                <div class="text">Login to see more here</div>
+                            </div>
+                        </a>
+                        <a th:href="@{/user/registration}">
+                            <div class="mySlides fade" style="display: none">
+                                <div class="numbertext">3 / 3</div>
+                                <img th:src="@{/img/register.png}" alt="pic">
+                                <div class="text blue-t">Register here to experience more</div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
         </section>
     </form>
 </main>

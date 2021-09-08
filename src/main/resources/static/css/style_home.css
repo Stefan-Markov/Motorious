@@ -66,6 +66,11 @@ aside h2 {
     color: orange;
 }
 
+img {
+    background: #ffda99;
+    border-radius: 30px;
+}
+
 img:hover {
     transform: scale(1.1);
     border: 1px solid orange;
@@ -78,6 +83,7 @@ aside ul li a {
 }
 
 aside ul li {
+    font-weight: bolder;
     list-style: none;
 }
 
@@ -123,7 +129,7 @@ aside ul li {
     padding: 30px;
     border-radius: 30px;
     border: 10px solid lightblue;
-
+    background: #ffda99;
     animation: border 5s infinite;
 }
 
@@ -159,17 +165,18 @@ aside ul li {
 }
 
 .input-search {
-    margin-top: 10px;
+    margin-left: 5px;
     padding: 5px;
-    border-radius: 5px
+    border-radius: 25px;
 }
 
 .searchBar {
     justify-content: space-between;
-    margin: 10px;
-    padding: 14px;
-    border: 8px solid lightblue;
+    margin-top: 10px;
+    padding: 30px;
+    border: 10px solid lightblue;
     border-radius: 15px;
+    background: #ffda99;
 }
 
 .class-bold {
@@ -182,6 +189,27 @@ aside ul li {
     margin: 8px;
     border-radius: 5px;
     border: 5px solid lightblue;
+}
+
+.slabel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bolder;
+}
+
+.lupe {
+    position: relative;
+    right: 30px;
+    background: orange;
+    padding: 7px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.codes {
+    background: #ffda99;
+    border-radius: 30px;
 }
 
 @keyframes border {

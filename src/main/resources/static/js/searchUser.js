@@ -36,6 +36,7 @@ async function search() {
 
             aTag.href = "http://localhost:8080/client/info/" + u.username;
             aTag.textContent = " click |HERE| to get info for user.";
+            aTag.style.backgroundColor = '#ffda99';
             aTag.id = 'user-span';
             aTag.innerHTML += `<i class="fas fa-id-card"></i>`;
             li.textContent = u.firstName;
