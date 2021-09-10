@@ -246,6 +246,14 @@ public class UserServiceImpl implements UserService {
         try {
             if (!userServiceModel.getImage().isEmpty()) {
                 MultipartFile image = userServiceModel.getImage();
+
+                String id =
+                        user.getImageUrl()
+                                .substring(user.getImageUrl().lastIndexOf("/") + 1,
+                                        user.getImageUrl().lastIndexOf("."));
+
+                this.cloudinaryService.deleteImage(id, Collections.emptyMap());
+
                 String imageUrl = cloudinaryService.uploadImage(image);
                 user.setImageUrl(imageUrl);
             }

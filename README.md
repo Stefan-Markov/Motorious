@@ -9,6 +9,10 @@ Application in general:
 - 6 repositories
 - OAuth2 - login with GitHub
 - OAuth2 - login with Facebook (test/dev mode using)
+- Cloudinary API for 
+  * picture upload
+  * delete picture
+- Pagination
 - models - binding, view, service
 - Spring Security (prevent SQL injection, CSRF, parameter tampering, secure routes,secure password) 
 - Custom Security annotation (on some is used SpEl)
@@ -30,7 +34,6 @@ Application in general:
 - jQuery
 - Spring Events
 - Spring AOP
-- Pagination
 - Spring @Async 
 - PreFilter & PostFilter
 - Limit session to only one
@@ -50,7 +53,6 @@ Application in general:
 - Jpa
 - JPQL, native queries
 - Jpa Specification Executor - find user by username
-- Cloudinary API for picture upload
 - Google API for data visualisation
 - Google API for maps
 - Media queries for responsive design

@@ -40,7 +40,7 @@ public class ApplicationConfiguration {
 
         random.generateSeed(20);
 
-        return new BCryptPasswordEncoder(16, random);
+        return new BCryptPasswordEncoder(8, random);
     }
 //    @Bean
 //    public PasswordEncoder sCryptEncoder() {

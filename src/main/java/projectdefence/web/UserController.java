@@ -80,7 +80,6 @@ public class UserController {
     }
 
     @PostMapping("/login-error")
-    @PreAuthorize("!isAuthenticated()")
     public String failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                                       String username, RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("notFound", true);
