@@ -1,5 +1,6 @@
 package projectdefence.models.entities;
 
+import org.hibernate.annotations.Formula;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
@@ -71,6 +72,7 @@ public class Treatment extends BaseEntity {
         return duration;
     }
 
+    @Formula("format(duration,0)")
     public Treatment setDuration(Double duration) {
         this.duration = duration;
         return this;

@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/style_home.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" th:href="@{/css/style_scroller.css}">
     <script src="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.js"
             integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB"
             crossorigin="anonymous"></script>
@@ -15,6 +16,8 @@
     <script th:src="@{/js/homeMenu.js}" type="module"></script>
     <script th:src="@{/js/searchUser.js}" type="module" sec:authorize="hasRole('ROLE_KINESITHERAPIST')"></script>
     <script th:src="@{/js/searchTreatment.js}" type="module" sec:authorize="hasRole('ROLE_KINESITHERAPIST')"></script>
+    <script th:src="@{/js/scroller.js}" type="module"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.css"
           integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w"
@@ -112,7 +115,7 @@
             <section class="searchBar" sec:authorize="hasRole('ROLE_KINESITHERAPIST')">
                 <label class="slabel">Search client by username or email
                     <input class="input-search" id="search-username" name="username" type="text">
-<!--                           placeholder="write username or email"-->
+                    <!--                           placeholder="write username or email"-->
 
                     <i class="fas fa-search lupe"></i>
                 </label>
@@ -124,7 +127,7 @@
             <section class="searchBar" sec:authorize="hasRole('ROLE_KINESITHERAPIST')">
                 <label class="slabel">Search treatment by proper disease
                     <input class="input-search" id="search-treatment" name="username" type="text">
-<!--                           placeholder="write disease"-->
+                    <!--                           placeholder="write disease"-->
 
                     <i class="fas fa-search lupe"></i>
                 </label>
@@ -146,6 +149,9 @@
                 </section>
             </section>
         </article>
+        <div id="progress">
+            <span id="progress-value"></span>
+        </div>
     </section>
     <div th:include="/fragment/source :: benefit"></div>
 </main>

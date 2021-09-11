@@ -194,14 +194,18 @@ public class UserServiceImpl implements UserService {
         Pageable pageableRequest = PageRequest.of(page, limit);
         //  Sort.by("firstName").and(Sort.by("lastName"))
 
-        Page<User> usersPage = userRepository.findAll(pageableRequest);
-        List<User> users = usersPage.getContent()
+        List<User> usersPage = userRepository
+                .findAll(pageableRequest).getContent()
                 .stream()
-                .sorted(Comparator.comparing(User::getUsername)
-                        .thenComparing(User::getFirstName))
+                .sorted(Comparator.comparing(User::getUsername))
                 .collect(Collectors.toList());
+//        List<User> users = usersPage.getContent()
+//                .stream()
+//                .sorted(Comparator.comparing(User::getUsername)
+//                        .thenComparing(User::getFirstName))
+//                .collect(Collectors.toList());
 
-        return users.stream()
+        return usersPage.stream()
                 .map(e -> modelMapper.map(e, UserWrapInfoViewModel.class))
                 .collect(Collectors.toList());
     }

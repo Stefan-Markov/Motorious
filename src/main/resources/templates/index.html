@@ -7,8 +7,10 @@
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" th:href="@{/css/style_scroller.css}">
     <script th:src="@{/js/view.js}"></script>
     <script th:src="@{/js/slider.js}"></script>
+    <script th:src="@{/js/scroller.js}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Motorious</title>
 </head>
@@ -90,6 +92,9 @@
                 <img class="codes" th:src="@{/img/QR_code_phone.png}" alt="phone">
             </section>
         </section>
+        <div id="progress">
+            <span id="progress-value"></span>
+        </div>
         <section>
             <p>Download our business contact card</p>
             <a th:href="@{/img/business-card.png}" download><i class="fas fa-address-card"></i> Download</a>
