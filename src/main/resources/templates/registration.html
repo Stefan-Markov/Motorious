@@ -8,6 +8,10 @@
     <link rel="stylesheet" th:href="@{/css/style_index.css}">
     <link rel="stylesheet" th:href="@{/css/style_navigation.css}">
     <link rel="stylesheet" th:href="@{/css/style_footer.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script th:src="@{/js/checkPasswordLevel.js}" type="module"></script>
+
     <title>Registration</title>
 </head>
 <body>
@@ -86,7 +90,7 @@
                 <div class="info-container">
                     <label class="label-style" for="image"><i class="fas fa-portrait"></i> Add Picture (If you
                         want)</label>
-                    <input th:field="*{image}" class="input-style" type="file" id="image" name="image">
+                    <input th:field="*{image}" type="file" id="image" name="image">
                 </div>
 
                 <div class="info-container">
@@ -94,7 +98,8 @@
                         <label for="inputEmail"><i class="fas fa-envelope"></i> Email</label>
                     </article>
                     <article>
-                        <input required th:field="*{email}" class="input-style input-validation" name="email"
+                        <input required minlength="3" maxlength="60" th:field="*{email}"
+                               class="input-style input-validation" name="email"
                                type="email"
                                id="inputEmail"
                                placeholder="Enter valid email">

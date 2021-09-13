@@ -141,6 +141,11 @@
             <artifactId>guava</artifactId>
             <version>23.6-jre</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.8</version>
+        </dependency>
     </dependencies>
 
     <build>

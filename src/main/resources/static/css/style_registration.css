@@ -112,7 +112,7 @@ main {
     color: white;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
 }
 
@@ -123,19 +123,18 @@ button:hover{
 
 .image {
     align-items: center;
-
     border: 6px solid white;
     margin: 0 auto;
-    border-image-source: linear-gradient(60deg, orange, white, gold, white, orange, gold);
+    border-image-source: linear-gradient(60deg, #532A6D, #CC6A72, #EB9876);
     border-image-slice: 1;
 }
 
 .heading-second {
     margin: 0 auto;
-    width: 600px;
+    min-width: 300px;
     font-size: 1.5em;
     border: 10px solid;
-    border-image-source: linear-gradient(60deg, orange, white, gold, white, orange, gold);
+    border-image-source: linear-gradient(60deg, #532A6D, #CC6A72, #EB9876);
     border-image-slice: 1;
 }
 
@@ -152,6 +151,25 @@ button:hover{
 .input-validation:valid {
     background: lightblue;
     border: 2px solid green;
+}
+
+.pass {
+    margin-top: 5px;
+    font-weight: bolder;
+}
+
+#image {
+
+    border: 5px solid white;
+    border-radius: 30px;
+}
+
+@media screen and (max-width: 690px) {
+    body > main > form > section.flex-item-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media screen and (max-width: 1000px ) {
