@@ -60,7 +60,6 @@ main {
 }
 
 .info-container {
-
     width: 500px;
     display: flex;
     flex-direction: column;
@@ -159,7 +158,6 @@ button:hover {
 }
 
 #image {
-
     border: 5px solid white;
     border-radius: 30px;
 }

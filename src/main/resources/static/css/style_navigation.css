@@ -7,11 +7,24 @@ html {
 
 .navigation {
     font-family: 'Vollkorn', serif, 'Montserrat', sans-serif;
-    height: 10vh;
+    height: auto;
     background: lightblue;
     color: white;
     padding: 20px 20px;
+    width: auto;
 
+}
+
+.navigation ul {
+    border-radius: 30px;
+    border: 5px solid white;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-color: steelblue;
+}
+
+.navigation ul li a {
+    background-color: lightblue;
 }
 
 .navigation ul {
