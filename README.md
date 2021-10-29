@@ -37,6 +37,7 @@ Application in general:
 - Spring AOP
 - Spring @Async 
 - PreFilter & PostFilter
+- DB programmability - @Procedure store in DB
 - Limit session to only one
 - Remember me
 - Mapping library - Model mapper

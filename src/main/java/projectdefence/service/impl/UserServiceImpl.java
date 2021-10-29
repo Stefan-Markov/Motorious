@@ -2,7 +2,6 @@ package projectdefence.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CachePut;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -181,8 +180,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @CachePut("users")
     public List<UserWrapInfoViewModel> findAllUsers() {
-        return this.userRepository.findAllOrderByDate().stream().map(u ->
-                        this.modelMapper.map(u, UserWrapInfoViewModel.class))
+        return this.userRepository
+                .getUsersProcedure()
+                .stream()
+                .map(u -> this.modelMapper
+                        .map(u, UserWrapInfoViewModel.class))
                 .collect(Collectors.toList());
     }
 
@@ -197,7 +199,8 @@ public class UserServiceImpl implements UserService {
         List<User> usersPage = userRepository
                 .findAll(pageableRequest).getContent()
                 .stream()
-                .sorted(Comparator.comparing(User::getUsername))
+                .sorted(Comparator.comparing(User::getUsername)
+                        .thenComparing(User::getFirstName))
                 .collect(Collectors.toList());
 //        List<User> users = usersPage.getContent()
 //                .stream()
